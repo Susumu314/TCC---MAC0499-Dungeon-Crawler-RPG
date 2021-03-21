@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-enum Act
-{
-    ATTACK, GUARD, ESCAPE, CAPTURE, 
-    SKILL_0, SKILL_1, SKILL_2, SKILL_3
-}
+
 
 enum Target
 {
@@ -17,11 +13,11 @@ enum Target
     PARTY_FRONTROW, PARTY_BACKROW, PARTY_ALL
 }
 
-struct Action //Toda ação será uma struct com o ato do personagem e o alvo
-{
-    public Act act;
-    public Target target;
-}
+// struct Action //Toda ação será uma struct com o ato do personagem e o alvo
+// {
+//     public Act act;
+//     public Target target;
+// }
 
 
 public enum BattleState { START, STRATEGYTURN, BATTLETURN, WON, LOST }
@@ -30,7 +26,7 @@ public class Battle_System : MonoBehaviour
 {
     int SelectedPartyMember = 0;
 
-    Action[] PartyMemberAction = new Action[6]; // action taken by PartyMember[i] on last turn
+    //Action[] PartyMemberAction = new Action[6]; // action taken by PartyMember[i] on last turn
     public BattleState state;
 
     public GameObject partyPrefab;
@@ -87,7 +83,7 @@ public class Battle_System : MonoBehaviour
         switch (index)
         {
             case 0://attack
-                StartCoroutine(PartyAction(Act.ATTACK, Target.ENEMY_0));
+                // StartCoroutine(PartyAction(Act.ATTACK, Target.ENEMY_0));
             break;
 
             default:
@@ -95,14 +91,14 @@ public class Battle_System : MonoBehaviour
         }
     }
 
-    IEnumerator PartyAction(Act act, Target target){
-        PartyMemberAction[SelectedPartyMember].act = act;
-        PartyMemberAction[SelectedPartyMember].target = target;
-        SelectedPartyMember += 1; 
-        yield return new WaitForSeconds(0.5f);
-        if (SelectedPartyMember > 5){
-            SelectedPartyMember = 0;
-            state = BattleState.BATTLETURN;
-        }
-    }
+    // IEnumerator PartyAction(Act act, Target target){
+    //     PartyMemberAction[SelectedPartyMember].act = act;
+    //     PartyMemberAction[SelectedPartyMember].target = target;
+    //     SelectedPartyMember += 1; 
+    //     yield return new WaitForSeconds(0.5f);
+    //     if (SelectedPartyMember > 5){
+    //         SelectedPartyMember = 0;
+    //         state = BattleState.BATTLETURN;
+    //     }
+    // }
 }
