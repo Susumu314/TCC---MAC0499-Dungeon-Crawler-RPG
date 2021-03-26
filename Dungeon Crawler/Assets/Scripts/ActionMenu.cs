@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ActionMenu : MonoBehaviour
 {
+    private const int BAGSIZE = 60;//tamanho maximo da mochila
     public GameObject SubMenu;
     public GameObject MainMenu;
     public Button defaultButton;
@@ -25,7 +26,8 @@ public class ActionMenu : MonoBehaviour
     IEnumerator SelectDefaultButton()
     {
         yield return null;
-        defaultButton.Select();
+        defaultButton.Select();// por algum motivo o botao nao fica em highlight quando o menu é ativado pelo 
+                               // SelectNextPartyMember(), verificar porquê e consertar algum dia.
     }
 
     public void OnSubMenuButton()

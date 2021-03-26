@@ -9,6 +9,7 @@ public class PlayerBattleHUD : MonoBehaviour
     public Text hpMpText;
     public Image healthBar;
     public Image manaBar;
+    public GameObject Selection_Indicator;
 
     public void SetHUD(Unit unit)
     {
@@ -30,5 +31,9 @@ public class PlayerBattleHUD : MonoBehaviour
     public void SetMP(int mp, Unit unit){
         unit.currentMana = mp;
         manaBar.fillAmount = mp/unit.maxMana;
+    }
+
+    public void is_Selected(bool selected){
+        Selection_Indicator.SetActive(selected);
     }
 }

@@ -313,6 +313,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1110350715848612867}
   - component: {fileID: 4929163243479236630}
+  - component: {fileID: 7441212977174397660}
+  - component: {fileID: 7798828620278735797}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Untagged
@@ -355,6 +357,35 @@ MonoBehaviour:
   currentHP: 13
   maxMana: 22
   currentMana: 30
+  isPlayerUnit: 0
+  isDead: 0
+  Move: {fileID: 7441212977174397660}
+  SelectionArrow: {fileID: 7500527816124446686}
+  AI: {fileID: 7798828620278735797}
+--- !u!114 &7441212977174397660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110350715848612877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9928c24727a12d7479bb193dae871a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7798828620278735797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110350715848612877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da900d0b5d9dbcc4f91e14ee32fceabd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2700926692822167003
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9013657143493130925
 Transform:
   m_ObjectHideFlags: 0
