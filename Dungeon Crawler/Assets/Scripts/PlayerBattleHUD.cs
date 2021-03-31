@@ -10,27 +10,38 @@ public class PlayerBattleHUD : MonoBehaviour
     public Image healthBar;
     public Image manaBar;
     public GameObject Selection_Indicator;
+    private Unit unit;
 
-    public void SetHUD(Unit unit)
+    public void SetHUD(Unit u)
     {
+        unit = u;
         if (unit.unitName ==""){
             return;
         }
         nameText.text = unit.unitName;
-        hpMpText.text = unit.currentHP + "/" + unit.maxHP + "\n"
+        if(hpMpText)
+            hpMpText.text = unit.currentHP + "/" + unit.maxHP + "\n"
                       + unit.currentMana + "/" + unit.maxMana;
         healthBar.fillAmount = (float) unit.currentHP/unit.maxHP;
-        manaBar.fillAmount = (float) unit.currentMana/unit.maxMana;
+        if(manaBar)
+            manaBar.fillAmount = (float) unit.currentMana/unit.maxMana;
     }
 
-    public void SetHP(int hp, Unit unit){
+    //fazer isso ser uma animação algum dia
+    public void SetHP(int hp){ //set both the HP on the HUD and in the UNIT
         unit.currentHP = hp;
-        healthBar.fillAmount = hp/unit.maxHP;
+        healthBar.fillAmount = (float)hp/unit.maxHP;
+        if(hpMpText)
+            hpMpText.text = unit.currentHP + "/" + unit.maxHP + "\n"
+                      + unit.currentMana + "/" + unit.maxMana;
     }
 
-    public void SetMP(int mp, Unit unit){
+    public void SetMP(int mp){//set both the MP on the HUD and in the UNIT
         unit.currentMana = mp;
-        manaBar.fillAmount = mp/unit.maxMana;
+        manaBar.fillAmount = (float)mp/unit.maxMana;
+        if(hpMpText)
+            hpMpText.text = unit.currentHP + "/" + unit.maxHP + "\n"
+                      + unit.currentMana + "/" + unit.maxMana;
     }
 
     public void is_Selected(bool selected){

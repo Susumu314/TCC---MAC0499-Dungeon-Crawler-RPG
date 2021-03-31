@@ -55,6 +55,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
+      propertyPath: speed
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
+        type: 3}
       propertyPath: damage
       value: 450
       objectReference: {fileID: 0}
@@ -166,6 +171,11 @@ PrefabInstance:
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
       propertyPath: maxHP
+      value: 9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
+        type: 3}
+      propertyPath: speed
       value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
@@ -282,6 +292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxHP
       value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
+        type: 3}
+      propertyPath: speed
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
@@ -475,6 +490,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
+        type: 3}
       propertyPath: damage
       value: 8
       objectReference: {fileID: 0}
@@ -587,6 +607,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxHP
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
+        type: 3}
+      propertyPath: speed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
