@@ -7,15 +7,17 @@ public class EnemyBattleAI : MonoBehaviour
     enum AI_type{ NULL, DUMB, SMART, AGRESSIVE, DEFENSIVE, ESPECIFIC, STATUS_CONDITION_USER, BUFF_USER, DEBUF_USER}
 
     private AI_type AI = AI_type.DUMB;
-    /*AI for Enemy Movement durring a battle
-    Is only used for EnemyUnits and returns the priority of the move
-    This Function must be dependent of what type of enemy it is
-    Precisa receber as informação de todas unidades em batalha para decidir uma ação
-    Valores de retorno:
-    LowPriority: 0
-    NormalPriority: 1
-    HighPriority: 2
-    MaxPriority: 3
+    /**
+    * IA usada para decidir a ação de um inimigo durante a batalha, 
+    * usa as informações recebidas como parâmetro para decidir a ação de uma unidade controlada pelo PC.
+    *
+    * @param PlayerUnits Array com as informações da equipe do jogador.
+    * @param EnemyUnits Array com as informações dos demonios inimigos.
+    *
+    * @retval 0 Ação decidida é de baixa prioridade
+    * @retval 1 Ação decidida é de prioridade normal
+    * @retval 2 Ação decidida é de alta prioridade
+    * @retval 3 Ação decidida é de máxima prioridade
     */
     public int EnemyMove(Unit[] PlayerUnits, Unit[] EnemyUnits){
 
@@ -26,7 +28,7 @@ public class EnemyBattleAI : MonoBehaviour
         List<Unit> TargetList = new List<Unit>(); 
         for (int i = 0; i < 6; i++)
         {
-            if (PlayerUnits[i])
+            if (PlayerUnits[i] && !PlayerUnits[i].isDead)
             {
                 PUnits.Add(PlayerUnits[i]);
             }
@@ -43,7 +45,7 @@ public class EnemyBattleAI : MonoBehaviour
             case AI_type.DUMB:{
                 if (rng >= 50.0f){//ATTACK A RANDOM UNIT
                     act = BattleAction.Act.ATTACK;
-                    TargetList.Add(PUnits[Random.Range(0, PUnits.Count - 1)]);// out of range?
+                    TargetList.Add(PUnits[Random.Range(0, PUnits.Count)]);
                     priority = 1;
                 }
                 else{//GUARD

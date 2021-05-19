@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1110350714461692761}
   - component: {fileID: 1110350714461692766}
   m_Layer: 0
-  m_Name: Forest Noxluff
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,7 +436,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enemy
+  m_Text: Enemy LVL X
 --- !u!1 &7500527816124446686
 GameObject:
   m_ObjectHideFlags: 0

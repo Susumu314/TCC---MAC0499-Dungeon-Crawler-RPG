@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+* Classe dos menus utilizados nas batalhas para input do jogador
+*/
 public class ActionMenu : MonoBehaviour
 {
     private const int BAGSIZE = 60;//tamanho maximo da mochila
@@ -22,7 +25,9 @@ public class ActionMenu : MonoBehaviour
     {
         StartCoroutine(SelectDefaultButton());
     }
-
+    /**
+    * Seleciona o primeiro botão do menu
+    */
     IEnumerator SelectDefaultButton()
     {
         yield return null;
@@ -30,12 +35,20 @@ public class ActionMenu : MonoBehaviour
                                // SelectNextPartyMember(), verificar porquê e consertar algum dia.
     }
 
+    /**
+    * Função chamada ao se clicar o botão associado
+    * Abre o SubMenu
+    */
     public void OnSubMenuButton()
     {
         SubMenu.SetActive(true);
         this.gameObject.SetActive(false);
     } 
 
+    /**
+    * Função chamada ao se clicar o botão associado
+    * Fecha o SubMenu e abre o Menu Principal
+    */ 
     public void OnMainMenuButton()
     {
         MainMenu.SetActive(true);

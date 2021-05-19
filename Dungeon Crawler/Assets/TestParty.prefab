@@ -75,8 +75,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
+      propertyPath: species
+      value: Rabbit Bandit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
+        type: 3}
       propertyPath: unitName
-      value: Shiro
+      value: Rattata
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
@@ -86,12 +91,17 @@ PrefabInstance:
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
       propertyPath: unitLevel
-      value: 329
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
       propertyPath: currentMana
       value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692296352545700969, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8768440111891199843, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
@@ -196,7 +206,7 @@ PrefabInstance:
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
       propertyPath: unitName
-      value: Ariel
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
@@ -212,6 +222,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentMana
       value: 9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692296352545700969, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8768440111891199843, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
@@ -315,8 +330,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
+      propertyPath: species
+      value: Fire Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
+        type: 3}
       propertyPath: unitName
-      value: Asaga
+      value: Charmander
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
@@ -326,12 +346,17 @@ PrefabInstance:
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
       propertyPath: unitLevel
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
       propertyPath: currentMana
       value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692296352545700969, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8768440111891199843, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
@@ -407,6 +432,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PartyUnit (0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692296352545700969, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8768440111891199843, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
@@ -511,7 +541,7 @@ PrefabInstance:
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
       propertyPath: unitName
-      value: Rachel
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
@@ -631,7 +661,7 @@ PrefabInstance:
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
       propertyPath: unitName
-      value: Sophia
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5481854467618758540, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
@@ -642,6 +672,11 @@ PrefabInstance:
         type: 3}
       propertyPath: unitLevel
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692296352545700969, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8768440111891199843, guid: d16de71ac0e6f3a4aad8e2378a34e96c,
         type: 3}
