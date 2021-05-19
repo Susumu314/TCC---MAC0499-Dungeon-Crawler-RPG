@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Battle Scene.unity
+- path: Assets/Scenes/OverWorldTest.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

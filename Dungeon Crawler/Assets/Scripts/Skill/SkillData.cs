@@ -24,9 +24,11 @@ public class Skill {
         private readonly bool isSpecial;
         private readonly bool isRanged;
         private readonly int skill_ID;
+        private readonly string vfx;
+        private readonly string sfx;
 
         public SkillData (string name, TYPE type, TARGET_TYPE target_type, PRIORITY priority, int power, int accuracy, int cost,
-                          STATUS_EFFECT status_effect, bool isSpecial, bool isRanged, int skill_ID)
+                          STATUS_EFFECT status_effect, bool isSpecial, bool isRanged, int skill_ID, string vfx, string sfx)
         {
             this.type = type;
             this.target_type = target_type;
@@ -38,6 +40,8 @@ public class Skill {
             this.isSpecial = isSpecial;
             this.isRanged = isRanged;
             this.skill_ID = skill_ID;
+            this.vfx = vfx;
+            this.sfx = sfx;
         }
         public string name { get { return name; } }
         public TYPE Type { get { return type; } }
@@ -49,6 +53,8 @@ public class Skill {
         public STATUS_EFFECT Status_effect { get { return status_effect; } }
         public bool IsSpecial { get { return isSpecial; } }
         public bool IsRanged { get { return isRanged; } }
+        public string VFX { get { return vfx; } }
+        public string SFX { get { return vfx; } }
     }
     
     public static readonly IList<SkillData> SkillList= new ReadOnlyCollection<SkillData>
@@ -63,7 +69,9 @@ public class Skill {
                            /*status_effect*/STATUS_EFFECT.NULL, 
                            /*isSpecial*/    false, 
                            /*isRanged*/     false,
-                           /*ID*/           0),
+                           /*ID*/           0,
+                           /*VFX*/          "Punch",
+                           /*SFX*/          "Blunt_Hit"),
 
             new SkillData (/*name*/        "Heal", 
                            /*type*/         TYPE.NORMAL, 
@@ -75,7 +83,9 @@ public class Skill {
                            /*status_effect*/STATUS_EFFECT.NULL, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
-                           /*ID*/           1),
+                           /*ID*/           1,
+                           /*VFX*/          "Heal",
+                           /*SFX*/          "Heal"),
 
             new SkillData (/*name*/        "Ember", 
                            /*type*/         TYPE.FIRE, 
@@ -87,18 +97,22 @@ public class Skill {
                            /*status_effect*/STATUS_EFFECT.BURN, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
-                           /*ID*/           2),
+                           /*ID*/           2,
+                           /*VFX*/          "Flame",
+                           /*SFX*/          "Flame"),
             
-            new SkillData (/*name*/        "Horizontal Slash", 
+            new SkillData (/*name*/        "H_Slash", 
                            /*type*/         TYPE.NORMAL, 
                            /*target_type*/  TARGET_TYPE.ROW, 
                            /*priority*/     PRIORITY.NORMAL, 
                            /*power*/        50, 
                            /*accuracy*/     100, 
-                           /*cost*/         10,
+                           /*cost*/         20,
                            /*status_effect*/STATUS_EFFECT.NULL, 
                            /*isSpecial*/    false, 
                            /*isRanged*/     false,
-                           /*ID*/           3)
+                           /*ID*/           3,
+                           /*VFX*/          "Slash",
+                           /*SFX*/          "Slash")
         });
 }

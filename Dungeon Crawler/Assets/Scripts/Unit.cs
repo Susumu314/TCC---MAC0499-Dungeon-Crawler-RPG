@@ -52,7 +52,7 @@ public class Unit : MonoBehaviour
     */
     private float baseExp;
     private float exponent;
-    public int[] skillList = new int[4];// por enquanto cada unidade tem 4 skills, essa lista contem os ID de cada skill
+    public int[] skillList;// por enquanto cada unidade tem 4 skills, essa lista contem os ID de cada skill
     public Unit(string species, string unitName, int unitLevel/*, int hp, int mp*/){
         this.species = species;
         this.unitName = unitName;
@@ -62,6 +62,9 @@ public class Unit : MonoBehaviour
         // this.currentMana = mp;
     }
 
+    void Awake(){
+        skillList = new int[4];
+    }
     void Update(){
     }
     public void TakeDamage(int d){
@@ -91,6 +94,33 @@ public class Unit : MonoBehaviour
         //play soundfx
         //display mensage
         //wait for animations and mensage and return
+    }
+
+    /**
+    * Gasta mana ou vida para utilizar habilidades,
+    * 
+    * @param c Custo para utilizar uma habilidade
+    * @param isSpecial se a habilidade é especial ou física
+    */
+    public bool PaySkillCost(int c, bool isSpecial){
+        if(isSpecial){
+            if(currentMana < c){
+                return false;
+            }
+            HUD.SetMP(currentMana - c);
+        }
+        else{
+            //o custo de HP para realizar ataques é uma porcentagem fixa da vida maxima
+            int HPcost = (maxHP*c)/100;
+            if(HPcost == 0){
+                HPcost = 1;
+            }
+            if(currentHP < HPcost){
+                return false;
+            }
+            StartCoroutine(HUD.SetHP(currentHP - HPcost));
+        }
+        return true;
     }
 
     public void BattleSystemReference(Battle_System b){
@@ -129,13 +159,14 @@ public class Unit : MonoBehaviour
     }
 
     public void InitStats(){
-        if(isInit)
+        if(isInit){
             return;
+        }
         // setando skills para teste
         skillList[0] = 0;
-        skillList[0] = 1;
-        skillList[0] = 2;
-        skillList[0] = 3;
+        skillList[1] = 1;
+        skillList[2] = 2;
+        skillList[3] = 3;
         
         this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Demon Sprites/" + species);
         stats = BaseStats.SearchDex(species);

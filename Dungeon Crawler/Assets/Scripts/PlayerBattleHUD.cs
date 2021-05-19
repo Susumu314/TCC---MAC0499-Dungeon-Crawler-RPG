@@ -15,6 +15,7 @@ public class PlayerBattleHUD : MonoBehaviour
     public Image manaBar;
     public GameObject Selection_Indicator;
     private Unit unit;
+    public bool isSelected;
 
     /**
     * Seta a HUD.
@@ -87,5 +88,6 @@ public class PlayerBattleHUD : MonoBehaviour
     */
     public void is_Selected(bool selected){
         Selection_Indicator.SetActive(selected);
+        isSelected = selected;
     }
 }

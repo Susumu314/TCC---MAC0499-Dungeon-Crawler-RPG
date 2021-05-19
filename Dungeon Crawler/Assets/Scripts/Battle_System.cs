@@ -146,7 +146,20 @@ public class Battle_System : MonoBehaviour
             }
 
             else if(targetMode == Skill.TARGET_TYPE.ROW){
-                if(Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
+                if (Input.GetButtonDown("Submit"))//isso aqui ta insta sendo ativado quando entra no TARGETSELECTIONTURN
+                {
+                    List<Unit> targetList = new List<Unit>();
+                    for (int i = 0; i < 6; i++)
+                    {
+                        if(enemyUnits[i] && enemyUnits[i].HUD.isSelected){
+                            targetList.Add(enemyUnits[i]);
+                            enemyUnits[i].HUD.is_Selected(false);
+                        }
+                    }
+                    partyMembers[SelectedPartyMember].Move.SetAction(BattleAction.Act.NULL, targetList);
+                    StartCoroutine(SelectNextPartyMember());
+                }
+                else if(Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
                 {
                     if(!DirectionalPressed)
                     {
@@ -315,13 +328,37 @@ public class Battle_System : MonoBehaviour
         //     child.gameObject.SetActive(false);
 
         //Loop to get an alive unit
-        if (targetMode == 0){
+        if (targetMode == Skill.TARGET_TYPE.SINGLE){
             while(!enemyUnits[SelectedEnemy] || enemyUnits[SelectedEnemy].isDead){
                 SelectedEnemy++;
                 if(SelectedEnemy >= enemyUnits.Length)
                     SelectedEnemy = 0;
             }
             enemyUnits[SelectedEnemy].HUD.is_Selected(true);
+        }
+
+        else if (targetMode == Skill.TARGET_TYPE.ROW){
+            while(!enemyUnits[SelectedEnemy] || enemyUnits[SelectedEnemy].isDead){
+                SelectedEnemy++;
+                if(SelectedEnemy >= enemyUnits.Length)
+                    SelectedEnemy = 0;
+            }
+            if(SelectedEnemy <  3){
+                for (int i = 0; i < 3; i++)
+                {
+                    if(enemyUnits[i] && !enemyUnits[i].isDead){
+                        enemyUnits[i].HUD.is_Selected(true);
+                    }
+                }
+            }
+            else{
+                for (int i = 3; i < 6; i++)
+                {
+                    if(enemyUnits[i] && !enemyUnits[i].isDead){
+                        enemyUnits[i].HUD.is_Selected(true);
+                    }
+                }
+            }
         }
     }
 
@@ -444,13 +481,17 @@ public class Battle_System : MonoBehaviour
             frontRow = false; 
             for (int i = 3; i < 6; i++)
             {
-                enemyUnits[i].HUD.is_Selected(false);
+                if(enemyUnits[i] && !enemyUnits[i].isDead){
+                    enemyUnits[i].HUD.is_Selected(false);
+                }
             }
         }
         else{
             for (int i = 0; i < 3; i++)
             {
-                enemyUnits[i].HUD.is_Selected(false);
+                if(enemyUnits[i] && !enemyUnits[i].isDead){
+                    enemyUnits[i].HUD.is_Selected(false);
+                }
             }
         }
 
@@ -472,13 +513,17 @@ public class Battle_System : MonoBehaviour
         if(SelectedEnemy <  3){
             for (int i = 0; i < 3; i++)
             {
-                enemyUnits[i].HUD.is_Selected(true);
+                if(enemyUnits[i] && !enemyUnits[i].isDead){
+                    enemyUnits[i].HUD.is_Selected(true);
+                }
             }
         }
         else{
             for (int i = 3; i < 6; i++)
             {
-                enemyUnits[i].HUD.is_Selected(true);
+                if(enemyUnits[i] && !enemyUnits[i].isDead){
+                    enemyUnits[i].HUD.is_Selected(true);
+                }
             }
         }
         
@@ -522,7 +567,7 @@ public class Battle_System : MonoBehaviour
                 //registra ataque e alvo
                 partyMembers[SelectedPartyMember].Move.SetAction(BattleAction.Act.ATTACK);//registra a ação
                 BattleOrder.Add(partyMembers[SelectedPartyMember]);// a ação de atacar é uma ação de prioridade normal
-
+                targetMode = Skill.TARGET_TYPE.SINGLE;
                 StartCoroutine(TargetSelectionTurn());//inicia a ação de escolher um alvo
             }
             break;
@@ -532,6 +577,7 @@ public class Battle_System : MonoBehaviour
                 //e como o target é a propria unidade que esta usando, ja seleciona o proximo membro do grupo para seleçao de ação
                 partyMembers[SelectedPartyMember].Move.SetAction(BattleAction.Act.GUARD, new List<Unit>() {partyMembers[SelectedPartyMember]});
                 MaxPriorityBattleOrder.Add(partyMembers[SelectedPartyMember]);//coloca a unidade na lista de prioridade adequada
+                
                 StartCoroutine(SelectNextPartyMember());
             }
             break;
@@ -545,7 +591,7 @@ public class Battle_System : MonoBehaviour
                 //registra captura e alvo
                 partyMembers[SelectedPartyMember].Move.SetAction(BattleAction.Act.CAPTURE);//registra a ação
                 MaxPriorityBattleOrder.Add(partyMembers[SelectedPartyMember]);// a ação de capturar é de prioridade maxima
-
+                targetMode = Skill.TARGET_TYPE.SINGLE;
                 StartCoroutine(TargetSelectionTurn());//inicia a ação de escolher um alvo
             }
             break;

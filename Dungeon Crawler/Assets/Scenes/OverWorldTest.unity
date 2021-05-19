@@ -2638,6 +2638,11 @@ PrefabInstance:
       propertyPath: isPlayerUnit
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1448428313141040001, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
+      propertyPath: skillList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1471090752837188099, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
       propertyPath: isPlayerUnit
