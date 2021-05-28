@@ -14,8 +14,11 @@ public class PlayerBattleHUD : MonoBehaviour
     public Image healthBar;
     public Image manaBar;
     public GameObject Selection_Indicator;
+    public GameObject Target_Indicator;
     private Unit unit;
     public bool isSelected;
+    public bool isTarget;
+
 
     /**
     * Seta a HUD.
@@ -89,5 +92,15 @@ public class PlayerBattleHUD : MonoBehaviour
     public void is_Selected(bool selected){
         Selection_Indicator.SetActive(selected);
         isSelected = selected;
+    }
+
+    /**
+    * Liga ou desliga o Highlight de alvo da HUD do personagem dependendo se é o personagem selecionado ou não.
+    *
+    * @param selected Variável que diz se o Highlight deve estar ativo ou não.
+    */
+    public void is_Target(bool selected){
+        Target_Indicator.SetActive(selected);
+        isTarget = selected;
     }
 }

@@ -86,6 +86,16 @@ Tipos Públicos</h2></td></tr>
 , <b>GameOver</b>
  }</td></tr>
 <tr class="separator:a021af77802fa73e58439036d51c0e363"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a001270e796da6a5463bf71cc29f447cb"><td class="memItemLeft" align="right" valign="top"><a id="a001270e796da6a5463bf71cc29f447cb"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>BattleID</b> { <br />
+&#160;&#160;<b>RandomBattle1</b>
+, <b>RandomBattle2</b>
+, <b>Rival</b>
+, <b>FOE1</b>
+, <br />
+&#160;&#160;<b>GYM_LEADER</b>
+<br />
+ }</td></tr>
+<tr class="separator:a001270e796da6a5463bf71cc29f447cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos Públicos</h2></td></tr>
@@ -93,21 +103,27 @@ Métodos Públicos</h2></td></tr>
 <tr class="separator:a26dc9bb9673baa424afe2226955a4ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae218e669a5277a401675e7bf7d5eb1d9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#ae218e669a5277a401675e7bf7d5eb1d9">GetIsInit</a> ()</td></tr>
 <tr class="separator:ae218e669a5277a401675e7bf7d5eb1d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85e6344ec3540b9772d66453ef1fdda8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a85e6344ec3540b9772d66453ef1fdda8">EditParty</a> (<a class="el" href="class_unit.html">Unit</a>[] party)</td></tr>
-<tr class="separator:a85e6344ec3540b9772d66453ef1fdda8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d01aa4aaf67fb329fd846469f86bf2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a3d01aa4aaf67fb329fd846469f86bf2e">SaveEncounter</a> (<a class="el" href="class_random_encouters_1_1encounter.html">RandomEncouters.encounter</a> e)</td></tr>
+<tr class="separator:a3d01aa4aaf67fb329fd846469f86bf2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae635f2d0ab692d107b9ed4efc23ab6f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#ae635f2d0ab692d107b9ed4efc23ab6f0">SaveOverwoldPlayer</a> (Transform PlayerTransform)</td></tr>
 <tr class="separator:ae635f2d0ab692d107b9ed4efc23ab6f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a81101ddd2f761ef1f6f6dd5668df77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_manager.html#a6a81101ddd2f761ef1f6f6dd5668df77">SaveCurrentOverworldScene</a> (int sceneIndex)</td></tr>
 <tr class="separator:a6a81101ddd2f761ef1f6f6dd5668df77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27e28e5969437dea44861d9ee2ca7c10"><td class="memItemLeft" align="right" valign="top"><a id="a27e28e5969437dea44861d9ee2ca7c10"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>CapturedUnit</b> (<a class="el" href="class_unit.html">Unit</a> u)</td></tr>
+<tr class="separator:a27e28e5969437dea44861d9ee2ca7c10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Atributos Públicos</h2></td></tr>
+<tr class="memitem:a25cc1d8884a7bec16a99d913f9fa2acf"><td class="memItemLeft" align="right" valign="top"><a id="a25cc1d8884a7bec16a99d913f9fa2acf"></a>
+BattleID&#160;</td><td class="memItemRight" valign="bottom"><b>battleID</b></td></tr>
+<tr class="separator:a25cc1d8884a7bec16a99d913f9fa2acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7916853a5990bf781060a8d19d5839d"><td class="memItemLeft" align="right" valign="top"><a id="ae7916853a5990bf781060a8d19d5839d"></a>
 State&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
 <tr class="separator:ae7916853a5990bf781060a8d19d5839d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2482ecd36b22b066d4dcae719aec2ec2"><td class="memItemLeft" align="right" valign="top"><a id="a2482ecd36b22b066d4dcae719aec2ec2"></a>
-<a class="el" href="class_unit.html">Unit</a>[]&#160;</td><td class="memItemRight" valign="bottom"><b>partyMembers</b> = new <a class="el" href="class_unit.html">Unit</a>[6]</td></tr>
-<tr class="separator:a2482ecd36b22b066d4dcae719aec2ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a665a00e58edcf3dd4df031c7a4bde226"><td class="memItemLeft" align="right" valign="top"><a id="a665a00e58edcf3dd4df031c7a4bde226"></a>
+GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>party</b></td></tr>
+<tr class="separator:a665a00e58edcf3dd4df031c7a4bde226"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2403d5b9ae1ca52c6c8774d01c32c4ca"><td class="memItemLeft" align="right" valign="top"><a id="a2403d5b9ae1ca52c6c8774d01c32c4ca"></a>
 Vector3&#160;</td><td class="memItemRight" valign="bottom"><b>overworldPlayerPosition</b> = new Vector3()</td></tr>
 <tr class="separator:a2403d5b9ae1ca52c6c8774d01c32c4ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,6 +133,9 @@ Quaternion&#160;</td><td class="memItemRight" valign="bottom"><b>overworldPlayer
 <tr class="memitem:a9e0faf34b496246040d6bf3192db7a03"><td class="memItemLeft" align="right" valign="top"><a id="a9e0faf34b496246040d6bf3192db7a03"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>CurrentOverworldScene</b> = 0</td></tr>
 <tr class="separator:a9e0faf34b496246040d6bf3192db7a03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6b47cc152758e7e9b49cdb124ebe375"><td class="memItemLeft" align="right" valign="top"><a id="aa6b47cc152758e7e9b49cdb124ebe375"></a>
+<a class="el" href="class_random_encouters_1_1encounter.html">RandomEncouters.encounter</a>&#160;</td><td class="memItemRight" valign="bottom"><b>encounter</b> = new <a class="el" href="class_random_encouters_1_1encounter.html">RandomEncouters.encounter</a>(1, 1, new List&lt;string&gt;() {&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;})</td></tr>
+<tr class="separator:aa6b47cc152758e7e9b49cdb124ebe375"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Propriedades</h2></td></tr>
@@ -127,31 +146,6 @@ static <a class="el" href="class_game_manager.html">GameManager</a>&#160;</td><t
 <a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
 <div class="textblock"><p>Classe singleton utilizada para gerenciar informações que devem ser salvas ou compartilhadas entre diferentes cenas. </p>
 </div><h2 class="groupheader">Métodos</h2>
-<a id="a85e6344ec3540b9772d66453ef1fdda8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85e6344ec3540b9772d66453ef1fdda8">&#9670;&nbsp;</a></span>EditParty()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void GameManager.EditParty </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_unit.html">Unit</a>[]&#160;</td>
-          <td class="paramname"><em>party</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Função que permite editar e salvar informações da equipe do jogador toda vez que a equipe sofrer alguma mudança.</p>
-<dl class="params"><dt>Parâmetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">party</td><td>Array contendo todas as informações da equipe do jogador. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ae218e669a5277a401675e7bf7d5eb1d9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae218e669a5277a401675e7bf7d5eb1d9">&#9670;&nbsp;</a></span>GetIsInit()</h2>
 
@@ -214,6 +208,32 @@ static <a class="el" href="class_game_manager.html">GameManager</a>&#160;</td><t
 <dl class="params"><dt>Parâmetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">sceneIndex</td><td>Index da cena que precisa ser guardada. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3d01aa4aaf67fb329fd846469f86bf2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d01aa4aaf67fb329fd846469f86bf2e">&#9670;&nbsp;</a></span>SaveEncounter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameManager.SaveEncounter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_random_encouters_1_1encounter.html">RandomEncouters.encounter</a>&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Função que permite editar e salvar informações da equipe do jogador toda vez que a equipe sofrer alguma mudança.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">party</td><td>Array contendo todas as informações da equipe do jogador. Função responsável por armazenar a informação do grupo de inimigos que serão instanciados durante uma batalha</td></tr>
+    <tr><td class="paramname">um</td><td>objeto encounter contendo o nivel minimo, nivel maximo, e nomes dos inimigos a serem instanciados na batalha. </td></tr>
   </table>
   </dd>
 </dl>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['performaction_62',['PerformAction',['../class_battle_action.html#a400066e631ccddea450ba09294345812',1,'BattleAction']]]
+  ['payskillcost_91',['PaySkillCost',['../class_unit.html#abfd1352b5eb645da77f4cd130f3402b0',1,'Unit']]],
+  ['performaction_92',['PerformAction',['../class_battle_action.html#a71f57ea2d75a02b5b2657e3263b49378',1,'BattleAction']]]
 ];

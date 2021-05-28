@@ -1,0 +1,93 @@
+\hypertarget{class_battle_action}{}\doxysection{Battle\+Action Class Reference}
+\label{class_battle_action}\index{BattleAction@{BattleAction}}
+Inheritance diagram for Battle\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_battle_action}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_battle_action_a6785674f573b6829d94d12debd68465e}\label{class_battle_action_a6785674f573b6829d94d12debd68465e}} 
+enum class {\bfseries Act} \{ \newline
+{\bfseries ATTACK}
+, {\bfseries GUARD}
+, {\bfseries ESCAPE}
+, {\bfseries CAPTURE}
+, \newline
+{\bfseries SKILL}
+, {\bfseries NULL}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_battle_action_ad1173e336c8bb0f82b2ec20983d90c7b}{Set\+Action}} (Act acao=Act.\+NULL, List$<$ \mbox{\hyperlink{class_unit}{Unit}} $>$ Targets=null)
+\item 
+\mbox{\Hypertarget{class_battle_action_ae74070fe4666802f4c1c475b7eede3f5}\label{class_battle_action_ae74070fe4666802f4c1c475b7eede3f5}} 
+int\mbox{[}$\,$\mbox{]} {\bfseries Set\+Skill} (int i)
+\item 
+\mbox{\Hypertarget{class_battle_action_a87522fd31f4fa893694eb1d090028be5}\label{class_battle_action_a87522fd31f4fa893694eb1d090028be5}} 
+void {\bfseries Start} ()
+\item 
+IEnumerator \mbox{\hyperlink{class_battle_action_a71f57ea2d75a02b5b2657e3263b49378}{Perform\+Action}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_battle_action_ad3c337326cceadae439a6fa287384864}\label{class_battle_action_ad3c337326cceadae439a6fa287384864}} 
+float {\bfseries Move\+Animation} (string animation, Transform target\+\_\+transform, string color)
+\item 
+int \mbox{\hyperlink{class_battle_action_aba53dc648d6c68681e3c99707cab0cf7}{Damage\+Calculation}} (float POWER, \mbox{\hyperlink{class_unit}{Unit}} Target)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_battle_action_a4493797753cee2280bc97031b98da011}\label{class_battle_action_a4493797753cee2280bc97031b98da011}} 
+Act {\bfseries act}
+\item 
+\mbox{\Hypertarget{class_battle_action_aa3bc1925e402ffb4fab59b3b5adf4b66}\label{class_battle_action_aa3bc1925e402ffb4fab59b3b5adf4b66}} 
+List$<$ \mbox{\hyperlink{class_unit}{Unit}} $>$ {\bfseries Target\+List} = new List$<$\mbox{\hyperlink{class_unit}{Unit}}$>$()
+\item 
+\mbox{\Hypertarget{class_battle_action_ac53798d38b4b78aa4459847533fb8fe0}\label{class_battle_action_ac53798d38b4b78aa4459847533fb8fe0}} 
+\mbox{\hyperlink{class_unit}{Unit}} {\bfseries unit\+Ref}
+\item 
+\mbox{\Hypertarget{class_battle_action_a91a1df2ef3b8d3f9d1a28c8bbe316ff1}\label{class_battle_action_a91a1df2ef3b8d3f9d1a28c8bbe316ff1}} 
+int {\bfseries skill\+ID}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_battle_action_a2dea19ae94e82521032e5ff039e9a692}\label{class_battle_action_a2dea19ae94e82521032e5ff039e9a692}} 
+static float {\bfseries BASEPOWER} = 50
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa o sistema de ações que podem ser realizadas em uma batalha 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_battle_action_aba53dc648d6c68681e3c99707cab0cf7}\label{class_battle_action_aba53dc648d6c68681e3c99707cab0cf7}} 
+\index{BattleAction@{BattleAction}!DamageCalculation@{DamageCalculation}}
+\index{DamageCalculation@{DamageCalculation}!BattleAction@{BattleAction}}
+\doxysubsubsection{\texorpdfstring{DamageCalculation()}{DamageCalculation()}}
+{\footnotesize\ttfamily int Battle\+Action.\+Damage\+Calculation (\begin{DoxyParamCaption}\item[{float}]{POWER,  }\item[{\mbox{\hyperlink{class_unit}{Unit}}}]{Target }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Equação que calcula o dano \mbox{\Hypertarget{class_battle_action_a71f57ea2d75a02b5b2657e3263b49378}\label{class_battle_action_a71f57ea2d75a02b5b2657e3263b49378}} 
+\index{BattleAction@{BattleAction}!PerformAction@{PerformAction}}
+\index{PerformAction@{PerformAction}!BattleAction@{BattleAction}}
+\doxysubsubsection{\texorpdfstring{PerformAction()}{PerformAction()}}
+{\footnotesize\ttfamily IEnumerator Battle\+Action.\+Perform\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Realiza a ação de batalhas setadas pelo jogador durante o turno de seleção de ações \mbox{\Hypertarget{class_battle_action_ad1173e336c8bb0f82b2ec20983d90c7b}\label{class_battle_action_ad1173e336c8bb0f82b2ec20983d90c7b}} 
+\index{BattleAction@{BattleAction}!SetAction@{SetAction}}
+\index{SetAction@{SetAction}!BattleAction@{BattleAction}}
+\doxysubsubsection{\texorpdfstring{SetAction()}{SetAction()}}
+{\footnotesize\ttfamily void Battle\+Action.\+Set\+Action (\begin{DoxyParamCaption}\item[{Act}]{acao = {\ttfamily Act.NULL},  }\item[{List$<$ \mbox{\hyperlink{class_unit}{Unit}} $>$}]{Targets = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Seta as ações a serem tomadas por uma unidade durante a batalha 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+TCC -\/ MAC0499 Dungeon Crawler RPG/\+Dungeon Crawler/\+Assets/\+Scripts/Battle\+Action.\+cs\end{DoxyCompactItemize}

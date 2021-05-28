@@ -21,6 +21,10 @@ public class ActionMenu : MonoBehaviour
         }
     }
 
+    public void OpenMenu(){
+        this.transform.GetChild(0).gameObject.SetActive(true);//abre main menu
+    }
+
     void OnEnable()
     {
         StartCoroutine(SelectDefaultButton());

@@ -1,0 +1,165 @@
+\hypertarget{class_game_manager}{}\doxysection{Game\+Manager Class Reference}
+\label{class_game_manager}\index{GameManager@{GameManager}}
+Inheritance diagram for Game\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_manager_a021af77802fa73e58439036d51c0e363}\label{class_game_manager_a021af77802fa73e58439036d51c0e363}} 
+enum class {\bfseries State} \{ {\bfseries Start}
+, {\bfseries Overworld}
+, {\bfseries In\+Random\+Encounter}
+, {\bfseries Game\+Over}
+ \}
+\item 
+\mbox{\Hypertarget{class_game_manager_a001270e796da6a5463bf71cc29f447cb}\label{class_game_manager_a001270e796da6a5463bf71cc29f447cb}} 
+enum class {\bfseries Battle\+ID} \{ \newline
+{\bfseries Random\+Battle1}
+, {\bfseries Random\+Battle2}
+, {\bfseries Rival}
+, {\bfseries FOE1}
+, \newline
+{\bfseries GYM\+\_\+\+LEADER}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_game_manager_a26dc9bb9673baa424afe2226955a4ee6}{Init}} ()
+\item 
+bool \mbox{\hyperlink{class_game_manager_ae218e669a5277a401675e7bf7d5eb1d9}{Get\+Is\+Init}} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_a3d01aa4aaf67fb329fd846469f86bf2e}{Save\+Encounter}} (\mbox{\hyperlink{class_random_encouters_1_1encounter}{Random\+Encouters.\+encounter}} e)
+\item 
+void \mbox{\hyperlink{class_game_manager_ae635f2d0ab692d107b9ed4efc23ab6f0}{Save\+Overwold\+Player}} (Transform Player\+Transform)
+\item 
+void \mbox{\hyperlink{class_game_manager_a6a81101ddd2f761ef1f6f6dd5668df77}{Save\+Current\+Overworld\+Scene}} (int scene\+Index)
+\item 
+\mbox{\Hypertarget{class_game_manager_a27e28e5969437dea44861d9ee2ca7c10}\label{class_game_manager_a27e28e5969437dea44861d9ee2ca7c10}} 
+void {\bfseries Captured\+Unit} (\mbox{\hyperlink{class_unit}{Unit}} u)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_manager_a25cc1d8884a7bec16a99d913f9fa2acf}\label{class_game_manager_a25cc1d8884a7bec16a99d913f9fa2acf}} 
+Battle\+ID {\bfseries battle\+ID}
+\item 
+\mbox{\Hypertarget{class_game_manager_ae7916853a5990bf781060a8d19d5839d}\label{class_game_manager_ae7916853a5990bf781060a8d19d5839d}} 
+State {\bfseries state}
+\item 
+\mbox{\Hypertarget{class_game_manager_a665a00e58edcf3dd4df031c7a4bde226}\label{class_game_manager_a665a00e58edcf3dd4df031c7a4bde226}} 
+Game\+Object {\bfseries party}
+\item 
+\mbox{\Hypertarget{class_game_manager_a2403d5b9ae1ca52c6c8774d01c32c4ca}\label{class_game_manager_a2403d5b9ae1ca52c6c8774d01c32c4ca}} 
+Vector3 {\bfseries overworld\+Player\+Position} = new Vector3()
+\item 
+\mbox{\Hypertarget{class_game_manager_ac3287d13da73f8523dbd034d3b3d549d}\label{class_game_manager_ac3287d13da73f8523dbd034d3b3d549d}} 
+Quaternion {\bfseries overworld\+Player\+Rotation} = new Quaternion()
+\item 
+\mbox{\Hypertarget{class_game_manager_a9e0faf34b496246040d6bf3192db7a03}\label{class_game_manager_a9e0faf34b496246040d6bf3192db7a03}} 
+int {\bfseries Current\+Overworld\+Scene} = 0
+\item 
+\mbox{\Hypertarget{class_game_manager_aa6b47cc152758e7e9b49cdb124ebe375}\label{class_game_manager_aa6b47cc152758e7e9b49cdb124ebe375}} 
+\mbox{\hyperlink{class_random_encouters_1_1encounter}{Random\+Encouters.\+encounter}} {\bfseries encounter} = new \mbox{\hyperlink{class_random_encouters_1_1encounter}{Random\+Encouters.\+encounter}}(1, 1, new List$<$string$>$() \{\char`\"{}\char`\"{}, \char`\"{}\char`\"{}, \char`\"{}\char`\"{}, \char`\"{}\char`\"{}, \char`\"{}\char`\"{}, \char`\"{}\char`\"{}\})
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_manager_ad3e717f4fb0f378b969f4457de81f23e}\label{class_game_manager_ad3e717f4fb0f378b969f4457de81f23e}} 
+static \mbox{\hyperlink{class_game_manager}{Game\+Manager}} {\bfseries Instance}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_manager_a2959177ee51ac31badbf8b1bc8f7f637}\label{class_game_manager_a2959177ee51ac31badbf8b1bc8f7f637}} 
+void {\bfseries Awake} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_manager_af4e977b01a327b1af970fc30b4578b72}\label{class_game_manager_af4e977b01a327b1af970fc30b4578b72}} 
+bool {\bfseries is\+Init} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_manager_a8cac45bedf02622598c5a723a18f21a4}\label{class_game_manager_a8cac45bedf02622598c5a723a18f21a4}} 
+static \mbox{\hyperlink{class_game_manager}{Game\+Manager}} {\bfseries \+\_\+instance}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe singleton utilizada para gerenciar informações que devem ser salvas ou compartilhadas entre diferentes cenas. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_manager_ae218e669a5277a401675e7bf7d5eb1d9}\label{class_game_manager_ae218e669a5277a401675e7bf7d5eb1d9}} 
+\index{GameManager@{GameManager}!GetIsInit@{GetIsInit}}
+\index{GetIsInit@{GetIsInit}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{GetIsInit()}{GetIsInit()}}
+{\footnotesize\ttfamily bool Game\+Manager.\+Get\+Is\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Função para checar se o \mbox{\hyperlink{class_game_manager}{Game\+Manager}} já foi iniciado.
+
+
+\begin{DoxyRetVals}{Return values}
+{\em TRUE} & Os parâmetros de inicio de jogo foram iniciados. \\
+\hline
+{\em FALSE} & Os parâmetros de inicio de jogo NÃO foram iniciados. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{class_game_manager_a26dc9bb9673baa424afe2226955a4ee6}\label{class_game_manager_a26dc9bb9673baa424afe2226955a4ee6}} 
+\index{GameManager@{GameManager}!Init@{Init}}
+\index{Init@{Init}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Inicialização de alguns parametros. \mbox{\Hypertarget{class_game_manager_a6a81101ddd2f761ef1f6f6dd5668df77}\label{class_game_manager_a6a81101ddd2f761ef1f6f6dd5668df77}} 
+\index{GameManager@{GameManager}!SaveCurrentOverworldScene@{SaveCurrentOverworldScene}}
+\index{SaveCurrentOverworldScene@{SaveCurrentOverworldScene}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{SaveCurrentOverworldScene()}{SaveCurrentOverworldScene()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Save\+Current\+Overworld\+Scene (\begin{DoxyParamCaption}\item[{int}]{scene\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Salva o index da cena atual, utilizado para retornar para a cena correta após o fim de uma batalha
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene\+Index} & Index da cena que precisa ser guardada. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_manager_a3d01aa4aaf67fb329fd846469f86bf2e}\label{class_game_manager_a3d01aa4aaf67fb329fd846469f86bf2e}} 
+\index{GameManager@{GameManager}!SaveEncounter@{SaveEncounter}}
+\index{SaveEncounter@{SaveEncounter}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{SaveEncounter()}{SaveEncounter()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Save\+Encounter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_random_encouters_1_1encounter}{Random\+Encouters.\+encounter}}}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Função que permite editar e salvar informações da equipe do jogador toda vez que a equipe sofrer alguma mudança.
+
+
+\begin{DoxyParams}{Parameters}
+{\em party} & Array contendo todas as informações da equipe do jogador. Função responsável por armazenar a informação do grupo de inimigos que serão instanciados durante uma batalha\\
+\hline
+{\em um} & objeto encounter contendo o nivel minimo, nivel maximo, e nomes dos inimigos a serem instanciados na batalha. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_manager_ae635f2d0ab692d107b9ed4efc23ab6f0}\label{class_game_manager_ae635f2d0ab692d107b9ed4efc23ab6f0}} 
+\index{GameManager@{GameManager}!SaveOverwoldPlayer@{SaveOverwoldPlayer}}
+\index{SaveOverwoldPlayer@{SaveOverwoldPlayer}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{SaveOverwoldPlayer()}{SaveOverwoldPlayer()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Save\+Overwold\+Player (\begin{DoxyParamCaption}\item[{Transform}]{Player\+Transform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Salva a posição no Overworld do jogador.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Player\+Transform} & Transform que contém todas as informações de posicionamento do jogador. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+TCC -\/ MAC0499 Dungeon Crawler RPG/\+Dungeon Crawler/\+Assets/\+Scripts/Game\+Manager.\+cs\end{DoxyCompactItemize}

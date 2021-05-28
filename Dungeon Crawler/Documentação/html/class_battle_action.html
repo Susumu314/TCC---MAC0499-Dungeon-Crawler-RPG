@@ -84,12 +84,8 @@ Tipos Públicos</h2></td></tr>
 , <b>ESCAPE</b>
 , <b>CAPTURE</b>
 , <br />
-&#160;&#160;<b>SKILL_0</b>
-, <b>SKILL_1</b>
-, <b>SKILL_2</b>
-, <b>SKILL_3</b>
-, <br />
-&#160;&#160;<b>NULL</b>
+&#160;&#160;<b>SKILL</b>
+, <b>NULL</b>
 <br />
  }</td></tr>
 <tr class="separator:a6785674f573b6829d94d12debd68465e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -98,20 +94,26 @@ Tipos Públicos</h2></td></tr>
 Métodos Públicos</h2></td></tr>
 <tr class="memitem:ad1173e336c8bb0f82b2ec20983d90c7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_action.html#ad1173e336c8bb0f82b2ec20983d90c7b">SetAction</a> (Act acao=Act.NULL, List&lt; <a class="el" href="class_unit.html">Unit</a> &gt; Targets=null)</td></tr>
 <tr class="separator:ad1173e336c8bb0f82b2ec20983d90c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a400066e631ccddea450ba09294345812"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_action.html#a400066e631ccddea450ba09294345812">PerformAction</a> ()</td></tr>
-<tr class="separator:a400066e631ccddea450ba09294345812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae74070fe4666802f4c1c475b7eede3f5"><td class="memItemLeft" align="right" valign="top"><a id="ae74070fe4666802f4c1c475b7eede3f5"></a>
+int[]&#160;</td><td class="memItemRight" valign="bottom"><b>SetSkill</b> (int i)</td></tr>
+<tr class="separator:ae74070fe4666802f4c1c475b7eede3f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87522fd31f4fa893694eb1d090028be5"><td class="memItemLeft" align="right" valign="top"><a id="a87522fd31f4fa893694eb1d090028be5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> ()</td></tr>
+<tr class="separator:a87522fd31f4fa893694eb1d090028be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71f57ea2d75a02b5b2657e3263b49378"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle_action.html#a71f57ea2d75a02b5b2657e3263b49378">PerformAction</a> ()</td></tr>
+<tr class="separator:a71f57ea2d75a02b5b2657e3263b49378"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
 <div class="textblock"><p>Classe que representa o sistema de ações que podem ser realizadas em uma batalha </p>
 </div><h2 class="groupheader">Métodos</h2>
-<a id="a400066e631ccddea450ba09294345812"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a400066e631ccddea450ba09294345812">&#9670;&nbsp;</a></span>PerformAction()</h2>
+<a id="a71f57ea2d75a02b5b2657e3263b49378"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71f57ea2d75a02b5b2657e3263b49378">&#9670;&nbsp;</a></span>PerformAction()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void BattleAction.PerformAction </td>
+          <td class="memname">IEnumerator BattleAction.PerformAction </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

@@ -1,0 +1,71 @@
+\hypertarget{class_enemy_battle_a_i}{}\doxysection{Enemy\+Battle\+AI Class Reference}
+\label{class_enemy_battle_a_i}\index{EnemyBattleAI@{EnemyBattleAI}}
+Inheritance diagram for Enemy\+Battle\+AI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_enemy_battle_a_i}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_enemy_battle_a_i_ac04598e88ceb69354b00de100074575c}{Enemy\+Move}} (\mbox{\hyperlink{class_unit}{Unit}}\mbox{[}$\,$\mbox{]} Player\+Units, \mbox{\hyperlink{class_unit}{Unit}}\mbox{[}$\,$\mbox{]} Enemy\+Units)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_enemy_battle_a_i_a4a9c049af15e382af9a23384cd71c3e0}\label{class_enemy_battle_a_i_a4a9c049af15e382af9a23384cd71c3e0}} 
+enum class {\bfseries AI\+\_\+type} \{ \newline
+{\bfseries NULL}
+, {\bfseries DUMB}
+, {\bfseries SMART}
+, {\bfseries AGRESSIVE}
+, \newline
+{\bfseries DEFENSIVE}
+, {\bfseries ESPECIFIC}
+, {\bfseries STATUS\+\_\+\+CONDITION\+\_\+\+USER}
+, {\bfseries BUFF\+\_\+\+USER}
+, \newline
+{\bfseries DEBUF\+\_\+\+USER}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_enemy_battle_a_i_aa72b2e6a5be7c2cdb8b6a959939d3e5e}\label{class_enemy_battle_a_i_aa72b2e6a5be7c2cdb8b6a959939d3e5e}} 
+AI\+\_\+type {\bfseries AI} = AI\+\_\+type.\+DUMB
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_enemy_battle_a_i_ac04598e88ceb69354b00de100074575c}\label{class_enemy_battle_a_i_ac04598e88ceb69354b00de100074575c}} 
+\index{EnemyBattleAI@{EnemyBattleAI}!EnemyMove@{EnemyMove}}
+\index{EnemyMove@{EnemyMove}!EnemyBattleAI@{EnemyBattleAI}}
+\doxysubsubsection{\texorpdfstring{EnemyMove()}{EnemyMove()}}
+{\footnotesize\ttfamily int Enemy\+Battle\+AI.\+Enemy\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_unit}{Unit}}\mbox{[}$\,$\mbox{]}}]{Player\+Units,  }\item[{\mbox{\hyperlink{class_unit}{Unit}}\mbox{[}$\,$\mbox{]}}]{Enemy\+Units }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+IA usada para decidir a ação de um inimigo durante a batalha, usa as informações recebidas como parâmetro para decidir a ação de uma unidade controlada pelo PC.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Player\+Units} & Array com as informações da equipe do jogador. \\
+\hline
+{\em Enemy\+Units} & Array com as informações dos demonios inimigos.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Ação decidida é de baixa prioridade \\
+\hline
+{\em 1} & Ação decidida é de prioridade normal \\
+\hline
+{\em 2} & Ação decidida é de alta prioridade \\
+\hline
+{\em 3} & Ação decidida é de máxima prioridade \\
+\hline
+\end{DoxyRetVals}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+TCC -\/ MAC0499 Dungeon Crawler RPG/\+Dungeon Crawler/\+Assets/\+Scripts/Enemy\+Battle\+AI.\+cs\end{DoxyCompactItemize}

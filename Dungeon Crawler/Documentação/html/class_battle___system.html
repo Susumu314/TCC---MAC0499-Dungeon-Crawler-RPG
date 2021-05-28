@@ -80,8 +80,13 @@ Diagrama de hierarquia para Battle_System:</div>
 Métodos Públicos</h2></td></tr>
 <tr class="memitem:a562f2af459ba3d918bd1d4ba3713fbe9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle___system.html#a562f2af459ba3d918bd1d4ba3713fbe9">Update</a> ()</td></tr>
 <tr class="separator:a562f2af459ba3d918bd1d4ba3713fbe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9168ea43eb795edba8ad7a10c7bfe6f9"><td class="memItemLeft" align="right" valign="top"><a id="a9168ea43eb795edba8ad7a10c7bfe6f9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>TargetSelection</b> ()</td></tr>
+<tr class="separator:a9168ea43eb795edba8ad7a10c7bfe6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a484119b6afbc13692d721dca0137a5fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle___system.html#a484119b6afbc13692d721dca0137a5fa">OnActionButton</a> (int index)</td></tr>
 <tr class="separator:a484119b6afbc13692d721dca0137a5fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad797ed1c7f1813acd43365c2875e3ae2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle___system.html#ad797ed1c7f1813acd43365c2875e3ae2">OnSkillButton</a> (int index)</td></tr>
+<tr class="separator:ad797ed1c7f1813acd43365c2875e3ae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad14e060a04098f10829a31fdedf66194"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_battle___system.html#ad14e060a04098f10829a31fdedf66194">TestBattleEnd</a> ()</td></tr>
 <tr class="separator:ad14e060a04098f10829a31fdedf66194"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -108,6 +113,9 @@ GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>partyHUD</b></t
 <tr class="memitem:a23619b77c5443c9351249399c468b923"><td class="memItemLeft" align="right" valign="top"><a id="a23619b77c5443c9351249399c468b923"></a>
 GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>ActionMenu</b></td></tr>
 <tr class="separator:a23619b77c5443c9351249399c468b923"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c0804f318cf1018c1f2eb0bbb3d5d91"><td class="memItemLeft" align="right" valign="top"><a id="a7c0804f318cf1018c1f2eb0bbb3d5d91"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>expEarned</b> = 0</td></tr>
+<tr class="separator:a7c0804f318cf1018c1f2eb0bbb3d5d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
 <div class="textblock"><p>Classe responsável pelo gerenciamento das batalhas do jogo. </p>
@@ -120,6 +128,31 @@ GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>ActionMenu</b><
       <table class="memname">
         <tr>
           <td class="memname">void Battle_System.OnActionButton </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Função chamada quando um dos botões do menu de seleção de ação é pressionado. Registra a ação e inicia a etapa de seleção de alvo.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Index que identifica o botão que fez a chamada da função, determina qual ação está sendo selecionada. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad797ed1c7f1813acd43365c2875e3ae2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad797ed1c7f1813acd43365c2875e3ae2">&#9670;&nbsp;</a></span>OnSkillButton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Battle_System.OnSkillButton </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>

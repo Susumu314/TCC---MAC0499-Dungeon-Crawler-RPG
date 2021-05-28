@@ -766,6 +766,30 @@ MonoBehaviour:
     isIntro: 0
     mainMusic: 
     isMusic: 0
+  - name: Flame
+    clip: {fileID: 8300000, guid: 60c8d7043193fc7448b1fa5110a12c8d, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Heal
+    clip: {fileID: 8300000, guid: 218d06a8a21c97f41b1979b6e58a7b00, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
 --- !u!4 &461647161
 Transform:
   m_ObjectHideFlags: 0
@@ -2650,8 +2674,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2226254526971190764, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
+      propertyPath: species
+      value: Rabbit Bandit
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226254526971190764, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
+      propertyPath: unitName
+      value: Wow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226254526971190764, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
+      propertyPath: unitLevel
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226254526971190764, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
       propertyPath: isPlayerUnit
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540182556563301064, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
+      propertyPath: species
+      value: Rabbit Bandit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540182556563301064, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
+      propertyPath: unitName
+      value: Jubango
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540182556563301064, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
+      propertyPath: unitLevel
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3540182556563301064, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}

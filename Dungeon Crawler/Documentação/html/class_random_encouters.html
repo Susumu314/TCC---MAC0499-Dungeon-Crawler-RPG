@@ -62,7 +62,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Componentes</a> &#124;
 <a href="#pub-methods">Métodos Públicos</a> &#124;
+<a href="#pub-attribs">Atributos Públicos</a> &#124;
 <a href="class_random_encouters-members.html">Lista de todos os Membros</a>  </div>
   <div class="headertitle">
 <div class="title">Referência da Classe RandomEncouters</div>  </div>
@@ -75,19 +77,37 @@ Diagrama de hierarquia para RandomEncouters:</div>
   <img src="class_random_encouters.png" alt=""/>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Componentes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_random_encouters_1_1encounter.html">encounter</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_random_encouters_1_1_encounter_table.html">EncounterTable</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_random_encouters_1_1zone_data.html">zoneData</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos Públicos</h2></td></tr>
 <tr class="memitem:ad77d9fb39f51d08c2898c791aa7ac01e"><td class="memItemLeft" align="right" valign="top"><a id="ad77d9fb39f51d08c2898c791aa7ac01e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> ()</td></tr>
 <tr class="separator:ad77d9fb39f51d08c2898c791aa7ac01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa765986c9f9dd0864fe8a25c6df10d39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_random_encouters.html#aa765986c9f9dd0864fe8a25c6df10d39">Increment_Encouter</a> (int EncounterRate)</td></tr>
-<tr class="separator:aa765986c9f9dd0864fe8a25c6df10d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc688efcd2ac4cc3d04f2283689870cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_random_encouters.html#adc688efcd2ac4cc3d04f2283689870cd">Increment_Encouter</a> (int EncounterRate, string zoneId)</td></tr>
+<tr class="separator:adc688efcd2ac4cc3d04f2283689870cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Atributos Públicos</h2></td></tr>
+<tr class="memitem:a7dfc91ecba3c0e292e2aa2d3c43c7785"><td class="memItemLeft" align="right" valign="top"><a id="a7dfc91ecba3c0e292e2aa2d3c43c7785"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>OverWorldID</b></td></tr>
+<tr class="separator:a7dfc91ecba3c0e292e2aa2d3c43c7785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace1675553235e47c434838736b060baa"><td class="memItemLeft" align="right" valign="top"><a id="ace1675553235e47c434838736b060baa"></a>
+TextAsset&#160;</td><td class="memItemRight" valign="bottom"><b>jsonFile</b></td></tr>
+<tr class="separator:ace1675553235e47c434838736b060baa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
 <div class="textblock"><p>Gerência os RandomEncounters que ocorrem no Overworld. </p>
 </div><h2 class="groupheader">Métodos</h2>
-<a id="aa765986c9f9dd0864fe8a25c6df10d39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa765986c9f9dd0864fe8a25c6df10d39">&#9670;&nbsp;</a></span>Increment_Encouter()</h2>
+<a id="adc688efcd2ac4cc3d04f2283689870cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc688efcd2ac4cc3d04f2283689870cd">&#9670;&nbsp;</a></span>Increment_Encouter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -96,8 +116,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Start</b> ()</td></tr
           <td class="memname">void RandomEncouters.Increment_Encouter </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>EncounterRate</em></td><td>)</td>
+          <td class="paramname"><em>EncounterRate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>zoneId</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

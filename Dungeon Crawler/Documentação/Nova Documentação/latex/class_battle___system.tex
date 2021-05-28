@@ -1,0 +1,265 @@
+\hypertarget{class_battle___system}{}\doxysection{Battle\+\_\+\+System Class Reference}
+\label{class_battle___system}\index{Battle\_System@{Battle\_System}}
+Inheritance diagram for Battle\+\_\+\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_battle___system}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_battle___system_a562f2af459ba3d918bd1d4ba3713fbe9}{Update}} ()
+\item 
+\mbox{\Hypertarget{class_battle___system_a9168ea43eb795edba8ad7a10c7bfe6f9}\label{class_battle___system_a9168ea43eb795edba8ad7a10c7bfe6f9}} 
+void {\bfseries Target\+Selection} ()
+\item 
+void \mbox{\hyperlink{class_battle___system_a484119b6afbc13692d721dca0137a5fa}{On\+Action\+Button}} (int index)
+\item 
+void \mbox{\hyperlink{class_battle___system_ad797ed1c7f1813acd43365c2875e3ae2}{On\+Skill\+Button}} (int index)
+\item 
+void \mbox{\hyperlink{class_battle___system_ad14e060a04098f10829a31fdedf66194}{Test\+Battle\+End}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_battle___system_a15b7db68c0ae3ff2c270f9555a1047e0}\label{class_battle___system_a15b7db68c0ae3ff2c270f9555a1047e0}} 
+Battle\+State {\bfseries state}
+\item 
+\mbox{\Hypertarget{class_battle___system_a08adc028d8a3f12503d02865fc94d91a}\label{class_battle___system_a08adc028d8a3f12503d02865fc94d91a}} 
+Game\+Object {\bfseries party\+Prefab}
+\item 
+\mbox{\Hypertarget{class_battle___system_ab6f225222c3421d8fb2ffcc1eb484ed1}\label{class_battle___system_ab6f225222c3421d8fb2ffcc1eb484ed1}} 
+Game\+Object {\bfseries enemy\+Prefab}
+\item 
+\mbox{\Hypertarget{class_battle___system_a8abb0d8d0fee61118a69786ff10a2ab9}\label{class_battle___system_a8abb0d8d0fee61118a69786ff10a2ab9}} 
+Transform {\bfseries enemy\+Battle\+Station}
+\item 
+\mbox{\Hypertarget{class_battle___system_a611b51964f966badf63bb79bdfe34feb}\label{class_battle___system_a611b51964f966badf63bb79bdfe34feb}} 
+Text {\bfseries dialogue\+Text}
+\item 
+\mbox{\Hypertarget{class_battle___system_ab310c323393e7c85ac583f7df107ddd9}\label{class_battle___system_ab310c323393e7c85ac583f7df107ddd9}} 
+Game\+Object {\bfseries party\+HUD}
+\item 
+\mbox{\Hypertarget{class_battle___system_a23619b77c5443c9351249399c468b923}\label{class_battle___system_a23619b77c5443c9351249399c468b923}} 
+Game\+Object {\bfseries Action\+Menu}
+\item 
+\mbox{\Hypertarget{class_battle___system_a7c0804f318cf1018c1f2eb0bbb3d5d91}\label{class_battle___system_a7c0804f318cf1018c1f2eb0bbb3d5d91}} 
+int {\bfseries exp\+Earned} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_battle___system_ad3570d8fbf1a317d2ec4fde5aab33f66}{Start}} ()
+\item 
+\mbox{\Hypertarget{class_battle___system_ace3e530f26c8d2124adb60241070b666}\label{class_battle___system_ace3e530f26c8d2124adb60241070b666}} 
+IEnumerator \mbox{\hyperlink{class_battle___system_ace3e530f26c8d2124adb60241070b666}{Setup\+Battle}} ()
+\begin{DoxyCompactList}\small\item\em Faz o setup inicial das scenes de batalha. Lê as informações dos membros da equipe do jogador e dos monstros do grupo especificado pela a Table de Random Encounters, e os instanciam na cena de batalha. Depois avança para a etapa de seleção de movimentos do jogador. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_battle___system_aadac527ad51de1eafe0fdbbbe71a51d6}{Move\+Selection\+Turn}} ()
+\item 
+\mbox{\Hypertarget{class_battle___system_a8c8697adc2a8e74c2cebb0563cd0df45}\label{class_battle___system_a8c8697adc2a8e74c2cebb0563cd0df45}} 
+IEnumerator \mbox{\hyperlink{class_battle___system_a8c8697adc2a8e74c2cebb0563cd0df45}{Battle\+Turn}} ()
+\begin{DoxyCompactList}\small\item\em Realiza as ações do turno de batalha. Organiza as listas de ordem de batalha de acordo com as prioridas das ações, e executa as ações de cada personagem vivo. Se pelo menos 1 unidade inimiga e 1 unidade do jogador estiverem vivas, voltar ao turno de seleção de ações. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_battle___system_a1f3c9971e46b7709abd328e99dbdba49}\label{class_battle___system_a1f3c9971e46b7709abd328e99dbdba49}} 
+IEnumerator \mbox{\hyperlink{class_battle___system_a1f3c9971e46b7709abd328e99dbdba49}{Target\+Selection\+Turn}} ()
+\begin{DoxyCompactList}\small\item\em Etapa de seleção de alvo para habilidades e ataques. Após o jogador selecionar uma ações, o turno de seleção de alvo permite selecionar quais unidades serão o alvo da ação. \end{DoxyCompactList}\item 
+IEnumerator \mbox{\hyperlink{class_battle___system_aa9d0662d9a35314245b12e44578f732f}{Select\+First\+Party\+Member}} ()
+\item 
+IEnumerator \mbox{\hyperlink{class_battle___system_a40b6d69dc2125504f72138e0a822fe96}{Select\+Next\+Party\+Member}} ()
+\item 
+IEnumerator \mbox{\hyperlink{class_battle___system_ab01bb7f406c3edc27f1b5658d588ed79}{Select\+Previous\+Party\+Member}} ()
+\item 
+IEnumerator \mbox{\hyperlink{class_battle___system_afeb58a11527f9090661a75c2f4f1e4d0}{Select\+Next\+Enemy}} ()
+\item 
+IEnumerator \mbox{\hyperlink{class_battle___system_a8d444e85d361935fc78811522de00803}{Select\+Next\+Row\+Enemy}} ()
+\item 
+IEnumerator \mbox{\hyperlink{class_battle___system_adb0f02c7938e06e0059aedfec0a96c2b}{Select\+Next\+Row}} ()
+\item 
+IEnumerator \mbox{\hyperlink{class_battle___system_a4768ed04ff601c82250aee124978c8a3}{Select\+Previous\+Enemy}} ()
+\item 
+void \mbox{\hyperlink{class_battle___system_a79b1fe14e074c54ad25e005b5c6e686e}{Sort\+Lists}} ()
+\item 
+IEnumerator \mbox{\hyperlink{class_battle___system_a5cdda687fe87f35e67b5abd31a45c082}{Won}} ()
+\item 
+IEnumerator \mbox{\hyperlink{class_battle___system_a018dd0e04ac3206284a9078bef33111b}{Lost}} ()
+\item 
+void \mbox{\hyperlink{class_battle___system_a8b757bd28128fda13021cccbd8bcb2d3}{Instantiate\+Enemy\+Units}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_battle___system_a46a93e097d5f1aa36e1011173ea0108d}\label{class_battle___system_a46a93e097d5f1aa36e1011173ea0108d}} 
+int {\bfseries enemy\+\_\+number} = 6
+\item 
+\mbox{\Hypertarget{class_battle___system_a5106499237d2ef639f7e9ffd58d87725}\label{class_battle___system_a5106499237d2ef639f7e9ffd58d87725}} 
+int {\bfseries Selected\+Party\+Member} = 0
+\item 
+\mbox{\Hypertarget{class_battle___system_a09c88b0d06772b95aca60b24075c1924}\label{class_battle___system_a09c88b0d06772b95aca60b24075c1924}} 
+int {\bfseries Selected\+Enemy} = 0
+\item 
+\mbox{\Hypertarget{class_battle___system_a91d4f02e9c95263ece0df4b596802396}\label{class_battle___system_a91d4f02e9c95263ece0df4b596802396}} 
+\mbox{\hyperlink{class_unit}{Unit}}\mbox{[}$\,$\mbox{]} {\bfseries party\+Members} = new \mbox{\hyperlink{class_unit}{Unit}}\mbox{[}MAX\+\_\+\+UNIT\+\_\+\+SIZE\mbox{]}
+\item 
+\mbox{\Hypertarget{class_battle___system_acc101e798631ccdf2567ff764578f59a}\label{class_battle___system_acc101e798631ccdf2567ff764578f59a}} 
+\mbox{\hyperlink{class_unit}{Unit}}\mbox{[}$\,$\mbox{]} {\bfseries enemy\+Units} = new \mbox{\hyperlink{class_unit}{Unit}}\mbox{[}MAX\+\_\+\+UNIT\+\_\+\+SIZE\mbox{]}
+\item 
+\mbox{\Hypertarget{class_battle___system_a140147756eb54790e61886e7b328a605}\label{class_battle___system_a140147756eb54790e61886e7b328a605}} 
+List$<$ \mbox{\hyperlink{class_unit}{Unit}} $>$ {\bfseries Max\+Priority\+Battle\+Order} = new List$<$\mbox{\hyperlink{class_unit}{Unit}}$>$()
+\item 
+\mbox{\Hypertarget{class_battle___system_aa8d389387aa13c05decf143a75d69581}\label{class_battle___system_aa8d389387aa13c05decf143a75d69581}} 
+List$<$ \mbox{\hyperlink{class_unit}{Unit}} $>$ {\bfseries Priority\+Battle\+Order} = new List$<$\mbox{\hyperlink{class_unit}{Unit}}$>$()
+\item 
+\mbox{\Hypertarget{class_battle___system_ac58f4a6fef80dcdafb9f8950c2eff900}\label{class_battle___system_ac58f4a6fef80dcdafb9f8950c2eff900}} 
+List$<$ \mbox{\hyperlink{class_unit}{Unit}} $>$ {\bfseries Battle\+Order} = new List$<$\mbox{\hyperlink{class_unit}{Unit}}$>$()
+\item 
+\mbox{\Hypertarget{class_battle___system_a102548b81bf2311c0351824765d32fca}\label{class_battle___system_a102548b81bf2311c0351824765d32fca}} 
+List$<$ \mbox{\hyperlink{class_unit}{Unit}} $>$ {\bfseries Low\+Priority\+Battle\+Order} = new List$<$\mbox{\hyperlink{class_unit}{Unit}}$>$()
+\item 
+\mbox{\Hypertarget{class_battle___system_a34fe754254e72e81091b63b9db990769}\label{class_battle___system_a34fe754254e72e81091b63b9db990769}} 
+bool {\bfseries Vertical\+Pressed} = false
+\item 
+\mbox{\Hypertarget{class_battle___system_a928fcaf95db49abab80df972ac7f71ce}\label{class_battle___system_a928fcaf95db49abab80df972ac7f71ce}} 
+bool {\bfseries Directional\+Pressed} = false
+\item 
+\mbox{\Hypertarget{class_battle___system_aa53f53bd55858e5f5782d5fee494c16a}\label{class_battle___system_aa53f53bd55858e5f5782d5fee494c16a}} 
+Game\+Object\mbox{[}$\,$\mbox{]} {\bfseries enemy\+GO}
+\item 
+\mbox{\Hypertarget{class_battle___system_a3759b8235c7d77c6e09b5ee5a2fefe4f}\label{class_battle___system_a3759b8235c7d77c6e09b5ee5a2fefe4f}} 
+Skill.\+TARGET\+\_\+\+TYPE {\bfseries target\+Mode} = Skill.\+TARGET\+\_\+\+TYPE.\+SINGLE
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_battle___system_a501b185b9d33479d3cf1f723eb2ae6ac}\label{class_battle___system_a501b185b9d33479d3cf1f723eb2ae6ac}} 
+const int {\bfseries BAGSIZE} = 60
+\item 
+\mbox{\Hypertarget{class_battle___system_ae9c7de50fe8464afaf6315bffd78f1ba}\label{class_battle___system_ae9c7de50fe8464afaf6315bffd78f1ba}} 
+const int {\bfseries MAX\+\_\+\+UNIT\+\_\+\+SIZE} = 6
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe responsável pelo gerenciamento das batalhas do jogo. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_battle___system_a8b757bd28128fda13021cccbd8bcb2d3}\label{class_battle___system_a8b757bd28128fda13021cccbd8bcb2d3}} 
+\index{Battle\_System@{Battle\_System}!InstantiateEnemyUnits@{InstantiateEnemyUnits}}
+\index{InstantiateEnemyUnits@{InstantiateEnemyUnits}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{InstantiateEnemyUnits()}{InstantiateEnemyUnits()}}
+{\footnotesize\ttfamily void Battle\+\_\+\+System.\+Instantiate\+Enemy\+Units (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Cria e instância o grupo de inimigos gerado pelo Random\+Encounters.\+cs \mbox{\Hypertarget{class_battle___system_a018dd0e04ac3206284a9078bef33111b}\label{class_battle___system_a018dd0e04ac3206284a9078bef33111b}} 
+\index{Battle\_System@{Battle\_System}!Lost@{Lost}}
+\index{Lost@{Lost}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{Lost()}{Lost()}}
+{\footnotesize\ttfamily IEnumerator Battle\+\_\+\+System.\+Lost (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Função chamada quando o jogador perde a batalha, ao ser chamada, realiza a rotina de derrota. \mbox{\Hypertarget{class_battle___system_aadac527ad51de1eafe0fdbbbe71a51d6}\label{class_battle___system_aadac527ad51de1eafe0fdbbbe71a51d6}} 
+\index{Battle\_System@{Battle\_System}!MoveSelectionTurn@{MoveSelectionTurn}}
+\index{MoveSelectionTurn@{MoveSelectionTurn}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{MoveSelectionTurn()}{MoveSelectionTurn()}}
+{\footnotesize\ttfamily void Battle\+\_\+\+System.\+Move\+Selection\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Função que inicia o Turno de Seleção de movimentos durante a batalha. Primeiro seleciona os movimentos dos inimigos, e então chama a rotina para seleção de movimento do primeiro personagem do grupo do jogador. \mbox{\Hypertarget{class_battle___system_a484119b6afbc13692d721dca0137a5fa}\label{class_battle___system_a484119b6afbc13692d721dca0137a5fa}} 
+\index{Battle\_System@{Battle\_System}!OnActionButton@{OnActionButton}}
+\index{OnActionButton@{OnActionButton}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{OnActionButton()}{OnActionButton()}}
+{\footnotesize\ttfamily void Battle\+\_\+\+System.\+On\+Action\+Button (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Função chamada quando um dos botões do menu de seleção de ação é pressionado. Registra a ação e inicia a etapa de seleção de alvo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index que identifica o botão que fez a chamada da função, determina qual ação está sendo selecionada. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_battle___system_ad797ed1c7f1813acd43365c2875e3ae2}\label{class_battle___system_ad797ed1c7f1813acd43365c2875e3ae2}} 
+\index{Battle\_System@{Battle\_System}!OnSkillButton@{OnSkillButton}}
+\index{OnSkillButton@{OnSkillButton}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{OnSkillButton()}{OnSkillButton()}}
+{\footnotesize\ttfamily void Battle\+\_\+\+System.\+On\+Skill\+Button (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Função chamada quando um dos botões do menu de seleção de ação é pressionado. Registra a ação e inicia a etapa de seleção de alvo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index que identifica o botão que fez a chamada da função, determina qual ação está sendo selecionada. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_battle___system_aa9d0662d9a35314245b12e44578f732f}\label{class_battle___system_aa9d0662d9a35314245b12e44578f732f}} 
+\index{Battle\_System@{Battle\_System}!SelectFirstPartyMember@{SelectFirstPartyMember}}
+\index{SelectFirstPartyMember@{SelectFirstPartyMember}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{SelectFirstPartyMember()}{SelectFirstPartyMember()}}
+{\footnotesize\ttfamily IEnumerator Battle\+\_\+\+System.\+Select\+First\+Party\+Member (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Procura e seleciona o primeiro membro da equipe do jogador que está vivo para seleção de ação. \mbox{\Hypertarget{class_battle___system_afeb58a11527f9090661a75c2f4f1e4d0}\label{class_battle___system_afeb58a11527f9090661a75c2f4f1e4d0}} 
+\index{Battle\_System@{Battle\_System}!SelectNextEnemy@{SelectNextEnemy}}
+\index{SelectNextEnemy@{SelectNextEnemy}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{SelectNextEnemy()}{SelectNextEnemy()}}
+{\footnotesize\ttfamily IEnumerator Battle\+\_\+\+System.\+Select\+Next\+Enemy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Seleciona o proximo inimigo que está vivo para seleção de alvo. \mbox{\Hypertarget{class_battle___system_a40b6d69dc2125504f72138e0a822fe96}\label{class_battle___system_a40b6d69dc2125504f72138e0a822fe96}} 
+\index{Battle\_System@{Battle\_System}!SelectNextPartyMember@{SelectNextPartyMember}}
+\index{SelectNextPartyMember@{SelectNextPartyMember}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{SelectNextPartyMember()}{SelectNextPartyMember()}}
+{\footnotesize\ttfamily IEnumerator Battle\+\_\+\+System.\+Select\+Next\+Party\+Member (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Seleciona o proximo membro da equipe do jogador que está vivo para seleção de ação. \mbox{\Hypertarget{class_battle___system_adb0f02c7938e06e0059aedfec0a96c2b}\label{class_battle___system_adb0f02c7938e06e0059aedfec0a96c2b}} 
+\index{Battle\_System@{Battle\_System}!SelectNextRow@{SelectNextRow}}
+\index{SelectNextRow@{SelectNextRow}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{SelectNextRow()}{SelectNextRow()}}
+{\footnotesize\ttfamily IEnumerator Battle\+\_\+\+System.\+Select\+Next\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Seleciona o proximo linha de inimigos como alvos \mbox{\Hypertarget{class_battle___system_a8d444e85d361935fc78811522de00803}\label{class_battle___system_a8d444e85d361935fc78811522de00803}} 
+\index{Battle\_System@{Battle\_System}!SelectNextRowEnemy@{SelectNextRowEnemy}}
+\index{SelectNextRowEnemy@{SelectNextRowEnemy}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{SelectNextRowEnemy()}{SelectNextRowEnemy()}}
+{\footnotesize\ttfamily IEnumerator Battle\+\_\+\+System.\+Select\+Next\+Row\+Enemy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Seleciona o proximo inimigo que está vivo para seleção de alvo, inicialmente procura em uma coluna diferente da atual. \mbox{\Hypertarget{class_battle___system_a4768ed04ff601c82250aee124978c8a3}\label{class_battle___system_a4768ed04ff601c82250aee124978c8a3}} 
+\index{Battle\_System@{Battle\_System}!SelectPreviousEnemy@{SelectPreviousEnemy}}
+\index{SelectPreviousEnemy@{SelectPreviousEnemy}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{SelectPreviousEnemy()}{SelectPreviousEnemy()}}
+{\footnotesize\ttfamily IEnumerator Battle\+\_\+\+System.\+Select\+Previous\+Enemy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Seleciona o inimigo anterior que está vivo para seleção de alvo. \mbox{\Hypertarget{class_battle___system_ab01bb7f406c3edc27f1b5658d588ed79}\label{class_battle___system_ab01bb7f406c3edc27f1b5658d588ed79}} 
+\index{Battle\_System@{Battle\_System}!SelectPreviousPartyMember@{SelectPreviousPartyMember}}
+\index{SelectPreviousPartyMember@{SelectPreviousPartyMember}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{SelectPreviousPartyMember()}{SelectPreviousPartyMember()}}
+{\footnotesize\ttfamily IEnumerator Battle\+\_\+\+System.\+Select\+Previous\+Party\+Member (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Seleciona o membro anterior da equipe do jogador que está vivo para seleção de ação. \mbox{\Hypertarget{class_battle___system_a79b1fe14e074c54ad25e005b5c6e686e}\label{class_battle___system_a79b1fe14e074c54ad25e005b5c6e686e}} 
+\index{Battle\_System@{Battle\_System}!SortLists@{SortLists}}
+\index{SortLists@{SortLists}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{SortLists()}{SortLists()}}
+{\footnotesize\ttfamily void Battle\+\_\+\+System.\+Sort\+Lists (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Ordena as listas de ordem de batalha por ordem descrescente de velocidade. \mbox{\Hypertarget{class_battle___system_ad3570d8fbf1a317d2ec4fde5aab33f66}\label{class_battle___system_ad3570d8fbf1a317d2ec4fde5aab33f66}} 
+\index{Battle\_System@{Battle\_System}!Start@{Start}}
+\index{Start@{Start}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Battle\+\_\+\+System.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Chamado no primeiro frame em que o objeto é instanciado \mbox{\Hypertarget{class_battle___system_ad14e060a04098f10829a31fdedf66194}\label{class_battle___system_ad14e060a04098f10829a31fdedf66194}} 
+\index{Battle\_System@{Battle\_System}!TestBattleEnd@{TestBattleEnd}}
+\index{TestBattleEnd@{TestBattleEnd}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{TestBattleEnd()}{TestBattleEnd()}}
+{\footnotesize\ttfamily void Battle\+\_\+\+System.\+Test\+Battle\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Verifica se a batalha terminou. \mbox{\Hypertarget{class_battle___system_a562f2af459ba3d918bd1d4ba3713fbe9}\label{class_battle___system_a562f2af459ba3d918bd1d4ba3713fbe9}} 
+\index{Battle\_System@{Battle\_System}!Update@{Update}}
+\index{Update@{Update}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Battle\+\_\+\+System.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+No Update é checado os inputs do usuário \mbox{\Hypertarget{class_battle___system_a5cdda687fe87f35e67b5abd31a45c082}\label{class_battle___system_a5cdda687fe87f35e67b5abd31a45c082}} 
+\index{Battle\_System@{Battle\_System}!Won@{Won}}
+\index{Won@{Won}!Battle\_System@{Battle\_System}}
+\doxysubsubsection{\texorpdfstring{Won()}{Won()}}
+{\footnotesize\ttfamily IEnumerator Battle\+\_\+\+System.\+Won (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Função chamada quando o jogador ganha a batalha, ao ser chamada, realiza a rotina de vitória. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+TCC -\/ MAC0499 Dungeon Crawler RPG/\+Dungeon Crawler/\+Assets/\+Scripts/Battle\+\_\+\+System.\+cs\end{DoxyCompactItemize}

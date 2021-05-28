@@ -69,7 +69,6 @@ public class Unit : MonoBehaviour
     }
     public void TakeDamage(int d){
         int damage;
-        string mensage = "";
         if (!OnGuard){
             damage = d;
         }
@@ -77,8 +76,6 @@ public class Unit : MonoBehaviour
             damage = Mathf.CeilToInt(d/2f);
         }
         StartCoroutine(HUD.SetHP(Math.Max(0, currentHP - damage)));
-        mensage = unitName + ": AHHHHH I took " + damage + "\n I have " + currentHP + " remaining. \n";
-        print(mensage);
         GameObject damagePopup = Instantiate(Resources.Load("VFX/DamagePopup"), HUD.transform.position, Quaternion.identity) as GameObject;
         damagePopup.GetComponent<DamagePopup>().Setup(damage);
         if(isPlayerUnit){//se for unidade do player, tremer a camera, se for do inimigo, tremer o inimigo (acho que na vdd eh melhor tremer o canvas)
@@ -90,10 +87,13 @@ public class Unit : MonoBehaviour
         if (currentHP == 0){
             Dead();
         }
-        //play action animation
-        //play soundfx
-        //display mensage
-        //wait for animations and mensage and return
+    }
+
+    public void HealDamage(int d){
+        int damage = d;
+        StartCoroutine(HUD.SetHP(Math.Min(currentHP + damage, maxHP)));
+        GameObject damagePopup = Instantiate(Resources.Load("VFX/HealPopup"), HUD.transform.position, Quaternion.identity) as GameObject;
+        damagePopup.GetComponent<DamagePopup>().Setup(damage);
     }
 
     /**
@@ -165,7 +165,7 @@ public class Unit : MonoBehaviour
         // setando skills para teste
         skillList[0] = 0;
         skillList[1] = 1;
-        skillList[2] = 2;
+        skillList[2] = 4;
         skillList[3] = 3;
         
         this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Demon Sprites/" + species);

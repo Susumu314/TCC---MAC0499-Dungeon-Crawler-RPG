@@ -1,0 +1,121 @@
+\hypertarget{class_player_controller}{}\doxysection{Player\+Controller Class Reference}
+\label{class_player_controller}\index{PlayerController@{PlayerController}}
+Inheritance diagram for Player\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_player_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_player_controller_ab3a259768f08255fb3d4536ff87ee79f}{Get\+Zone\+ID}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_controller_abb12e85ca1b12efdbc8684bff2e19c4c}\label{class_player_controller_abb12e85ca1b12efdbc8684bff2e19c4c}} 
+float {\bfseries move\+Speed} = 16f
+\item 
+\mbox{\Hypertarget{class_player_controller_a374d851931db61ed21b0825b2a1cae96}\label{class_player_controller_a374d851931db61ed21b0825b2a1cae96}} 
+float {\bfseries step} = 4f
+\item 
+\mbox{\Hypertarget{class_player_controller_af9200da52163d0e7dbd6663284345516}\label{class_player_controller_af9200da52163d0e7dbd6663284345516}} 
+float {\bfseries rotation\+Speed} = 360f
+\item 
+\mbox{\Hypertarget{class_player_controller_a7d47542c15e0898fd970e85e543abebb}\label{class_player_controller_a7d47542c15e0898fd970e85e543abebb}} 
+Transform {\bfseries move\+Point}
+\item 
+\mbox{\Hypertarget{class_player_controller_a9202b03494fb02dd08889aa8f755094e}\label{class_player_controller_a9202b03494fb02dd08889aa8f755094e}} 
+Vector3 {\bfseries Target}
+\item 
+\mbox{\Hypertarget{class_player_controller_a6b201772b6f78a4fdcd58a066ca4ee9c}\label{class_player_controller_a6b201772b6f78a4fdcd58a066ca4ee9c}} 
+Layer\+Mask {\bfseries Wall\+Mask}
+\item 
+\mbox{\Hypertarget{class_player_controller_a05a24c865681a490780bf8ec5d434107}\label{class_player_controller_a05a24c865681a490780bf8ec5d434107}} 
+Layer\+Mask {\bfseries Encounter\+Mask}
+\item 
+\mbox{\Hypertarget{class_player_controller_a8c644d9e76cb142994c0f1d7d57e5b44}\label{class_player_controller_a8c644d9e76cb142994c0f1d7d57e5b44}} 
+bool {\bfseries is\+In\+An\+Encounter\+Zone} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_controller_a8b8088190ff155471894bed5785f3312}\label{class_player_controller_a8b8088190ff155471894bed5785f3312}} 
+enum class {\bfseries STATES} \{ {\bfseries WALKING}
+, {\bfseries IDLE}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_player_controller_ae1117d9c4da3193181cddad2c814e467}{Start}} ()
+\item 
+void \mbox{\hyperlink{class_player_controller_ae8bc83dffb99867a04be016473ed2c43}{Update}} ()
+\item 
+void \mbox{\hyperlink{class_player_controller_a55cacbc24557b9a6e7848f989122adaf}{On\+Trigger\+Enter}} (Collider collider)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_controller_a910c2899c50063d011d31df1c773f1d4}\label{class_player_controller_a910c2899c50063d011d31df1c773f1d4}} 
+List$<$ Input $>$ {\bfseries input\+Buffer} = new List$<$Input$>$()
+\item 
+\mbox{\Hypertarget{class_player_controller_a88e3e35ddf854237e6c14ef4b20b81d7}\label{class_player_controller_a88e3e35ddf854237e6c14ef4b20b81d7}} 
+\mbox{\hyperlink{class_random_encouters}{Random\+Encouters}} {\bfseries REScript}
+\item 
+\mbox{\Hypertarget{class_player_controller_af6fa1160a4496cc0deacfaf0a284ec16}\label{class_player_controller_af6fa1160a4496cc0deacfaf0a284ec16}} 
+\mbox{\hyperlink{class_encounter_zone}{Encounter\+Zone}} {\bfseries zone}
+\item 
+\mbox{\Hypertarget{class_player_controller_a836812fcb7b600e779cdb368e6eadf6d}\label{class_player_controller_a836812fcb7b600e779cdb368e6eadf6d}} 
+STATES {\bfseries state}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe utilizada para controlar o jogador no Overworld. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_controller_ab3a259768f08255fb3d4536ff87ee79f}\label{class_player_controller_ab3a259768f08255fb3d4536ff87ee79f}} 
+\index{PlayerController@{PlayerController}!GetZoneID@{GetZoneID}}
+\index{GetZoneID@{GetZoneID}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{GetZoneID()}{GetZoneID()}}
+{\footnotesize\ttfamily string Player\+Controller.\+Get\+Zone\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Getter para a zona em que o jogador se encontra atualmente.
+
+
+\begin{DoxyRetVals}{Return values}
+{\em zone.\+Zone\+ID} & Int que identifica uma zona. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{class_player_controller_a55cacbc24557b9a6e7848f989122adaf}\label{class_player_controller_a55cacbc24557b9a6e7848f989122adaf}} 
+\index{PlayerController@{PlayerController}!OnTriggerEnter@{OnTriggerEnter}}
+\index{OnTriggerEnter@{OnTriggerEnter}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{OnTriggerEnter()}{OnTriggerEnter()}}
+{\footnotesize\ttfamily void Player\+Controller.\+On\+Trigger\+Enter (\begin{DoxyParamCaption}\item[{Collider}]{collider }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Função utilizada para verificar colisões com o jogador.
+
+
+\begin{DoxyParams}{Parameters}
+{\em collider} & Collider do objeto com quem houve uma colisão. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_controller_ae1117d9c4da3193181cddad2c814e467}\label{class_player_controller_ae1117d9c4da3193181cddad2c814e467}} 
+\index{PlayerController@{PlayerController}!Start@{Start}}
+\index{Start@{Start}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Player\+Controller.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+No primeiro frame em que o script roda, é iniciado algumas váriaveis. \mbox{\Hypertarget{class_player_controller_ae8bc83dffb99867a04be016473ed2c43}\label{class_player_controller_ae8bc83dffb99867a04be016473ed2c43}} 
+\index{PlayerController@{PlayerController}!Update@{Update}}
+\index{Update@{Update}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Player\+Controller.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Checa inputs do usuário todo frame e realiza ações. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+TCC -\/ MAC0499 Dungeon Crawler RPG/\+Dungeon Crawler/\+Assets/\+Scripts/Player\+Controller.\+cs\end{DoxyCompactItemize}

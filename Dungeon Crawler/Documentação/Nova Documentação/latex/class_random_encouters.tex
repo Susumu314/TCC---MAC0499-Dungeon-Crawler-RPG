@@ -1,0 +1,100 @@
+\hypertarget{class_random_encouters}{}\doxysection{Random\+Encouters Class Reference}
+\label{class_random_encouters}\index{RandomEncouters@{RandomEncouters}}
+Inheritance diagram for Random\+Encouters\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_random_encouters}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_random_encouters_1_1encounter}{encounter}}
+\item 
+class \mbox{\hyperlink{class_random_encouters_1_1_encounter_table}{Encounter\+Table}}
+\item 
+class \mbox{\hyperlink{class_random_encouters_1_1zone_data}{zone\+Data}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_random_encouters_ad77d9fb39f51d08c2898c791aa7ac01e}\label{class_random_encouters_ad77d9fb39f51d08c2898c791aa7ac01e}} 
+void {\bfseries Start} ()
+\item 
+void \mbox{\hyperlink{class_random_encouters_adc688efcd2ac4cc3d04f2283689870cd}{Increment\+\_\+\+Encouter}} (int Encounter\+Rate, string zone\+Id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_random_encouters_a7dfc91ecba3c0e292e2aa2d3c43c7785}\label{class_random_encouters_a7dfc91ecba3c0e292e2aa2d3c43c7785}} 
+int {\bfseries Over\+World\+ID}
+\item 
+\mbox{\Hypertarget{class_random_encouters_ace1675553235e47c434838736b060baa}\label{class_random_encouters_ace1675553235e47c434838736b060baa}} 
+Text\+Asset {\bfseries json\+File}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_random_encouters_a1e0f10aa4ad6fb6df160abcdc3c003df}{Check\+\_\+\+Encounter}} ()
+\item 
+\mbox{\Hypertarget{class_random_encouters_a471157e7e0c559989db17e9c68d7734b}\label{class_random_encouters_a471157e7e0c559989db17e9c68d7734b}} 
+void {\bfseries Set\+Up\+Battle\+Scene} ()
+\item 
+\mbox{\Hypertarget{class_random_encouters_aa1c1f959417607960b1cd76b16bf2109}\label{class_random_encouters_aa1c1f959417607960b1cd76b16bf2109}} 
+\mbox{\hyperlink{class_random_encouters_1_1encounter}{encounter}} {\bfseries Select\+Enemy\+Encounter} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_random_encouters_a38f9065c896abd191c77a2eedced9c6c}\label{class_random_encouters_a38f9065c896abd191c77a2eedced9c6c}} 
+int {\bfseries Encounter\+\_\+\+Counter} = 0
+\item 
+\mbox{\Hypertarget{class_random_encouters_a82b4416fa82d2b97af4c7b8b732880fc}\label{class_random_encouters_a82b4416fa82d2b97af4c7b8b732880fc}} 
+int {\bfseries Max\+\_\+\+Counter} = 64
+\item 
+\mbox{\Hypertarget{class_random_encouters_ada7a8a9d652180d587dee4e9b2c1e637}\label{class_random_encouters_ada7a8a9d652180d587dee4e9b2c1e637}} 
+string {\bfseries zone\+ID}
+\item 
+\mbox{\Hypertarget{class_random_encouters_acd66d751fbfd097dd44452e8a6c47c88}\label{class_random_encouters_acd66d751fbfd097dd44452e8a6c47c88}} 
+\mbox{\hyperlink{class_player_controller}{Player\+Controller}} {\bfseries player\+Controller\+Script}
+\item 
+\mbox{\Hypertarget{class_random_encouters_a6265b50081dee8a41736f60e3d86bf64}\label{class_random_encouters_a6265b50081dee8a41736f60e3d86bf64}} 
+\mbox{\hyperlink{class_random_encouters_1_1_encounter_table}{Encounter\+Table}} {\bfseries loaded\+Encounter\+Table}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gerência os Random\+Encounters que ocorrem no Overworld. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_random_encouters_a1e0f10aa4ad6fb6df160abcdc3c003df}\label{class_random_encouters_a1e0f10aa4ad6fb6df160abcdc3c003df}} 
+\index{RandomEncouters@{RandomEncouters}!Check\_Encounter@{Check\_Encounter}}
+\index{Check\_Encounter@{Check\_Encounter}!RandomEncouters@{RandomEncouters}}
+\doxysubsubsection{\texorpdfstring{Check\_Encounter()}{Check\_Encounter()}}
+{\footnotesize\ttfamily void Random\+Encouters.\+Check\+\_\+\+Encounter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Checa se o Encounter\+\_\+\+Counter chegou ao valor máximo, caso tenha ultrapassado o valor máximo chama o Set\+Up\+Battle\+Scene() e zera o Encounter\+\_\+\+Counter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Encounter\+Rate} & Valor pelo qual o Encounter\+\_\+\+Counter deve ser implementado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_random_encouters_adc688efcd2ac4cc3d04f2283689870cd}\label{class_random_encouters_adc688efcd2ac4cc3d04f2283689870cd}} 
+\index{RandomEncouters@{RandomEncouters}!Increment\_Encouter@{Increment\_Encouter}}
+\index{Increment\_Encouter@{Increment\_Encouter}!RandomEncouters@{RandomEncouters}}
+\doxysubsubsection{\texorpdfstring{Increment\_Encouter()}{Increment\_Encouter()}}
+{\footnotesize\ttfamily void Random\+Encouters.\+Increment\+\_\+\+Encouter (\begin{DoxyParamCaption}\item[{int}]{Encounter\+Rate,  }\item[{string}]{zone\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Incrementa o Encounter\+\_\+\+Counter e chama o Check\+\_\+\+Encounter
+
+
+\begin{DoxyParams}{Parameters}
+{\em Encounter\+Rate} & Valor pelo qual o Encounter\+\_\+\+Counter deve ser implementado \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+TCC -\/ MAC0499 Dungeon Crawler RPG/\+Dungeon Crawler/\+Assets/\+Scripts/Random\+Encouters.\+cs\end{DoxyCompactItemize}

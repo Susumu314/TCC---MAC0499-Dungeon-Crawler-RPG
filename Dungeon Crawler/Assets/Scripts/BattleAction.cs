@@ -56,7 +56,7 @@ public class BattleAction : MonoBehaviour
             {
                 if(!TargetList[0].isDead){
                     int damage = DamageCalculation(50.0f, TargetList[0]);
-                    wait += MoveAnimation("Punch", TargetList[0].HUD.transform, "white");
+                    wait += MoveAnimation("Punch", TargetList[0].HUD.transform, Color.white);
                     //play soundfx
                     //display mensage
                     //wait for animations and mensage
@@ -68,7 +68,7 @@ public class BattleAction : MonoBehaviour
             case Act.GUARD://Guard Action
             {
                 TargetList[0].SetGuard(true);//aqui esta assumindo que o target está sendo corretamente associado ao usuário
-                wait += MoveAnimation("Barrier", TargetList[0].HUD.transform, "white");
+                wait += MoveAnimation("Barrier", TargetList[0].HUD.transform, Color.white);
                 break;
             }
             case Act.ESCAPE://Tenta escapar
@@ -99,13 +99,17 @@ public class BattleAction : MonoBehaviour
                         i = TargetList.Count;
                         continue;
                     }
-                    damage = DamageCalculation((float)s.Power, TargetList[i]);
-                    wait += MoveAnimation(s.VFX, TargetList[i].HUD.transform, "white");
-                    //play soundfx
-                    //display mensage
-                    //wait for animations and mensage
-                    Debug.Log(damage);
-                    TargetList[i].TakeDamage(damage);
+                    //calcula o dano e registra o dano (se a habilidade causar dano)
+                    if(s.Power > 0){
+                        damage = DamageCalculation((float)s.Power, TargetList[i]);
+                        Debug.Log(damage);
+                        TargetList[i].TakeDamage(damage);
+                    }
+                    else if(s.Power < 0){
+                        damage = DamageCalculation(-(float)s.Power, TargetList[i]);
+                        TargetList[i].HealDamage(damage);
+                    }
+                    wait += MoveAnimation(s.VFX, TargetList[i].HUD.transform, s.COLOR);
                 }
                 break;
             }
@@ -114,9 +118,12 @@ public class BattleAction : MonoBehaviour
         }
         yield return new WaitForSeconds(wait);
     }        
-    float MoveAnimation(string animation, Transform target_transform, string color){
+    float MoveAnimation(string animation, Transform target_transform, Color color){
         GameObject Anim = Instantiate(Resources.Load("VFX/Skill_Animation"), target_transform.position, Quaternion.identity) as GameObject;
         Animator animator = Anim.GetComponent<Animator>();
+        if(color != Color.white){
+            Anim.GetComponent<SpriteRenderer>().color =  color;
+        }
         animator.Play(animation);
         //Fetch the current Animation clip information for the base layer
         AnimatorClipInfo[] m_CurrentClipInfo = animator.GetCurrentAnimatorClipInfo(0);
@@ -131,6 +138,15 @@ public class BattleAction : MonoBehaviour
         float TARGETLANEMODIFIER = (1 - Target.isBackLine*0.25f);//Atacar alvos na backline causa 25% a menos de dano
         float ATTACKERLANEMODIFIER = (1 - unitRef.isBackLine*0.25f);//Atacantes da backline causam 25% a menos de dano fisico
         int damage = Mathf.CeilToInt(((5*unitRef.unitLevel)/5 + 2) * POWERRATIO * ATKDEFRATIO * TARGETLANEMODIFIER * ATTACKERLANEMODIFIER);
+        return damage;
+    }
+
+    /**
+    * Equação que calcula o dano
+    */
+    int HealCalculation(float POWER, Unit Target){
+        float POWERRATIO = (POWER/BASEPOWER);
+        int damage = Mathf.CeilToInt(((5*unitRef.unitLevel)/5 + 2) * POWERRATIO);
         return damage;
     }
 }

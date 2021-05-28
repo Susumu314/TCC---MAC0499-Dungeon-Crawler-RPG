@@ -1,0 +1,109 @@
+\hypertarget{class_player_battle_h_u_d}{}\doxysection{Player\+Battle\+HUD Class Reference}
+\label{class_player_battle_h_u_d}\index{PlayerBattleHUD@{PlayerBattleHUD}}
+Inheritance diagram for Player\+Battle\+HUD\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_player_battle_h_u_d}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_player_battle_h_u_d_ac79438b7399766554e3cf1e9d38129e8}{Set\+HUD}} (\mbox{\hyperlink{class_unit}{Unit}} u)
+\item 
+IEnumerator \mbox{\hyperlink{class_player_battle_h_u_d_ade8a646dbd7bc2c6e9b8afd2b4c2381b}{Set\+HP}} (int hp)
+\item 
+void \mbox{\hyperlink{class_player_battle_h_u_d_a9d6080837a491b63b33de90ecda8c170}{Set\+MP}} (int mp)
+\item 
+void \mbox{\hyperlink{class_player_battle_h_u_d_a8f9b60c6cdd35b4acc3cdb1d06bf35b2}{is\+\_\+\+Selected}} (bool selected)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_battle_h_u_d_a22d0f710a4fc560f88b52626c83a6721}\label{class_player_battle_h_u_d_a22d0f710a4fc560f88b52626c83a6721}} 
+Text {\bfseries name\+Text}
+\item 
+\mbox{\Hypertarget{class_player_battle_h_u_d_a257edecb4f520a27bd4e65165d478979}\label{class_player_battle_h_u_d_a257edecb4f520a27bd4e65165d478979}} 
+Text {\bfseries hp\+Mp\+Text}
+\item 
+\mbox{\Hypertarget{class_player_battle_h_u_d_a123d8f2a2e1f8490769a65009836232e}\label{class_player_battle_h_u_d_a123d8f2a2e1f8490769a65009836232e}} 
+Image {\bfseries health\+Bar}
+\item 
+\mbox{\Hypertarget{class_player_battle_h_u_d_a09b33d2c6c52295f9011268ea715b3df}\label{class_player_battle_h_u_d_a09b33d2c6c52295f9011268ea715b3df}} 
+Image {\bfseries mana\+Bar}
+\item 
+\mbox{\Hypertarget{class_player_battle_h_u_d_a0e143cb008a55f9a1b8e6b6a8f20bb03}\label{class_player_battle_h_u_d_a0e143cb008a55f9a1b8e6b6a8f20bb03}} 
+Game\+Object {\bfseries Selection\+\_\+\+Indicator}
+\item 
+\mbox{\Hypertarget{class_player_battle_h_u_d_a2a6c6129bf10d72379a8d1cca6f9fc75}\label{class_player_battle_h_u_d_a2a6c6129bf10d72379a8d1cca6f9fc75}} 
+bool {\bfseries is\+Selected}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_battle_h_u_d_a7e20a733891c1677ce1149e7a2b0259b}\label{class_player_battle_h_u_d_a7e20a733891c1677ce1149e7a2b0259b}} 
+\mbox{\hyperlink{class_unit}{Unit}} {\bfseries unit}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que utilizada para controlar a HUD de uma dos membros da equipe do jogador durante as cenas de batalha. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_battle_h_u_d_a8f9b60c6cdd35b4acc3cdb1d06bf35b2}\label{class_player_battle_h_u_d_a8f9b60c6cdd35b4acc3cdb1d06bf35b2}} 
+\index{PlayerBattleHUD@{PlayerBattleHUD}!is\_Selected@{is\_Selected}}
+\index{is\_Selected@{is\_Selected}!PlayerBattleHUD@{PlayerBattleHUD}}
+\doxysubsubsection{\texorpdfstring{is\_Selected()}{is\_Selected()}}
+{\footnotesize\ttfamily void Player\+Battle\+HUD.\+is\+\_\+\+Selected (\begin{DoxyParamCaption}\item[{bool}]{selected }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Liga ou desliga o Highlight da HUD do personagem dependendo se é o personagem selecionado ou não.
+
+
+\begin{DoxyParams}{Parameters}
+{\em selected} & Variável que diz se o Highlight deve estar ativo ou não. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_battle_h_u_d_ade8a646dbd7bc2c6e9b8afd2b4c2381b}\label{class_player_battle_h_u_d_ade8a646dbd7bc2c6e9b8afd2b4c2381b}} 
+\index{PlayerBattleHUD@{PlayerBattleHUD}!SetHP@{SetHP}}
+\index{SetHP@{SetHP}!PlayerBattleHUD@{PlayerBattleHUD}}
+\doxysubsubsection{\texorpdfstring{SetHP()}{SetHP()}}
+{\footnotesize\ttfamily IEnumerator Player\+Battle\+HUD.\+Set\+HP (\begin{DoxyParamCaption}\item[{int}]{hp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Atualiza a vida da unidade na HUD.
+
+
+\begin{DoxyParams}{Parameters}
+{\em hp} & Vida atual da unidade. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_battle_h_u_d_ac79438b7399766554e3cf1e9d38129e8}\label{class_player_battle_h_u_d_ac79438b7399766554e3cf1e9d38129e8}} 
+\index{PlayerBattleHUD@{PlayerBattleHUD}!SetHUD@{SetHUD}}
+\index{SetHUD@{SetHUD}!PlayerBattleHUD@{PlayerBattleHUD}}
+\doxysubsubsection{\texorpdfstring{SetHUD()}{SetHUD()}}
+{\footnotesize\ttfamily void Player\+Battle\+HUD.\+Set\+HUD (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_unit}{Unit}}}]{u }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Seta a HUD.
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Contém as informações da unidade a qual a HUD representa. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_battle_h_u_d_a9d6080837a491b63b33de90ecda8c170}\label{class_player_battle_h_u_d_a9d6080837a491b63b33de90ecda8c170}} 
+\index{PlayerBattleHUD@{PlayerBattleHUD}!SetMP@{SetMP}}
+\index{SetMP@{SetMP}!PlayerBattleHUD@{PlayerBattleHUD}}
+\doxysubsubsection{\texorpdfstring{SetMP()}{SetMP()}}
+{\footnotesize\ttfamily void Player\+Battle\+HUD.\+Set\+MP (\begin{DoxyParamCaption}\item[{int}]{mp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Atualiza a mana da unidade na HUD.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mp} & Mana atual da unidade. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+TCC -\/ MAC0499 Dungeon Crawler RPG/\+Dungeon Crawler/\+Assets/\+Scripts/Player\+Battle\+HUD.\+cs\end{DoxyCompactItemize}

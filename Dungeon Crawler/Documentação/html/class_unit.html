@@ -78,9 +78,17 @@ Diagrama de hierarquia para Unit:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos Públicos</h2></td></tr>
-<tr class="memitem:a33e5971d165b32e112eb5da2f28793ff"><td class="memItemLeft" align="right" valign="top"><a id="a33e5971d165b32e112eb5da2f28793ff"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>TakeDamage</b> (int damage)</td></tr>
-<tr class="separator:a33e5971d165b32e112eb5da2f28793ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0734bf45b1f2f32d043ac7d13eeba2bd"><td class="memItemLeft" align="right" valign="top"><a id="a0734bf45b1f2f32d043ac7d13eeba2bd"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Unit</b> (string species, string unitName, int unitLevel)</td></tr>
+<tr class="separator:a0734bf45b1f2f32d043ac7d13eeba2bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa13a379e43169a54ffb595f9b153d0ad"><td class="memItemLeft" align="right" valign="top"><a id="aa13a379e43169a54ffb595f9b153d0ad"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>TakeDamage</b> (int d)</td></tr>
+<tr class="separator:aa13a379e43169a54ffb595f9b153d0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfd1352b5eb645da77f4cd130f3402b0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unit.html#abfd1352b5eb645da77f4cd130f3402b0">PaySkillCost</a> (int c, bool isSpecial)</td></tr>
+<tr class="separator:abfd1352b5eb645da77f4cd130f3402b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08bf44d0dadf197972bde7d8d3ad5d8b"><td class="memItemLeft" align="right" valign="top"><a id="a08bf44d0dadf197972bde7d8d3ad5d8b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>BattleSystemReference</b> (<a class="el" href="class_battle___system.html">Battle_System</a> b)</td></tr>
+<tr class="separator:a08bf44d0dadf197972bde7d8d3ad5d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8375b479b97ac30c9e6b0398ae8ceb0d"><td class="memItemLeft" align="right" valign="top"><a id="a8375b479b97ac30c9e6b0398ae8ceb0d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetGuard</b> (bool guard)</td></tr>
 <tr class="separator:a8375b479b97ac30c9e6b0398ae8ceb0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -90,9 +98,25 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Escape</b> ()</td></t
 <tr class="memitem:a030685d97d251a5d54e775971fd4b4bd"><td class="memItemLeft" align="right" valign="top"><a id="a030685d97d251a5d54e775971fd4b4bd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Dead</b> ()</td></tr>
 <tr class="separator:a030685d97d251a5d54e775971fd4b4bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a327e6c630dfc01fbee7994861b69551c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unit.html#a327e6c630dfc01fbee7994861b69551c">InitEnemyUnit</a> (string s, int lvl, int backline)</td></tr>
+<tr class="separator:a327e6c630dfc01fbee7994861b69551c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5200789bd4dff66cab6eb350cb0662"><td class="memItemLeft" align="right" valign="top"><a id="a5d5200789bd4dff66cab6eb350cb0662"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>InitStats</b> ()</td></tr>
+<tr class="separator:a5d5200789bd4dff66cab6eb350cb0662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f188e279aaafdfefcdf72eced5de6d5"><td class="memItemLeft" align="right" valign="top"><a id="a4f188e279aaafdfefcdf72eced5de6d5"></a>
+IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><b>GainExp</b> (int exp)</td></tr>
+<tr class="separator:a4f188e279aaafdfefcdf72eced5de6d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cf9a404a499f200ab1a32da943cb10b"><td class="memItemLeft" align="right" valign="top"><a id="a6cf9a404a499f200ab1a32da943cb10b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LevelUp</b> ()</td></tr>
+<tr class="separator:a6cf9a404a499f200ab1a32da943cb10b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac53a8fe84c4348b22bffe14f3694cad9"><td class="memItemLeft" align="right" valign="top">IEnumerator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unit.html#ac53a8fe84c4348b22bffe14f3694cad9">Capture</a> (float bonus=1)</td></tr>
+<tr class="separator:ac53a8fe84c4348b22bffe14f3694cad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Atributos Públicos</h2></td></tr>
+<tr class="memitem:adb96d3d513b269a860b053bad8150100"><td class="memItemLeft" align="right" valign="top"><a id="adb96d3d513b269a860b053bad8150100"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>species</b></td></tr>
+<tr class="separator:adb96d3d513b269a860b053bad8150100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa81f59d9163cf6ef448e57c307bb615e"><td class="memItemLeft" align="right" valign="top"><a id="aa81f59d9163cf6ef448e57c307bb615e"></a>
 string&#160;</td><td class="memItemRight" valign="bottom"><b>unitName</b></td></tr>
 <tr class="separator:aa81f59d9163cf6ef448e57c307bb615e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,9 +138,33 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>maxMana</b></td></tr>
 <tr class="memitem:aa12a4df65fd26c3323aa522c8ca9d997"><td class="memItemLeft" align="right" valign="top"><a id="aa12a4df65fd26c3323aa522c8ca9d997"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>currentMana</b></td></tr>
 <tr class="separator:aa12a4df65fd26c3323aa522c8ca9d997"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab51fe6520c60679daaf8c0735c6508ec"><td class="memItemLeft" align="right" valign="top"><a id="ab51fe6520c60679daaf8c0735c6508ec"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b></td></tr>
+<tr class="separator:ab51fe6520c60679daaf8c0735c6508ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4aa3683a2357f65ebcf65e777b800f0"><td class="memItemLeft" align="right" valign="top"><a id="aa4aa3683a2357f65ebcf65e777b800f0"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>defence</b></td></tr>
+<tr class="separator:aa4aa3683a2357f65ebcf65e777b800f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e43752f9fd34a6d50e120aed646a201"><td class="memItemLeft" align="right" valign="top"><a id="a4e43752f9fd34a6d50e120aed646a201"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>special_attack</b></td></tr>
+<tr class="separator:a4e43752f9fd34a6d50e120aed646a201"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59ca01b35d0d7aa29dc4edbafbf005dd"><td class="memItemLeft" align="right" valign="top"><a id="a59ca01b35d0d7aa29dc4edbafbf005dd"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>special_defence</b></td></tr>
+<tr class="separator:a59ca01b35d0d7aa29dc4edbafbf005dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a978dbbffc9fd65ee710365e2531d44a7"><td class="memItemLeft" align="right" valign="top"><a id="a978dbbffc9fd65ee710365e2531d44a7"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>speed</b></td></tr>
 <tr class="separator:a978dbbffc9fd65ee710365e2531d44a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa64cc353669dae204cc517ff26871190"><td class="memItemLeft" align="right" valign="top"><a id="aa64cc353669dae204cc517ff26871190"></a>
+BaseStats.TYPE&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:aa64cc353669dae204cc517ff26871190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a580397fe15ddadf33418d3a57673de2a"><td class="memItemLeft" align="right" valign="top"><a id="a580397fe15ddadf33418d3a57673de2a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>catch_rate</b></td></tr>
+<tr class="separator:a580397fe15ddadf33418d3a57673de2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd1324e5ca8d543254f453c738a4ad56"><td class="memItemLeft" align="right" valign="top"><a id="afd1324e5ca8d543254f453c738a4ad56"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>xp_yield</b></td></tr>
+<tr class="separator:afd1324e5ca8d543254f453c738a4ad56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa085b25741bfd60fc71c2407c7f68f8a"><td class="memItemLeft" align="right" valign="top"><a id="aa085b25741bfd60fc71c2407c7f68f8a"></a>
+BaseStats.GROWTH_RATE&#160;</td><td class="memItemRight" valign="bottom"><b>growth_rate</b></td></tr>
+<tr class="separator:aa085b25741bfd60fc71c2407c7f68f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b0ed03be290c97d495e6a20b1010fa4"><td class="memItemLeft" align="right" valign="top"><a id="a3b0ed03be290c97d495e6a20b1010fa4"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isPlayerUnit</b></td></tr>
 <tr class="separator:a3b0ed03be290c97d495e6a20b1010fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,7 +180,107 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>isDead</b> = false</t
 <tr class="memitem:a4720688ef5a84e68a6e469cf26a4c2f9"><td class="memItemLeft" align="right" valign="top"><a id="a4720688ef5a84e68a6e469cf26a4c2f9"></a>
 <a class="el" href="class_player_battle_h_u_d.html">PlayerBattleHUD</a>&#160;</td><td class="memItemRight" valign="bottom"><b>HUD</b></td></tr>
 <tr class="separator:a4720688ef5a84e68a6e469cf26a4c2f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e541c275fb04e14f60d0156c33f0385"><td class="memItemLeft" align="right" valign="top"><a id="a3e541c275fb04e14f60d0156c33f0385"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>isBackLine</b> = 0</td></tr>
+<tr class="separator:a3e541c275fb04e14f60d0156c33f0385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acecf71523ff2a44ed595595ef10694ad"><td class="memItemLeft" align="right" valign="top"><a id="acecf71523ff2a44ed595595ef10694ad"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>totalExp</b> = 0</td></tr>
+<tr class="separator:acecf71523ff2a44ed595595ef10694ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6929ba85df441ee890ad31b8d95d1f9a"><td class="memItemLeft" align="right" valign="top"><a id="a6929ba85df441ee890ad31b8d95d1f9a"></a>
+int[]&#160;</td><td class="memItemRight" valign="bottom"><b>skillList</b></td></tr>
+<tr class="separator:a6929ba85df441ee890ad31b8d95d1f9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Métodos</h2>
+<a id="ac53a8fe84c4348b22bffe14f3694cad9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac53a8fe84c4348b22bffe14f3694cad9">&#9670;&nbsp;</a></span>Capture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerator Unit.Capture </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>bonus</em> = <code>1</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Quando tentar capturar uma unidade selvagem, essa função determina se a captura foi efetiva ou nao caso seja, transfere a unidade para equipe do jogador (se tiver espaço) ou para o banco </p>
+
+</div>
+</div>
+<a id="a327e6c630dfc01fbee7994861b69551c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a327e6c630dfc01fbee7994861b69551c">&#9670;&nbsp;</a></span>InitEnemyUnit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Unit.InitEnemyUnit </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lvl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>backline</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Inicializa as variáveis necessárias para inicialização dos status de uma inimiga no inicio de um combate </p>
+
+</div>
+</div>
+<a id="abfd1352b5eb645da77f4cd130f3402b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfd1352b5eb645da77f4cd130f3402b0">&#9670;&nbsp;</a></span>PaySkillCost()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Unit.PaySkillCost </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isSpecial</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Gasta mana ou vida para utilizar habilidades,</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Custo para utilizar uma habilidade </td></tr>
+    <tr><td class="paramname">isSpecial</td><td>se a habilidade é especial ou física </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>A documentação para essa classe foi gerada a partir do seguinte arquivo:<ul>
 <li>C:/TCC - MAC0499 Dungeon Crawler RPG/Dungeon Crawler/Assets/Scripts/Unit.cs</li>
 </ul>

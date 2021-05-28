@@ -14,6 +14,7 @@ public class Skill {
     public enum STATUS_EFFECT {NULL, ATK_UP, ATK_DOWN, DEF_UP, DEF_DOWN, SPEED_UP, SPEED_DOWN,
                                POISON, BURN, FREEZE, PARALYSIS}
     public struct SkillData{
+        private readonly string name;
         private readonly TYPE type;
         private readonly TARGET_TYPE target_type;
         private readonly PRIORITY priority;
@@ -25,11 +26,12 @@ public class Skill {
         private readonly bool isRanged;
         private readonly int skill_ID;
         private readonly string vfx;
-        private readonly string sfx;
+        private readonly Color vfx_color;
 
         public SkillData (string name, TYPE type, TARGET_TYPE target_type, PRIORITY priority, int power, int accuracy, int cost,
-                          STATUS_EFFECT status_effect, bool isSpecial, bool isRanged, int skill_ID, string vfx, string sfx)
+                          STATUS_EFFECT status_effect, bool isSpecial, bool isRanged, int skill_ID, string vfx, Color vfx_color)
         {
+            this.name = name;
             this.type = type;
             this.target_type = target_type;
             this.priority = priority;
@@ -41,9 +43,9 @@ public class Skill {
             this.isRanged = isRanged;
             this.skill_ID = skill_ID;
             this.vfx = vfx;
-            this.sfx = sfx;
+            this.vfx_color = vfx_color;
         }
-        public string name { get { return name; } }
+        public string Name { get { return name; } }
         public TYPE Type { get { return type; } }
         public TARGET_TYPE Target_type { get { return target_type; } }
         public PRIORITY Priority { get { return priority; } }
@@ -54,7 +56,7 @@ public class Skill {
         public bool IsSpecial { get { return isSpecial; } }
         public bool IsRanged { get { return isRanged; } }
         public string VFX { get { return vfx; } }
-        public string SFX { get { return vfx; } }
+        public Color COLOR { get { return vfx_color; } }
     }
     
     public static readonly IList<SkillData> SkillList= new ReadOnlyCollection<SkillData>
@@ -71,7 +73,7 @@ public class Skill {
                            /*isRanged*/     false,
                            /*ID*/           0,
                            /*VFX*/          "Punch",
-                           /*SFX*/          "Blunt_Hit"),
+                           /*VFX_COLOR*/    Color.white),
 
             new SkillData (/*name*/        "Heal", 
                            /*type*/         TYPE.NORMAL, 
@@ -85,7 +87,7 @@ public class Skill {
                            /*isRanged*/     true,
                            /*ID*/           1,
                            /*VFX*/          "Heal",
-                           /*SFX*/          "Heal"),
+                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f)),
 
             new SkillData (/*name*/        "Ember", 
                            /*type*/         TYPE.FIRE, 
@@ -99,7 +101,7 @@ public class Skill {
                            /*isRanged*/     true,
                            /*ID*/           2,
                            /*VFX*/          "Flame",
-                           /*SFX*/          "Flame"),
+                           /*VFX_COLOR*/    Color.white),
             
             new SkillData (/*name*/        "H_Slash", 
                            /*type*/         TYPE.NORMAL, 
@@ -113,6 +115,20 @@ public class Skill {
                            /*isRanged*/     false,
                            /*ID*/           3,
                            /*VFX*/          "Slash",
-                           /*SFX*/          "Slash")
+                           /*VFX_COLOR*/    Color.white),
+            
+            new SkillData (/*name*/        "H_Heal", 
+                           /*type*/         TYPE.NORMAL, 
+                           /*target_type*/  TARGET_TYPE.ALLY_ROW, 
+                           /*priority*/     PRIORITY.NORMAL, 
+                           /*power*/        -20, 
+                           /*accuracy*/     100, 
+                           /*cost*/         9,
+                           /*status_effect*/STATUS_EFFECT.NULL, 
+                           /*isSpecial*/    true, 
+                           /*isRanged*/     true,
+                           /*ID*/           4,
+                           /*VFX*/          "Heal",
+                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f)),
         });
 }
