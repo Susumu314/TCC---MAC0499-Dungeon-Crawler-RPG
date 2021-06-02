@@ -55,7 +55,10 @@ public class BattleAction : MonoBehaviour
             case Act.ATTACK://deals normal physical damage to the target
             {
                 if(!TargetList[0].isDead){
-                    int damage = DamageCalculation(50.0f, TargetList[0]);
+                    //criar uma skill pra ataque basico e sumir com esse act.ATTACK
+
+                    //int damage = DamageCalculation(50.0f, TargetList[0]);
+                    int damage = 4;
                     wait += MoveAnimation("Punch", TargetList[0].HUD.transform, Color.white);
                     //play soundfx
                     //display mensage
@@ -101,12 +104,12 @@ public class BattleAction : MonoBehaviour
                     }
                     //calcula o dano e registra o dano (se a habilidade causar dano)
                     if(s.Power > 0){
-                        damage = DamageCalculation((float)s.Power, TargetList[i]);
+                        damage = DamageCalculation(s, TargetList[i]);
                         Debug.Log(damage);
                         TargetList[i].TakeDamage(damage);
                     }
                     else if(s.Power < 0){
-                        damage = DamageCalculation(-(float)s.Power, TargetList[i]);
+                        damage = HealCalculation(-(float)s.Power, TargetList[i]);
                         TargetList[i].HealDamage(damage);
                     }
                     wait += MoveAnimation(s.VFX, TargetList[i].HUD.transform, s.COLOR);
@@ -132,11 +135,26 @@ public class BattleAction : MonoBehaviour
     /**
     * Equação que calcula o dano
     */
-    int DamageCalculation(float POWER, Unit Target){
-        float POWERRATIO = (POWER/BASEPOWER);
-        float ATKDEFRATIO = ((float)unitRef.attack/(float)Target.defence);
-        float TARGETLANEMODIFIER = (1 - Target.isBackLine*0.25f);//Atacar alvos na backline causa 25% a menos de dano
-        float ATTACKERLANEMODIFIER = (1 - unitRef.isBackLine*0.25f);//Atacantes da backline causam 25% a menos de dano fisico
+    int DamageCalculation(Skill.SkillData s, Unit Target){
+        float POWERRATIO = (s.Power/BASEPOWER);
+        float ATKDEFRATIO;
+        if(!s.IsSpecial){
+            ATKDEFRATIO = ((float)unitRef.attack/(float)Target.defence);
+        }
+        else{
+            ATKDEFRATIO = ((float)unitRef.special_attack/(float)Target.special_defence);
+        }
+
+        float TARGETLANEMODIFIER;
+        float ATTACKERLANEMODIFIER;
+        if(!s.IsRanged){
+            TARGETLANEMODIFIER = (1 - Target.isBackLine*0.25f);//Atacar alvos na backline causa 25% a menos de dano
+            ATTACKERLANEMODIFIER = (1 - unitRef.isBackLine*0.25f);//Atacantes da backline causam 25% a menos de dano fisico
+        }
+        else{
+            TARGETLANEMODIFIER = 1;
+            ATTACKERLANEMODIFIER = 1;
+        }
         int damage = Mathf.CeilToInt(((5*unitRef.unitLevel)/5 + 2) * POWERRATIO * ATKDEFRATIO * TARGETLANEMODIFIER * ATTACKERLANEMODIFIER);
         return damage;
     }

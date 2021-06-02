@@ -66,20 +66,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c41b1f5223956cd46ad3423387212caa, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
-    m_MaxSize: 160
+    m_MinSize: 3
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Text
-
-'
+  m_Text: Text
 --- !u!1 &660351474349183429
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +91,7 @@ GameObject:
   - component: {fileID: 660351474349183431}
   - component: {fileID: 771960812857639599}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: MenuTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,6 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50f3dcd45279af49beef2ec46d65b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SubMenu: []
+  MainMenu: {fileID: 0}
+  defaultButton: {fileID: 0}
 --- !u!1 &660351475054792661
 GameObject:
   m_ObjectHideFlags: 0

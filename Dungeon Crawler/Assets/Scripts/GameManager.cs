@@ -136,6 +136,7 @@ public class GameManager : MonoBehaviour
             unit.unitLevel = u.unitLevel;
             unit.InitStats();
             unit.currentHP = u.currentHP;
+            unit.isPlayerUnit = true;
         }
         else{
             //aloca no pc 

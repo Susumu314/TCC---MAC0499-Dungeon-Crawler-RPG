@@ -211,7 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50f3dcd45279af49beef2ec46d65b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SubMenu: {fileID: 0}
+  SubMenu:
+  - {fileID: 0}
   MainMenu: {fileID: 0}
   defaultButton: {fileID: 1097041304688818833}
 --- !u!1 &1097041305105565443
@@ -637,10 +638,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c41b1f5223956cd46ad3423387212caa, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 160
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -648,9 +649,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Escape
-
-'
+  m_Text: Escape
 --- !u!1 &1097041305497750430
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,10 +716,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c41b1f5223956cd46ad3423387212caa, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 160
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -728,9 +727,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Attack
-
-'
+  m_Text: Attack
 --- !u!1 &1097041305761244565
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,10 +794,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c41b1f5223956cd46ad3423387212caa, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 0
     m_MaxSize: 160
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -808,9 +805,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Skill
-
-'
+  m_Text: Skill
 --- !u!1 &1097041306000538256
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,10 +872,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c41b1f5223956cd46ad3423387212caa, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 0
     m_MaxSize: 160
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -888,9 +883,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Guard
-
-'
+  m_Text: Guard
 --- !u!1 &1578729473916637643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,10 +1069,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c41b1f5223956cd46ad3423387212caa, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 160
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1087,7 +1080,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Bag
-
-
-'
+  m_Text: Bag

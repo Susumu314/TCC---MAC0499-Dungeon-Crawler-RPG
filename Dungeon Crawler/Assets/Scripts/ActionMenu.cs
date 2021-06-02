@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class ActionMenu : MonoBehaviour
 {
     private const int BAGSIZE = 60;//tamanho maximo da mochila
-    public GameObject SubMenu;
+    public List<GameObject> SubMenu = new List<GameObject>();
     public GameObject MainMenu;
     public Button defaultButton;
 
@@ -43,9 +43,9 @@ public class ActionMenu : MonoBehaviour
     * Função chamada ao se clicar o botão associado
     * Abre o SubMenu
     */
-    public void OnSubMenuButton()
+    public void OnSubMenuButton(int index)
     {
-        SubMenu.SetActive(true);
+        SubMenu[index].SetActive(true);
         this.gameObject.SetActive(false);
     } 
 
