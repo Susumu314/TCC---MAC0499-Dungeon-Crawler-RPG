@@ -10,9 +10,13 @@ using UnityEngine;
 public class Item {
     public enum TYPE {NORMAL, FIRE, GRASS, WATER, AIR, DARK, LIGHT, ICE, ROCK, POISON, DRAGON, BUG};
     public enum PRIORITY {LOW, NORMAL, HIGH, MAX};
+
+    //Isso aqui tem que ser exatamente igual ao skillTarget Type para funcionar corretamente
     public enum TARGET_TYPE {SINGLE, ROW, PARTY, SINGLE_ALLY, ALLY_ROW, ALLY_PARTY};
     public enum STATUS_EFFECT {NULL, ATK_UP, ATK_DOWN, DEF_UP, DEF_DOWN, SPEED_UP, SPEED_DOWN,
                                POISON, BURN, FREEZE, PARALYSIS, CAPTURE}
+
+    
     public struct ItemData{
         private readonly string name;
         private readonly TYPE type;
@@ -152,7 +156,7 @@ public class Item {
                            /*power*/        10, //nesse caso o poder se torna o bonus na chance de captura vezes 10
                            /*accuracy*/     100, 
                            /*cost*/         0,
-                           /*status_effect*/STATUS_EFFECT.NULL, 
+                           /*status_effect*/STATUS_EFFECT.CAPTURE, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
                            /*ID*/           6,
@@ -166,11 +170,11 @@ public class Item {
                            /*power*/        10, //nesse caso o poder se torna o bonus na chance de captura vezes 10
                            /*accuracy*/     100, 
                            /*cost*/         0,
-                           /*status_effect*/STATUS_EFFECT.NULL, 
+                           /*status_effect*/STATUS_EFFECT.CAPTURE, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
                            /*ID*/           7,
                            /*VFX*/          "Barrier",
-                           /*VFX_COLOR*/    Color.white)
+                           /*VFX_COLOR*/    Color.red)
         });
 }

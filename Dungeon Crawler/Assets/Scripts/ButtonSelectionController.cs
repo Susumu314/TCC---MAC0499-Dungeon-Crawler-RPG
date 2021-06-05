@@ -9,7 +9,7 @@ public class ButtonSelectionController : MonoBehaviour
     [SerializeField]
     private float               m_lerpTime;
     private ScrollRect          m_scrollRect;
-    private Button[]            m_buttons;
+    private List<Button>        m_buttons = new List<Button>();
     private int                 m_index;
     private float               m_verticalPosition;
     private bool                m_up;
@@ -18,9 +18,11 @@ public class ButtonSelectionController : MonoBehaviour
     public void Start()
     {
         m_scrollRect        = GetComponent<ScrollRect>();
-        m_buttons           = GetComponentsInChildren<Button>();
+        foreach (Button button in GetComponentsInChildren<Button>()){
+            m_buttons.Add(button);
+        };
         m_buttons[m_index].Select();
-        m_verticalPosition  = 1f - ((float)m_index / (m_buttons.Length - 1));
+        m_verticalPosition  = 1f - ((float)m_index / (m_buttons.Count - 1));
     }
 
     public void Update()
@@ -33,17 +35,20 @@ public class ButtonSelectionController : MonoBehaviour
             if (m_up){
                 m_index = m_index - 1;
                 if (m_index < 0){
-                    m_index = m_buttons.Length-1;
+                    m_index = m_buttons.Count - 1;
                 }
             }
             else{
                 m_index = m_index + 1;
-                if(m_index >= m_buttons.Length){
+                if(m_index >= m_buttons.Count){
                     m_index = 0; 
                 }
             }
+            while(!m_buttons[m_index]){
+                m_buttons.RemoveAt(m_index);
+            }
             m_buttons[m_index].Select();
-            m_verticalPosition = 1f - ((float)m_index / (m_buttons.Length - 1));
+            m_verticalPosition = 1f - ((float)m_index / (m_buttons.Count - 1));
         }
 
         m_scrollRect.verticalNormalizedPosition = Mathf.Lerp(m_scrollRect.verticalNormalizedPosition, m_verticalPosition, Time.deltaTime / m_lerpTime);

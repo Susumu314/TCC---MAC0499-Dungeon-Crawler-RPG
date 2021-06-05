@@ -545,6 +545,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7301796776958798795, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8934631120277394457, guid: b85740afb5cc41b409a74ef7fec6bad5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1560,14 +1565,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  partyPrefab: {fileID: 1110350715848612877, guid: 10827e88c8f49fd43a287b893dbf69b6,
-    type: 3}
   enemyPrefab: {fileID: 1110350715848612877, guid: cc11d85791e48b34da287389565c05fd,
     type: 3}
   enemyBattleStation: {fileID: 71732401}
   dialogueText: {fileID: 611680939}
   partyHUD: {fileID: 1365146159}
   ActionMenu: {fileID: 344604653}
+  bag: {fileID: 0}
   expEarned: 0
 --- !u!4 &2137365981
 Transform:

@@ -55,8 +55,6 @@ public class Battle_System : MonoBehaviour
     int TargetPartyMember = 0;
 
     public BattleState state;
-
-    public GameObject partyPrefab;
     public GameObject enemyPrefab;
     public Transform enemyBattleStation;
 
@@ -69,6 +67,7 @@ public class Battle_System : MonoBehaviour
     Unit[] enemyUnits = new Unit[MAX_UNIT_SIZE]; //vao ter no maximo 6 unidades inimigas, de 0 a 2 é frontrow, de 3 a 5 é backrow
 
     public GameObject ActionMenu;
+    private ScrollMenuContent bagMenuContent;
 
     private List<Unit> MaxPriorityBattleOrder = new List<Unit>();//nessa lista serão guardados unidades cuja ação é de prioridade maxima,
                                              // por enquanto só Guard tem esse tipo de prioridade já que é uma ação que deve ocorrer antes de qualquer outra
@@ -83,6 +82,8 @@ public class Battle_System : MonoBehaviour
     private bool DirectionalPressed = false;
     private GameObject[] enemyGO;
 
+    public Bag bag;
+
     public int expEarned = 0;
 
     private Skill.TARGET_TYPE targetMode = Skill.TARGET_TYPE.SINGLE;
@@ -91,6 +92,7 @@ public class Battle_System : MonoBehaviour
     */
     void Start()
     {
+        bagMenuContent = ActionMenu.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetComponent<ScrollMenuContent>();
         state = BattleState.START;
         StartCoroutine(SetupBattle());
         switch (GameManager.Instance.battleID)
@@ -246,6 +248,7 @@ public class Battle_System : MonoBehaviour
     IEnumerator SetupBattle(){
         //fazer essa instanciação do player por algum arquivo json
         GameObject partyGO = GameManager.Instance.party;
+        bag = GameManager.Instance.party.GetComponent<Bag>();
         for(int i = 0; i < 6; i++){
             if (partyGO.transform.GetChild(i).GetComponent<Unit>().species == "")//por enquanto estou considerando que se a unidade nao tiver nome, ela nao existe
                 continue;
@@ -261,6 +264,8 @@ public class Battle_System : MonoBehaviour
         
 
         dialogueText.text = "A wild demon horde has appeared!";
+
+        bagMenuContent.InitBagMenu(bag, this);
 
         yield return new WaitForSeconds(2f);
 
@@ -969,5 +974,47 @@ public class Battle_System : MonoBehaviour
             Skill.SkillData s = Skill.SkillList[skillID];
             skillMenu.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = s.Name;
         }
+        
+        bagMenuContent.UpdateButtons(bag);
     }
+
+    /**
+    * Função chamada quando um dos botões do menu de seleção de ação é pressionado.
+    * Registra a ação e inicia a etapa de seleção de alvo.
+    * 
+    * @param index Index que identifica o botão que fez a chamada da função, determina qual ação está sendo selecionada.
+    */
+    public void OnItemButton(int index)  //Como seria para cancelar essa ação?
+    {
+        if (state != BattleState.MOVESELECTIONTURN){
+            return;
+        }
+        foreach (Transform child in ActionMenu.transform){//esconde o menu principal para escolher o alvo
+            child.gameObject.SetActive(false);
+        }
+
+        int[] a = partyMembers[SelectedPartyMember].Move.SetItem(index);//registra a ação
+        switch (a[0])
+        {
+            case 0:
+                LowPriorityBattleOrder.Add(partyMembers[SelectedPartyMember]);
+            break;
+            case 1:
+                BattleOrder.Add(partyMembers[SelectedPartyMember]);
+            break;
+            case 2:
+                PriorityBattleOrder.Add(partyMembers[SelectedPartyMember]);
+            break;
+            case 3:
+                MaxPriorityBattleOrder.Add(partyMembers[SelectedPartyMember]);
+            break;
+            default:
+            break;
+        }
+        targetMode = (Skill.TARGET_TYPE)a[1];
+        StartCoroutine(TargetSelectionTurn());//inicia a ação de escolher um alvo
+        
+    }
+
+
 }

@@ -123,6 +123,14 @@ public class Unit : MonoBehaviour
         return true;
     }
 
+    /**
+    * Procura um item com ID "itemID" na mochila, e o utiliza se existir
+    * 
+    */
+    public bool PayItemCost(int itemID){
+        return BS.bag.UseItem(itemID);
+    }
+
     public void BattleSystemReference(Battle_System b){
         BS = b;
     }
@@ -233,7 +241,7 @@ public class Unit : MonoBehaviour
     * Quando tentar capturar uma unidade selvagem, essa função determina se a captura foi efetiva ou nao
     * caso seja, transfere a unidade para equipe do jogador (se tiver espaço) ou para o banco
     */
-    public IEnumerator Capture(float bonus = 10){
+    public IEnumerator Capture(int bonus, Color color){
         if (isPlayerUnit)
         {
             yield return null;
@@ -241,14 +249,14 @@ public class Unit : MonoBehaviour
         else{
             int rng = UnityEngine.Random.Range(0, 255);
             int a = Mathf.CeilToInt((3*maxHP - 2*currentHP)*catch_rate*bonus/(10*3*maxHP)); //quando a vida está cheia, a chance de captura é de apenas 1/3 e com 1 de vida, a chance é 1
-            Debug.Log(a);
-            Debug.Log(rng);
+            Debug.Log("a = "+ a);
+            Debug.Log("rng = "+ rng);
             if(a > rng){
                 GameManager.Instance.CapturedUnit(this);
                 BS.dialogueText.text = "You tamed " + unitName + "!";
                 GameObject Anim = Instantiate(Resources.Load("VFX/Skill_Animation"), transform.position, Quaternion.identity) as GameObject; 
                 Animator animator = Anim.GetComponent<Animator>();
-                Anim.GetComponent<SpriteRenderer>().color =  new Color(0.25f, 0.75f, 0.96f, 1f);
+                Anim.GetComponent<SpriteRenderer>().color = color;
                 animator.Play("Barrier");
                 //Fetch the current Animation clip information for the base layer
                 AnimatorClipInfo[] m_CurrentClipInfo = animator.GetCurrentAnimatorClipInfo(0);

@@ -12,13 +12,27 @@ public class BattleAction : MonoBehaviour
     public enum Act
     {
         ATTACK, GUARD, ESCAPE, CAPTURE, 
-        SKILL, NULL
+        SKILL, ITEM, NULL
     }
     private Act act;
     private List<Unit> TargetList = new List<Unit>(); //todos os alvos de uma ação serão colocados dentro deste array
 
     private Unit unitRef;
     private int skillID;
+    private int itemID;
+    Skill.SkillData attackAction = new Skill.SkillData (/*name*/        "Tackle", 
+                                                        /*type*/         Skill.TYPE.NORMAL, 
+                                                        /*target_type*/  Skill.TARGET_TYPE.SINGLE, 
+                                                        /*priority*/     Skill.PRIORITY.NORMAL, 
+                                                        /*power*/        (int)BASEPOWER, 
+                                                        /*accuracy*/     100, 
+                                                        /*cost*/         0,
+                                                        /*status_effect*/Skill.STATUS_EFFECT.NULL, 
+                                                        /*isSpecial*/    false, 
+                                                        /*isRanged*/     false,
+                                                        /*ID*/           -1,
+                                                        /*VFX*/          "Punch",
+                                                        /*VFX_COLOR*/    Color.white);
     /**
     * Seta as ações a serem tomadas por uma unidade durante a batalha
     */
@@ -40,6 +54,16 @@ public class BattleAction : MonoBehaviour
         return(r);
     }
 
+    public int[] SetItem(int index){
+        act = Act.ITEM;
+        itemID = index;
+        //olha informação da skill para ver que tipo de alvo que deve ser utilizado
+        int[] r = new int[2];
+        Item.ItemData i = Item.ItemList[itemID];
+        r[0] = (int)i.Priority;
+        r[1] = (int)i.Target_type;
+        return(r);
+    }
     public void Start(){
         unitRef = gameObject.GetComponent<Unit>();
     }
@@ -56,9 +80,9 @@ public class BattleAction : MonoBehaviour
             {
                 if(!TargetList[0].isDead){
                     //criar uma skill pra ataque basico e sumir com esse act.ATTACK
+                    
 
-                    //int damage = DamageCalculation(50.0f, TargetList[0]);
-                    int damage = 4;
+                    int damage = DamageCalculation(attackAction, TargetList[0]);
                     wait += MoveAnimation("Punch", TargetList[0].HUD.transform, Color.white);
                     //play soundfx
                     //display mensage
@@ -77,11 +101,6 @@ public class BattleAction : MonoBehaviour
             case Act.ESCAPE://Tenta escapar
             {
                 TargetList[0].Escape();
-                break;
-            }
-            case Act.CAPTURE://tenta capturar o demonio
-            {
-                yield return TargetList[0].Capture();
                 break;
             }
             case Act.SKILL://tenta capturar o demonio
@@ -116,6 +135,42 @@ public class BattleAction : MonoBehaviour
                 }
                 break;
             }
+            case Act.ITEM://tenta capturar o demonio
+            {
+                int damage;
+                bool payed = false;
+                Item.ItemData item = Item.ItemList[itemID];
+                for (int i = 0; i < TargetList.Count; i++)
+                {
+                    if(TargetList[i].isDead){
+                        continue;
+                    }
+                    if(!payed){//paga o custo para usar a skill
+                        payed = unitRef.PayItemCost(itemID);
+                    }
+                    if(!payed){//caso nao tenha conseguido pagar o custo da skill, não executa a skill
+                        Debug.Log("Não foi possível pagar a habilidade");
+                        i = TargetList.Count;
+                        continue;
+                    }
+                    if(item.Status_effect == Item.STATUS_EFFECT.CAPTURE){
+                        StartCoroutine(TargetList[0].Capture(item.Power, item.COLOR));
+                        continue;
+                    }
+                    //calcula o dano e registra o dano (se a habilidade causar dano)
+                    if(item.Power > 0){
+                        damage = ItemDamageCalculation(item, TargetList[i]);
+                        Debug.Log(damage);
+                        TargetList[i].TakeDamage(damage);
+                    }
+                    else if(item.Power < 0){
+                        damage = HealCalculation(-(float)item.Power, TargetList[i]);
+                        TargetList[i].HealDamage(damage);
+                    }
+                    wait += MoveAnimation(item.VFX, TargetList[i].HUD.transform, item.COLOR);
+                }
+                break;
+            }
             default: 
             break;
         }
@@ -136,6 +191,33 @@ public class BattleAction : MonoBehaviour
     * Equação que calcula o dano
     */
     int DamageCalculation(Skill.SkillData s, Unit Target){
+        float POWERRATIO = (s.Power/BASEPOWER);
+        float ATKDEFRATIO;
+        if(!s.IsSpecial){
+            ATKDEFRATIO = ((float)unitRef.attack/(float)Target.defence);
+        }
+        else{
+            ATKDEFRATIO = ((float)unitRef.special_attack/(float)Target.special_defence);
+        }
+
+        float TARGETLANEMODIFIER;
+        float ATTACKERLANEMODIFIER;
+        if(!s.IsRanged){
+            TARGETLANEMODIFIER = (1 - Target.isBackLine*0.25f);//Atacar alvos na backline causa 25% a menos de dano
+            ATTACKERLANEMODIFIER = (1 - unitRef.isBackLine*0.25f);//Atacantes da backline causam 25% a menos de dano fisico
+        }
+        else{
+            TARGETLANEMODIFIER = 1;
+            ATTACKERLANEMODIFIER = 1;
+        }
+        int damage = Mathf.CeilToInt(((5*unitRef.unitLevel)/5 + 2) * POWERRATIO * ATKDEFRATIO * TARGETLANEMODIFIER * ATTACKERLANEMODIFIER);
+        return damage;
+    }
+
+    /**
+    * Equação que calcula o dano de um item
+    */
+    int ItemDamageCalculation(Item.ItemData s, Unit Target){
         float POWERRATIO = (s.Power/BASEPOWER);
         float ATKDEFRATIO;
         if(!s.IsSpecial){
