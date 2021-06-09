@@ -32,7 +32,8 @@ public class BattleAction : MonoBehaviour
                                                         /*isRanged*/     false,
                                                         /*ID*/           -1,
                                                         /*VFX*/          "Punch",
-                                                        /*VFX_COLOR*/    Color.white);
+                                                        /*VFX_COLOR*/    Color.white,
+                                                        /*DESC*/         "");
     /**
     * Seta as ações a serem tomadas por uma unidade durante a batalha
     */

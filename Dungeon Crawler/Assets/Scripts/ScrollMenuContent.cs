@@ -43,6 +43,8 @@ public class ScrollMenuContent : MonoBehaviour
         Buttons.Add(new MenuButton(newButton, ID));
         newButton.transform.GetComponent<Button>().onClick.AddListener(() => BS.OnItemButton(ID));
         newButton.transform.GetChild(0).GetComponent<Text>().text = amount + "x" + item.Name;
+        newButton.transform.GetComponent<SelectableElement>().Battle_System = BS;
+        newButton.transform.GetComponent<SelectableElement>().text = item.Description;
     } 
 
     public void UpdateButtons(Bag bag){
@@ -52,7 +54,7 @@ public class ScrollMenuContent : MonoBehaviour
                 Destroy(Buttons[i].Button);
                 Buttons.RemoveAt(i);
             }
-            Buttons[i].Button.transform.GetChild(0).GetComponent<Text>().text = bag.items[i].amount + "x " + Item.ItemList[bag.items[i].ID].Name;
+            Buttons[i].Button.transform.GetChild(0).GetComponent<Text>().text = bag.items[i].amount + "x" + Item.ItemList[bag.items[i].ID].Name;
         }
     }  
 

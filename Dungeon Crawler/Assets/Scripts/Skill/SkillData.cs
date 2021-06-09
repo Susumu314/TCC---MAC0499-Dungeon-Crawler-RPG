@@ -27,9 +27,9 @@ public class Skill {
         private readonly int skill_ID;
         private readonly string vfx;
         private readonly Color vfx_color;
-
+        private readonly string description;
         public SkillData (string name, TYPE type, TARGET_TYPE target_type, PRIORITY priority, int power, int accuracy, int cost,
-                          STATUS_EFFECT status_effect, bool isSpecial, bool isRanged, int skill_ID, string vfx, Color vfx_color)
+                          STATUS_EFFECT status_effect, bool isSpecial, bool isRanged, int skill_ID, string vfx, Color vfx_color, string description)
         {
             this.name = name;
             this.type = type;
@@ -44,6 +44,7 @@ public class Skill {
             this.skill_ID = skill_ID;
             this.vfx = vfx;
             this.vfx_color = vfx_color;
+            this.description = description;
         }
         public string Name { get { return name; } }
         public TYPE Type { get { return type; } }
@@ -57,6 +58,7 @@ public class Skill {
         public bool IsRanged { get { return isRanged; } }
         public string VFX { get { return vfx; } }
         public Color COLOR { get { return vfx_color; } }
+        public string DESC { get { return description; } }
     }
     
     public static readonly IList<SkillData> SkillList= new ReadOnlyCollection<SkillData>
@@ -73,7 +75,8 @@ public class Skill {
                            /*isRanged*/     false,
                            /*ID*/           0,
                            /*VFX*/          "Punch",
-                           /*VFX_COLOR*/    Color.white),
+                           /*VFX_COLOR*/    Color.white,
+                           /*DESC*/         "A full-body charge attack."),
 
             new SkillData (/*name*/        "Heal", 
                            /*type*/         TYPE.NORMAL, 
@@ -87,7 +90,8 @@ public class Skill {
                            /*isRanged*/     true,
                            /*ID*/           1,
                            /*VFX*/          "Heal",
-                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f)),
+                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f),
+                           /*DESC*/         "Healing Spell that recovers HP of the target."),
 
             new SkillData (/*name*/        "Ember", 
                            /*type*/         TYPE.FIRE, 
@@ -101,7 +105,8 @@ public class Skill {
                            /*isRanged*/     true,
                            /*ID*/           2,
                            /*VFX*/          "Flame",
-                           /*VFX_COLOR*/    Color.white),
+                           /*VFX_COLOR*/    Color.white,
+                           /*DESC*/         "A weak fire attack that may inflict a burn."),
             
             new SkillData (/*name*/        "H_Slash", 
                            /*type*/         TYPE.NORMAL, 
@@ -115,7 +120,8 @@ public class Skill {
                            /*isRanged*/     false,
                            /*ID*/           3,
                            /*VFX*/          "Slash",
-                           /*VFX_COLOR*/    Color.white),
+                           /*VFX_COLOR*/    Color.white,
+                           /*DESC*/         "Slashes horizontally with claws, etc. Dealing damage to an entire row"),
             
             new SkillData (/*name*/        "H_Heal", 
                            /*type*/         TYPE.NORMAL, 
@@ -129,6 +135,7 @@ public class Skill {
                            /*isRanged*/     true,
                            /*ID*/           4,
                            /*VFX*/          "Heal",
-                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f)),
+                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f),
+                           /*DESC*/         "Healing Spell that recovers HP of an entire row"),
         });
 }

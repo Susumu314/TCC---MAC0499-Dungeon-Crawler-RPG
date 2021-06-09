@@ -31,9 +31,9 @@ public class Item {
         private readonly int skill_ID;
         private readonly string vfx;
         private readonly Color vfx_color;
-
+        private readonly string description;
         public ItemData (string name, TYPE type, TARGET_TYPE target_type, PRIORITY priority, int power, int accuracy, int cost,
-                          STATUS_EFFECT status_effect, bool isSpecial, bool isRanged, int skill_ID, string vfx, Color vfx_color)
+                          STATUS_EFFECT status_effect, bool isSpecial, bool isRanged, int skill_ID, string vfx, Color vfx_color, string description)
         {
             this.name = name;
             this.type = type;
@@ -48,6 +48,7 @@ public class Item {
             this.skill_ID = skill_ID;
             this.vfx = vfx;
             this.vfx_color = vfx_color;
+            this.description = description;
         }
         public string Name { get { return name; } }
         public TYPE Type { get { return type; } }
@@ -61,6 +62,7 @@ public class Item {
         public bool IsRanged { get { return isRanged; } }//Deve sempre ser ranged
         public string VFX { get { return vfx; } }
         public Color COLOR { get { return vfx_color; } }
+        public string Description { get { return description; } }
     }
     
     public static readonly IList<ItemData> ItemList= new ReadOnlyCollection<ItemData>
@@ -77,7 +79,8 @@ public class Item {
                            /*isRanged*/     true,
                            /*ID*/           0,
                            /*VFX*/          "Heal",
-                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f)),
+                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f),
+                           /*DESC*/         "Healing Potion that recovers a small amount of HP."),
 
             new ItemData (/*name*/        "H_Potion", 
                            /*type*/         TYPE.NORMAL, 
@@ -91,7 +94,8 @@ public class Item {
                            /*isRanged*/     true,
                            /*ID*/           1,
                            /*VFX*/          "Heal",
-                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f)),
+                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f),
+                           /*DESC*/         "Medicine that recovers a small amount HP of an entire row."),
 
             new ItemData (/*name*/        "GreatPotion", 
                            /*type*/         TYPE.NORMAL, 
@@ -105,7 +109,8 @@ public class Item {
                            /*isRanged*/     true,
                            /*ID*/           2,
                            /*VFX*/          "Heal",
-                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f)),
+                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f),
+                           /*DESC*/         "Medicine that recovers a great amount of HP."),
 
             new ItemData (/*name*/        "H_GreatPotion", 
                            /*type*/         TYPE.NORMAL, 
@@ -119,7 +124,8 @@ public class Item {
                            /*isRanged*/     true,
                            /*ID*/           3,
                            /*VFX*/          "Heal",
-                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f)),
+                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f),
+                           /*DESC*/         "Medicine that recovers a great amount HP of an entire row."),
             
             new ItemData (/*name*/        "UltraPotion", 
                            /*type*/         TYPE.NORMAL, 
@@ -133,7 +139,8 @@ public class Item {
                            /*isRanged*/     true,
                            /*ID*/           4,
                            /*VFX*/          "Heal",
-                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f)),
+                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f),
+                           /*DESC*/         "Medicine that recovers a large amount of HP."),
 
             new ItemData (/*name*/        "H_UltraPotion", 
                            /*type*/         TYPE.NORMAL, 
@@ -147,9 +154,10 @@ public class Item {
                            /*isRanged*/     true,
                            /*ID*/           5,
                            /*VFX*/          "Heal",
-                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f)),
+                           /*VFX_COLOR*/    new Color(0.6f, 1.0f, 0.92f, 1.0f),
+                           /*DESC*/         "Medicine that recovers a great amount HP of an entire row."),
             
-            new ItemData (/*name*/        "DemonSealer", 
+            new ItemData (/*name*/        "DemonSeal", 
                            /*type*/         TYPE.NORMAL, 
                            /*target_type*/  TARGET_TYPE.SINGLE, 
                            /*priority*/     PRIORITY.NORMAL, 
@@ -161,9 +169,10 @@ public class Item {
                            /*isRanged*/     true,
                            /*ID*/           6,
                            /*VFX*/          "Barrier",
-                           /*VFX_COLOR*/    new Color(0.25f, 0.75f, 0.96f, 1f)),
+                           /*VFX_COLOR*/    new Color(0.25f, 0.75f, 0.96f, 1f),
+                           /*DESC*/         "A tool for taming Demons."),
             
-            new ItemData (/*name*/        "QuickDemonSealer", 
+            new ItemData (/*name*/        "QuickDemonSeal", 
                            /*type*/         TYPE.NORMAL, 
                            /*target_type*/  TARGET_TYPE.SINGLE, 
                            /*priority*/     PRIORITY.HIGH, 
@@ -175,6 +184,22 @@ public class Item {
                            /*isRanged*/     true,
                            /*ID*/           7,
                            /*VFX*/          "Barrier",
-                           /*VFX_COLOR*/    Color.red)
+                           /*VFX_COLOR*/    Color.red,
+                           /*DESC*/         "A tool with high priority for taming Demons."),
+            
+            new ItemData (/*name*/        "GreatDemonSeal", 
+                           /*type*/         TYPE.NORMAL, 
+                           /*target_type*/  TARGET_TYPE.SINGLE, 
+                           /*priority*/     PRIORITY.NORMAL, 
+                           /*power*/        10, //nesse caso o poder se torna o bonus na chance de captura vezes 10
+                           /*accuracy*/     100, 
+                           /*cost*/         0,
+                           /*status_effect*/STATUS_EFFECT.CAPTURE, 
+                           /*isSpecial*/    true, 
+                           /*isRanged*/     true,
+                           /*ID*/           8,
+                           /*VFX*/          "Barrier",
+                           /*VFX_COLOR*/    new Color(0.25f, 0.75f, 0.96f, 1f),
+                           /*DESC*/         "A tool with a decent success rate for taming Demons.")
         });
 }

@@ -87,6 +87,8 @@ public class Battle_System : MonoBehaviour
     public int expEarned = 0;
 
     private Skill.TARGET_TYPE targetMode = Skill.TARGET_TYPE.SINGLE;
+
+    private bool Battle_SystemReferenceOnSkillMenu = false;
     /**
     * Chamado no primeiro frame em que o objeto é instanciado
     */
@@ -973,6 +975,13 @@ public class Battle_System : MonoBehaviour
             int skillID = partyMembers[SelectedPartyMember].skillList[i];
             Skill.SkillData s = Skill.SkillList[skillID];
             skillMenu.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = s.Name;
+            string description = "Power:" + Mathf.Abs(s.Power) + "  Accuracy:" + s.Accuracy + 
+                              "\nCost:" + s.Cost /*mudar isso para mostrar se eh custo de hp ou de mana*/+ "    Type:" + s.Type;  
+            SelectableElement selectable = skillMenu.transform.GetChild(i).GetComponent<SelectableElement>();
+            selectable.text = description;
+            if(!Battle_SystemReferenceOnSkillMenu){
+                selectable.Battle_System = this;
+            }
         }
         
         bagMenuContent.UpdateButtons(bag);
