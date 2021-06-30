@@ -7,7 +7,7 @@ using UnityEngine;
 */
 
 public class BattleAction : MonoBehaviour
-{
+{    
     static private float BASEPOWER = 50;
     public enum Act
     {
@@ -20,20 +20,26 @@ public class BattleAction : MonoBehaviour
     private Unit unitRef;
     private int skillID;
     private int itemID;
+    private float timer = 0.0f;
+    private bool startTimer = false;
+    private bool skip = false;
+    public float skipTime = 10f;
+    private float resistMod; 
     Skill.SkillData attackAction = new Skill.SkillData (/*name*/        "Tackle", 
-                                                        /*type*/         Skill.TYPE.NORMAL, 
+                                                        /*type*/         BaseStats.TYPE.NORMAL, 
                                                         /*target_type*/  Skill.TARGET_TYPE.SINGLE, 
                                                         /*priority*/     Skill.PRIORITY.NORMAL, 
                                                         /*power*/        (int)BASEPOWER, 
                                                         /*accuracy*/     100, 
                                                         /*cost*/         0,
-                                                        /*status_effect*/Skill.STATUS_EFFECT.NULL, 
+                                                        /*status_effect*/Skill.EFFECT.NULL, 
                                                         /*isSpecial*/    false, 
                                                         /*isRanged*/     false,
                                                         /*ID*/           -1,
                                                         /*VFX*/          "Punch",
                                                         /*VFX_COLOR*/    Color.white,
                                                         /*DESC*/         "");
+    Battle_System Battle_System;
     /**
     * Seta as ações a serem tomadas por uma unidade durante a batalha
     */
@@ -69,11 +75,24 @@ public class BattleAction : MonoBehaviour
         unitRef = gameObject.GetComponent<Unit>();
     }
 
+    public void InitBattleSystemRef(Battle_System b){
+        Battle_System = b;
+    }
+
+    void Update(){
+        if(startTimer){
+            timer += Time.deltaTime;
+            if(Input.anyKeyDown){
+                skip = true;
+            }
+        }
+    }
+
     /**
     * Realiza a ação de batalhas setadas pelo jogador durante o turno de seleção de ações
     */
     public IEnumerator PerformAction(){
-        float wait = 0.75f;
+        float wait = 0.2f;
         /*por enquanto, ações em alvos mortos, resultam em pular a ação*/
         switch (act)
         {
@@ -90,6 +109,7 @@ public class BattleAction : MonoBehaviour
                     //wait for animations and mensage
                     Debug.Log(damage);
                     TargetList[0].TakeDamage(damage);
+                    StartCoroutine(ShowDialog(unitRef.unitName + " attacked " + TargetList[0].unitName + ".", skipTime));
                 }
                 break;
             }
@@ -97,6 +117,7 @@ public class BattleAction : MonoBehaviour
             {
                 TargetList[0].SetGuard(true);//aqui esta assumindo que o target está sendo corretamente associado ao usuário
                 wait += MoveAnimation("Barrier", TargetList[0].HUD.transform, Color.white);
+                StartCoroutine(ShowDialog(unitRef.unitName + " is on guard.", skipTime));
                 break;
             }
             case Act.ESCAPE://Tenta escapar
@@ -112,27 +133,52 @@ public class BattleAction : MonoBehaviour
                 for (int i = 0; i < TargetList.Count; i++)
                 {
                     if(TargetList[i].isDead){
+                        if (TargetList.Count == 1){
+                            StartCoroutine(ShowDialog("The target is already dead", skipTime));
+                        }
                         continue;
                     }
                     if(!payed){//paga o custo para usar a skill
                         payed = unitRef.PaySkillCost(s.Cost, s.IsSpecial);
                     }
                     if(!payed){//caso nao tenha conseguido pagar o custo da skill, não executa a skill
-                        Debug.Log("Não foi possível pagar a habilidade");
+                        StartCoroutine(ShowDialog(unitRef.unitName + " can't pay the skill cost.", skipTime));
                         i = TargetList.Count;
                         continue;
                     }
+                    if(i == 0){
+                        StartCoroutine(ShowDialog(unitRef.unitName + " used " + s.Name, skipTime));
+                    }
+                    if(!Accuracy_Check(s, TargetList[i])){
+                        Debug.Log("Missed " + TargetList[i].unitName);
+                        StartCoroutine(ShowDialog(unitRef.unitName + " missed " + TargetList[i].unitName, skipTime));
+                        continue;
+                    }
+                    wait += MoveAnimation(s.VFX, TargetList[i].HUD.transform, s.COLOR);
                     //calcula o dano e registra o dano (se a habilidade causar dano)
                     if(s.Power > 0){
                         damage = DamageCalculation(s, TargetList[i]);
                         Debug.Log(damage);
                         TargetList[i].TakeDamage(damage);
+                        if(resistMod > 1){
+                            StartCoroutine(ShowDialog("It's SUPER EFFECTIVE!!!\nDamage:" + damage, skipTime)); 
+                        }
+                        if(resistMod == 0){
+                            StartCoroutine(ShowDialog("It's not effective.\nDamage:" + damage, skipTime)); 
+                        }
+                        else if(resistMod < 1){
+                            StartCoroutine(ShowDialog("It's not very effective.\nDamage:" + damage, skipTime)); 
+                        }
                     }
                     else if(s.Power < 0){
                         damage = HealCalculation(-(float)s.Power, TargetList[i]);
                         TargetList[i].HealDamage(damage);
+                        StartCoroutine(ShowDialog("Healed: " + damage, skipTime)); 
                     }
-                    wait += MoveAnimation(s.VFX, TargetList[i].HUD.transform, s.COLOR);
+                    //ativa efeitos especiais da habilidade
+                    if(s.Effect != Skill.EFFECT.NULL){
+                        Skill_Effect(s.Effect, TargetList[i]);
+                    }
                 }
                 break;
             }
@@ -144,16 +190,18 @@ public class BattleAction : MonoBehaviour
                 for (int i = 0; i < TargetList.Count; i++)
                 {
                     if(TargetList[i].isDead){
+                        StartCoroutine(ShowDialog("The target is already dead", skipTime));
                         continue;
                     }
                     if(!payed){//paga o custo para usar a skill
                         payed = unitRef.PayItemCost(itemID);
                     }
                     if(!payed){//caso nao tenha conseguido pagar o custo da skill, não executa a skill
-                        Debug.Log("Não foi possível pagar a habilidade");
+                        StartCoroutine(ShowDialog("You don't have any " + item.Name + " left.", skipTime));
                         i = TargetList.Count;
                         continue;
                     }
+                    wait += MoveAnimation(item.VFX, TargetList[i].HUD.transform, item.COLOR);
                     if(item.Status_effect == Item.STATUS_EFFECT.CAPTURE){
                         StartCoroutine(TargetList[0].Capture(item.Power, item.COLOR));
                         continue;
@@ -163,12 +211,21 @@ public class BattleAction : MonoBehaviour
                         damage = ItemDamageCalculation(item, TargetList[i]);
                         Debug.Log(damage);
                         TargetList[i].TakeDamage(damage);
+                        if(resistMod > 1){
+                            StartCoroutine(ShowDialog("It's SUPER EFFECTIVE!!!\nDamage:" + damage, skipTime)); 
+                        }
+                        if(resistMod == 0){
+                            StartCoroutine(ShowDialog("It's not effective.\nDamage:" + damage, skipTime)); 
+                        }
+                        else if(resistMod < 1){
+                            StartCoroutine(ShowDialog("It's not very effective.\nDamage:" + damage, skipTime)); 
+                        }
                     }
                     else if(item.Power < 0){
                         damage = HealCalculation(-(float)item.Power, TargetList[i]);
                         TargetList[i].HealDamage(damage);
+                        StartCoroutine(ShowDialog("Healed: " + damage, skipTime)); 
                     }
-                    wait += MoveAnimation(item.VFX, TargetList[i].HUD.transform, item.COLOR);
                 }
                 break;
             }
@@ -195,10 +252,10 @@ public class BattleAction : MonoBehaviour
         float POWERRATIO = (s.Power/BASEPOWER);
         float ATKDEFRATIO;
         if(!s.IsSpecial){
-            ATKDEFRATIO = ((float)unitRef.attack/(float)Target.defence);
+            ATKDEFRATIO = ((float)unitRef.attack*unitRef.attackModifier/(float)Target.defence*Target.defenceModifier);
         }
         else{
-            ATKDEFRATIO = ((float)unitRef.special_attack/(float)Target.special_defence);
+            ATKDEFRATIO = ((float)unitRef.special_attack*unitRef.special_attackModifier/(float)Target.special_defence*Target.special_defenceModifier);
         }
 
         float TARGETLANEMODIFIER;
@@ -211,7 +268,9 @@ public class BattleAction : MonoBehaviour
             TARGETLANEMODIFIER = 1;
             ATTACKERLANEMODIFIER = 1;
         }
-        int damage = Mathf.CeilToInt(((5*unitRef.unitLevel)/5 + 2) * POWERRATIO * ATKDEFRATIO * TARGETLANEMODIFIER * ATTACKERLANEMODIFIER);
+        float RESISTMODIFIER = BaseStats.Type_Chart[(int)s.Type,(int)Target.type];
+        resistMod = RESISTMODIFIER;
+        int damage = Mathf.CeilToInt(((5*unitRef.unitLevel)/5 + 2) * POWERRATIO * ATKDEFRATIO * TARGETLANEMODIFIER * ATTACKERLANEMODIFIER * RESISTMODIFIER);
         return damage;
     }
 
@@ -222,10 +281,10 @@ public class BattleAction : MonoBehaviour
         float POWERRATIO = (s.Power/BASEPOWER);
         float ATKDEFRATIO;
         if(!s.IsSpecial){
-            ATKDEFRATIO = ((float)unitRef.attack/(float)Target.defence);
+            ATKDEFRATIO = ((float)unitRef.attack*unitRef.attackModifier/(float)Target.defence*Target.defenceModifier);
         }
         else{
-            ATKDEFRATIO = ((float)unitRef.special_attack/(float)Target.special_defence);
+            ATKDEFRATIO = ((float)unitRef.special_attack*unitRef.special_attackModifier/(float)Target.special_defence*Target.special_defenceModifier);
         }
 
         float TARGETLANEMODIFIER;
@@ -238,7 +297,8 @@ public class BattleAction : MonoBehaviour
             TARGETLANEMODIFIER = 1;
             ATTACKERLANEMODIFIER = 1;
         }
-        int damage = Mathf.CeilToInt(((5*unitRef.unitLevel)/5 + 2) * POWERRATIO * ATKDEFRATIO * TARGETLANEMODIFIER * ATTACKERLANEMODIFIER);
+        float RESISTMODIFIER = BaseStats.Type_Chart[(int)s.Type,(int)Target.type];
+        int damage = Mathf.CeilToInt(((5*unitRef.unitLevel)/5 + 2) * POWERRATIO * ATKDEFRATIO * TARGETLANEMODIFIER * ATTACKERLANEMODIFIER * RESISTMODIFIER);
         return damage;
     }
 
@@ -249,5 +309,201 @@ public class BattleAction : MonoBehaviour
         float POWERRATIO = (POWER/BASEPOWER);
         int damage = Mathf.CeilToInt(((5*unitRef.unitLevel)/5 + 2) * POWERRATIO);
         return damage;
+    }
+
+    /**
+    * Função que checa se um golpe acertou o alvo ou não
+    */
+    private bool Accuracy_Check(Skill.SkillData s, Unit Target){
+        int rng = UnityEngine.Random.Range(0, 100);
+        int accuracy = Mathf.RoundToInt(s.Accuracy*unitRef.accuracyModifier*(1.0f/Target.evasion));
+        Debug.Log("Accuracy_Check - RNG = " + rng + " accuracy = " + accuracy);
+        return (rng<accuracy);
+    }
+
+    /**
+    * Função que mostra os dialogos de batalha, esperando um tempo determinado ou input do usuario para passar o dialogo
+    * 
+    * @param text Texto a ser mostrado pela caixa de dialogos
+    * @waitTime Tempo maximo para se esperar antes de passar o dialogo automaticamente
+    */
+    private IEnumerator ShowDialog(string text, float waitTime){
+        Battle_System.dialogueText.text = text;
+        startTimer = true;
+        timer = 0f;
+        yield return new WaitUntil(() => ((timer >= waitTime) || skip));//isso aqui nao esta funcionando por algum motivo
+        startTimer = false;
+        skip = false;
+    }
+
+    /**
+    * Função que executa os efeitos das habilidades
+    */
+    private void Skill_Effect(Skill.EFFECT e, Unit Target){
+        switch (e)
+        {   
+            //buffs e debuffs a status incrementam e decrementam os modificadores em multiplos de 50% de cada vez
+            case Skill.EFFECT.ATK_UP:{
+                Target.modStages[0] = Mathf.Min(6, Target.modStages[0] + 1);
+                if (Target.modStages[0] >= 0)
+                {
+                    Target.attackModifier = (2.0f + Target.modStages[0])/2.0f;
+                    StartCoroutine(ShowDialog("ATK UP!", skipTime));
+                    Debug.Log("Attack mod" + Target.attackModifier);
+                }
+                else{
+                    Target.attackModifier = 2.0f/(2.0f - Target.modStages[0]);
+                    StartCoroutine(ShowDialog("ATK DOWN!", skipTime));
+                    Debug.Log("Attack mod " + Target.attackModifier);
+                }
+                break;
+            }
+            case Skill.EFFECT.DEF_UP:{
+                Target.modStages[1] = Mathf.Min(6, Target.modStages[1] + 1);
+                if (Target.modStages[1] >= 1)
+                {
+                    Target.defenceModifier = (2.0f + Target.modStages[1])/2.0f;
+                }
+                else{
+                    Target.defenceModifier = 2.0f/(2.0f - Target.modStages[1]);
+                }
+                break;
+            }
+            case Skill.EFFECT.SPATK_UP:{
+                Target.modStages[2] = Mathf.Min(6, Target.modStages[2] + 1);
+                if (Target.modStages[2] >= 1)
+                {
+                    Target.special_attackModifier = (2.0f + Target.modStages[2])/2.0f;
+                }
+                else{
+                    Target.special_attackModifier = 2.0f/(2.0f - Target.modStages[2]);
+                }
+                break;
+            }
+            case Skill.EFFECT.SPDEF_UP:{
+                Target.modStages[3] = Mathf.Min(6, Target.modStages[3] + 1);
+                if (Target.modStages[3] >= 1)
+                {
+                    Target.special_defenceModifier = (2.0f + Target.modStages[3])/2.0f;
+                }
+                else{
+                    Target.special_defenceModifier = 2.0f/(2.0f - Target.modStages[3]);
+                }
+                break;
+            }
+            case Skill.EFFECT.SPEED_UP:{
+                Target.modStages[4] = Mathf.Min(6, Target.modStages[4] + 1);
+                if (Target.modStages[4] >= 1)
+                {
+                    Target.speedModifier = (2.0f + Target.modStages[4])/2.0f;
+                }
+                else{
+                    Target.speedModifier = 2.0f/(2.0f - Target.modStages[4]);
+                }
+                break;
+            }
+            case Skill.EFFECT.ACC_UP:{
+                Target.modStages[5] = Mathf.Min(6, Target.modStages[5] + 1);
+                if (Target.modStages[5] >= 1)
+                {
+                    Target.accuracyModifier = (3.0f + Target.modStages[5])/3.0f;
+                }
+                else{
+                    Target.accuracyModifier = 3.0f/(3.0f - Target.modStages[5]);
+                }
+                break;
+            }
+            case Skill.EFFECT.EVASION_UP:{
+                Target.modStages[6] = Mathf.Min(6, Target.modStages[6] + 1);
+                if (Target.modStages[6] >= 1)
+                {
+                    Target.evasion = (3.0f + Target.modStages[6])/3.0f;
+                }
+                else{
+                    Target.evasion = 3.0f/(3.0f - Target.modStages[6]);
+                }
+                break;
+            }
+            case Skill.EFFECT.ATK_DOWN:{
+                Target.modStages[0] = Mathf.Max(-6, Target.modStages[0] - 1);
+                if (Target.modStages[0] >= 0)
+                {
+                    Target.attackModifier = (2.0f + Target.modStages[0])/2.0f;
+                }
+                else{
+                    Target.attackModifier = 2.0f/(2.0f - Target.modStages[0]);
+                }
+                break;
+            }
+            case Skill.EFFECT.DEF_DOWN:{
+                Target.modStages[1] = Mathf.Max(-6, Target.modStages[1] - 1);
+                if (Target.modStages[1] >= 1)
+                {
+                    Target.defenceModifier = (2.0f + Target.modStages[1])/2.0f;
+                }
+                else{
+                    Target.defenceModifier = 2.0f/(2.0f - Target.modStages[1]);
+                }
+                break;
+            }
+            case Skill.EFFECT.SPATK_DOWN:{
+                Target.modStages[2] = Mathf.Max(-6, Target.modStages[2] - 1);
+                if (Target.modStages[2] >= 1)
+                {
+                    Target.special_attackModifier = (2.0f + Target.modStages[2])/2.0f;
+                }
+                else{
+                    Target.special_attackModifier = 2.0f/(2.0f - Target.modStages[2]);
+                }
+                break;
+            }
+            case Skill.EFFECT.SPDEF_DOWN:{
+                Target.modStages[3] = Mathf.Max(-6, Target.modStages[3] - 1);
+                if (Target.modStages[3] >= 1)
+                {
+                    Target.special_defenceModifier = (2.0f + Target.modStages[3])/2.0f;
+                }
+                else{
+                    Target.special_defenceModifier = 2.0f/(2.0f - Target.modStages[3]);
+                }
+                break;
+            }
+            case Skill.EFFECT.SPEED_DOWN:{
+                Target.modStages[4] = Mathf.Max(-6, Target.modStages[4] - 1);
+                if (Target.modStages[4] >= 1)
+                {
+                    Target.speedModifier = (2.0f + Target.modStages[4])/2.0f;
+                }
+                else{
+                    Target.speedModifier = 2.0f/(2.0f - Target.modStages[4]);
+                }
+                break;
+            }
+            case Skill.EFFECT.ACC_DOWN:{
+                Target.modStages[5] = Mathf.Max(-6, Target.modStages[5] - 1);
+                if (Target.modStages[5] >= 1)
+                {
+                    Target.accuracyModifier = (3.0f + Target.modStages[5])/3.0f;
+                }
+                else{
+                    Target.accuracyModifier = 3.0f/(3.0f - Target.modStages[5]);
+                }
+                break;
+            }
+            case Skill.EFFECT.EVASION_DOWN:{
+                Target.modStages[6] = Mathf.Max(-6, Target.modStages[6] - 1);
+                if (Target.modStages[6] >= 1)
+                {
+                    Target.evasion = (3.0f + Target.modStages[6])/3.0f;
+                }
+                else{
+                    Target.evasion = 3.0f/(3.0f - Target.modStages[6]);
+                }
+                break;
+            }
+            default:
+            break;
+        }
+        Target.ShowStatusMods();
     }
 }

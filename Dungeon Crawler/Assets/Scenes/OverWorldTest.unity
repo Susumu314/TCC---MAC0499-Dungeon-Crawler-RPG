@@ -766,8 +766,32 @@ MonoBehaviour:
     isIntro: 0
     mainMusic: 
     isMusic: 0
-  - name: Flame
-    clip: {fileID: 8300000, guid: 60c8d7043193fc7448b1fa5110a12c8d, type: 3}
+  - name: Flame_Swoosh
+    clip: {fileID: 8300000, guid: 0c3920efc55f1bf4bacab6c40b5f13cf, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Splash
+    clip: {fileID: 8300000, guid: 2c12e45cd70efb94c8474dd06355e353, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Absorb
+    clip: {fileID: 8300000, guid: d61ddef4b468df246b2b451eb045c2f3, type: 3}
     volume: 0.25
     volumeVariance: 0
     pitch: 1
@@ -780,6 +804,30 @@ MonoBehaviour:
     isMusic: 0
   - name: Heal
     clip: {fileID: 8300000, guid: 218d06a8a21c97f41b1979b6e58a7b00, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Buff
+    clip: {fileID: 8300000, guid: 92fd3197adcf6a846a88ccc4b2b161ec, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Debuff
+    clip: {fileID: 8300000, guid: ca3a0fa2a94d50a4f8d58fcdbf2620fb, type: 3}
     volume: 0.25
     volumeVariance: 0
     pitch: 1
@@ -2659,6 +2707,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1448428313141040001, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
+      propertyPath: unitLevel
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448428313141040001, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
       propertyPath: isPlayerUnit
       value: 1
       objectReference: {fileID: 0}
@@ -2685,7 +2738,7 @@ PrefabInstance:
     - target: {fileID: 2226254526971190764, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
       propertyPath: unitLevel
-      value: 12
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2226254526971190764, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
@@ -2860,7 +2913,7 @@ PrefabInstance:
     - target: {fileID: 3540182556563301064, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
       propertyPath: species
-      value: Rabbit Bandit
+      value: Sea Crab
       objectReference: {fileID: 0}
     - target: {fileID: 3540182556563301064, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
@@ -2870,7 +2923,7 @@ PrefabInstance:
     - target: {fileID: 3540182556563301064, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
       propertyPath: unitLevel
-      value: 50
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3540182556563301064, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
@@ -2884,8 +2937,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8536613912333044621, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
+      propertyPath: species
+      value: Toxic Carnivorous Plant A
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536613912333044621, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
       propertyPath: unitName
-      value: Rabbit
+      value: Bulb
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536613912333044621, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
+      propertyPath: unitLevel
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8536613912333044621, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}

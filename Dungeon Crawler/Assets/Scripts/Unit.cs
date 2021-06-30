@@ -6,6 +6,16 @@ using UnityEngine.UI;
 
 public class Unit : MonoBehaviour
 {
+    public enum STATUS_CONDITION {NULL, POISON, BURN, FREEZE, PARALYSIS};
+    public int[] modStages = new int[7]{0,0,0,0,0,0,0};
+    public float attackModifier;
+    public float defenceModifier;
+    public float special_attackModifier;
+    public float special_defenceModifier;
+    public float speedModifier;
+    public float accuracyModifier;
+    public float evasion; //no inicio das lutas sempre começa em 1, age como um dos statsMods
+    public int MAX_SKILL_NUMBER;
     public string species;
     public string unitName;
     public int unitLevel;
@@ -53,6 +63,7 @@ public class Unit : MonoBehaviour
     private float baseExp;
     private float exponent;
     public int[] skillList;// por enquanto cada unidade tem 4 skills, essa lista contem os ID de cada skill
+    private List<MovePool.LevelUp_Move> movePool;
     public Unit(string species, string unitName, int unitLevel/*, int hp, int mp*/){
         this.species = species;
         this.unitName = unitName;
@@ -63,7 +74,12 @@ public class Unit : MonoBehaviour
     }
 
     void Awake(){
-        skillList = new int[4];
+        MAX_SKILL_NUMBER = 4;
+        skillList = new int[MAX_SKILL_NUMBER];
+        for (int i = 0; i < MAX_SKILL_NUMBER; i++)
+        {
+            skillList[i] = -1;
+        }
     }
     void Update(){
     }
@@ -133,6 +149,7 @@ public class Unit : MonoBehaviour
 
     public void BattleSystemReference(Battle_System b){
         BS = b;
+        Move.InitBattleSystemRef(b);
     }
 
     public void SetGuard(bool guard){ // setter para definir se o personagem esta defendendo
@@ -171,10 +188,15 @@ public class Unit : MonoBehaviour
             return;
         }
         // setando skills para teste
-        skillList[0] = 0;
-        skillList[1] = 1;
-        skillList[2] = 4;
-        skillList[3] = 3;
+        movePool = MovePool.SearchMovePool(species);
+        int m = 0;
+        foreach (MovePool.LevelUp_Move move in movePool)
+        {
+            if(move.Level <= unitLevel){
+                skillList[m%MAX_SKILL_NUMBER] = move.SkillID;
+                m++;
+            }
+        }
         
         this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Demon Sprites/" + species);
         stats = BaseStats.SearchDex(species);
@@ -268,6 +290,23 @@ public class Unit : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    /**
+    * Deve ser chamada todo começo de batalha, reseta todos os modificadores de stats a 1
+    */
+    public void ResetStatMods(){
+        modStages = new int[7]{0,0,0,0,0,0,0};
+        attackModifier = 1;
+        defenceModifier = 1;
+        special_attackModifier = 1;
+        special_defenceModifier = 1;
+        speedModifier = 1;
+        accuracyModifier = 1;
+        evasion = 1;
+    }
+    public void ShowStatusMods(){
+        HUD.SetStatusModText(modStages);
     }
 }
 

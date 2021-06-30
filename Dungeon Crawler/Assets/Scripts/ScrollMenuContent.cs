@@ -61,5 +61,6 @@ public class ScrollMenuContent : MonoBehaviour
     public void SetCancelButton(){
         transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() => AM.OnMainMenuButton());
         transform.GetChild(0).SetAsLastSibling();
+        AM.defaultButton = transform.GetChild(0).GetComponent<Button>();
     }
 }

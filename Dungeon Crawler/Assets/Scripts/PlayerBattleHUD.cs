@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 /**
 * Classe que utilizada para controlar a HUD de uma dos membros da equipe
@@ -18,6 +19,13 @@ public class PlayerBattleHUD : MonoBehaviour
     private Unit unit;
     public bool isSelected;
     public bool isTarget;
+    public TextMeshProUGUI statusMod;
+
+    public void Awake(){
+        if(statusMod == null){
+            statusMod = transform.GetChild(transform.childCount-1).GetComponent<TextMeshProUGUI>();
+        }
+    }
 
 
     /**
@@ -102,5 +110,73 @@ public class PlayerBattleHUD : MonoBehaviour
     public void is_Target(bool selected){
         Target_Indicator.SetActive(selected);
         isTarget = selected;
+    }
+
+    public void SetStatusModText(int[] modStages){
+        string text = "";
+        if (modStages[0] != 0){//atk
+            text += "<sprite=52>";
+            if(modStages[0] > 0){
+                text += "<sprite=" + (283 + modStages[0]) + ">";
+            }
+            else{
+                text += "<sprite=" + (289 - modStages[0]) + ">";
+            }
+        }
+        if (modStages[1] != 0){//def
+            text += "<sprite=65>";
+            if(modStages[1] > 0){
+                text += "<sprite=" + (283 + modStages[1]) + ">";
+            }
+            else{
+                text += "<sprite=" + (289 - modStages[1]) + ">";
+            }
+        }
+        if (modStages[2] != 0){//spatk
+            text += "<sprite=71>";
+            if(modStages[2] > 0){
+                text += "<sprite=" + (283 + modStages[2]) + ">";
+            }
+            else{
+                text += "<sprite=" + (289 - modStages[2]) + ">";
+            }
+        }
+        if (modStages[3] != 0){//spdef
+            text += "<sprite=90>";
+            if(modStages[3] > 0){
+                text += "<sprite=" + (283 + modStages[3]) + ">";
+            }
+            else{
+                text += "<sprite=" + (289 - modStages[3]) + ">";
+            }
+        }
+        if (modStages[4] != 0){//speed
+            text += "<sprite=95>";
+            if(modStages[4] > 0){
+                text += "<sprite=" + (283 + modStages[4]) + ">";
+            }
+            else{
+                text += "<sprite=" + (289 - modStages[4]) + ">";
+            }
+        }
+        if (modStages[5] != 0){//acc
+            text += "<sprite=126>";
+            if(modStages[5] > 0){
+                text += "<sprite=" + (283 + modStages[5]) + ">";
+            }
+            else{
+                text += "<sprite=" + (289 - modStages[5]) + ">";
+            }
+        }
+        if (modStages[6] != 0){//evasion
+            text += "<sprite=35>";
+            if(modStages[6] > 0){
+                text += "<sprite=" + (283 + modStages[6]) + ">";
+            }
+            else{
+                text += "<sprite=" + (289 - modStages[6]) + ">";
+            }
+        }
+        statusMod.SetText(text);
     }
 }

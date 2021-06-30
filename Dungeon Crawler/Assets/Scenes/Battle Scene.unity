@@ -165,6 +165,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1328310191}
     m_Modifications:
+    - target: {fileID: 30957502671239487, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 30957502671239487, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: Battle_System
+      value: 
+      objectReference: {fileID: 2137365980}
     - target: {fileID: 207688775420531813, guid: b85740afb5cc41b409a74ef7fec6bad5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -325,6 +335,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1496841174177911160, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496841174177911160, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: Battle_System
+      value: 
+      objectReference: {fileID: 2137365980}
+    - target: {fileID: 1833200230143763956, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833200230143763956, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: Battle_System
+      value: 
+      objectReference: {fileID: 2137365980}
     - target: {fileID: 2990421624327602738, guid: b85740afb5cc41b409a74ef7fec6bad5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -545,11 +575,41 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6973854899813139152, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6973854899813139152, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: Battle_System
+      value: 
+      objectReference: {fileID: 2137365980}
     - target: {fileID: 7301796776958798795, guid: b85740afb5cc41b409a74ef7fec6bad5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7464883968549220669, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464883968549220669, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: Battle_System
+      value: 
+      objectReference: {fileID: 2137365980}
+    - target: {fileID: 8086217463221357198, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8086217463221357198, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: Battle_System
+      value: 
+      objectReference: {fileID: 2137365980}
     - target: {fileID: 8934631120277394457, guid: b85740afb5cc41b409a74ef7fec6bad5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -734,7 +794,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1150, y: 130}
+  m_SizeDelta: {x: 1500, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &611680939
 MonoBehaviour:
@@ -757,10 +817,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c41b1f5223956cd46ad3423387212caa, type: 3}
-    m_FontSize: 40
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 160
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1496,7 +1556,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -159}
-  m_SizeDelta: {x: 1200, y: 150}
+  m_SizeDelta: {x: 1536, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2101252466
 MonoBehaviour:

@@ -10,6 +10,22 @@ using UnityEngine;
 public class BaseStats {
     public enum TYPE {NORMAL, FIRE, GRASS, WATER, AIR, DARK, LIGHT, ICE, ROCK, POISON, DRAGON, BUG};
     public enum GROWTH_RATE {SLOW, MEDIUM_SLOW, MEDIUM, FAST};
+
+    /*https://docs.google.com/spreadsheets/d/1vWlyqgGymH5bveSOcR9R_NGKcws0ANUOZ-86jbPp9jE/edit?usp=sharing*/
+    public static float[,] Type_Chart = new float[12,12]{ //Linha = atacante, coluna = defensor
+        {1, 1, 1, 1, 1, 1, 1, 1, 0.5f, 1, 1, 1},
+        {1,	0.5f, 2,	0.5f, 1,	1, 1, 2, 0.5f, 1, 0.5f, 2},
+        {1,	0.5f, 0.5f, 2, 1, 1, 1, 0.5f, 2, 0.5f, 1, 0.5f},
+        {1, 2, 0.5f, 0.5f, 0.5f, 1, 1, 0.5f, 2, 1, 0.5f, 1},
+        {1, 1, 2, 1, 1, 1, 1, 0.5f, 0.5f, 1, 0.5f, 2},
+        {2, 1, 1, 1, 1, 0.5f, 2, 1, 1, 1, 2, 0.5f},
+        {1, 1, 1, 1, 1, 2, 0.5f, 1, 1, 2, 1, 2},
+        {1,	0.5f, 2, 0.5f, 2, 1, 1, 0.5f, 0.5f, 1, 2, 1},
+        {1,	1, 1, 0.5f, 2, 1, 1, 2, 0.5f, 2, 1, 2},
+        {2,	1, 2, 2, 1, 1, 1, 1, 0.5f, 1, 0.5f, 0.5f},
+        {1,	1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1},
+        {1,	0.5f, 2, 1, 1, 2, 1, 1, 0.5f, 0.5f, 1, 1}
+    };
     public struct DemonStats{
         private readonly string SPECIES;
         private readonly int HP;

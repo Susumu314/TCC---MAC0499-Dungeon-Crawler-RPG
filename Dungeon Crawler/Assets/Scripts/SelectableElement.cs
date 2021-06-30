@@ -9,6 +9,9 @@ public class SelectableElement : MonoBehaviour, ISelectHandler// required interf
     public string text = "Description text goes here";
     public void OnSelect(BaseEventData eventData)
     {
+        if(!Battle_System){
+            return;
+        }
         Battle_System.dialogueText.text = text;
     }
 }

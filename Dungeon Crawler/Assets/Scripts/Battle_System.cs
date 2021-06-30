@@ -29,7 +29,7 @@ class Comparer : IComparer<Unit>
         }
           
         // CompareTo() method
-        return y.speed.CompareTo(x.speed);
+        return (y.speed*y.speedModifier).CompareTo(x.speed*x.speedModifier);
           
     }
 }
@@ -95,6 +95,7 @@ public class Battle_System : MonoBehaviour
     void Start()
     {
         bagMenuContent = ActionMenu.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetComponent<ScrollMenuContent>();
+        ActionMenu.transform.GetChild(0).GetComponent<ActionMenu>().Battle_System = this;
         state = BattleState.START;
         StartCoroutine(SetupBattle());
         switch (GameManager.Instance.battleID)
@@ -208,6 +209,15 @@ public class Battle_System : MonoBehaviour
                     VerticalPressed = false;
                 } 
             }
+            // Espero que isso aqui esteja certo
+            else if(targetMode == Skill.TARGET_TYPE.SELF){
+                if (Input.GetButtonDown("Submit"))
+                {
+                    partyMembers[SelectedPartyMember].Move.SetAction(BattleAction.Act.NULL, new List<Unit> {partyMembers[TargetPartyMember]});
+                    partyMembers[TargetPartyMember].HUD.is_Target(false);
+                    StartCoroutine(SelectNextPartyMember());
+                }
+            }
 
             else if(targetMode == Skill.TARGET_TYPE.ALLY_ROW){
                if (Input.GetButtonDown("Submit"))//isso aqui ta insta sendo ativado quando entra no TARGETSELECTIONTURN
@@ -255,7 +265,8 @@ public class Battle_System : MonoBehaviour
             if (partyGO.transform.GetChild(i).GetComponent<Unit>().species == "")//por enquanto estou considerando que se a unidade nao tiver nome, ela nao existe
                 continue;
             partyMembers[i] = partyGO.transform.GetChild(i).GetComponent<Unit>();
-            partyMembers[i].InitStats(); 
+            partyMembers[i].InitStats();
+            partyMembers[i].ResetStatMods(); 
             partyMembers[i].BattleSystemReference(this);
             partyMembers[i].isBackLine = i/3;
             partyMembers[i].HUD = partyHUD.transform.GetChild(i).GetComponent<PlayerBattleHUD>();
@@ -281,7 +292,7 @@ public class Battle_System : MonoBehaviour
     * de movimento do primeiro personagem do grupo do jogador.
     */
     void MoveSelectionTurn(){
-        dialogueText.text = "What will you do?";
+        //dialogueText.text = "What will you do?";
         //At the start of the MOveSelectionTurn, input the AI moves
         //talvez fazer uma AI que trapaceia igual nos primeiros pokemons, onde o input do computador era
         //dado depois que o jogador escolhia a ação
@@ -390,6 +401,7 @@ public class Battle_System : MonoBehaviour
     */
     IEnumerator TargetSelectionTurn(){
         yield return null;
+        dialogueText.text = "Select Target";
         state = BattleState.TARGETSELECTIONTURN;
         // foreach (Transform child in ActionMenu.transform)//esconde o menu principal para escolher o alvo
         //     child.gameObject.SetActive(false);
@@ -435,6 +447,11 @@ public class Battle_System : MonoBehaviour
                     TargetPartyMember = 0;
                 }
             }
+            partyMembers[TargetPartyMember].HUD.is_Target(true); 
+        }
+
+        else if (targetMode == Skill.TARGET_TYPE.SELF){
+            TargetPartyMember = SelectedPartyMember;
             partyMembers[TargetPartyMember].HUD.is_Target(true); 
         }
 
@@ -831,6 +848,9 @@ public class Battle_System : MonoBehaviour
     */
     public void OnSkillButton(int index)  //Como seria para cancelar essa ação?
     {
+        if(partyMembers[SelectedPartyMember].skillList[index] == -1){
+            return;
+        }
         if (state != BattleState.MOVESELECTIONTURN){
             return;
         }
@@ -963,6 +983,7 @@ public class Battle_System : MonoBehaviour
             enemyUnits[i].InitEnemyUnit(enemy_formation[i], Random.Range(minLvl, maxLvl+1), i/3);
             Debug.Log(i/3);
             enemyUnits[i].InitStats();
+            enemyUnits[i].ResetStatMods();
             enemyUnits[i].BattleSystemReference(this);
             enemyUnits[i].HUD.SetHUD(enemyUnits[i]);
         }
@@ -973,10 +994,20 @@ public class Battle_System : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {   
             int skillID = partyMembers[SelectedPartyMember].skillList[i];
+            if(skillID == -1){
+                skillMenu.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = "Empty";
+                continue;
+            }
             Skill.SkillData s = Skill.SkillList[skillID];
             skillMenu.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = s.Name;
-            string description = "Power:" + Mathf.Abs(s.Power) + "  Accuracy:" + s.Accuracy + 
-                              "\nCost:" + s.Cost /*mudar isso para mostrar se eh custo de hp ou de mana*/+ "    Type:" + s.Type;  
+            string description = "Power:" + Mathf.Abs(s.Power) + "  Accuracy:" + s.Accuracy;
+            if(s.IsSpecial){
+                description += "\nCost:" + s.Cost + " MP Type:" + s.Type;
+            }      
+            else{
+                description += "\nCost:" + s.Cost*partyMembers[SelectedPartyMember].maxHP/100 + " HP Type:" + s.Type;
+            }   
+            description += "\n" + s.DESC;           
             SelectableElement selectable = skillMenu.transform.GetChild(i).GetComponent<SelectableElement>();
             selectable.text = description;
             if(!Battle_SystemReferenceOnSkillMenu){

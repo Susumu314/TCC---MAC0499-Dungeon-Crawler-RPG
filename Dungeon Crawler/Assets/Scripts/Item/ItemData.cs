@@ -8,19 +8,15 @@ using UnityEngine;
 * Os Atributos de cada demônio do jogo são calculados a partir de seus niveis e de seus atributos base
 */
 public class Item {
-    public enum TYPE {NORMAL, FIRE, GRASS, WATER, AIR, DARK, LIGHT, ICE, ROCK, POISON, DRAGON, BUG};
     public enum PRIORITY {LOW, NORMAL, HIGH, MAX};
-
-    //Isso aqui tem que ser exatamente igual ao skillTarget Type para funcionar corretamente
-    public enum TARGET_TYPE {SINGLE, ROW, PARTY, SINGLE_ALLY, ALLY_ROW, ALLY_PARTY};
     public enum STATUS_EFFECT {NULL, ATK_UP, ATK_DOWN, DEF_UP, DEF_DOWN, SPEED_UP, SPEED_DOWN,
                                POISON, BURN, FREEZE, PARALYSIS, CAPTURE}
 
     
     public struct ItemData{
         private readonly string name;
-        private readonly TYPE type;
-        private readonly TARGET_TYPE target_type;
+        private readonly BaseStats.TYPE type;
+        private readonly Skill.TARGET_TYPE target_type;
         private readonly PRIORITY priority;
         private readonly int power;
         private readonly int accuracy;
@@ -32,7 +28,7 @@ public class Item {
         private readonly string vfx;
         private readonly Color vfx_color;
         private readonly string description;
-        public ItemData (string name, TYPE type, TARGET_TYPE target_type, PRIORITY priority, int power, int accuracy, int cost,
+        public ItemData (string name, BaseStats.TYPE type, Skill.TARGET_TYPE target_type, PRIORITY priority, int power, int accuracy, int cost,
                           STATUS_EFFECT status_effect, bool isSpecial, bool isRanged, int skill_ID, string vfx, Color vfx_color, string description)
         {
             this.name = name;
@@ -51,8 +47,8 @@ public class Item {
             this.description = description;
         }
         public string Name { get { return name; } }
-        public TYPE Type { get { return type; } }
-        public TARGET_TYPE Target_type { get { return target_type; } }
+        public BaseStats.TYPE Type { get { return type; } }
+        public Skill.TARGET_TYPE Target_type { get { return target_type; } }
         public PRIORITY Priority { get { return priority; } }
         public int Power { get { return power; } }
         public int Accuracy { get { return accuracy; } }
@@ -68,8 +64,8 @@ public class Item {
     public static readonly IList<ItemData> ItemList= new ReadOnlyCollection<ItemData>
         (new[] {
             new ItemData (/*name*/        "Potion", 
-                           /*type*/         TYPE.NORMAL, 
-                           /*target_type*/  TARGET_TYPE.SINGLE_ALLY, 
+                           /*type*/         BaseStats.TYPE.NORMAL, 
+                           /*target_type*/  Skill.TARGET_TYPE.SINGLE_ALLY, 
                            /*priority*/     PRIORITY.NORMAL, 
                            /*power*/        -40, 
                            /*accuracy*/     100, 
@@ -83,8 +79,8 @@ public class Item {
                            /*DESC*/         "Healing Potion that recovers a small amount of HP."),
 
             new ItemData (/*name*/        "H_Potion", 
-                           /*type*/         TYPE.NORMAL, 
-                           /*target_type*/  TARGET_TYPE.ALLY_ROW, 
+                           /*type*/         BaseStats.TYPE.NORMAL, 
+                           /*target_type*/  Skill.TARGET_TYPE.ALLY_ROW, 
                            /*priority*/     PRIORITY.NORMAL, 
                            /*power*/        -20, 
                            /*accuracy*/     100, 
@@ -98,8 +94,8 @@ public class Item {
                            /*DESC*/         "Medicine that recovers a small amount HP of an entire row."),
 
             new ItemData (/*name*/        "GreatPotion", 
-                           /*type*/         TYPE.NORMAL, 
-                           /*target_type*/  TARGET_TYPE.SINGLE_ALLY, 
+                           /*type*/         BaseStats.TYPE.NORMAL, 
+                           /*target_type*/  Skill.TARGET_TYPE.SINGLE_ALLY, 
                            /*priority*/     PRIORITY.NORMAL, 
                            /*power*/        -60, 
                            /*accuracy*/     100, 
@@ -113,8 +109,8 @@ public class Item {
                            /*DESC*/         "Medicine that recovers a great amount of HP."),
 
             new ItemData (/*name*/        "H_GreatPotion", 
-                           /*type*/         TYPE.NORMAL, 
-                           /*target_type*/  TARGET_TYPE.ALLY_ROW, 
+                           /*type*/         BaseStats.TYPE.NORMAL, 
+                           /*target_type*/  Skill.TARGET_TYPE.ALLY_ROW, 
                            /*priority*/     PRIORITY.NORMAL, 
                            /*power*/        -30, 
                            /*accuracy*/     100, 
@@ -128,8 +124,8 @@ public class Item {
                            /*DESC*/         "Medicine that recovers a great amount HP of an entire row."),
             
             new ItemData (/*name*/        "UltraPotion", 
-                           /*type*/         TYPE.NORMAL, 
-                           /*target_type*/  TARGET_TYPE.SINGLE_ALLY, 
+                           /*type*/         BaseStats.TYPE.NORMAL, 
+                           /*target_type*/  Skill.TARGET_TYPE.SINGLE_ALLY, 
                            /*priority*/     PRIORITY.NORMAL, 
                            /*power*/        -80, 
                            /*accuracy*/     100, 
@@ -143,8 +139,8 @@ public class Item {
                            /*DESC*/         "Medicine that recovers a large amount of HP."),
 
             new ItemData (/*name*/        "H_UltraPotion", 
-                           /*type*/         TYPE.NORMAL, 
-                           /*target_type*/  TARGET_TYPE.ALLY_ROW, 
+                           /*type*/         BaseStats.TYPE.NORMAL, 
+                           /*target_type*/  Skill.TARGET_TYPE.ALLY_ROW, 
                            /*priority*/     PRIORITY.NORMAL, 
                            /*power*/        -40, 
                            /*accuracy*/     100, 
@@ -158,8 +154,8 @@ public class Item {
                            /*DESC*/         "Medicine that recovers a great amount HP of an entire row."),
             
             new ItemData (/*name*/        "DemonSeal", 
-                           /*type*/         TYPE.NORMAL, 
-                           /*target_type*/  TARGET_TYPE.SINGLE, 
+                           /*type*/         BaseStats.TYPE.NORMAL, 
+                           /*target_type*/  Skill.TARGET_TYPE.SINGLE, 
                            /*priority*/     PRIORITY.NORMAL, 
                            /*power*/        10, //nesse caso o poder se torna o bonus na chance de captura vezes 10
                            /*accuracy*/     100, 
@@ -173,8 +169,8 @@ public class Item {
                            /*DESC*/         "A tool for taming Demons."),
             
             new ItemData (/*name*/        "QuickDemonSeal", 
-                           /*type*/         TYPE.NORMAL, 
-                           /*target_type*/  TARGET_TYPE.SINGLE, 
+                           /*type*/         BaseStats.TYPE.NORMAL, 
+                           /*target_type*/  Skill.TARGET_TYPE.SINGLE, 
                            /*priority*/     PRIORITY.HIGH, 
                            /*power*/        10, //nesse caso o poder se torna o bonus na chance de captura vezes 10
                            /*accuracy*/     100, 
@@ -188,8 +184,8 @@ public class Item {
                            /*DESC*/         "A tool with high priority for taming Demons."),
             
             new ItemData (/*name*/        "GreatDemonSeal", 
-                           /*type*/         TYPE.NORMAL, 
-                           /*target_type*/  TARGET_TYPE.SINGLE, 
+                           /*type*/         BaseStats.TYPE.NORMAL, 
+                           /*target_type*/  Skill.TARGET_TYPE.SINGLE, 
                            /*priority*/     PRIORITY.NORMAL, 
                            /*power*/        10, //nesse caso o poder se torna o bonus na chance de captura vezes 10
                            /*accuracy*/     100, 

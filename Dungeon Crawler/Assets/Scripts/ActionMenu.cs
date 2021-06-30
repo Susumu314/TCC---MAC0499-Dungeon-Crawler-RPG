@@ -12,6 +12,7 @@ public class ActionMenu : MonoBehaviour
     public List<GameObject> SubMenu = new List<GameObject>();
     public GameObject MainMenu;
     public Button defaultButton;
+    public Battle_System Battle_System;
 
     void Update()
     {
@@ -28,6 +29,8 @@ public class ActionMenu : MonoBehaviour
     void OnEnable()
     {
         StartCoroutine(SelectDefaultButton());
+        if(Battle_System != null)
+            Battle_System.dialogueText.text = "What will you do?";
     }
     /**
     * Seleciona o primeiro botão do menu
@@ -35,8 +38,9 @@ public class ActionMenu : MonoBehaviour
     IEnumerator SelectDefaultButton()
     {
         yield return null;
-        defaultButton.Select();// por algum motivo o botao nao fica em highlight quando o menu é ativado pelo 
-                               // SelectNextPartyMember(), verificar porquê e consertar algum dia.
+        defaultButton.Select();// por algum motivo o botao nao fica em highlight quando o menu é aberto
+                            // depois de ser selecionado o default button
+        defaultButton.OnSelect(null); 
     }
 
     /**
@@ -57,5 +61,12 @@ public class ActionMenu : MonoBehaviour
     {
         MainMenu.SetActive(true);
         this.gameObject.SetActive(false);
+    }
+
+    /**
+    * Inicializa referencia ao Battle System
+    */
+    public void InitBS(Battle_System b){
+        Battle_System = b;
     }
 }
