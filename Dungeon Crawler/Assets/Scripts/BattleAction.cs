@@ -14,16 +14,16 @@ public class BattleAction : MonoBehaviour
         ATTACK, GUARD, ESCAPE, CAPTURE, 
         SKILL, ITEM, NULL
     }
-    private Act act;
+    public Act act;
     private List<Unit> TargetList = new List<Unit>(); //todos os alvos de uma ação serão colocados dentro deste array
 
     private Unit unitRef;
-    private int skillID;
+    public int skillID;
     private int itemID;
     private float timer = 0.0f;
     private bool startTimer = false;
     private bool skip = false;
-    public float skipTime = 10f;
+    public float skipTime;
     private float resistMod; 
     Skill.SkillData attackAction = new Skill.SkillData (/*name*/        "Tackle", 
                                                         /*type*/         BaseStats.TYPE.NORMAL, 
@@ -73,6 +73,7 @@ public class BattleAction : MonoBehaviour
     }
     public void Start(){
         unitRef = gameObject.GetComponent<Unit>();
+        skipTime = 1.0f;
     }
 
     public void InitBattleSystemRef(Battle_System b){
@@ -92,7 +93,7 @@ public class BattleAction : MonoBehaviour
     * Realiza a ação de batalhas setadas pelo jogador durante o turno de seleção de ações
     */
     public IEnumerator PerformAction(){
-        float wait = 0.2f;
+        float wait = 0.0f;
         /*por enquanto, ações em alvos mortos, resultam em pular a ação*/
         switch (act)
         {
@@ -109,7 +110,7 @@ public class BattleAction : MonoBehaviour
                     //wait for animations and mensage
                     Debug.Log(damage);
                     TargetList[0].TakeDamage(damage);
-                    StartCoroutine(ShowDialog(unitRef.unitName + " attacked " + TargetList[0].unitName + ".", skipTime));
+                    yield return ShowDialog(unitRef.unitName + " attacked " + TargetList[0].unitName + ".", skipTime);
                 }
                 break;
             }
@@ -117,7 +118,7 @@ public class BattleAction : MonoBehaviour
             {
                 TargetList[0].SetGuard(true);//aqui esta assumindo que o target está sendo corretamente associado ao usuário
                 wait += MoveAnimation("Barrier", TargetList[0].HUD.transform, Color.white);
-                StartCoroutine(ShowDialog(unitRef.unitName + " is on guard.", skipTime));
+                yield return ShowDialog(unitRef.unitName + " is on guard.", skipTime);
                 break;
             }
             case Act.ESCAPE://Tenta escapar
@@ -134,7 +135,7 @@ public class BattleAction : MonoBehaviour
                 {
                     if(TargetList[i].isDead){
                         if (TargetList.Count == 1){
-                            StartCoroutine(ShowDialog("The target is already dead", skipTime));
+                            yield return ShowDialog("The target is already dead", skipTime);
                         }
                         continue;
                     }
@@ -142,16 +143,16 @@ public class BattleAction : MonoBehaviour
                         payed = unitRef.PaySkillCost(s.Cost, s.IsSpecial);
                     }
                     if(!payed){//caso nao tenha conseguido pagar o custo da skill, não executa a skill
-                        StartCoroutine(ShowDialog(unitRef.unitName + " can't pay the skill cost.", skipTime));
+                        yield return ShowDialog(unitRef.unitName + " can't pay the skill cost.", skipTime);
                         i = TargetList.Count;
                         continue;
                     }
                     if(i == 0){
-                        StartCoroutine(ShowDialog(unitRef.unitName + " used " + s.Name, skipTime));
+                        yield return ShowDialog(unitRef.unitName + " used " + s.Name, skipTime);
                     }
                     if(!Accuracy_Check(s, TargetList[i])){
                         Debug.Log("Missed " + TargetList[i].unitName);
-                        StartCoroutine(ShowDialog(unitRef.unitName + " missed " + TargetList[i].unitName, skipTime));
+                        yield return ShowDialog(unitRef.unitName + " missed " + TargetList[i].unitName, skipTime);
                         continue;
                     }
                     wait += MoveAnimation(s.VFX, TargetList[i].HUD.transform, s.COLOR);
@@ -161,23 +162,23 @@ public class BattleAction : MonoBehaviour
                         Debug.Log(damage);
                         TargetList[i].TakeDamage(damage);
                         if(resistMod > 1){
-                            StartCoroutine(ShowDialog("It's SUPER EFFECTIVE!!!\nDamage:" + damage, skipTime)); 
+                            yield return ShowDialog("It's SUPER EFFECTIVE!!!\nDamage:" + damage, skipTime); 
                         }
                         if(resistMod == 0){
-                            StartCoroutine(ShowDialog("It's not effective.\nDamage:" + damage, skipTime)); 
+                            yield return ShowDialog("It's not effective.\nDamage:" + damage, skipTime); 
                         }
                         else if(resistMod < 1){
-                            StartCoroutine(ShowDialog("It's not very effective.\nDamage:" + damage, skipTime)); 
+                            yield return ShowDialog("It's not very effective.\nDamage:" + damage, skipTime); 
                         }
                     }
                     else if(s.Power < 0){
                         damage = HealCalculation(-(float)s.Power, TargetList[i]);
                         TargetList[i].HealDamage(damage);
-                        StartCoroutine(ShowDialog("Healed: " + damage, skipTime)); 
+                        yield return ShowDialog("Healed: " + damage, skipTime); 
                     }
                     //ativa efeitos especiais da habilidade
                     if(s.Effect != Skill.EFFECT.NULL){
-                        Skill_Effect(s.Effect, TargetList[i]);
+                        yield return Skill_Effect(s.Effect, TargetList[i]);
                     }
                 }
                 break;
@@ -190,14 +191,14 @@ public class BattleAction : MonoBehaviour
                 for (int i = 0; i < TargetList.Count; i++)
                 {
                     if(TargetList[i].isDead){
-                        StartCoroutine(ShowDialog("The target is already dead", skipTime));
+                        yield return ShowDialog("The target is already dead", skipTime);
                         continue;
                     }
                     if(!payed){//paga o custo para usar a skill
                         payed = unitRef.PayItemCost(itemID);
                     }
                     if(!payed){//caso nao tenha conseguido pagar o custo da skill, não executa a skill
-                        StartCoroutine(ShowDialog("You don't have any " + item.Name + " left.", skipTime));
+                        yield return ShowDialog("You don't have any " + item.Name + " left.", skipTime);
                         i = TargetList.Count;
                         continue;
                     }
@@ -212,19 +213,19 @@ public class BattleAction : MonoBehaviour
                         Debug.Log(damage);
                         TargetList[i].TakeDamage(damage);
                         if(resistMod > 1){
-                            StartCoroutine(ShowDialog("It's SUPER EFFECTIVE!!!\nDamage:" + damage, skipTime)); 
+                            yield return ShowDialog("It's SUPER EFFECTIVE!!!\nDamage:" + damage, skipTime); 
                         }
                         if(resistMod == 0){
-                            StartCoroutine(ShowDialog("It's not effective.\nDamage:" + damage, skipTime)); 
+                            yield return ShowDialog("It's not effective.\nDamage:" + damage, skipTime); 
                         }
                         else if(resistMod < 1){
-                            StartCoroutine(ShowDialog("It's not very effective.\nDamage:" + damage, skipTime)); 
+                            yield return ShowDialog("It's not very effective.\nDamage:" + damage, skipTime); 
                         }
                     }
                     else if(item.Power < 0){
                         damage = HealCalculation(-(float)item.Power, TargetList[i]);
                         TargetList[i].HealDamage(damage);
-                        StartCoroutine(ShowDialog("Healed: " + damage, skipTime)); 
+                        yield return ShowDialog("Healed: " + damage, skipTime); 
                     }
                 }
                 break;
@@ -339,7 +340,7 @@ public class BattleAction : MonoBehaviour
     /**
     * Função que executa os efeitos das habilidades
     */
-    private void Skill_Effect(Skill.EFFECT e, Unit Target){
+    private IEnumerator Skill_Effect(Skill.EFFECT e, Unit Target){
         switch (e)
         {   
             //buffs e debuffs a status incrementam e decrementam os modificadores em multiplos de 50% de cada vez
@@ -348,14 +349,13 @@ public class BattleAction : MonoBehaviour
                 if (Target.modStages[0] >= 0)
                 {
                     Target.attackModifier = (2.0f + Target.modStages[0])/2.0f;
-                    StartCoroutine(ShowDialog("ATK UP!", skipTime));
                     Debug.Log("Attack mod" + Target.attackModifier);
                 }
                 else{
                     Target.attackModifier = 2.0f/(2.0f - Target.modStages[0]);
-                    StartCoroutine(ShowDialog("ATK DOWN!", skipTime));
                     Debug.Log("Attack mod " + Target.attackModifier);
                 }
+                yield return ShowDialog("ATK UP!", skipTime);
                 break;
             }
             case Skill.EFFECT.DEF_UP:{
@@ -367,6 +367,7 @@ public class BattleAction : MonoBehaviour
                 else{
                     Target.defenceModifier = 2.0f/(2.0f - Target.modStages[1]);
                 }
+                yield return ShowDialog("DEF UP!", skipTime);
                 break;
             }
             case Skill.EFFECT.SPATK_UP:{
@@ -378,6 +379,7 @@ public class BattleAction : MonoBehaviour
                 else{
                     Target.special_attackModifier = 2.0f/(2.0f - Target.modStages[2]);
                 }
+                yield return ShowDialog("SPATK UP!", skipTime);
                 break;
             }
             case Skill.EFFECT.SPDEF_UP:{
@@ -389,6 +391,7 @@ public class BattleAction : MonoBehaviour
                 else{
                     Target.special_defenceModifier = 2.0f/(2.0f - Target.modStages[3]);
                 }
+                yield return ShowDialog("SPDEF UP!", skipTime);
                 break;
             }
             case Skill.EFFECT.SPEED_UP:{
@@ -400,6 +403,7 @@ public class BattleAction : MonoBehaviour
                 else{
                     Target.speedModifier = 2.0f/(2.0f - Target.modStages[4]);
                 }
+                yield return ShowDialog("SPEED UP!", skipTime);
                 break;
             }
             case Skill.EFFECT.ACC_UP:{
@@ -411,6 +415,7 @@ public class BattleAction : MonoBehaviour
                 else{
                     Target.accuracyModifier = 3.0f/(3.0f - Target.modStages[5]);
                 }
+                yield return ShowDialog("ACCURACY UP!", skipTime);
                 break;
             }
             case Skill.EFFECT.EVASION_UP:{
@@ -422,6 +427,7 @@ public class BattleAction : MonoBehaviour
                 else{
                     Target.evasion = 3.0f/(3.0f - Target.modStages[6]);
                 }
+                yield return ShowDialog("EVASION UP!", skipTime);
                 break;
             }
             case Skill.EFFECT.ATK_DOWN:{
@@ -433,6 +439,7 @@ public class BattleAction : MonoBehaviour
                 else{
                     Target.attackModifier = 2.0f/(2.0f - Target.modStages[0]);
                 }
+                yield return ShowDialog("ATK DOWN!", skipTime);
                 break;
             }
             case Skill.EFFECT.DEF_DOWN:{
@@ -444,6 +451,7 @@ public class BattleAction : MonoBehaviour
                 else{
                     Target.defenceModifier = 2.0f/(2.0f - Target.modStages[1]);
                 }
+                yield return ShowDialog("DEF DOWN!", skipTime);
                 break;
             }
             case Skill.EFFECT.SPATK_DOWN:{
@@ -455,6 +463,7 @@ public class BattleAction : MonoBehaviour
                 else{
                     Target.special_attackModifier = 2.0f/(2.0f - Target.modStages[2]);
                 }
+                yield return ShowDialog("SPATK DOWN!", skipTime);
                 break;
             }
             case Skill.EFFECT.SPDEF_DOWN:{
@@ -466,6 +475,7 @@ public class BattleAction : MonoBehaviour
                 else{
                     Target.special_defenceModifier = 2.0f/(2.0f - Target.modStages[3]);
                 }
+                yield return ShowDialog("SPDEF DOWN!", skipTime);
                 break;
             }
             case Skill.EFFECT.SPEED_DOWN:{
@@ -477,6 +487,7 @@ public class BattleAction : MonoBehaviour
                 else{
                     Target.speedModifier = 2.0f/(2.0f - Target.modStages[4]);
                 }
+                yield return ShowDialog("SPEED DOWN!", skipTime);
                 break;
             }
             case Skill.EFFECT.ACC_DOWN:{
@@ -488,6 +499,7 @@ public class BattleAction : MonoBehaviour
                 else{
                     Target.accuracyModifier = 3.0f/(3.0f - Target.modStages[5]);
                 }
+                yield return ShowDialog("ACCURACY DOWN!", skipTime);
                 break;
             }
             case Skill.EFFECT.EVASION_DOWN:{
@@ -499,6 +511,7 @@ public class BattleAction : MonoBehaviour
                 else{
                     Target.evasion = 3.0f/(3.0f - Target.modStages[6]);
                 }
+                yield return ShowDialog("EVASION DOWN!", skipTime);
                 break;
             }
             default:

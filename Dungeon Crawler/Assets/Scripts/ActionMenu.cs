@@ -16,7 +16,7 @@ public class ActionMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("x") && MainMenu != null) //Returns to father menu
+        if (Input.GetButtonDown("Cancel")) //Returns to father menu
         {
             OnMainMenuButton();
         }

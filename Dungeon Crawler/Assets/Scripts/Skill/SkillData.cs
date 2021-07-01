@@ -22,7 +22,7 @@ public class Skill {
         private readonly int power;
         private readonly int accuracy;
         private readonly int cost;
-        private readonly EFFECT effect;
+        private readonly EFFECT effect;//futuramente mudar isso aqui para ser uma lista de efeitos, para se poder ter mais de um efeito por skill
         private readonly bool isSpecial;
         private readonly bool isRanged;
         private readonly int skill_ID;

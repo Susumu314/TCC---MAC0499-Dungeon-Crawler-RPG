@@ -117,10 +117,41 @@ public class Battle_System : MonoBehaviour
     public void Update()
     {
         TargetSelection();
-        
+        CancelAction();
     }
     
-    public void TargetSelection(){
+    /**
+    * Cancela a ultima ação feita e volta para o estado anterior
+    * Se cancelada ação durante escolha de alvo, volta para seleção de ação da unidade atualmente selecionada,
+    * caso cancelada ação durante a seleção de ação da unidade atualmente selecionada, volta à seleção de
+    * ação da unidade anterior.
+    */
+
+    private void CancelAction(){
+        if(Input.GetButtonDown("Cancel")){
+            if(state == BattleState.MOVESELECTIONTURN){
+                if(ActionMenu.transform.GetChild(0).gameObject.activeInHierarchy){//só volta para o personagem anterior se estiver no main menu do menu de ações
+                    StartCoroutine(SelectPreviousPartyMember());
+                }
+            }
+            else if(state == BattleState.TARGETSELECTIONTURN){
+                for (int i = 0; i < 6; i++){
+                    if(enemyUnits[i] && enemyUnits[i].HUD.isSelected){
+                        enemyUnits[i].HUD.is_Selected(false);
+                    }
+                    if(partyMembers[i] && partyMembers[i].HUD.isTarget){
+                        partyMembers[i].HUD.is_Target(false);
+                    }
+                }
+                RemoveAction();
+                state = BattleState.MOVESELECTIONTURN;
+                ActionMenu.transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
+    }
+    
+
+    private void TargetSelection(){
         if(state == BattleState.TARGETSELECTIONTURN){//deals with the inputs during TargetSelectionTurn,
             if (targetMode == Skill.TARGET_TYPE.SINGLE){ 
                 if (Input.GetButtonDown("Submit"))
@@ -292,7 +323,6 @@ public class Battle_System : MonoBehaviour
     * de movimento do primeiro personagem do grupo do jogador.
     */
     void MoveSelectionTurn(){
-        //dialogueText.text = "What will you do?";
         //At the start of the MOveSelectionTurn, input the AI moves
         //talvez fazer uma AI que trapaceia igual nos primeiros pokemons, onde o input do computador era
         //dado depois que o jogador escolhia a ação
@@ -330,8 +360,6 @@ public class Battle_System : MonoBehaviour
     */
     IEnumerator BattleTurn(){
         state = BattleState.BATTLETURN;
-
-        print("This is the battleturn\n");
         //sort BattleOrder lists based on user speed and speedmodifiers
         SortLists();
         //Play every unit action in order of priority and speed
@@ -484,7 +512,6 @@ public class Battle_System : MonoBehaviour
     * Procura e seleciona o primeiro membro da equipe do jogador que está vivo para seleção de ação.
     */
     IEnumerator SelectFirstPartyMember(){
-        state = BattleState.MOVESELECTIONTURN;
         while ((!partyMembers[SelectedPartyMember] || partyMembers[SelectedPartyMember].isDead)
                 && SelectedPartyMember < 6){
             SelectedPartyMember++;
@@ -496,6 +523,7 @@ public class Battle_System : MonoBehaviour
             partyMembers[SelectedPartyMember].HUD.is_Selected(true); 
             OpenMenu();//Abre o menu de ações
         }
+        state = BattleState.MOVESELECTIONTURN;
         yield return null;//waits 1 frame
     }
 
@@ -525,7 +553,7 @@ public class Battle_System : MonoBehaviour
     /**
     * Seleciona o membro anterior da equipe do jogador que está vivo para seleção de ação.
     */
-    IEnumerator SelectPreviousPartyMember(){//isso soh da pra testar quando fizer a logica de cancelar ações
+    IEnumerator SelectPreviousPartyMember(){//precisa apagar a unidade atual da lista de ações
         state = BattleState.MOVESELECTIONTURN;
         partyMembers[SelectedPartyMember].HUD.is_Selected(false); 
         int Atual = SelectedPartyMember;
@@ -538,12 +566,30 @@ public class Battle_System : MonoBehaviour
         if (SelectedPartyMember < 0){
             SelectedPartyMember = Atual;
         }
-        else{
-            partyMembers[SelectedPartyMember].HUD.is_Selected(true); 
-            OpenMenu();//Abre o menu de ações
-        }
+        partyMembers[SelectedPartyMember].HUD.is_Selected(true); 
+        RemoveAction();
+        OpenMenu();//Abre o menu de ações
         yield return null;//waits 1 frame
     }
+
+    /**
+    * Remove a ação da unidade selecionada atualmente das listas de ações
+    */
+    private void RemoveAction(){
+        bool removeu = false;
+        removeu = BattleOrder.Remove(partyMembers[SelectedPartyMember]);
+        if(!removeu){
+            removeu = PriorityBattleOrder.Remove(partyMembers[SelectedPartyMember]);
+        }
+        if(!removeu){
+            removeu = LowPriorityBattleOrder.Remove(partyMembers[SelectedPartyMember]);
+        }
+        if(!removeu){
+            MaxPriorityBattleOrder.Remove(partyMembers[SelectedPartyMember]);
+        }
+    }
+
+
     /**
     * Seleciona o proximo inimigo que está vivo para seleção de alvo.
     */

@@ -8,6 +8,7 @@ public class ScrollMenuContent : MonoBehaviour
     // Start is called before the first frame update
     public GameObject ButtonRef;
     Battle_System BS;
+    OW_MenuSystem MS;
     public ActionMenu AM;
     bool isInit = false;
     public class MenuButton//criar um construtor pra essa merda
@@ -37,11 +38,31 @@ public class ScrollMenuContent : MonoBehaviour
         SetCancelButton();
     }
 
+    public void InitBagMenu(Bag bag, OW_MenuSystem m){
+        if(isInit){
+            return;
+        }
+        isInit = true;
+        MS = m;
+        for (int i = 0; i < bag.items.Count; i++)
+        {   
+            int itemID = bag.items[i].ID;
+            int amount = bag.items[i].amount;
+            AddButton(amount, itemID);
+        }
+        SetCancelButton();
+    }
+
     public void AddButton(int amount, int ID){
         Item.ItemData item = Item.ItemList[ID];
         GameObject newButton = Instantiate(ButtonRef, this.transform);
         Buttons.Add(new MenuButton(newButton, ID));
-        newButton.transform.GetComponent<Button>().onClick.AddListener(() => BS.OnItemButton(ID));
+        if(BS != null){
+            newButton.transform.GetComponent<Button>().onClick.AddListener(() => BS.OnItemButton(ID));
+        }
+        else if(MS != null){
+            newButton.transform.GetComponent<Button>().onClick.AddListener(() => MS.OnItemButton(ID));
+        }
         newButton.transform.GetChild(0).GetComponent<Text>().text = amount + "x" + item.Name;
         newButton.transform.GetComponent<SelectableElement>().Battle_System = BS;
         newButton.transform.GetComponent<SelectableElement>().text = item.Description;
