@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
     public bool isInAnEncounterZone = false;
 
     private EncounterZone zone;
-
+    private OW_MenuSystem MenuSystem;
+ 
     private STATES state;
 
     /**
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
         WallMask = (1<<8);//wall
         EncounterMask = (1<<9);//EncounterZone
         REScript = gameObject.GetComponent<RandomEncouters>();
-
+        MenuSystem = GameObject.Find("OverworldMenu_System").GetComponent<OW_MenuSystem>();
     }
 
     /**
@@ -50,30 +51,31 @@ public class PlayerController : MonoBehaviour
         
         transform.rotation =  Quaternion.RotateTowards(transform.rotation, movePoint.rotation, rotationSpeed * Time.deltaTime);
         
-        //modificar isso aqui para funcionar com buffer de input para o movimento ser mais fluido
-        if (Vector3.Distance(transform.position, movePoint.position) <= 0.1f*step && Quaternion.Angle(transform.rotation, movePoint.rotation) <= 0.1f){
-            if (state == STATES.WALKING){
-                //terminou de dar um passo
-                REScript.Increment_Encouter(zone.EncounterRate, zone.ZoneID);
-                state = STATES.IDLE;
-            }
-            if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f){
-                movePoint.Rotate(0f, 90f * Input.GetAxisRaw("Horizontal"), 0f);
-            }
-            else if(Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f){
-                Target = movePoint.position + transform.rotation * Vector3.forward * Input.GetAxisRaw("Vertical")*step;
-                if(!Physics.Linecast(transform.position, Target , WallMask))//check if there is a wall
-                {
-                    movePoint.position += transform.rotation * Vector3.forward * Input.GetAxisRaw("Vertical")*step;
-                    state = STATES.WALKING;
+        if(MenuSystem.state == OW_MenuSystem.OW_State.FREEROAMING){//só consegue andar quando no estado freeroaming
+            if (Vector3.Distance(transform.position, movePoint.position) <= 0.1f*step && Quaternion.Angle(transform.rotation, movePoint.rotation) <= 0.1f){
+                if (state == STATES.WALKING){
+                    //terminou de dar um passo
+                    REScript.Increment_Encouter(zone.EncounterRate, zone.ZoneID);
+                    state = STATES.IDLE;
                 }
-            }
-            else if(Mathf.Abs(Input.GetAxisRaw("Strafe")) == 1f){
-                Target = movePoint.position + transform.rotation * Vector3.right * Input.GetAxisRaw("Strafe")*step;
-                if(!Physics.Linecast(transform.position, Target , WallMask))//check if there is a wall
-                {
-                    movePoint.position += transform.rotation * Vector3.right * Input.GetAxisRaw("Strafe")*step;
-                    state = STATES.WALKING;
+                if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f){
+                    movePoint.Rotate(0f, 90f * Input.GetAxisRaw("Horizontal"), 0f);
+                }
+                else if(Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f){
+                    Target = movePoint.position + transform.rotation * Vector3.forward * Input.GetAxisRaw("Vertical")*step;
+                    if(!Physics.Linecast(transform.position, Target , WallMask))//check if there is a wall
+                    {
+                        movePoint.position += transform.rotation * Vector3.forward * Input.GetAxisRaw("Vertical")*step;
+                        state = STATES.WALKING;
+                    }
+                }
+                else if(Mathf.Abs(Input.GetAxisRaw("Strafe")) == 1f){
+                    Target = movePoint.position + transform.rotation * Vector3.right * Input.GetAxisRaw("Strafe")*step;
+                    if(!Physics.Linecast(transform.position, Target , WallMask))//check if there is a wall
+                    {
+                        movePoint.position += transform.rotation * Vector3.right * Input.GetAxisRaw("Strafe")*step;
+                        state = STATES.WALKING;
+                    }
                 }
             }
         }

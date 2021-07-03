@@ -49,6 +49,8 @@ public class Unit : MonoBehaviour
 
     private Battle_System BS;
 
+    private OW_MenuSystem MS;
+
     public PlayerBattleHUD HUD;
     private bool isInit = false;
     public int isBackLine = 0;
@@ -144,12 +146,20 @@ public class Unit : MonoBehaviour
     * 
     */
     public bool PayItemCost(int itemID){
-        return BS.bag.UseItem(itemID);
+        if(MS == null){
+            return BS.bag.UseItem(itemID);
+        }
+        return MS.bag.UseItem(itemID);
     }
 
     public void BattleSystemReference(Battle_System b){
         BS = b;
         Move.InitBattleSystemRef(b);
+    }
+
+    public void MenuSystemReference(OW_MenuSystem m){
+        MS = m;
+        Move.InitMenuSystemRef(m);
     }
 
     public void SetGuard(bool guard){ // setter para definir se o personagem esta defendendo
@@ -158,8 +168,9 @@ public class Unit : MonoBehaviour
             print(unitName + ": I'm On Guard\n");
     }
 
-    public void Escape(){
-        print(unitName + ": Trying to escape battle\n");
+    public bool Escape(){
+        //Escape calculation
+        return false;
     }
 
     public void Dead(){

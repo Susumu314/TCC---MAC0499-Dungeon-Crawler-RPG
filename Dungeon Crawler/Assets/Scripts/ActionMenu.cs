@@ -38,6 +38,9 @@ public class ActionMenu : MonoBehaviour
     IEnumerator SelectDefaultButton()
     {
         yield return null;
+        if (defaultButton == null){//se o botao default da mochila foi destruido, setar o primeiro como default
+            defaultButton = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<Button>();
+        }
         defaultButton.Select();// por algum motivo o botao nao fica em highlight quando o menu é aberto
                             // depois de ser selecionado o default button
         defaultButton.OnSelect(null); 

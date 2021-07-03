@@ -609,7 +609,7 @@ public class Battle_System : MonoBehaviour
     }
 
     /**
-    * Seleciona o proximo inimigo que está vivo para seleção de alvo.
+    * Seleciona o proximo aliado que está vivo para seleção de alvo.
     */
     IEnumerator TargetNextPartyMember(){//isso aqui eh um IEnumerator para que o player nao consigo fazer mais do que uma ação dessas por frame
         partyMembers[TargetPartyMember].HUD.is_Target(false); 
@@ -868,8 +868,10 @@ public class Battle_System : MonoBehaviour
             }
             break;
 
-            case 2:{//Escape TO DO
-                //registra ataque e alvo e depois seleciona proximo membro para registrar o movimento
+            case 2:{//Escape 
+                //registra ação de fugir para a unidade, com prioridade normal
+                partyMembers[SelectedPartyMember].Move.SetAction(BattleAction.Act.ESCAPE, new List<Unit>() {partyMembers[SelectedPartyMember]});
+                BattleOrder.Add(partyMembers[SelectedPartyMember]);
                 StartCoroutine(SelectNextPartyMember());
             }
             break;
@@ -1058,6 +1060,7 @@ public class Battle_System : MonoBehaviour
             selectable.text = description;
             if(!Battle_SystemReferenceOnSkillMenu){
                 selectable.Battle_System = this;
+                Battle_SystemReferenceOnSkillMenu = true;
             }
         }
         

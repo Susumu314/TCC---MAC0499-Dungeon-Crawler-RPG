@@ -55,6 +55,9 @@ public class ScrollMenuContent : MonoBehaviour
 
     public void AddButton(int amount, int ID){
         Item.ItemData item = Item.ItemList[ID];
+        if(MS != null && !item.OverworldUse){//se a mochila for aberta no overworld, mostrar apenas itens usaveis no overworld
+            return;
+        }
         GameObject newButton = Instantiate(ButtonRef, this.transform);
         Buttons.Add(new MenuButton(newButton, ID));
         if(BS != null){
@@ -69,13 +72,36 @@ public class ScrollMenuContent : MonoBehaviour
     } 
 
     public void UpdateButtons(Bag bag){
-        for (int i = 0; i < bag.items.Count; i++)
-        {
-            while(bag.items[i].ID != Buttons[i].ID){
-                Destroy(Buttons[i].Button);
-                Buttons.RemoveAt(i);
+        if(MS == null){
+            for (int i = 0; i < bag.items.Count; i++)
+            {
+                while(bag.items[i].ID != Buttons[i].ID){
+                    if (Buttons[i].Button == AM.defaultButton){
+                        AM.defaultButton = null;
+                    }
+                    Destroy(Buttons[i].Button);
+                    Buttons.RemoveAt(i);
+                }
+                Buttons[i].Button.transform.GetChild(0).GetComponent<Text>().text = bag.items[i].amount + "x" + Item.ItemList[bag.items[i].ID].Name;
             }
-            Buttons[i].Button.transform.GetChild(0).GetComponent<Text>().text = bag.items[i].amount + "x" + Item.ItemList[bag.items[i].ID].Name;
+        }
+        else{
+            int j = 0;
+            for (int i = 0; i < bag.items.Count; i++)
+            {
+                if (!Item.ItemList[bag.items[i].ID].OverworldUse){
+                    j++;
+                    continue;
+                }
+                while(bag.items[i].ID != Buttons[i-j].ID){
+                    if (Buttons[i-j].Button == AM.defaultButton){
+                        AM.defaultButton = null;
+                    }
+                    Destroy(Buttons[i-j].Button);
+                    Buttons.RemoveAt(i-j);
+                }
+                Buttons[i-j].Button.transform.GetChild(0).GetComponent<Text>().text = bag.items[i].amount + "x" + Item.ItemList[bag.items[i].ID].Name;
+            }
         }
     }  
 

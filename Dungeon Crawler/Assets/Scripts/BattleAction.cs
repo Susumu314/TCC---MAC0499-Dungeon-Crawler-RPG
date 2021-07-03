@@ -40,6 +40,7 @@ public class BattleAction : MonoBehaviour
                                                         /*VFX_COLOR*/    Color.white,
                                                         /*DESC*/         "");
     Battle_System Battle_System;
+    OW_MenuSystem Menu_System;
     /**
     * Seta as ações a serem tomadas por uma unidade durante a batalha
     */
@@ -80,6 +81,9 @@ public class BattleAction : MonoBehaviour
         Battle_System = b;
     }
 
+    public void InitMenuSystemRef(OW_MenuSystem m){
+        Menu_System = m;
+    }
     void Update(){
         if(startTimer){
             timer += Time.deltaTime;
@@ -123,7 +127,15 @@ public class BattleAction : MonoBehaviour
             }
             case Act.ESCAPE://Tenta escapar
             {
-                TargetList[0].Escape();
+                yield return ShowDialog(unitRef.unitName + " is trying to escape.", skipTime);
+                bool success = TargetList[0].Escape();
+                if(success){
+                    yield return ShowDialog("The party fled successfully!", skipTime);
+                    //Battle_System.EscapeBattle();
+                }
+                else{
+                    yield return ShowDialog("The party couldn't escape!", skipTime);
+                }
                 break;
             }
             case Act.SKILL://tenta capturar o demonio
@@ -188,7 +200,7 @@ public class BattleAction : MonoBehaviour
                 int damage;
                 bool payed = false;
                 Item.ItemData item = Item.ItemList[itemID];
-                for (int i = 0; i < TargetList.Count; i++)
+                for (int i = 0; i < TargetList.Count; i++)//esta pelo menos entrando aqui
                 {
                     if(TargetList[i].isDead){
                         yield return ShowDialog("The target is already dead", skipTime);
@@ -233,6 +245,7 @@ public class BattleAction : MonoBehaviour
             default: 
             break;
         }
+        Debug.Log("Chegou ate aqui piroquinha mucha");
         yield return new WaitForSeconds(wait);
     }        
     float MoveAnimation(string animation, Transform target_transform, Color color){
@@ -329,12 +342,15 @@ public class BattleAction : MonoBehaviour
     * @waitTime Tempo maximo para se esperar antes de passar o dialogo automaticamente
     */
     private IEnumerator ShowDialog(string text, float waitTime){
-        Battle_System.dialogueText.text = text;
-        startTimer = true;
-        timer = 0f;
-        yield return new WaitUntil(() => ((timer >= waitTime) || skip));//isso aqui nao esta funcionando por algum motivo
-        startTimer = false;
-        skip = false;
+        if(Battle_System != null){
+            Battle_System.dialogueText.text = text;
+            startTimer = true;
+            timer = 0f;
+            yield return new WaitUntil(() => ((timer >= waitTime) || skip));//isso aqui nao esta funcionando por algum motivo
+            startTimer = false;
+            skip = false;
+        }
+        yield return null;
     }
 
     /**
