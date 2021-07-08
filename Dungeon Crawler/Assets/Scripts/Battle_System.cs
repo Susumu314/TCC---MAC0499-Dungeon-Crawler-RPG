@@ -89,11 +89,17 @@ public class Battle_System : MonoBehaviour
     private Skill.TARGET_TYPE targetMode = Skill.TARGET_TYPE.SINGLE;
 
     private bool Battle_SystemReferenceOnSkillMenu = false;
+    public int Allies_Deaths;
+    public int fastestEnemySpeed;
+    public int turno;
     /**
     * Chamado no primeiro frame em que o objeto é instanciado
     */
     void Start()
     {
+        Allies_Deaths = 0;
+        fastestEnemySpeed = 0;
+        turno = 0;
         bagMenuContent = ActionMenu.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetComponent<ScrollMenuContent>();
         ActionMenu.transform.GetChild(0).GetComponent<ActionMenu>().Battle_System = this;
         state = BattleState.START;
@@ -349,6 +355,7 @@ public class Battle_System : MonoBehaviour
                 break;
             }
         }
+        turno += 1;
         StartCoroutine(SelectFirstPartyMember());
     }
     
@@ -1010,6 +1017,41 @@ public class Battle_System : MonoBehaviour
     }
 
     /**
+    * Função chamada quando o jogador ganha a batalha,
+    * ao ser chamada, realiza a rotina de vitória.
+    */
+    public IEnumerator EscapeBattle(string unitName){
+        dialogueText.text = "The party fled successfully!";
+        state = BattleState.WON;
+        //PlayFanfare();
+        yield return new WaitForSeconds(1f);
+        //Calcula o numero de unidades do jogador vivos:
+        int s = 0;
+        foreach (Unit unit in partyMembers)
+        {   
+            if(unit){
+                if(!unit.isDead){
+                    s++;
+                }
+            }
+        }
+        Debug.Log(s);
+        //calcula a experiencia que cada unidade deve ganhar
+        foreach (Unit unit in partyMembers)
+        {
+            if(unit){
+                if(!unit.isDead){
+                    yield return unit.GainExp(Mathf.RoundToInt((float)expEarned/(float)s));
+                }
+            }
+        }
+        GameManager.Instance.state = GameManager.State.Overworld;
+        SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
+        //ResultScreen();
+    }
+
+
+    /**
     * Cria e instância o grupo de inimigos gerado pelo RandomEncounters.cs
     */
 
@@ -1034,6 +1076,11 @@ public class Battle_System : MonoBehaviour
             enemyUnits[i].ResetStatMods();
             enemyUnits[i].BattleSystemReference(this);
             enemyUnits[i].HUD.SetHUD(enemyUnits[i]);
+
+            //seta a velocidade do inimigo mais rapido para calculos de fuga de luta
+            if(enemyUnits[i].speed > fastestEnemySpeed){
+                fastestEnemySpeed = enemyUnits[i].speed;
+            }
         }
     }
     public void OpenMenu(){

@@ -12,7 +12,7 @@ public class BattleAction : MonoBehaviour
     public enum Act
     {
         ATTACK, GUARD, ESCAPE, CAPTURE, 
-        SKILL, ITEM, NULL
+        SKILL, ITEM, SWITCH, NULL
     }
     public Act act;
     private List<Unit> TargetList = new List<Unit>(); //todos os alvos de uma ação serão colocados dentro deste array
@@ -38,7 +38,8 @@ public class BattleAction : MonoBehaviour
                                                         /*ID*/           -1,
                                                         /*VFX*/          "Punch",
                                                         /*VFX_COLOR*/    Color.white,
-                                                        /*DESC*/         "");
+                                                        /*DESC*/         "",
+                                                        /*OWUse*/        false);
     Battle_System Battle_System;
     OW_MenuSystem Menu_System;
     /**
@@ -125,13 +126,17 @@ public class BattleAction : MonoBehaviour
                 yield return ShowDialog(unitRef.unitName + " is on guard.", skipTime);
                 break;
             }
+            case Act.SWITCH://Switch Action
+            {
+                unitRef.Switch(TargetList[0]);
+                break;
+            }
             case Act.ESCAPE://Tenta escapar
             {
                 yield return ShowDialog(unitRef.unitName + " is trying to escape.", skipTime);
                 bool success = TargetList[0].Escape();
                 if(success){
-                    yield return ShowDialog("The party fled successfully!", skipTime);
-                    //Battle_System.EscapeBattle();
+                    yield return Battle_System.EscapeBattle(unitRef.unitName);
                 }
                 else{
                     yield return ShowDialog("The party couldn't escape!", skipTime);

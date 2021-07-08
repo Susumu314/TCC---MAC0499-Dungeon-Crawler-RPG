@@ -53,7 +53,7 @@ public class Unit : MonoBehaviour
 
     public PlayerBattleHUD HUD;
     private bool isInit = false;
-    public int isBackLine = 0;
+    public int isBackLine = 0; //0 is frontline, 1 is backline
     public int totalExp = 0;
     private int expForNextLevel;
     private BaseStats.DemonStats stats;
@@ -66,6 +66,7 @@ public class Unit : MonoBehaviour
     private float exponent;
     public int[] skillList;// por enquanto cada unidade tem 4 skills, essa lista contem os ID de cada skill
     private List<MovePool.LevelUp_Move> movePool;
+    private Unit switchTarget;
     public Unit(string species, string unitName, int unitLevel/*, int hp, int mp*/){
         this.species = species;
         this.unitName = unitName;
@@ -167,9 +168,26 @@ public class Unit : MonoBehaviour
         if(OnGuard)
             print(unitName + ": I'm On Guard\n");
     }
-
+    /**
+    *   Faz o calculo para determinar se o grupo consegue fugir da luta ou não
+    */
     public bool Escape(){
-        //Escape calculation
+        int B;
+        if(speed < BS.fastestEnemySpeed*0.75f){
+            B = 0;
+        }
+        else if(speed > BS.fastestEnemySpeed*1.25f){
+            B = 20;
+        }
+        else{
+            B = 5;
+        }
+        int T = BS.turno;
+        int R = T*UnityEngine.Random.Range(T, 2*T+1);
+        int D = 6* BS.Allies_Deaths;
+        if(UnityEngine.Random.Range(0,100) < B+R+D){
+            return true;
+        }
         return false;
     }
 
@@ -179,6 +197,9 @@ public class Unit : MonoBehaviour
         //incrementa o expEarned no Battle_System se for uma unidade inimiga
         if(!isPlayerUnit){
             BS.expEarned += xp_yield*unitLevel/7;
+        }
+        else{
+            BS.Allies_Deaths += 1;
         }
         //avisa o Battle_System que uma unidade morreu para checar o fim da batalha
         BS.TestBattleEnd();
@@ -318,6 +339,14 @@ public class Unit : MonoBehaviour
     }
     public void ShowStatusMods(){
         HUD.SetStatusModText(modStages);
+    }
+
+    public void Switch(Unit target){
+        int old_index = transform.GetSiblingIndex();
+        int new_index = target.transform.GetSiblingIndex();
+        transform.SetSiblingIndex(new_index);
+        target.transform.SetSiblingIndex(old_index);
+        MS.SetupGUI();
     }
 }
 

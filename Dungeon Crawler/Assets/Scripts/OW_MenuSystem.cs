@@ -77,7 +77,7 @@ public class OW_MenuSystem : MonoBehaviour
     }
 
 
-    private void SetupGUI(){
+    public void SetupGUI(){
         bagMenuContent = ActionMenu.transform.GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetComponent<ScrollMenuContent>();
         GameObject partyGO = GameManager.Instance.party;
         bag = GameManager.Instance.party.GetComponent<Bag>();
@@ -434,43 +434,6 @@ public class OW_MenuSystem : MonoBehaviour
         ActionMenu.SetActive(false);
         StartCoroutine(SelectFirstPartyMember());
     }
-
-    // /**
-    // * Seleciona o proximo membro da equipe do jogador que está vivo para seleção de ação.
-    // */
-    // IEnumerator SelectNextPartyMember(){
-    //     partyMembers[SelectedPartyMember].HUD.is_Selected(false); 
-    //     SelectedPartyMember++;
-    //     while (SelectedPartyMember < 6 && 
-    //           (!partyMembers[SelectedPartyMember] || partyMembers[SelectedPartyMember].isDead)){
-    //         SelectedPartyMember++;
-    //         if (SelectedPartyMember >= 6){
-    //             SelectedPartyMember = 0;
-    //         }
-    //     }
-    //     else{
-    //         partyMembers[SelectedPartyMember].HUD.is_Selected(true); 
-    //     }
-    //     yield return null;//waits 1 frame
-    // }
-
-    // /**
-    // * Seleciona o membro anterior da equipe do jogador que está vivo para seleção de ação.
-    // */
-    // IEnumerator SelectPreviousPartyMember(){//precisa apagar a unidade atual da lista de ações
-    //     partyMembers[SelectedPartyMember].HUD.is_Selected(false); 
-    //     SelectedPartyMember--;
-    //     while (SelectedPartyMember >= 0 &&
-    //         (!partyMembers[SelectedPartyMember] || partyMembers[SelectedPartyMember].isDead)){
-    //         SelectedPartyMember--;
-    //         if (SelectedPartyMember < 0){
-    //             SelectedPartyMember = 6;
-    //         }
-    //     }
-    //     partyMembers[SelectedPartyMember].HUD.is_Selected(true); 
-    //     yield return null;//waits 1 frame
-    // }
-
     /**
     * Seleciona o proximo aliado que está vivo para seleção de alvo.
     */
@@ -605,6 +568,9 @@ public class OW_MenuSystem : MonoBehaviour
                 skillMenu.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = "Empty";
                 continue;
             }
+            if(!Skill.SkillList[skillID].OverworldUse){
+                skillMenu.transform.GetChild(i).GetComponent<Button>().interactable = false;
+            }
             Skill.SkillData s = Skill.SkillList[skillID];
             skillMenu.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = s.Name;
             string description = "Power:" + Mathf.Abs(s.Power) + "  Accuracy:" + s.Accuracy;
@@ -641,6 +607,24 @@ public class OW_MenuSystem : MonoBehaviour
 
         int[] a = partyMembers[SelectedPartyMember].Move.SetSkill(index);
         targetMode = (Skill.TARGET_TYPE)a[1];
+        StartCoroutine(TargetSelectionTurn());//inicia a ação de escolher um alvo
+    }
+
+    /**
+    * Função chamada quando um dos botões do menu de seleção de ação é pressionado.
+    * Registra a ação e inicia a etapa de seleção de alvo.
+    * 
+    * @param index Index que identifica o botão que fez a chamada da função, determina qual ação está sendo selecionada.
+    */
+    public void OnSwitchButton()  //Como seria para cancelar essa ação?
+    {
+        if (state != OW_State.DEMONMENU){
+            return;
+        }
+        ActionMenu.SetActive(false);
+
+        partyMembers[SelectedPartyMember].Move.SetAction(BattleAction.Act.SWITCH);
+        targetMode = Skill.TARGET_TYPE.SINGLE_ALLY;
         StartCoroutine(TargetSelectionTurn());//inicia a ação de escolher um alvo
     }
 }
