@@ -31,10 +31,10 @@ public class MovePool
     (new[] {
         new Demon_MovePool("Fire Snake", 
             new List<LevelUp_Move>(new[] {
-                new LevelUp_Move(/*Level*/1, /*skillID*/5),
-                new LevelUp_Move(/*Level*/2, /*skillID*/8),
-                new LevelUp_Move(/*Level*/4, /*skillID*/2),
-                new LevelUp_Move(/*Level*/5, /*skillID*/1),
+                new LevelUp_Move(/*Level*/1, /*skillID*/0),
+                new LevelUp_Move(/*Level*/3, /*skillID*/13),
+                new LevelUp_Move(/*Level*/5, /*skillID*/2),
+                new LevelUp_Move(/*Level*/8, /*skillID*/1),
                 new LevelUp_Move(/*Level*/6, /*skillID*/4),
                 })),
         new Demon_MovePool("Fire Kindred Flame", 
