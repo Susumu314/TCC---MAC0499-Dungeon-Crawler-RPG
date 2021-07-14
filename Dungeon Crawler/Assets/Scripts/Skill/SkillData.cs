@@ -691,7 +691,7 @@ public class Skill {
                            /*DESC*/         "The user strikes every foe around it by stomping down on the ground. This lowers the Speed stat of those hit.",
                            /*OWuse*/        false),
             
-            new SkillData (/*name*/        "PoisonBite", 
+            new SkillData (/*name*/        "Poison Bite", 
                            /*type*/         BaseStats.TYPE.POISON, 
                            /*target_type*/  TARGET_TYPE.SINGLE, 
                            /*priority*/     PRIORITY.NORMAL, 
