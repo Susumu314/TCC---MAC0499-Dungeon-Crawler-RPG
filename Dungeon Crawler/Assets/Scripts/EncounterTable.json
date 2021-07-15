@@ -1,6 +1,23 @@
 { 
     "table" :[
         {
+            "zoneID": "Default",
+            "encounterList": [
+                {
+                    "min_level": 1,
+                    "max_level": 1,
+                    "enemy_formation": ["", "", "",
+                                        "", "", ""]
+                },
+                {
+                    "min_level": 6,
+                    "max_level": 7,
+                    "enemy_formation": ["", "", "",
+                                        "", "", ""]
+                }
+            ]
+        },
+        {
             "zoneID": "OverWorldTest_0",
             "encounterList": [
                 {
@@ -31,6 +48,146 @@
                     "max_level": 7,
                     "enemy_formation": ["", "Fire Dragonspawn", "",
                                         "", "", ""]
+                }
+            ]
+        },
+        {
+            "zoneID": "PlayTest_0",
+            "encounterList": [
+                {
+                    "min_level": 10,
+                    "max_level": 11,
+                    "enemy_formation": ["Rabbit Bandit", "", "Rabbit Bandit",
+                                        "", "", ""]
+                },
+                {
+                    "min_level": 11,
+                    "max_level": 12,
+                    "enemy_formation": ["", "Carnivore Plant A", "",
+                                        "", "", ""]
+                },
+                {
+                    "min_level": 10,
+                    "max_level": 11,
+                    "enemy_formation": ["Carnivore Plant A", "", "Carnivore Plant A",
+                                        "", "", ""]
+                },
+                {
+                    "min_level": 10,
+                    "max_level": 12,
+                    "enemy_formation": ["", "Wind Bunny", "",
+                                        "Wind Bunny", "", "Wind Bunny"]
+                }
+            ]
+        },
+        {
+            "zoneID": "PlayTest_1",
+            "encounterList": [
+                {
+                    "min_level": 10,
+                    "max_level": 11,
+                    "enemy_formation": ["Seagull", "Octi", "Seagull",
+                                        "", "", ""]
+                },
+                {
+                    "min_level": 12,
+                    "max_level": 12,
+                    "enemy_formation": ["Sea Crab", "", "Sea Crab",
+                                        "", "", ""]
+                }
+                ,
+                {
+                    "min_level": 13,
+                    "max_level": 13,
+                    "enemy_formation": ["", "Octi", "",
+                                        "", "", ""]
+                }
+            ]
+        },
+        {
+            "zoneID": "PlayTest_2",
+            "encounterList": [
+                {
+                    "min_level": 15,
+                    "max_level": 16,
+                    "enemy_formation": ["Piranos", "Piranos", "Piranos",
+                                        "", "Octi", ""]
+                },
+                {
+                    "min_level": 14,
+                    "max_level": 16,
+                    "enemy_formation": ["Seagull", "", "Seagull",
+                                        "Octi", "", "Octi"]
+                },
+                {
+                    "min_level": 10,
+                    "max_level": 12,
+                    "enemy_formation": ["Seagull", "Seagull", "Seagull",
+                                        "Octi", "Octi", "Octi"]
+                }
+            ]
+        },
+        {
+            "zoneID": "PlayTest_3",
+            "encounterList": [
+                {
+                    "min_level": 11,
+                    "max_level": 12,
+                    "enemy_formation": ["Rabbit Bandit", "", "Rabbit Bandit",
+                                        "", "", ""]
+                },
+                {
+                    "min_level": 12,
+                    "max_level": 13,
+                    "enemy_formation": ["", "Fire Snake", "",
+                                        "", "", ""]
+                },
+                {
+                    "min_level": 11,
+                    "max_level": 12,
+                    "enemy_formation": ["Fire Snake", "", "Fire Snake",
+                                        "", "", ""]
+                },
+                {
+                    "min_level": 11,
+                    "max_level": 13,
+                    "enemy_formation": ["Wind Bunny", "Wind Bunny", "Wind Bunny",
+                                        "", "", ""]
+                }
+            ]
+        },
+        {
+            "zoneID": "PlayTest_4",
+            "encounterList": [
+                {
+                    "min_level": 12,
+                    "max_level": 13,
+                    "enemy_formation": ["Seagull", "", "Seagull",
+                                        "", "", ""]
+                },
+                {
+                    "min_level": 13,
+                    "max_level": 14,
+                    "enemy_formation": ["Carnivore Plant A", "Carnivore Plant A", "Carnivore Plant A",
+                                        "", "", ""]
+                },
+                {
+                    "min_level": 12,
+                    "max_level": 13,
+                    "enemy_formation": ["Carnivore Plant A", "", "Carnivore Plant A",
+                                        "", "Carnivore Plant A", ""]
+                },
+                {
+                    "min_level": 12,
+                    "max_level": 14,
+                    "enemy_formation": ["", "Seagull", "",
+                                        "Wind Fairy", "", "Wind Fairy"]
+                },
+                {
+                    "min_level": 12,
+                    "max_level": 13,
+                    "enemy_formation": ["Carnivore Plant A", "", "Carnivore Plant A",
+                                        "", "Wind Fairy", ""]
                 }
             ]
         }

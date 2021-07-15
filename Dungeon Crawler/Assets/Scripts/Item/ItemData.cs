@@ -166,7 +166,7 @@ public class Item {
                            /*type*/         BaseStats.TYPE.NORMAL, 
                            /*target_type*/  Skill.TARGET_TYPE.SINGLE, 
                            /*priority*/     PRIORITY.NORMAL, 
-                           /*power*/        10, //nesse caso o poder se torna o bonus na chance de captura vezes 10
+                           /*power*/        10, //nesse caso o poder representa o bonus na chance de captura vezes 10
                            /*accuracy*/     100, 
                            /*cost*/         0,
                            /*status_effect*/STATUS_EFFECT.CAPTURE, 
@@ -182,7 +182,7 @@ public class Item {
                            /*type*/         BaseStats.TYPE.NORMAL, 
                            /*target_type*/  Skill.TARGET_TYPE.SINGLE, 
                            /*priority*/     PRIORITY.HIGH, 
-                           /*power*/        10, //nesse caso o poder se torna o bonus na chance de captura vezes 10
+                           /*power*/        10, //nesse caso o poder representa o bonus na chance de captura vezes 10
                            /*accuracy*/     100, 
                            /*cost*/         0,
                            /*status_effect*/STATUS_EFFECT.CAPTURE, 
@@ -198,7 +198,7 @@ public class Item {
                            /*type*/         BaseStats.TYPE.NORMAL, 
                            /*target_type*/  Skill.TARGET_TYPE.SINGLE, 
                            /*priority*/     PRIORITY.NORMAL, 
-                           /*power*/        10, //nesse caso o poder se torna o bonus na chance de captura vezes 10
+                           /*power*/        20, //nesse caso o poder se torna o bonus na chance de captura vezes 10
                            /*accuracy*/     100, 
                            /*cost*/         0,
                            /*status_effect*/STATUS_EFFECT.CAPTURE, 
@@ -207,6 +207,22 @@ public class Item {
                            /*ID*/           8,
                            /*VFX*/          "Barrier",
                            /*VFX_COLOR*/    new Color(0.25f, 0.75f, 0.96f, 1f),
+                           /*DESC*/         "A tool with a decent success rate for taming Demons.",
+                           /*OWuse*/        false),
+
+            new ItemData (/*name*/        "UltraDemonSeal", 
+                           /*type*/         BaseStats.TYPE.NORMAL, 
+                           /*target_type*/  Skill.TARGET_TYPE.SINGLE, 
+                           /*priority*/     PRIORITY.NORMAL, 
+                           /*power*/        30, //nesse caso o poder se torna o bonus na chance de captura vezes 10
+                           /*accuracy*/     100, 
+                           /*cost*/         0,
+                           /*status_effect*/STATUS_EFFECT.CAPTURE, 
+                           /*isSpecial*/    true, 
+                           /*isRanged*/     true,
+                           /*ID*/           8,
+                           /*VFX*/          "Barrier",
+                           /*VFX_COLOR*/    new Color(1f, 0.9f, 0.2f, 1f),
                            /*DESC*/         "A tool with a decent success rate for taming Demons.",
                            /*OWuse*/        false)
         });
