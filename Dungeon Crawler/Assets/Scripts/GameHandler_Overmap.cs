@@ -14,6 +14,7 @@ public class GameHandler_Overmap : MonoBehaviour
 
     public int OverWorldID;
     public string BGM;
+    public GameObject lootList;
 
     /**
     * Ao iniciar a cena, lê informações do GameManager para instânciar os 
@@ -31,7 +32,19 @@ public class GameHandler_Overmap : MonoBehaviour
         {
             PlayerOverworld = Instantiate(PlayerPrefab, GameManager.Instance.overworldPlayerPosition, GameManager.Instance.overworldPlayerRotation);//acho que o que esta cagando aqui eh que ele ta pegando o GameData script e não o instanciado
         }
+        foreach (GameManager.LootAcquired l in GameManager.Instance.loot)
+        {
+            if(l.OverworldID == OverWorldID){
+                foreach (OverworldLoot item in lootList.GetComponentsInChildren<OverworldLoot>())
+                {
+                    if(item.ID == l.ID){
+                        Destroy(item.gameObject);
+                    }
+                }
+            }
+        }
         PlayerOverworld.GetComponent<RandomEncouters>().OverWorldID = OverWorldID;
+        GameManager.Instance.CurrentOverworldID = OverWorldID;
         AudioManager.instance.Play(BGM);
     }
 

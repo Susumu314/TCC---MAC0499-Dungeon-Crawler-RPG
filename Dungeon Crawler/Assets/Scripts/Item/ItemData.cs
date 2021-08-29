@@ -66,7 +66,7 @@ public class Item {
     
     public static readonly IList<ItemData> ItemList= new ReadOnlyCollection<ItemData>
         (new[] {
-            new ItemData (/*name*/        "Potion", 
+            new ItemData (/*name*/        "Potion", //a cura da poção ta muito baixa e esta dependente do nivel do usuario, o correto seria ser fixo isso aqui
                            /*type*/         BaseStats.TYPE.NORMAL, 
                            /*target_type*/  Skill.TARGET_TYPE.SINGLE_ALLY, 
                            /*priority*/     PRIORITY.NORMAL, 

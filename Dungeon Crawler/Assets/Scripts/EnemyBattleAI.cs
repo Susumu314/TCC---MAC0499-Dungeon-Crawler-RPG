@@ -43,22 +43,96 @@ public class EnemyBattleAI : MonoBehaviour
         switch (AI)
         {
             case AI_type.DUMB:{
-                if (rng >= 50.0f){//ATTACK A RANDOM UNIT
+                if (rng < 20.0f){// 20% de chance de dar um ataque normal em uma unidade aleatoria
                     act = BattleAction.Act.ATTACK;
                     TargetList.Add(PUnits[Random.Range(0, PUnits.Count)]);
                     priority = 1;
+                    gameObject.GetComponent<BattleAction>().SetAction(act, TargetList);
                 }
-                else{//GUARD
+                else if (rng < 30.0f){// 10% de chance de defender no turno
                     act = BattleAction.Act.GUARD;
                     TargetList.Add(gameObject.GetComponent<Unit>());
                     priority = 3;
+                    gameObject.GetComponent<BattleAction>().SetAction(act, TargetList);
                 }
-                gameObject.GetComponent<BattleAction>().SetAction(act, TargetList);
+                else{//70% de chance de usar uma habilidade aleatoria
+                    priority = SetSkill(PUnits, EUnits);
+                }
             }break;
 
             default:
             break;
         }
         return priority;
+    }
+
+    private int SetSkill(List<Unit> PUnits, List<Unit> EUnits){
+        //Escolhe uma skill aleatoria
+        List<Unit> TargetList = new List<Unit>(); 
+        int i = Random.Range(0,4);
+        int skillID = gameObject.GetComponent<Unit>().skillList[i];
+        while(skillID == -1){
+            i = (i+1)%4;
+            skillID = gameObject.GetComponent<Unit>().skillList[i];
+        }
+        int[] r = gameObject.GetComponent<BattleAction>().SetSkill(i);
+        switch ((Skill.TARGET_TYPE)r[1])
+        {
+            case Skill.TARGET_TYPE.SINGLE:
+                TargetList.Add(PUnits[Random.Range(0, PUnits.Count)]);
+            break;
+            case Skill.TARGET_TYPE.SINGLE_ALLY:
+                TargetList.Add(EUnits[Random.Range(0, EUnits.Count)]);
+            break;
+            case Skill.TARGET_TYPE.SELF:
+                TargetList.Add(gameObject.GetComponent<Unit>());
+            break;
+            case Skill.TARGET_TYPE.ALLY_PARTY:
+                TargetList = EUnits;
+            break;
+            case Skill.TARGET_TYPE.PARTY:
+                TargetList = PUnits;
+            break;
+            case Skill.TARGET_TYPE.ROW:
+                //escolhe uma linha aleatoria do player para atacar
+                i = Random.Range(0,2);
+                foreach (Unit unit in PUnits)
+                {
+                    if(unit.isBackLine == i){
+                        TargetList.Add(unit);
+                    }
+                }
+                if(TargetList.Count == 0){
+                    foreach (Unit unit in PUnits)
+                    {
+                        if(unit.isBackLine != i){
+                            TargetList.Add(unit);
+                        }
+                    }
+                }
+            break;
+            case Skill.TARGET_TYPE.ALLY_ROW:
+                //escolhe uma linha aleatoria dos aliados para ajudar
+                i = Random.Range(0,2);
+                foreach (Unit unit in EUnits)
+                {
+                    if(unit.isBackLine == i){
+                        TargetList.Add(unit);
+                    }
+                }
+                if(TargetList.Count == 0){
+                    foreach (Unit unit in EUnits)
+                    {
+                        if(unit.isBackLine != i){
+                            TargetList.Add(unit);
+                        }
+                    }
+                }
+            break;
+            default:
+            break;
+        }
+        gameObject.GetComponent<BattleAction>().SetAction(BattleAction.Act.SKILL, TargetList);
+        return r[0];
     }
 }

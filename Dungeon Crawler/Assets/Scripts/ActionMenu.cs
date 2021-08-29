@@ -13,6 +13,7 @@ public class ActionMenu : MonoBehaviour
     public GameObject MainMenu;
     public Button defaultButton;
     public Battle_System Battle_System;
+    public bool isScrollMenu;
 
     void Update()
     {
@@ -28,7 +29,8 @@ public class ActionMenu : MonoBehaviour
 
     void OnEnable()
     {
-        StartCoroutine(SelectDefaultButton());
+        if(!isScrollMenu)
+            StartCoroutine(SelectDefaultButton());
         if(Battle_System != null)
             Battle_System.dialogueText.text = "What will you do?";
     }
@@ -62,8 +64,9 @@ public class ActionMenu : MonoBehaviour
     */ 
     public void OnMainMenuButton()
     {
-        MainMenu.SetActive(true);
         this.gameObject.SetActive(false);
+        if(MainMenu)
+            MainMenu.SetActive(true);
     }
 
     /**

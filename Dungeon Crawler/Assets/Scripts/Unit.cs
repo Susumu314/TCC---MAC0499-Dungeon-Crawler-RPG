@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Unit : MonoBehaviour
 {
     public enum STATUS_CONDITION {NULL, POISON, BURN, FREEZE, PARALYSIS};
+    public STATUS_CONDITION statusCondition;
     public int[] modStages = new int[7]{0,0,0,0,0,0,0};
     public float attackModifier;
     public float defenceModifier;
@@ -122,7 +123,7 @@ public class Unit : MonoBehaviour
     * @param isSpecial se a habilidade é especial ou física
     */
     public bool PaySkillCost(int c, bool isSpecial){
-        if(isSpecial){
+        if(isSpecial && isPlayerUnit){
             if(currentMana < c){
                 return false;
             }
@@ -253,16 +254,16 @@ public class Unit : MonoBehaviour
         switch (growth_rate)
         {
             case BaseStats.GROWTH_RATE.SLOW:
-                baseExp = 5/4;
+                baseExp = 5f/4f;
             break;
             case BaseStats.GROWTH_RATE.MEDIUM_SLOW:
-                baseExp = 6/5;
+                baseExp = 6f/5f;
             break;
             case BaseStats.GROWTH_RATE.MEDIUM:
                 baseExp = 1;
             break;
             case BaseStats.GROWTH_RATE.FAST:
-                baseExp = 4/5;
+                baseExp = 4f/5f;
             break;
             default:
                 baseExp = 1;
@@ -271,6 +272,7 @@ public class Unit : MonoBehaviour
         totalExp = Mathf.CeilToInt(baseExp*Mathf.Pow(unitLevel,exponent));
         expForNextLevel = Mathf.CeilToInt(baseExp*Mathf.Pow(unitLevel + 1,exponent));
         isInit = true;
+        statusCondition = STATUS_CONDITION.NULL;
     }
 
     public IEnumerator GainExp(int exp){//depois pensar num jeito de mostrar numa tela as mudanças de stats (provavelmente fazer toda parte de ganhar xp e upar em uma cena nova) 
@@ -347,6 +349,29 @@ public class Unit : MonoBehaviour
         transform.SetSiblingIndex(new_index);
         target.transform.SetSiblingIndex(old_index);
         MS.SetupGUI();
+    }
+
+    public void Switch(int targetPosition){
+        int old_index = transform.GetSiblingIndex();
+        Transform target = transform.parent.GetChild(targetPosition);
+        transform.SetSiblingIndex(targetPosition);
+        target.transform.SetSiblingIndex(old_index);
+        MS.SetupGUI();
+    }
+
+    public void FullHeal(){
+        Debug.Log("FullHeal");
+        isDead = false;
+        statusCondition = STATUS_CONDITION.NULL;
+        int damage = maxHP - currentHP;
+        currentHP = maxHP;
+        currentMana = maxMana;
+        //por algum motivo nao tocando nem o SFX ou VFX da cura
+        GameObject Anim = Instantiate(Resources.Load("VFX/Skill_Animation"), HUD.transform.position, Quaternion.identity) as GameObject;
+        Animator animator = Anim.GetComponent<Animator>();
+        animator.Play("Heal");
+        StartCoroutine(HUD.SetHP(currentHP));
+        HUD.SetMP(currentMana);
     }
 }
 

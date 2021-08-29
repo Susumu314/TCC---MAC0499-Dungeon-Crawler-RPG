@@ -14,6 +14,8 @@ public class ButtonSelectionController : MonoBehaviour
     private float               m_verticalPosition;
     private bool                m_up;
     private bool                m_down;
+    public ActionMenu           AM;
+    private bool                isInit = false;
 
     public void Start()
     {
@@ -23,6 +25,7 @@ public class ButtonSelectionController : MonoBehaviour
         };
         m_buttons[m_index].Select();
         m_verticalPosition  = 1f - ((float)m_index / (m_buttons.Count - 1));
+        isInit = true;
     }
 
     public void Update()
@@ -52,5 +55,27 @@ public class ButtonSelectionController : MonoBehaviour
         }
 
         m_scrollRect.verticalNormalizedPosition = Mathf.Lerp(m_scrollRect.verticalNormalizedPosition, m_verticalPosition, Time.deltaTime / m_lerpTime);
+    }
+
+    public void BackToTop(){
+        m_index = 0;
+        m_buttons[m_index].Select();
+        m_verticalPosition  = 1f - ((float)m_index / (m_buttons.Count - 1));
+    }
+
+    void OnEnable()
+    {
+        if(isInit){
+            m_buttons[m_index].Select();
+            m_buttons[m_index].OnSelect(null);  
+        }
+        
+    }
+
+    public void UpdateButtonList(){
+        m_buttons = new List<Button>();
+        foreach (Button button in GetComponentsInChildren<Button>()){
+            m_buttons.Add(button);
+        };
     }
 }

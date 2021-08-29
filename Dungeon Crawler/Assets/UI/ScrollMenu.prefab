@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Battle_System: {fileID: 0}
+  MenuSystem: {fileID: 0}
   text: Description text goes here
 --- !u!1 &1097041304910472323
 GameObject:
@@ -226,6 +227,7 @@ MonoBehaviour:
   - {fileID: 0}
   MainMenu: {fileID: 0}
   defaultButton: {fileID: 1097041304688818833}
+  Battle_System: {fileID: 0}
 --- !u!1 &1097041305497750430
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ButtonRef: {fileID: 1097041304688818835}
   AM: {fileID: 2678951745063169799}
+  scrollControler: {fileID: 7684941003219441265}
 --- !u!1 &7001961909495397512
 GameObject:
   m_ObjectHideFlags: 0

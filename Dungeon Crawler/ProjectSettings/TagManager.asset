@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -15,9 +16,9 @@ TagManager:
   - 
   - Wall
   - EncounterZone
-  - 
-  - 
-  - 
+  - Item
+  - HealZone
+  - Tutorial
   - 
   - 
   - 

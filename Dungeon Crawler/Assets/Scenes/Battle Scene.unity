@@ -233,7 +233,7 @@ PrefabInstance:
     - target: {fileID: 850003841997513256, guid: b85740afb5cc41b409a74ef7fec6bad5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 850003841997513256, guid: b85740afb5cc41b409a74ef7fec6bad5,
         type: 3}
@@ -540,6 +540,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5711061656326897245, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: isScrollMenu
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6195844068812409970, guid: b85740afb5cc41b409a74ef7fec6bad5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -590,6 +595,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7385101619200024126, guid: b85740afb5cc41b409a74ef7fec6bad5,
+        type: 3}
+      propertyPath: MainMenu
+      value: 
+      objectReference: {fileID: 344604655}
     - target: {fileID: 7464883968549220669, guid: b85740afb5cc41b409a74ef7fec6bad5,
         type: 3}
       propertyPath: text
@@ -659,12 +669,18 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 344604652}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 344604655}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c50f3dcd45279af49beef2ec46d65b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &344604655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5506164984090842554, guid: b85740afb5cc41b409a74ef7fec6bad5,
+    type: 3}
+  m_PrefabInstance: {fileID: 344604652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &551687771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1259,7 @@ PrefabInstance:
     - target: {fileID: 2986403720594512389, guid: 3f3ea0d705d457c4d9f037eb5338641e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2986403720594512389, guid: 3f3ea0d705d457c4d9f037eb5338641e,
         type: 3}
@@ -1633,6 +1649,9 @@ MonoBehaviour:
   ActionMenu: {fileID: 344604653}
   bag: {fileID: 0}
   expEarned: 0
+  Allies_Deaths: 0
+  fastestEnemySpeed: 0
+  turno: 0
 --- !u!4 &2137365981
 Transform:
   m_ObjectHideFlags: 0

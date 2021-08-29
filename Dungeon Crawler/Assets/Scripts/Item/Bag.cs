@@ -12,7 +12,12 @@ public class Bag : MonoBehaviour
     {
         public int amount;
         public int ID;
+        public StoredItem(int ID, int amount){
+            this.ID = ID;
+            this.amount = amount;
+        }
     }
+
     public List<StoredItem> items = new List<StoredItem>(); 
 
     public bool UseItem(int itemID){
@@ -28,7 +33,14 @@ public class Bag : MonoBehaviour
         return false;
     }
 
-    public void AddItem(int position){
-
+    public void AddItem(int itemID, int amount){
+        foreach(StoredItem item in items){
+            if(item.ID == itemID){
+                item.amount += amount;
+                return;
+            }
+        }
+        items.Add(new StoredItem(itemID, amount));
+        return;
     }
 }

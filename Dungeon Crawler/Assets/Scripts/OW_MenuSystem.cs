@@ -1,18 +1,22 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class OW_MenuSystem : MonoBehaviour
 {
-    public enum OW_State { FREEROAMING, ONMAINMENU, DEMONSELECTION, TARGETSELECTION, PERFORMINGACTION, DEMONMENU}
+    public enum OW_State { FREEROAMING, ONMAINMENU, DEMONSELECTION, TARGETSELECTION, PERFORMINGACTION, DEMONMENU, POSITIONSELECTION}
     public OW_State state;
+    public GameObject DialogueBox;
+    private bool Battle_SystemReferenceOnSkillMenu = false;
     public Text dialogueText;
     public GameObject partyHUD;
+    private PlayerBattleHUD[] partyMembersHUD;
     private Unit[] partyMembers = new Unit[MAX_UNIT_SIZE]; 
     private const int BAGSIZE = 60;//tamanho maximo da mochila 
     private const int MAX_UNIT_SIZE = 6;   
     int SelectedPartyMember;
     int TargetPartyMember;
+    int TargetPartyHUD;
     public Bag bag;
     private ScrollMenuContent bagMenuContent;
     public GameObject ActionMenu;
@@ -20,28 +24,70 @@ public class OW_MenuSystem : MonoBehaviour
     private bool VerticalPressed = false;
     private bool DirectionalPressed = false;
     private bool onDemonMenu = false;
+    public Stat_Screen statScreen;
+    public bool tutorialFlag = false;
     // Start is called before the first frame update
     void Start()
     {
         state = OW_State.FREEROAMING;
         SelectedPartyMember = 0;
         TargetPartyMember = 0;
+        TargetPartyHUD = 0;
         SetupGUI();
         while ((!partyMembers[SelectedPartyMember] || partyMembers[SelectedPartyMember].isDead)
                 && SelectedPartyMember < 6){
             SelectedPartyMember++;
         }
+        partyMembersHUD = partyHUD.GetComponentsInChildren<PlayerBattleHUD>();
+        dialogueText = DialogueBox.transform.GetChild(0).GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("OpenMenu")){
+        if(Input.GetButtonDown("OpenMenu") && !tutorialFlag){
             OpenMenu();
         }
         TargetSelection();
         DemonSelection();
         PartyMenu();
+        PositionSelection();
+        if(!ActionMenu.transform.GetChild(0).gameObject.activeInHierarchy && state == OW_State.ONMAINMENU
+            && !ActionMenu.transform.GetChild(3).gameObject.activeInHierarchy){
+                state = OW_State.FREEROAMING;
+        }
+        CleanDialogText();
+        if(state == OW_State.ONMAINMENU){
+            CloseDemonInformation();
+        }
+    }
+
+
+
+    /**
+    * Limpa caixa de dialogo quando não está mostrando informações importantes
+    */
+    private void CleanDialogText(){
+        if(!(ActionMenu.transform.GetChild(2).gameObject.activeInHierarchy || ActionMenu.transform.GetChild(3).gameObject.activeInHierarchy)){
+            if(dialogueText.text != ""){
+                dialogueText.text = "";
+            }
+        }
+    }
+
+    /**
+    * Abre a janela de informações do demonio atualmente selecionado
+    */
+    private void ShowDemonInformation(Unit u){
+        statScreen.gameObject.SetActive(true);
+        statScreen.UpdateStatScreen(u);
+    }
+
+    /**
+    * Fecha a janela de informações do demonio atualmente selecionado
+    */
+    private void CloseDemonInformation(){
+        statScreen.gameObject.SetActive(false);
     }
 
     /**
@@ -62,10 +108,12 @@ public class OW_MenuSystem : MonoBehaviour
         if(state == OW_State.FREEROAMING){
             state = OW_State.ONMAINMENU;
             ActionMenu.transform.GetChild(0).gameObject.SetActive(true);
+            DialogueBox.SetActive(true);
         }
         else{
             state = OW_State.FREEROAMING;
             CloseAll();
+            DialogueBox.SetActive(false);
         }
     }
 
@@ -82,8 +130,10 @@ public class OW_MenuSystem : MonoBehaviour
         GameObject partyGO = GameManager.Instance.party;
         bag = GameManager.Instance.party.GetComponent<Bag>();
         for(int i = 0; i < 6; i++){
-            if (partyGO.transform.GetChild(i).GetComponent<Unit>().species == "")//por enquanto estou considerando que se a unidade nao tiver nome, ela nao existe
+            if (partyGO.transform.GetChild(i).GetComponent<Unit>().species == ""){//por enquanto estou considerando que se a unidade nao tiver nome, ela nao existe
+                partyHUD.transform.GetChild(i).GetComponent<PlayerBattleHUD>().Reset();
                 continue;
+            }
             partyMembers[i] = partyGO.transform.GetChild(i).GetComponent<Unit>();
             partyMembers[i].InitStats();
             partyMembers[i].ResetStatMods(); 
@@ -120,7 +170,6 @@ public class OW_MenuSystem : MonoBehaviour
     */
     IEnumerator TargetSelectionTurn(){
         yield return null;
-        dialogueText.text = "Select Target";
         state = OW_State.TARGETSELECTION;
         //Loop to get an alive unit
         if (targetMode == Skill.TARGET_TYPE.SINGLE_ALLY){
@@ -163,13 +212,62 @@ public class OW_MenuSystem : MonoBehaviour
         }
     }
 
+    private void PositionSelection(){
+        if(state == OW_State.POSITIONSELECTION){//deals with the inputs during TargetSelectionTurn,
+            if (Input.GetButtonDown("Submit"))
+            {
+                //partyMembers[SelectedPartyMember].Move.SetAction(BattleAction.Act.NULL, new List<Unit> {partyMembers[TargetPartyHUD]});//talvez isso dÊ ruim se for num espaço vazio, mas vamos ver
+                partyMembersHUD[TargetPartyHUD].is_Target(false);
+                //StartCoroutine(PerformAction());
+                partyMembers[SelectedPartyMember].Switch(TargetPartyHUD);
+                partyMembers[SelectedPartyMember].HUD.is_Selected(false);
+                SelectedPartyMember = TargetPartyHUD;
+                partyMembers[SelectedPartyMember].HUD.is_Selected(true);
+                state = OW_State.DEMONMENU;
+                ShowDemonInformation(partyMembers[SelectedPartyMember]);
+                ActionMenu.SetActive(true);
+            }
+            else if (Input.GetButtonDown("Direita"))
+            {
+                partyMembersHUD[TargetPartyHUD].is_Target(false); 
+                TargetPartyHUD = (TargetPartyHUD + 1)%partyMembersHUD.Length;
+                partyMembersHUD[TargetPartyHUD].is_Target(true); 
+            }
+            else if (Input.GetButtonDown("Esquerda"))
+            {
+                partyMembersHUD[TargetPartyHUD].is_Target(false); 
+                TargetPartyHUD--;
+                if(TargetPartyHUD < 0){
+                    TargetPartyHUD = partyMembersHUD.Length-1;
+                }
+                partyMembersHUD[TargetPartyHUD].is_Target(true); 
+            }
+            else if(Input.GetAxisRaw("Vertical") != 0)
+            {
+                if(!VerticalPressed)
+                {
+                    // Call your event function here.
+                    VerticalPressed = true;
+                    StartCoroutine(TargetNextRowPartyMember());
+                }
+            }
+            else if( Input.GetAxisRaw("Vertical") == 0)
+            {
+                VerticalPressed = false;
+            } 
+        }
+    }
+
     private void TargetSelection(){
         if(state == OW_State.TARGETSELECTION){//deals with the inputs during TargetSelectionTurn,
+            DialogueBox.SetActive(true);
+            dialogueText.text = "Select Target";
             if(targetMode == Skill.TARGET_TYPE.SINGLE_ALLY){
                 if (Input.GetButtonDown("Submit"))
                 {
                     partyMembers[SelectedPartyMember].Move.SetAction(BattleAction.Act.NULL, new List<Unit> {partyMembers[TargetPartyMember]});
                     partyMembers[TargetPartyMember].HUD.is_Target(false);
+                    DialogueBox.SetActive(false);
                     StartCoroutine(PerformAction());
                 }
                 else if (Input.GetButtonDown("Direita"))
@@ -241,20 +339,17 @@ public class OW_MenuSystem : MonoBehaviour
                 OpenDemonMenu();
             }
             else if(Input.GetButtonDown("Cancel")){//volta ao menu principal
-                state = OW_State.ONMAINMENU;
-                ActionMenu.transform.GetChild(1).gameObject.SetActive(false);
-                ActionMenu.transform.GetChild(0).gameObject.SetActive(true);
-                ActionMenu.SetActive(true);
-                partyMembers[SelectedPartyMember].HUD.is_Selected(false);
-                onDemonMenu = false;
+                ExitDemonMenu();
             }
             else if (Input.GetButtonDown("Direita"))
             {
                 StartCoroutine(SelectNextPartyMember());
+                ShowDemonInformation(partyMembers[SelectedPartyMember]);
             }
             else if (Input.GetButtonDown("Esquerda"))
             {
                 StartCoroutine(SelectPreviousPartyMember());
+                ShowDemonInformation(partyMembers[SelectedPartyMember]);
             }
             else if(Input.GetAxisRaw("Vertical") != 0)
             {
@@ -262,6 +357,7 @@ public class OW_MenuSystem : MonoBehaviour
                 {
                     VerticalPressed = true;
                     StartCoroutine(SelectNextRowPartyMember());
+                    ShowDemonInformation(partyMembers[SelectedPartyMember]);
                 }
             }
             else if( Input.GetAxisRaw("Vertical") == 0)
@@ -269,6 +365,15 @@ public class OW_MenuSystem : MonoBehaviour
                 VerticalPressed = false;
             } 
         }
+    }
+
+    public void ExitDemonMenu(){
+        state = OW_State.ONMAINMENU;
+        ActionMenu.transform.GetChild(1).gameObject.SetActive(false);
+        ActionMenu.transform.GetChild(0).gameObject.SetActive(true);
+        ActionMenu.SetActive(true);
+        partyMembers[SelectedPartyMember].HUD.is_Selected(false);
+        onDemonMenu = false;
     }
     /**
     * Seleciona executa a ação selecionada no menu
@@ -280,6 +385,7 @@ public class OW_MenuSystem : MonoBehaviour
         bagMenuContent.UpdateButtons(bag);
         if(onDemonMenu){
             state = OW_State.DEMONMENU;
+            ShowDemonInformation(partyMembers[SelectedPartyMember]);
         }
         else{
             state = OW_State.ONMAINMENU;
@@ -301,6 +407,7 @@ public class OW_MenuSystem : MonoBehaviour
         }
         yield return new WaitForEndOfFrame();//waits 1 frame
         state = OW_State.DEMONSELECTION;
+        ShowDemonInformation(partyMembers[SelectedPartyMember]);
         onDemonMenu = true;
     }
 
@@ -558,6 +665,7 @@ public class OW_MenuSystem : MonoBehaviour
 
     public void OpenDemonMenu(){
         state = OW_State.DEMONMENU;
+        ShowDemonInformation(partyMembers[SelectedPartyMember]);
         ActionMenu.SetActive(true);
         //seta as skills no submenu de skills
         GameObject skillMenu = ActionMenu.transform.GetChild(2).gameObject;
@@ -568,9 +676,6 @@ public class OW_MenuSystem : MonoBehaviour
                 skillMenu.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = "Empty";
                 continue;
             }
-            if(!Skill.SkillList[skillID].OverworldUse){
-                skillMenu.transform.GetChild(i).GetComponent<Button>().interactable = false;
-            }
             Skill.SkillData s = Skill.SkillList[skillID];
             skillMenu.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = s.Name;
             string description = "Power:" + Mathf.Abs(s.Power) + "  Accuracy:" + s.Accuracy;
@@ -580,12 +685,25 @@ public class OW_MenuSystem : MonoBehaviour
             else{
                 description += "\nCost:" + s.Cost*partyMembers[SelectedPartyMember].maxHP/100 + " HP Type:" + s.Type;
             }   
-            description += "\n" + s.DESC;           
+            if(s.IsRanged){
+                description += "\nLong Range";
+            }      
+            else{
+                description += "\nClose Range";
+            }   
+
+            if(!Skill.SkillList[skillID].OverworldUse){
+                description += "\nCannot be used outside battle.";   
+            }    
+            else{
+                description += "\n" + s.DESC;   
+            }  
             SelectableElement selectable = skillMenu.transform.GetChild(i).GetComponent<SelectableElement>();
             selectable.text = description;
-            // if(!Battle_SystemReferenceOnSkillMenu){
-            //     selectable.Battle_System = this;
-            // }
+            if(!Battle_SystemReferenceOnSkillMenu){
+                selectable.MenuSystem = this;
+                Battle_SystemReferenceOnSkillMenu = true;
+            }
         }
     }
 
@@ -597,7 +715,7 @@ public class OW_MenuSystem : MonoBehaviour
     */
     public void OnSkillButton(int index)  //Como seria para cancelar essa ação?
     {
-        if(partyMembers[SelectedPartyMember].skillList[index] == -1){
+        if(partyMembers[SelectedPartyMember].skillList[index] == -1 || !Skill.SkillList[partyMembers[SelectedPartyMember].skillList[index]].OverworldUse){
             return;
         }
         if (state != OW_State.DEMONMENU){
@@ -625,6 +743,13 @@ public class OW_MenuSystem : MonoBehaviour
 
         partyMembers[SelectedPartyMember].Move.SetAction(BattleAction.Act.SWITCH);
         targetMode = Skill.TARGET_TYPE.SINGLE_ALLY;
-        StartCoroutine(TargetSelectionTurn());//inicia a ação de escolher um alvo
+        //Inicia o processo de escolher uma posição para reposicionar a unidade
+        StartCoroutine(StartPositionSelection());
+    }
+
+    IEnumerator StartPositionSelection(){
+        yield return new WaitForEndOfFrame();
+        state = OW_State.POSITIONSELECTION;
+        partyMembersHUD[TargetPartyHUD].is_Target(true);
     }
 }

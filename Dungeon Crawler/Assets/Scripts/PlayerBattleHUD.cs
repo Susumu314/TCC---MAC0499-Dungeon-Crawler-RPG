@@ -27,6 +27,7 @@ public class PlayerBattleHUD : MonoBehaviour
         }
     }
 
+    
 
     /**
     * Seta a HUD.
@@ -110,6 +111,21 @@ public class PlayerBattleHUD : MonoBehaviour
     public void is_Target(bool selected){
         Target_Indicator.SetActive(selected);
         isTarget = selected;
+    }
+
+    /**
+    * Reseta o HUD
+    */
+    public void Reset(){
+        unit = null;
+        hpMpText.text = "";
+        healthBar.fillAmount = 0f;
+        nameText.text = "";
+        manaBar.fillAmount = 0f;
+        Target_Indicator.SetActive(false);
+        isTarget = false;
+        Selection_Indicator.SetActive(false);
+        isSelected = false;
     }
 
     public void SetStatusModText(int[] modStages){

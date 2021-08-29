@@ -10,10 +10,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
-
     public static GameManager Instance { get { return _instance; } }
-
-
     private void Awake()
     {
         print("Awake");
@@ -29,6 +26,7 @@ public class GameManager : MonoBehaviour
         Start,
         Overworld,
         InRandomEncounter,
+        InTutorial,
         GameOver,
     }
 
@@ -49,7 +47,67 @@ public class GameManager : MonoBehaviour
     public Vector3 overworldPlayerPosition = new Vector3(); // por enquanto essa é a unica variavel importante de se guardar quando se sai do overworld para uma battle_scene
     public Quaternion overworldPlayerRotation = new Quaternion();
     public int CurrentOverworldScene = 0;
+    public int CurrentOverworldID = 0;
+    public bool InTutorial = false;
     public RandomEncouters.encounter encounter = new RandomEncouters.encounter(1, 1, new List<string>() {"", "", "", "", "", ""});
+    public string eventFlag = "Batalha1";
+    private string lastTutorial;
+    public class LootAcquired
+    {
+        public int OverworldID;
+        public int ID;
+
+        public LootAcquired(int OverworldID, int ID){
+            this.OverworldID = OverworldID;
+            this.ID = ID;
+        }
+    }
+    //Guarda o ID de cada item coletado no overworld
+    public List<LootAcquired> loot = new List<LootAcquired>();
+
+    public void AddLoot(int ID){
+        loot.Add(new LootAcquired(CurrentOverworldID, ID));
+    }
+
+    public class Tutorial
+    {
+        public string tutorialName;
+        public bool cleared;
+
+        public Tutorial(string tutorialName, bool cleared = false){
+            this.tutorialName = tutorialName;
+            this.cleared = cleared;
+        }
+    }
+
+    public List<Tutorial> tutorials = new List<Tutorial>();
+
+    /**
+    * Abre um tutorial 
+    */
+    public void StartTutorial(string name){
+        Instantiate(Resources.Load("Tutoriais/" + name), GameObject.Find("Canvas").transform);
+        InTutorial = true;
+        lastTutorial = name;
+    }
+
+    /**
+    * Fecha Tutorial
+    */
+    public void CloseTutorial(){
+        Tutorial t;
+        Debug.Log(lastTutorial);
+        for (int i = 0; i < tutorials.Count; i++)
+        {
+            if(tutorials[i].tutorialName == lastTutorial){
+                t = tutorials[i];
+                t.cleared = true;
+                InTutorial = false;
+                i = tutorials.Count;
+            }
+        }
+    }
+
     /**
     * Inicialização de alguns parametros.
     */
@@ -57,9 +115,15 @@ public class GameManager : MonoBehaviour
         if (isInit) return;
         Debug.Log("Init();");
         isInit = true;
-        //SoundManager.Initialize();
         state = State.Start;
         party = gameObject.transform.GetChild(0).gameObject;
+        //adiciona os tutoriais a lista de tutoriais a fazer
+        tutorials.Add(new Tutorial("Batalha1"));
+        tutorials.Add(new Tutorial("Batalha2"));
+        tutorials.Add(new Tutorial("Inputs"));
+        tutorials.Add(new Tutorial("SpecialSpots"));
+        tutorials.Add(new Tutorial("Switch"));
+        tutorials.Add(new Tutorial("Taming"));
     }
 
     /**

@@ -92,6 +92,7 @@ public class Battle_System : MonoBehaviour
     public int Allies_Deaths;
     public int fastestEnemySpeed;
     public int turno;
+    private bool tutorialFlag;
     /**
     * Chamado no primeiro frame em que o objeto é instanciado
     */
@@ -100,9 +101,11 @@ public class Battle_System : MonoBehaviour
         Allies_Deaths = 0;
         fastestEnemySpeed = 0;
         turno = 0;
+        tutorialFlag = false;
         bagMenuContent = ActionMenu.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetComponent<ScrollMenuContent>();
         ActionMenu.transform.GetChild(0).GetComponent<ActionMenu>().Battle_System = this;
         state = BattleState.START;
+        CheckForTutorials();
         StartCoroutine(SetupBattle());
         switch (GameManager.Instance.battleID)
         {   
@@ -118,10 +121,44 @@ public class Battle_System : MonoBehaviour
     }
 
     /**
+    * Checa flags de eventos de tutorial
+    */
+    private void CheckForTutorials(){
+        string flag = GameManager.Instance.eventFlag;
+        if(flag == ""){
+            return;
+        }
+        if(flag == "Batalha1"){
+            GameManager.Instance.StartTutorial(flag);
+            tutorialFlag = true;
+            GameManager.Instance.eventFlag = "Batalha2";
+            return;
+        }
+        else if(flag == "Batalha2"){
+            GameManager.Instance.StartTutorial(flag);
+            tutorialFlag = true;
+            GameManager.Instance.eventFlag = "Taming";
+            return;
+        }
+        else if(flag == "Taming"){
+            GameManager.Instance.StartTutorial(flag);
+            tutorialFlag = true;
+            GameManager.Instance.eventFlag = "";
+            return;
+        }
+    }
+
+    /**
     * No Update é checado os inputs do usuário
     */
     public void Update()
     {
+        if(tutorialFlag){
+            if(!GameManager.Instance.InTutorial){
+                OpenMenu();
+                tutorialFlag = false;
+            }
+        }
         TargetSelection();
         CancelAction();
     }
@@ -321,6 +358,9 @@ public class Battle_System : MonoBehaviour
 
         MoveSelectionTurn();
     }
+
+    
+
     //todas funçoes que mudam o estado do state devem ser Coroutines para evitar bugs
     
     /**
@@ -528,7 +568,9 @@ public class Battle_System : MonoBehaviour
         }
         else{
             partyMembers[SelectedPartyMember].HUD.is_Selected(true); 
-            OpenMenu();//Abre o menu de ações
+            if(!GameManager.Instance.InTutorial){
+                OpenMenu();//Abre o menu de ações
+            }
         }
         state = BattleState.MOVESELECTIONTURN;
         yield return null;//waits 1 frame
@@ -1101,6 +1143,12 @@ public class Battle_System : MonoBehaviour
             }      
             else{
                 description += "\nCost:" + s.Cost*partyMembers[SelectedPartyMember].maxHP/100 + " HP Type:" + s.Type;
+            }   
+            if(s.IsRanged){
+                description += " Long Range";
+            }      
+            else{
+                description += " Close Range";
             }   
             description += "\n" + s.DESC;           
             SelectableElement selectable = skillMenu.transform.GetChild(i).GetComponent<SelectableElement>();
