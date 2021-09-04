@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class TutorialZone : MonoBehaviour
 {
-    private List<GameManager.Tutorial> tutorialList = GameManager.Instance.tutorials;
+    private List<GameManager.Tutorial> tutorialList;
     public string tutorialName; 
 
     public int tutorialIndex;
     void Start(){
+        tutorialList = GameManager.Instance.tutorials;
         int i;
         for (i = 0; i < tutorialList.Count; i++)
         {

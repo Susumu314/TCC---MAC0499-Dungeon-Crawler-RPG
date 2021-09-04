@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour
     private GameObject party;
     private bool tutorialFlag = false;
 
+    void Awake(){
+        MenuSystem = GameObject.Find("OverworldMenu_System").GetComponent<OW_MenuSystem>();
+    }
+
     /**
     * No primeiro frame em que o script roda, é iniciado algumas váriaveis.
     */
@@ -45,7 +49,6 @@ public class PlayerController : MonoBehaviour
         WallMask = (1<<8);//wall
         EncounterMask = (1<<9);//EncounterZone
         REScript = gameObject.GetComponent<RandomEncouters>();
-        MenuSystem = GameObject.Find("OverworldMenu_System").GetComponent<OW_MenuSystem>();
         party = GameObject.Find("/GameManager/Party");
         bagMenuContent = GameObject.Find("/Canvas/OW_ActionMenu").transform.GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetComponent<ScrollMenuContent>();
     }
