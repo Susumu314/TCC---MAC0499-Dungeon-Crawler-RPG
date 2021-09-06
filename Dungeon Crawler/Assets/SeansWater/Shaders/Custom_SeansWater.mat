@@ -37,16 +37,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Cutoff: 0.5
-    - _Depth: 1
-    - _DetailIntensity: 1
-    - _DetailScrollSpeed: 0
-    - _GlossAmount: 1
-    - _MinuteDetailIntensity: 1
-    - _MinuteDetailScrollSpeed: 0
-    - _RefractionIntensity: 0
-    - _RefractionSpeed: 0
+    - _Depth: 20
+    - _DetailIntensity: 1.071
+    - _DetailScrollSpeed: 0.1
+    - _GlossAmount: 0.51
+    - _MinuteDetailIntensity: 1.058
+    - _MinuteDetailScrollSpeed: 0.1
+    - _RefractionIntensity: 0.41
+    - _RefractionSpeed: 0.59
     - _WaveIntensity: 1
-    - _WaveScrollSpeed: 0
+    - _WaveScrollSpeed: 0.099
     m_Colors:
-    - _DiffuseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _SpecularColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _DiffuseColor: {r: 0, g: 0.33224353, b: 0.5283019, a: 1}
+    - _SpecularColor: {r: 0, g: 0, b: 0, a: 1}

@@ -69,7 +69,7 @@ public class OW_MenuSystem : MonoBehaviour
     */
     private void CleanDialogText(){
         if(!(ActionMenu.transform.GetChild(2).gameObject.activeInHierarchy || ActionMenu.transform.GetChild(3).gameObject.activeInHierarchy)){
-            if(dialogueText.text != ""){
+            if(dialogueText.text != "" && state != OW_State.FREEROAMING){
                 dialogueText.text = "";
             }
         }

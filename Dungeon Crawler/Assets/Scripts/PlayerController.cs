@@ -125,7 +125,9 @@ public class PlayerController : MonoBehaviour
             loot = collider.GetComponent<OverworldLoot>();
             onSpecialTile = 1;// SpecialTile == 1 representa que o jogador está sobre um item no overworld
             MenuSystem.DialogueBox.SetActive(true);
-            MenuSystem.DialogueBox.GetComponentInChildren<Text>().text = "Press Enter to pickup " + loot.item.amount + "x " + Item.ItemList[loot.item.ID].Name;
+            //nao sei pq diabos isso daqui nao esta escrevendo no dialoguetext
+            MenuSystem.dialogueText.text = "Press Enter to pickup " + loot.item.amount + "x " + Item.ItemList[loot.item.ID].Name;
+            Debug.Log("entrou aqui");
         }
         if((collider.gameObject.layer == 11)){
             Debug.Log("Detectou colisao");
