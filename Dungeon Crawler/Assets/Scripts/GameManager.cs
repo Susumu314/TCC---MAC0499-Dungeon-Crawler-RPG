@@ -82,6 +82,8 @@ public class GameManager : MonoBehaviour
 
     public List<Tutorial> tutorials = new List<Tutorial>();
 
+    public bool GameOver = false;
+
     /**
     * Abre um tutorial 
     */
@@ -203,7 +205,7 @@ public class GameManager : MonoBehaviour
             unit.isPlayerUnit = true;
         }
         else{
-            //aloca no pc 
+            //aloca em um banco em que o jogador pode visitar e trocar os demonios ativos 
         }
     }
 

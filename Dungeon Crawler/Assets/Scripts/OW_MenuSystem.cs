@@ -248,7 +248,7 @@ public class OW_MenuSystem : MonoBehaviour
                 {
                     // Call your event function here.
                     VerticalPressed = true;
-                    StartCoroutine(TargetNextRowPartyMember());
+                    StartCoroutine(TargetNextRow());
                 }
             }
             else if( Input.GetAxisRaw("Vertical") == 0)
@@ -454,6 +454,15 @@ public class OW_MenuSystem : MonoBehaviour
                 TargetPartyMember -= MAX_UNIT_SIZE;
         }
         partyMembers[TargetPartyMember].HUD.is_Target(true); 
+        yield return null;//waits 1 frame
+    }
+
+    IEnumerator TargetNextRow(){
+        partyMembersHUD[TargetPartyHUD].is_Target(false); 
+        TargetPartyHUD += 3;
+        if(TargetPartyHUD >= partyMembersHUD.Length)
+                TargetPartyHUD -= MAX_UNIT_SIZE;
+        partyMembersHUD[TargetPartyHUD].is_Target(true); 
         yield return null;//waits 1 frame
     }
 

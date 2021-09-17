@@ -368,7 +368,7 @@ public class Skill {
                            /*ID*/           18,
                            /*VFX*/          "Buff",
                            /*VFX_COLOR*/    Color.white,
-                           /*DESC*/         "Raises the Sp. Def stat of an ally Pokémon by using a mysterious aroma.",
+                           /*DESC*/         "Raises the Sp. Def stat of an ally Demon by using a mysterious aroma.",
                            /*OWuse*/        false),
             
             new SkillData (/*name*/        "Fake Tears", 

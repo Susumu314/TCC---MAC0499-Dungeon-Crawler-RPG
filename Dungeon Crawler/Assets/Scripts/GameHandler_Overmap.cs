@@ -15,6 +15,7 @@ public class GameHandler_Overmap : MonoBehaviour
     public int OverWorldID;
     public string BGM;
     public GameObject lootList;
+    public Transform healZoneTransform;
 
     /**
     * Ao iniciar a cena, lê informações do GameManager para instânciar os 
@@ -27,6 +28,10 @@ public class GameHandler_Overmap : MonoBehaviour
             PlayerOverworld = Instantiate(PlayerPrefab, new Vector3(0, 1, 0), Quaternion.identity);
             GameManager.Instance.state = GameManager.State.Overworld;
             SavePlayerObject();
+        }
+        else if(GameManager.Instance.GameOver){
+            GameManager.Instance.GameOver = false;
+            PlayerOverworld = Instantiate(PlayerPrefab, new Vector3(healZoneTransform.position.x, 1, healZoneTransform.position.z) , GameManager.Instance.overworldPlayerRotation);
         }
         else
         {

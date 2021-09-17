@@ -138,10 +138,13 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-         if((collider.gameObject.layer == 12)){ // se for item abrir prompt para clicar o botao de confirmar para recolher o item
+        if((collider.gameObject.layer == 12)){ // se for item abrir prompt para clicar o botao de confirmar para recolher o item
             collider.GetComponent<TutorialZone>().OpenTutorial();
             tutorialFlag = true;
             MenuSystem.tutorialFlag = true;
+        }
+        if((collider.gameObject.layer == 13)){ 
+            collider.GetComponent<EndZone>().OpenScreen();
         }
     }
 

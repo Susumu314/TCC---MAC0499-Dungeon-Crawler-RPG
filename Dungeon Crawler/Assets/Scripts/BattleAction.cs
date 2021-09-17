@@ -152,7 +152,7 @@ public class BattleAction : MonoBehaviour
                 {
                     if(TargetList[i].isDead){
                         if (TargetList.Count == 1){
-                            yield return ShowDialog("The target is already dead", skipTime);
+                            yield return ShowDialog("The target is already defeated", skipTime);
                         }
                         continue;
                     }
@@ -208,7 +208,7 @@ public class BattleAction : MonoBehaviour
                 for (int i = 0; i < TargetList.Count; i++)//esta pelo menos entrando aqui
                 {
                     if(TargetList[i].isDead){
-                        yield return ShowDialog("The target is already dead", skipTime);
+                        yield return ShowDialog("The target is already defeated", skipTime);
                         continue;
                     }
                     if(!payed){//paga o custo para usar a skill
@@ -326,7 +326,7 @@ public class BattleAction : MonoBehaviour
     */
     int HealCalculation(float POWER, Unit Target){
         float POWERRATIO = (POWER/BASEPOWER);
-        int damage = Mathf.CeilToInt(((5*unitRef.unitLevel)/5 + 2) * POWERRATIO);
+        int damage = Mathf.CeilToInt(((5*unitRef.unitLevel)/5 + 2) * POWERRATIO* 1.5f);//1.5 adicionado porque acho que o healing esta muito fraco
         return damage;
     }
 

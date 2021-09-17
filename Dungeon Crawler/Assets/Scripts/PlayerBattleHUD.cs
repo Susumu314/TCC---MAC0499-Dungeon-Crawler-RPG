@@ -10,7 +10,7 @@ using TMPro;
 */
 public class PlayerBattleHUD : MonoBehaviour
 {
-    public Text nameText;
+    public TextMeshProUGUI nameText;
     public Text hpMpText;
     public Image healthBar;
     public Image manaBar;
@@ -51,7 +51,7 @@ public class PlayerBattleHUD : MonoBehaviour
             
         }
         else
-            nameText.text = unit.unitName + " LvL" + unit.unitLevel;
+            nameText.text = unit.unitName + " L." + unit.unitLevel;
     }
 
     /**

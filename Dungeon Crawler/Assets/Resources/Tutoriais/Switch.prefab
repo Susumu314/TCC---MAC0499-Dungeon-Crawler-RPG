@@ -198,7 +198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Units in the backline take and deal less damage from melee attacks.
+  m_text: 'Units in the backline take and deal less damage from close range attacks.
 
 
 '

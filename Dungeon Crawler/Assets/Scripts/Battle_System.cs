@@ -154,7 +154,8 @@ public class Battle_System : MonoBehaviour
     public void Update()
     {
         if(tutorialFlag){
-            if(!GameManager.Instance.InTutorial){
+            if(!GameManager.Instance.InTutorial && partyMembers[SelectedPartyMember].HUD.isSelected){
+                //aqui tem que esperar o membro estar selecionado para abrir o menu e evitar bugs
                 OpenMenu();
                 tutorialFlag = false;
             }
@@ -1054,6 +1055,7 @@ public class Battle_System : MonoBehaviour
         //PlayLoseTheme();
         yield return new WaitForSeconds(2f);
         //GameOverScreen();
+        GameManager.Instance.GameOver = true;
         GameManager.Instance.state = GameManager.State.Overworld;
         SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
     }
@@ -1131,6 +1133,7 @@ public class Battle_System : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {   
             int skillID = partyMembers[SelectedPartyMember].skillList[i];
+            Debug.Log(SelectedPartyMember);
             if(skillID == -1){
                 skillMenu.transform.GetChild(i).GetChild(0).GetComponent<Text>().text = "Empty";
                 continue;
