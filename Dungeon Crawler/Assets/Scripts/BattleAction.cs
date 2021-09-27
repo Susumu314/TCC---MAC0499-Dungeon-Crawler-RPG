@@ -16,7 +16,7 @@ public class BattleAction : MonoBehaviour
     }
     public Act act;
     private List<Unit> TargetList = new List<Unit>(); //todos os alvos de uma ação serão colocados dentro deste array
-
+    private List<Unit> enemyPartyRef = new List<Unit>();
     private Unit unitRef;
     public int skillID;
     private int itemID;
@@ -114,7 +114,7 @@ public class BattleAction : MonoBehaviour
                     //display mensage
                     //wait for animations and mensage
                     Debug.Log(damage);
-                    TargetList[0].TakeDamage(damage);
+                    TargetList[0].TakeDamage(damage,1);
                     yield return ShowDialog(unitRef.unitName + " attacked " + TargetList[0].unitName + ".", skipTime);
                 }
                 break;
@@ -177,7 +177,7 @@ public class BattleAction : MonoBehaviour
                     if(s.Power > 0){
                         damage = DamageCalculation(s, TargetList[i]);
                         Debug.Log(damage);
-                        TargetList[i].TakeDamage(damage);
+                        TargetList[i].TakeDamage(damage, resistMod);
                         if(resistMod > 1){
                             yield return ShowDialog("It's SUPER EFFECTIVE!!!\nDamage:" + damage, skipTime); 
                         }
@@ -228,7 +228,7 @@ public class BattleAction : MonoBehaviour
                     if(item.Power > 0){
                         damage = ItemDamageCalculation(item, TargetList[i]);
                         Debug.Log(damage);
-                        TargetList[i].TakeDamage(damage);
+                        TargetList[i].TakeDamage(damage, resistMod);
                         if(resistMod > 1){
                             yield return ShowDialog("It's SUPER EFFECTIVE!!!\nDamage:" + damage, skipTime); 
                         }
@@ -271,10 +271,10 @@ public class BattleAction : MonoBehaviour
         float POWERRATIO = (s.Power/BASEPOWER);
         float ATKDEFRATIO;
         if(!s.IsSpecial){
-            ATKDEFRATIO = ((float)unitRef.attack*unitRef.attackModifier/(float)Target.defence*Target.defenceModifier);
+            ATKDEFRATIO = ((float)unitRef.attack*unitRef.attackModifier/((float)Target.defence*Target.defenceModifier));
         }
         else{
-            ATKDEFRATIO = ((float)unitRef.special_attack*unitRef.special_attackModifier/(float)Target.special_defence*Target.special_defenceModifier);
+            ATKDEFRATIO = ((float)unitRef.special_attack*unitRef.special_attackModifier/((float)Target.special_defence*Target.special_defenceModifier));
         }
 
         float TARGETLANEMODIFIER;
@@ -367,7 +367,7 @@ public class BattleAction : MonoBehaviour
             //buffs e debuffs a status incrementam e decrementam os modificadores em multiplos de 50% de cada vez
             case Skill.EFFECT.ATK_UP:{
                 Target.modStages[0] = Mathf.Min(6, Target.modStages[0] + 1);
-                if (Target.modStages[0] >= 0)
+                if (Target.modStages[0] >= 1)
                 {
                     Target.attackModifier = (2.0f + Target.modStages[0])/2.0f;
                     Debug.Log("Attack mod" + Target.attackModifier);
@@ -453,7 +453,7 @@ public class BattleAction : MonoBehaviour
             }
             case Skill.EFFECT.ATK_DOWN:{
                 Target.modStages[0] = Mathf.Max(-6, Target.modStages[0] - 1);
-                if (Target.modStages[0] >= 0)
+                if (Target.modStages[0] >= 1)
                 {
                     Target.attackModifier = (2.0f + Target.modStages[0])/2.0f;
                 }
@@ -535,9 +535,187 @@ public class BattleAction : MonoBehaviour
                 yield return ShowDialog("EVASION DOWN!", skipTime);
                 break;
             }
+            case Skill.EFFECT.STRONG_ATK_UP:{
+                Target.modStages[0] = Mathf.Min(6, Target.modStages[0] + 2);
+                if (Target.modStages[0] >= 1)
+                {
+                    Target.attackModifier = (2.0f + Target.modStages[0])/2.0f;
+                    Debug.Log("Attack mod" + Target.attackModifier);
+                }
+                else{
+                    Target.attackModifier = 2.0f/(2.0f - Target.modStages[0]);
+                    Debug.Log("Attack mod " + Target.attackModifier);
+                }
+                yield return ShowDialog("ATK UP!", skipTime);
+                break;
+            }
+            case Skill.EFFECT.STRONG_DEF_UP:{
+                Target.modStages[1] = Mathf.Min(6, Target.modStages[1] + 2);
+                if (Target.modStages[1] >= 1)
+                {
+                    Target.defenceModifier = (2.0f + Target.modStages[1])/2.0f;
+                }
+                else{
+                    Target.defenceModifier = 2.0f/(2.0f - Target.modStages[1]);
+                }
+                yield return ShowDialog("DEF UP!", skipTime);
+                break;
+            }
+            case Skill.EFFECT.STRONG_SPATK_UP:{
+                Target.modStages[2] = Mathf.Min(6, Target.modStages[2] + 2);
+                if (Target.modStages[2] >= 1)
+                {
+                    Target.special_attackModifier = (2.0f + Target.modStages[2])/2.0f;
+                }
+                else{
+                    Target.special_attackModifier = 2.0f/(2.0f - Target.modStages[2]);
+                }
+                yield return ShowDialog("SPATK UP!", skipTime);
+                break;
+            }
+            case Skill.EFFECT.STRONG_SPDEF_UP:{
+                Target.modStages[3] = Mathf.Min(6, Target.modStages[3] + 2);
+                if (Target.modStages[3] >= 1)
+                {
+                    Target.special_defenceModifier = (2.0f + Target.modStages[3])/2.0f;
+                }
+                else{
+                    Target.special_defenceModifier = 2.0f/(2.0f - Target.modStages[3]);
+                }
+                yield return ShowDialog("SPDEF UP!", skipTime);
+                break;
+            }
+            case Skill.EFFECT.STRONG_SPEED_UP:{
+                Target.modStages[4] = Mathf.Min(6, Target.modStages[4] + 2);
+                if (Target.modStages[4] >= 1)
+                {
+                    Target.speedModifier = (2.0f + Target.modStages[4])/2.0f;
+                }
+                else{
+                    Target.speedModifier = 2.0f/(2.0f - Target.modStages[4]);
+                }
+                yield return ShowDialog("SPEED UP!", skipTime);
+                break;
+            }
+            case Skill.EFFECT.STRONG_ACC_UP:{
+                Target.modStages[5] = Mathf.Min(6, Target.modStages[5] + 2);
+                if (Target.modStages[5] >= 1)
+                {
+                    Target.accuracyModifier = (3.0f + Target.modStages[5])/3.0f;
+                }
+                else{
+                    Target.accuracyModifier = 3.0f/(3.0f - Target.modStages[5]);
+                }
+                yield return ShowDialog("ACCURACY UP!", skipTime);
+                break;
+            }
+            case Skill.EFFECT.STRONG_EVASION_UP:{
+                Target.modStages[6] = Mathf.Min(6, Target.modStages[6] + 2);
+                if (Target.modStages[6] >= 1)
+                {
+                    Target.evasion = (3.0f + Target.modStages[6])/3.0f;
+                }
+                else{
+                    Target.evasion = 3.0f/(3.0f - Target.modStages[6]);
+                }
+                yield return ShowDialog("EVASION UP!", skipTime);
+                break;
+            }
+            case Skill.EFFECT.STRONG_ATK_DOWN:{
+                Target.modStages[0] = Mathf.Max(-6, Target.modStages[0] - 2);
+                if (Target.modStages[0] >= 1)
+                {
+                    Target.attackModifier = (2.0f + Target.modStages[0])/2.0f;
+                }
+                else{
+                    Target.attackModifier = 2.0f/(2.0f - Target.modStages[0]);
+                }
+                yield return ShowDialog("ATK DOWN!", skipTime);
+                break;
+            }
+            case Skill.EFFECT.STRONG_DEF_DOWN:{
+                Target.modStages[1] = Mathf.Max(-6, Target.modStages[1] - 2);
+                if (Target.modStages[1] >= 1)
+                {
+                    Target.defenceModifier = (2.0f + Target.modStages[1])/2.0f;
+                }
+                else{
+                    Target.defenceModifier = 2.0f/(2.0f - Target.modStages[1]);
+                }
+                yield return ShowDialog("DEF DOWN!", skipTime);
+                break;
+            }
+            case Skill.EFFECT.STRONG_SPATK_DOWN:{
+                Target.modStages[2] = Mathf.Max(-6, Target.modStages[2] - 2);
+                if (Target.modStages[2] >= 1)
+                {
+                    Target.special_attackModifier = (2.0f + Target.modStages[2])/2.0f;
+                }
+                else{
+                    Target.special_attackModifier = 2.0f/(2.0f - Target.modStages[2]);
+                }
+                yield return ShowDialog("SPATK DOWN!", skipTime);
+                break;
+            }
+            case Skill.EFFECT.STRONG_SPDEF_DOWN:{
+                Target.modStages[3] = Mathf.Max(-6, Target.modStages[3] - 2);
+                if (Target.modStages[3] >= 1)
+                {
+                    Target.special_defenceModifier = (2.0f + Target.modStages[3])/2.0f;
+                }
+                else{
+                    Target.special_defenceModifier = 2.0f/(2.0f - Target.modStages[3]);
+                }
+                yield return ShowDialog("SPDEF DOWN!", skipTime);
+                break;
+            }
+            case Skill.EFFECT.STRONG_SPEED_DOWN:{
+                Target.modStages[4] = Mathf.Max(-6, Target.modStages[4] - 2);
+                if (Target.modStages[4] >= 1)
+                {
+                    Target.speedModifier = (2.0f + Target.modStages[4])/2.0f;
+                }
+                else{
+                    Target.speedModifier = 2.0f/(2.0f - Target.modStages[4]);
+                }
+                yield return ShowDialog("SPEED DOWN!", skipTime);
+                break;
+            }
+            case Skill.EFFECT.STRONG_ACC_DOWN:{
+                Target.modStages[5] = Mathf.Max(-6, Target.modStages[5] - 2);
+                if (Target.modStages[5] >= 1)
+                {
+                    Target.accuracyModifier = (3.0f + Target.modStages[5])/3.0f;
+                }
+                else{
+                    Target.accuracyModifier = 3.0f/(3.0f - Target.modStages[5]);
+                }
+                yield return ShowDialog("ACCURACY DOWN!", skipTime);
+                break;
+            }
+            case Skill.EFFECT.STRONG_EVASION_DOWN:{
+                Target.modStages[6] = Mathf.Max(-6, Target.modStages[6] - 2);
+                if (Target.modStages[6] >= 1)
+                {
+                    Target.evasion = (3.0f + Target.modStages[6])/3.0f;
+                }
+                else{
+                    Target.evasion = 3.0f/(3.0f - Target.modStages[6]);
+                }
+                yield return ShowDialog("EVASION DOWN!", skipTime);
+                break;
+            }
             default:
             break;
         }
         Target.ShowStatusMods();
+    }
+    public void InitEnemyPartyRef(List<Unit> Enemies){
+        foreach (Unit e in Enemies)
+        {
+            if(!e.isDead){
+                enemyPartyRef.Add(e);
+            }
+        }
     }
 }

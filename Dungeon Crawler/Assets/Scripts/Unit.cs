@@ -56,7 +56,7 @@ public class Unit : MonoBehaviour
     private bool isInit = false;
     public int isBackLine = 0; //0 is frontline, 1 is backline
     public int totalExp = 0;
-    private int expForNextLevel;
+    public int expForNextLevel;
     private BaseStats.DemonStats stats;
     private bool OnGuard = false; // devo resetar isso alguma hora depois do BattleTurn,
                                  // provavelmente quando o personagem for selecionado para escolher a sua proxima ação
@@ -87,7 +87,7 @@ public class Unit : MonoBehaviour
     }
     void Update(){
     }
-    public void TakeDamage(int d){
+    public void TakeDamage(int d, float resistMod){
         int damage;
         if (!OnGuard){
             damage = d;
@@ -96,8 +96,20 @@ public class Unit : MonoBehaviour
             damage = Mathf.CeilToInt(d/2f);
         }
         StartCoroutine(HUD.SetHP(Math.Max(0, currentHP - damage)));
-        GameObject damagePopup = Instantiate(Resources.Load("VFX/DamagePopup"), HUD.transform.position, Quaternion.identity) as GameObject;
-        damagePopup.GetComponent<DamagePopup>().Setup(damage);
+        if(resistMod > 1){
+            GameObject damagePopup = Instantiate(Resources.Load("VFX/SuperDamagePopup"), HUD.transform.position, Quaternion.identity) as GameObject;
+            damagePopup.GetComponent<DamagePopup>().Setup(damage);
+            AudioManager.instance.Play("SuperEffective");
+        }
+        else if(resistMod < 1){
+            GameObject damagePopup = Instantiate(Resources.Load("VFX/LowDamagePopup"), HUD.transform.position, Quaternion.identity) as GameObject;
+            damagePopup.GetComponent<DamagePopup>().Setup(damage);
+            AudioManager.instance.Play("NotEffective");
+        }
+        else{
+            GameObject damagePopup = Instantiate(Resources.Load("VFX/DamagePopup"), HUD.transform.position, Quaternion.identity) as GameObject;
+            damagePopup.GetComponent<DamagePopup>().Setup(damage);
+        }
         if(isPlayerUnit){//se for unidade do player, tremer a camera, se for do inimigo, tremer o inimigo (acho que na vdd eh melhor tremer o canvas)
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShakeScript>().TriggerShake();
         }
@@ -197,7 +209,7 @@ public class Unit : MonoBehaviour
         this.transform.GetChild(0).gameObject.SetActive(false);//desabilita o sprite
         //incrementa o expEarned no Battle_System se for uma unidade inimiga
         if(!isPlayerUnit){
-            BS.expEarned += xp_yield*unitLevel/7;
+            BS.expEarned += xp_yield*unitLevel/5;
         }
         else{
             BS.Allies_Deaths += 1;

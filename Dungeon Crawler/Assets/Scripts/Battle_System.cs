@@ -93,6 +93,7 @@ public class Battle_System : MonoBehaviour
     public int fastestEnemySpeed;
     public int turno;
     private bool tutorialFlag;
+    public BattleResults battleResults;
     /**
     * Chamado no primeiro frame em que o objeto é instanciado
     */
@@ -1040,8 +1041,9 @@ public class Battle_System : MonoBehaviour
                 }
             }
         }
-        GameManager.Instance.state = GameManager.State.Overworld;
-        SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
+        battleResults.OpenResultScreen(partyMembers);
+        //GameManager.Instance.state = GameManager.State.Overworld;
+        //SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
         //ResultScreen();
     }
 

@@ -69,6 +69,23 @@ public class GameManager : MonoBehaviour
         loot.Add(new LootAcquired(CurrentOverworldID, ID));
     }
 
+    public class InteractableUsed
+    {
+        public int OverworldID;
+        public int ID;
+
+        public InteractableUsed(int OverworldID, int ID){
+            this.OverworldID = OverworldID;
+            this.ID = ID;
+        }
+    }
+    //Guarda o ID de cada objeto interativel no overworld
+    public List<InteractableUsed> interactables = new List<InteractableUsed>();
+
+    public void AddInteractable(int ID){
+        interactables.Add(new InteractableUsed(CurrentOverworldID, ID));
+    }
+
     public class Tutorial
     {
         public string tutorialName;

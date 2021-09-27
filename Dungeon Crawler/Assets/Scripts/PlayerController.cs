@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
     private OverworldLoot loot;
     private GameObject party;
     private bool tutorialFlag = false;
+    private bool facingInteractable = false;
+    int layerMask = 1 << 14;
+    RaycastHit hit;
+    private Interactable interactable;
 
     void Awake(){
         MenuSystem = GameObject.Find("OverworldMenu_System").GetComponent<OW_MenuSystem>();
@@ -46,6 +50,7 @@ public class PlayerController : MonoBehaviour
         state = STATES.IDLE;
         movePoint.parent = null;
         onSpecialTile = 0;
+        facingInteractable = false;
         WallMask = (1<<8);//wall
         EncounterMask = (1<<9);//EncounterZone
         REScript = gameObject.GetComponent<RandomEncouters>();
@@ -69,6 +74,8 @@ public class PlayerController : MonoBehaviour
         }
         if(MenuSystem.state == OW_MenuSystem.OW_State.FREEROAMING){//só consegue andar quando no estado freeroaming
             if (!tutorialFlag && Vector3.Distance(transform.position, movePoint.position) <= 0.1f*step && Quaternion.Angle(transform.rotation, movePoint.rotation) <= 0.1f){
+                //MenuSystem.DialogueBox.SetActive(false);
+                CheckForInteractables();
                 if (state == STATES.WALKING){
                     //terminou de dar um passo
                     REScript.Increment_Encouter(zone.EncounterRate, zone.ZoneID);
@@ -76,6 +83,7 @@ public class PlayerController : MonoBehaviour
                 }
                 if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f){
                     movePoint.Rotate(0f, 90f * Input.GetAxisRaw("Horizontal"), 0f);
+                    if(onSpecialTile == 0) MenuSystem.DialogueBox.SetActive(false);
                 }
                 else if(Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f){
                     Target = movePoint.position + transform.rotation * Vector3.forward * Input.GetAxisRaw("Vertical")*step;
@@ -83,9 +91,9 @@ public class PlayerController : MonoBehaviour
                     {
                         movePoint.position += transform.rotation * Vector3.forward * Input.GetAxisRaw("Vertical")*step;
                         state = STATES.WALKING;
+                        onSpecialTile = 0;
+                        MenuSystem.DialogueBox.SetActive(false);
                     }
-                    onSpecialTile = 0;
-                    MenuSystem.DialogueBox.SetActive(false);
                 }
                 else if(Mathf.Abs(Input.GetAxisRaw("Strafe")) == 1f){
                     Target = movePoint.position + transform.rotation * Vector3.right * Input.GetAxisRaw("Strafe")*step;
@@ -93,16 +101,36 @@ public class PlayerController : MonoBehaviour
                     {
                         movePoint.position += transform.rotation * Vector3.right * Input.GetAxisRaw("Strafe")*step;
                         state = STATES.WALKING;
+                        onSpecialTile = 0;
+                        MenuSystem.DialogueBox.SetActive(false);
                     }
-                    onSpecialTile = 0;
-                    MenuSystem.DialogueBox.SetActive(false);
                 }
                 if(state == STATES.IDLE && onSpecialTile != 0){
                     if(Input.GetButtonDown("Submit")){
                         GetItem();
                     }
                 }
+                if(state == STATES.IDLE && facingInteractable){
+                    if(Input.GetButtonDown("Submit")){
+                        Interact();
+                    }
+                }
             }
+        }
+    }
+
+    private void CheckForInteractables()
+    {
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 4, layerMask))
+        {
+            if(!facingInteractable){
+                interactable = hit.collider.gameObject.GetComponent<Interactable>();
+                facingInteractable = true;
+                ShowDialog("Press Z");
+            }
+        }
+        else{
+            facingInteractable = false;
         }
     }
 
@@ -124,9 +152,7 @@ public class PlayerController : MonoBehaviour
         if((collider.gameObject.layer == 10)){ // se for item abrir prompt para clicar o botao de confirmar para recolher o item
             loot = collider.GetComponent<OverworldLoot>();
             onSpecialTile = 1;// SpecialTile == 1 representa que o jogador está sobre um item no overworld
-            MenuSystem.DialogueBox.SetActive(true);
-            //nao sei pq diabos isso daqui nao esta escrevendo no dialoguetext
-            MenuSystem.dialogueText.text = "Press Enter to pickup " + loot.item.amount + "x " + Item.ItemList[loot.item.ID].Name;
+            ShowDialog("Press Enter to pickup " + loot.item.amount + "x " + Item.ItemList[loot.item.ID].Name);
             Debug.Log("entrou aqui");
         }
         if((collider.gameObject.layer == 11)){
@@ -170,6 +196,22 @@ public class PlayerController : MonoBehaviour
         MenuSystem.DialogueBox.SetActive(false);
         Debug.Log("Pegou o item do chão" + loot);
         bagMenuContent.RefreshBagMenu(party.GetComponent<Bag>());
+    }
+
+    /**
+    * Ativa o script do interactable
+    */
+
+    private void Interact(){
+        interactable.Act(this);        
+    }
+
+    /**
+    * Mostra mensagem na caixa de dialogo
+    */
+    public void ShowDialog(string text){
+        MenuSystem.DialogueBox.SetActive(true);
+        MenuSystem.dialogueText.text = text;
     }
 
 }

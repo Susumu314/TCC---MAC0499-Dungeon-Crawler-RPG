@@ -34,6 +34,14 @@ public class OW_MenuSystem : MonoBehaviour
         TargetPartyMember = 0;
         TargetPartyHUD = 0;
         SetupGUI();
+        if(GameManager.Instance.GameOver){
+            foreach (Unit unit in GameManager.Instance.party.GetComponentsInChildren<Unit>())
+            {
+                if(unit.species != ""){
+                    unit.FullHeal();
+                }
+            }
+        }
         while ((!partyMembers[SelectedPartyMember] || partyMembers[SelectedPartyMember].isDead)
                 && SelectedPartyMember < 6){
             SelectedPartyMember++;
@@ -45,6 +53,9 @@ public class OW_MenuSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.Instance.GameOver){
+            GameManager.Instance.GameOver = false;
+        }
         if(Input.GetButtonDown("OpenMenu") && !tutorialFlag){
             OpenMenu();
         }

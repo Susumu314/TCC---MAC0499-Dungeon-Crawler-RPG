@@ -15,6 +15,7 @@ public class GameHandler_Overmap : MonoBehaviour
     public int OverWorldID;
     public string BGM;
     public GameObject lootList;
+    public GameObject interactableList;
     public Transform healZoneTransform;
 
     /**
@@ -30,7 +31,6 @@ public class GameHandler_Overmap : MonoBehaviour
             SavePlayerObject();
         }
         else if(GameManager.Instance.GameOver){
-            GameManager.Instance.GameOver = false;
             PlayerOverworld = Instantiate(PlayerPrefab, new Vector3(healZoneTransform.position.x, 1, healZoneTransform.position.z) , GameManager.Instance.overworldPlayerRotation);
         }
         else
@@ -44,6 +44,17 @@ public class GameHandler_Overmap : MonoBehaviour
                 {
                     if(item.ID == l.ID){
                         Destroy(item.gameObject);
+                    }
+                }
+            }
+        }
+        foreach (GameManager.InteractableUsed i in GameManager.Instance.interactables)
+        {
+            if(i.OverworldID == OverWorldID){
+                foreach (Interactable item in interactableList.GetComponentsInChildren<Interactable>())
+                {
+                    if(item.ID == i.ID){
+                        item.used = true;
                     }
                 }
             }
