@@ -62,7 +62,7 @@ public class MovePool
                 new LevelUp_Move(/*Level*/17, /*skillID*/20),
                 new LevelUp_Move(/*Level*/20, /*skillID*/25)
                 })),
-        new Demon_MovePool("Carnivore Plant A", 
+        new Demon_MovePool("Carnivuno", 
             new List<LevelUp_Move>(new[] {
                 new LevelUp_Move(/*Level*/1, /*skillID*/5),
                 new LevelUp_Move(/*Level*/3, /*skillID*/1),
@@ -73,7 +73,7 @@ public class MovePool
                 new LevelUp_Move(/*Level*/16, /*skillID*/14),
                 new LevelUp_Move(/*Level*/18, /*skillID*/26)
                 })),
-        new Demon_MovePool("Carnivore Plant B", 
+        new Demon_MovePool("Carnidos", 
             new List<LevelUp_Move>(new[] {
                 new LevelUp_Move(/*Level*/1, /*skillID*/5),
                 new LevelUp_Move(/*Level*/3, /*skillID*/1),
@@ -84,7 +84,7 @@ public class MovePool
                 new LevelUp_Move(/*Level*/16, /*skillID*/14),
                 new LevelUp_Move(/*Level*/18, /*skillID*/26)
                 })),
-        new Demon_MovePool("Carnivore Plant C", 
+        new Demon_MovePool("Carnivotres", 
             new List<LevelUp_Move>(new[] {
                 new LevelUp_Move(/*Level*/1, /*skillID*/5),
                 new LevelUp_Move(/*Level*/3, /*skillID*/1),

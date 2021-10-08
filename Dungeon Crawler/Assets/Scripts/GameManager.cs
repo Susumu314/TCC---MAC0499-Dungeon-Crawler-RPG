@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         Overworld,
         InRandomEncounter,
         InTutorial,
+        Evolution,
         GameOver,
     }
 

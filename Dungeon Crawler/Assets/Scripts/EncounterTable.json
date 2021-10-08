@@ -63,13 +63,13 @@
                 {
                     "min_level": 11,
                     "max_level": 12,
-                    "enemy_formation": ["", "Carnivore Plant A", "",
+                    "enemy_formation": ["", "Carnivuno", "",
                                         "", "", ""]
                 },
                 {
                     "min_level": 10,
                     "max_level": 11,
-                    "enemy_formation": ["Carnivore Plant A", "", "Carnivore Plant A",
+                    "enemy_formation": ["Carnivuno", "", "Carnivuno",
                                         "", "", ""]
                 },
                 {
@@ -168,14 +168,14 @@
                 {
                     "min_level": 13,
                     "max_level": 14,
-                    "enemy_formation": ["Carnivore Plant A", "Carnivore Plant A", "Carnivore Plant A",
+                    "enemy_formation": ["Carnivuno", "Carnivuno", "Carnivuno",
                                         "", "", ""]
                 },
                 {
                     "min_level": 12,
                     "max_level": 13,
-                    "enemy_formation": ["Carnivore Plant A", "", "Carnivore Plant A",
-                                        "", "Carnivore Plant A", ""]
+                    "enemy_formation": ["Carnivuno", "", "Carnivuno",
+                                        "", "Carnivuno", ""]
                 },
                 {
                     "min_level": 12,
@@ -186,7 +186,7 @@
                 {
                     "min_level": 12,
                     "max_level": 13,
-                    "enemy_formation": ["Carnivore Plant A", "", "Carnivore Plant A",
+                    "enemy_formation": ["Carnivuno", "", "Carnivuno",
                                         "", "Wind Fairy", ""]
                 }
             ]

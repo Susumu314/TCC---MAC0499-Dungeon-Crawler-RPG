@@ -57,7 +57,7 @@ public class Unit : MonoBehaviour
     public int isBackLine = 0; //0 is frontline, 1 is backline
     public int totalExp = 0;
     public int expForNextLevel;
-    private BaseStats.DemonStats stats;
+    public BaseStats.DemonStats stats;
     private bool OnGuard = false; // devo resetar isso alguma hora depois do BattleTurn,
                                  // provavelmente quando o personagem for selecionado para escolher a sua proxima ação
     /**
@@ -68,6 +68,7 @@ public class Unit : MonoBehaviour
     public int[] skillList;// por enquanto cada unidade tem 4 skills, essa lista contem os ID de cada skill
     private List<MovePool.LevelUp_Move> movePool;
     private Unit switchTarget;
+    public bool canEvolve;
     public Unit(string species, string unitName, int unitLevel/*, int hp, int mp*/){
         this.species = species;
         this.unitName = unitName;
@@ -287,12 +288,68 @@ public class Unit : MonoBehaviour
         statusCondition = STATUS_CONDITION.NULL;
     }
 
-    public IEnumerator GainExp(int exp){//depois pensar num jeito de mostrar numa tela as mudanças de stats (provavelmente fazer toda parte de ganhar xp e upar em uma cena nova) 
-        totalExp += exp;
-        if (totalExp > expForNextLevel){
-            LevelUp();
+    public void Evolve(){
+        if(unitName == species){
+            unitName = stats.evolution;
         }
-        yield return null;
+        species = stats.evolution;
+        this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Demon Sprites/" + species);
+        stats = BaseStats.SearchDex(species);
+
+        int previousHP = maxHP;
+
+        maxHP = Mathf.FloorToInt(3*stats.Hp * unitLevel/100) + unitLevel + 10;
+        currentHP += maxHP - previousHP;
+
+        int previousMP = maxMana;
+
+        maxMana = Mathf.FloorToInt(3*stats.Mp * unitLevel/100) + unitLevel + 10;
+        currentMana += maxMana - previousMP;
+
+        attack = Mathf.FloorToInt(3*stats.atk * unitLevel/100) + 5;
+        defence = Mathf.FloorToInt(3*stats.def * unitLevel/100) + 5;
+        special_attack = Mathf.FloorToInt(3*stats.spatk * unitLevel/100) + 5;
+        special_defence = Mathf.FloorToInt(3*stats.spdef * unitLevel/100) + 5;
+        speed = Mathf.FloorToInt(3*stats.spd * unitLevel/100) + 5;
+        type = stats.Type;
+        xp_yield = stats.xpYield;
+        growth_rate = stats.growthRate; 
+        catch_rate = stats.catchRate;
+        //calculo da exp
+        exponent = 3;
+        switch (growth_rate)
+        {
+            case BaseStats.GROWTH_RATE.SLOW:
+                baseExp = 5f/4f;
+            break;
+            case BaseStats.GROWTH_RATE.MEDIUM_SLOW:
+                baseExp = 6f/5f;
+            break;
+            case BaseStats.GROWTH_RATE.MEDIUM:
+                baseExp = 1;
+            break;
+            case BaseStats.GROWTH_RATE.FAST:
+                baseExp = 4f/5f;
+            break;
+            default:
+                baseExp = 1;
+            break;
+        }
+        totalExp = Mathf.CeilToInt(baseExp*Mathf.Pow(unitLevel,exponent));
+        expForNextLevel = Mathf.CeilToInt(baseExp*Mathf.Pow(unitLevel + 1,exponent));
+    }
+
+    public float[] GainExp(int exp){//depois pensar num jeito de mostrar numa tela as mudanças de stats (provavelmente fazer toda parte de ganhar xp e upar em uma cena nova) 
+        float[] ret = new float[2];// ret[0] é a porcentagem inicial da barra de progresso de xp, e ret[1] é a porcentagem final da barra de progresso
+        int minLvlXP = Mathf.CeilToInt(baseExp*Mathf.Pow(unitLevel,exponent));
+        ret[0] = (float)(totalExp - minLvlXP)/(float)(expForNextLevel-minLvlXP);
+        totalExp += exp;
+        while (totalExp > expForNextLevel){
+            LevelUp();
+            ret[1] += 1.0f;
+        }
+        ret[1] += (float)(totalExp - minLvlXP)/(float)(expForNextLevel-minLvlXP);
+        return ret;
     }
     public void LevelUp(){ 
         unitLevel += 1;
@@ -304,6 +361,9 @@ public class Unit : MonoBehaviour
         special_defence = Mathf.FloorToInt(3*stats.spdef * unitLevel/100) + 5;
         speed = Mathf.FloorToInt(3*stats.spd * unitLevel/100) + 5;
         expForNextLevel = Mathf.CeilToInt(baseExp*Mathf.Pow(unitLevel + 1,exponent));
+        if((unitLevel >= stats.evolutionlvl) && stats.evolution != ""){
+            canEvolve = true;
+        }
     }
     /**
     * Quando tentar capturar uma unidade selvagem, essa função determina se a captura foi efetiva ou nao

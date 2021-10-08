@@ -23,7 +23,7 @@ public class Stat_Screen : MonoBehaviour
     public Image SPRITE;
 
     public void UpdateStatScreen(Unit u){
-        NAME.text = u.name;
+        NAME.text = u.unitName;
         SPECIES.text = u.species;
         LVL.text = "" + u.unitLevel;
         HP.text = "" + u.maxHP;

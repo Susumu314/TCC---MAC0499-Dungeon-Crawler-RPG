@@ -1021,30 +1021,30 @@ public class Battle_System : MonoBehaviour
         state = BattleState.WON;
         //PlayFanfare();
         yield return new WaitForSeconds(1f);
-        //Calcula o numero de unidades do jogador vivos:
-        int s = 0;
-        foreach (Unit unit in partyMembers)
-        {   
-            if(unit){
-                if(!unit.isDead){
-                    s++;
-                }
-            }
-        }
-        Debug.Log(s);
-        //calcula a experiencia que cada unidade deve ganhar
-        foreach (Unit unit in partyMembers)
-        {
-            if(unit){
-                if(!unit.isDead){
-                    yield return unit.GainExp(Mathf.RoundToInt((float)expEarned/(float)s));
-                }
-            }
-        }
+        // //Calcula o numero de unidades do jogador vivos:
+        // int s = 0;
+        // foreach (Unit unit in partyMembers)
+        // {   
+        //     if(unit){
+        //         if(!unit.isDead){
+        //             s++;
+        //         }
+        //     }
+        // }
+        // Debug.Log(s);
+        // //calcula a experiencia que cada unidade deve ganhar
+        // foreach (Unit unit in partyMembers)
+        // {
+        //     if(unit){
+        //         if(!unit.isDead){
+        //             yield return unit.GainExp(Mathf.RoundToInt((float)expEarned/(float)s));
+        //         }
+        //     }
+        // }
+        battleResults.TotalEXP(expEarned);
         battleResults.OpenResultScreen(partyMembers);
         //GameManager.Instance.state = GameManager.State.Overworld;
         //SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
-        //ResultScreen();
     }
 
     /**
@@ -1071,26 +1071,26 @@ public class Battle_System : MonoBehaviour
         state = BattleState.WON;
         //PlayFanfare();
         yield return new WaitForSeconds(1f);
-        //Calcula o numero de unidades do jogador vivos:
-        int s = 0;
-        foreach (Unit unit in partyMembers)
-        {   
-            if(unit){
-                if(!unit.isDead){
-                    s++;
-                }
-            }
-        }
-        Debug.Log(s);
-        //calcula a experiencia que cada unidade deve ganhar
-        foreach (Unit unit in partyMembers)
-        {
-            if(unit){
-                if(!unit.isDead){
-                    yield return unit.GainExp(Mathf.RoundToInt((float)expEarned/(float)s));
-                }
-            }
-        }
+        // //Calcula o numero de unidades do jogador vivos:
+        // int s = 0;
+        // foreach (Unit unit in partyMembers)
+        // {   
+        //     if(unit){
+        //         if(!unit.isDead){
+        //             s++;
+        //         }
+        //     }
+        // }
+        // Debug.Log(s);
+        // //calcula a experiencia que cada unidade deve ganhar
+        // foreach (Unit unit in partyMembers)
+        // {
+        //     if(unit){
+        //         if(!unit.isDead){
+        //             yield return unit.GainExp(Mathf.RoundToInt((float)expEarned/(float)s));
+        //         }
+        //     }
+        // }
         GameManager.Instance.state = GameManager.State.Overworld;
         SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
         //ResultScreen();

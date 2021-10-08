@@ -41,9 +41,13 @@ public class BaseStats {
         private readonly int catch_rate;
         private readonly int xp_yield;
         private readonly GROWTH_RATE growth_rate;
+        private readonly string EVOLUTION;
+        private readonly int evolutionLvl;
+        //private readonly string evolutionMethod;
 
         public DemonStats (string SPECIES, int HP, int MP, int attack, int defence, int special_attack, 
-                           int special_defence, int speed, TYPE type,int catch_rate, int xp_yield, GROWTH_RATE growth_rate)
+                           int special_defence, int speed, TYPE type,int catch_rate, int xp_yield, GROWTH_RATE growth_rate,
+                           string EVOLUTION, int evolutionLvl)
         {
             this.SPECIES = SPECIES;
             this.HP = HP;
@@ -57,6 +61,8 @@ public class BaseStats {
             this.catch_rate = catch_rate;
             this.xp_yield = xp_yield;
             this.growth_rate = growth_rate;
+            this.EVOLUTION = EVOLUTION;
+            this.evolutionLvl = evolutionLvl;
         }
 
         public string Species { get { return SPECIES; } }
@@ -71,6 +77,8 @@ public class BaseStats {
         public int catchRate { get { return catch_rate; } }
         public int xpYield { get { return xp_yield; } }
         public GROWTH_RATE growthRate { get { return growth_rate; } }
+        public string evolution { get { return EVOLUTION; } }
+        public int evolutionlvl { get { return evolutionLvl; } }
     }
     
     public static readonly IList<DemonStats> DemonDex = new ReadOnlyCollection<DemonStats>
@@ -86,7 +94,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.FIRE,
                              /*CATCH*/ 45,
                              /*EXP*/   65,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW,
+                             /*EVOID*/ "Fire Kindred Flame",
+                             /*EVOLVL*/15),
 
             new DemonStats (/*name*/ "Fire Kindred Flame",
                              /*HP*/    58,
@@ -99,7 +109,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.FIRE,
                              /*CATCH*/ 45,
                              /*EXP*/   142,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW,
+                             /*EVOID*/ "Fire Dragonspawn",
+                             /*EVOLVL*/36),
 
             new DemonStats (/*name*/ "Fire Dragonspawn",
                              /*HP*/    78,
@@ -112,9 +124,11 @@ public class BaseStats {
                              /*TYPE*/  TYPE.FIRE,
                              /*CATCH*/ 45,
                              /*EXP*/   209,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW,
+                             /*EVOID*/ "",
+                             /*EVOLVL*/101),
             
-            new DemonStats (/*name*/ "Carnivore Plant A",
+            new DemonStats (/*name*/ "Carnivuno",
                              /*HP*/    45,
                              /*MP*/    50, 
                              /*ATK*/   49, 
@@ -125,9 +139,11 @@ public class BaseStats {
                              /*TYPE*/  TYPE.GRASS,
                              /*CATCH*/ 45,
                              /*EXP*/   64,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW,
+                             /*EVOID*/ "Carnidos",
+                             /*EVOLVL*/14),
 
-            new DemonStats (/*name*/ "Carnivore Plant B",
+            new DemonStats (/*name*/ "Carnidos",
                              /*HP*/    60,
                              /*MP*/    70, 
                              /*ATK*/   62, 
@@ -138,9 +154,11 @@ public class BaseStats {
                              /*TYPE*/  TYPE.GRASS,
                              /*CATCH*/ 45,
                              /*EXP*/   141,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW,
+                             /*EVOID*/ "Carnivotres",
+                             /*EVOLVL*/30),
 
-            new DemonStats (/*name*/ "CarnivorePlant C",
+            new DemonStats (/*name*/ "Carnivotres",
                              /*HP*/    80,
                              /*MP*/    85, 
                              /*ATK*/   82, 
@@ -151,7 +169,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.GRASS,
                              /*CATCH*/ 45,
                              /*EXP*/   208,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW,
+                             /*EVOID*/ "",
+                             /*EVOLVL*/101),
             
             new DemonStats (/*name*/ "Sea Crab",
                              /*HP*/    44,
@@ -164,7 +184,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.WATER,
                              /*CATCH*/ 45,
                              /*EXP*/   66,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW,
+                             /*EVOID*/ "Spider Crab",
+                             /*EVOLVL*/16),
 
             new DemonStats (/*name*/ "Spider Crab",
                              /*HP*/    59,
@@ -177,7 +199,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.WATER,
                              /*CATCH*/ 45,
                              /*EXP*/   143,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW,
+                             /*EVOID*/ "Shell Claw",
+                             /*EVOLVL*/32),
 
             new DemonStats (/*name*/ "Shell Claw",
                              /*HP*/    79,
@@ -190,7 +214,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.WATER,
                              /*CATCH*/ 45,
                              /*EXP*/   210,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW,
+                             /*EVOID*/ "",
+                             /*EVOLVL*/101),
             
             new DemonStats (/*name*/ "Rabbit Bandit",
                              /*HP*/    30,
@@ -203,7 +229,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.NORMAL,
                              /*CATCH*/ 255,
                              /*EXP*/   57,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM,
+                             /*EVOID*/ "Rabbit Knight",
+                             /*EVOLVL*/20),
 
             new DemonStats (/*name*/ "Rabbit Knight",
                              /*HP*/    55,
@@ -216,7 +244,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.NORMAL,
                              /*CATCH*/ 127,
                              /*EXP*/   116,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM,
+                             /*EVOID*/ "",
+                             /*EVOLVL*/101),
 
             new DemonStats (/*name*/ "Wind Bunny",
                              /*HP*/    70,
@@ -229,7 +259,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.AIR,
                              /*CATCH*/ 150,
                              /*EXP*/   68,
-                             /*GROWTH*/GROWTH_RATE.FAST),
+                             /*GROWTH*/GROWTH_RATE.FAST,
+                             /*EVOID*/ "Carbuncle",
+                             /*EVOLVL*/21),
 
             new DemonStats (/*name*/ "Carbuncle",
                              /*HP*/    95,
@@ -242,7 +274,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.AIR,
                              /*CATCH*/ 25,
                              /*EXP*/   123,
-                             /*GROWTH*/GROWTH_RATE.FAST),
+                             /*GROWTH*/GROWTH_RATE.FAST,
+                             /*EVOID*/ "",
+                             /*EVOLVL*/101),
 
             new DemonStats (/*name*/ "Ice Spike",
                              /*HP*/    39,
@@ -255,7 +289,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.ICE,
                              /*CATCH*/ 45,
                              /*EXP*/   65,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW,
+                             /*EVOID*/ "Ice Kindred Glacier",
+                             /*EVOLVL*/15),
 
             new DemonStats (/*name*/ "Ice Kindred Glacier",
                              /*HP*/    58,
@@ -268,7 +304,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.ICE,
                              /*CATCH*/ 45,
                              /*EXP*/   142,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW,
+                             /*EVOID*/ "Ice Ogre",
+                             /*EVOLVL*/34),
 
             new DemonStats (/*name*/ "Ice Ogre",
                              /*HP*/    78,
@@ -281,7 +319,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.FIRE,
                              /*CATCH*/ 45,
                              /*EXP*/   209,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW,
+                             /*EVOID*/ "",
+                             /*EVOLVL*/101),
 
             new DemonStats (/*name*/ "Ice Ball",
                              /*HP*/    50,
@@ -294,7 +334,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.ICE,
                              /*CATCH*/ 150,
                              /*EXP*/   33,
-                             /*GROWTH*/GROWTH_RATE.FAST),
+                             /*GROWTH*/GROWTH_RATE.FAST,
+                             /*EVOID*/ "Snobros",
+                             /*EVOLVL*/18),
 
             new DemonStats (/*name*/ "Snobros",
                              /*HP*/    70,
@@ -307,7 +349,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.ICE,
                              /*CATCH*/ 190,
                              /*EXP*/   58,
-                             /*GROWTH*/GROWTH_RATE.FAST),
+                             /*GROWTH*/GROWTH_RATE.FAST,
+                             /*EVOID*/ "Snowman",
+                             /*EVOLVL*/36),
 
             new DemonStats (/*name*/ "Snowman",
                              /*HP*/    100,
@@ -320,7 +364,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.ICE,
                              /*CATCH*/ 75,
                              /*EXP*/   153,
-                             /*GROWTH*/GROWTH_RATE.FAST),
+                             /*GROWTH*/GROWTH_RATE.FAST,
+                             /*EVOID*/ "",
+                             /*EVOLVL*/101),
 
             new DemonStats (/*name*/ "Seagull",
                              /*HP*/    40,
@@ -333,7 +379,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.AIR,
                              /*CATCH*/ 190,
                              /*EXP*/   64,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM,
+                             /*EVOID*/ "Pelican",
+                             /*EVOLVL*/18),
 
             new DemonStats (/*name*/ "Pelican",
                              /*HP*/    60,
@@ -346,7 +394,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.AIR,
                              /*CATCH*/ 45,
                              /*EXP*/   164,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM,
+                             /*EVOID*/ "",
+                             /*EVOLVL*/101),
 
             new DemonStats (/*name*/ "Octi",
                              /*HP*/    53,
@@ -359,7 +409,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.WATER,
                              /*CATCH*/ 190,
                              /*EXP*/   58,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM,
+                             /*EVOID*/ "Octopus",
+                             /*EVOLVL*/24),
 
             new DemonStats (/*name*/ "Octopus",
                              /*HP*/    86,
@@ -372,7 +424,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.WATER,
                              /*CATCH*/ 80,
                              /*EXP*/   169,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM,
+                             /*EVOID*/ "",
+                             /*EVOLVL*/101),
 
             new DemonStats (/*name*/ "Piranos",
                              /*HP*/    45,
@@ -385,7 +439,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.WATER,
                              /*CATCH*/ 225,
                              /*EXP*/   88,
-                             /*GROWTH*/GROWTH_RATE.SLOW),
+                             /*GROWTH*/GROWTH_RATE.SLOW,
+                             /*EVOID*/ "Shark",
+                             /*EVOLVL*/25),
 
             new DemonStats (/*name*/ "Shark",
                              /*HP*/    70,
@@ -398,7 +454,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.WATER,
                              /*CATCH*/ 60,
                              /*EXP*/   175,
-                             /*GROWTH*/GROWTH_RATE.SLOW),
+                             /*GROWTH*/GROWTH_RATE.SLOW,
+                             /*EVOID*/ "",
+                             /*EVOLVL*/101),
 
             new DemonStats (/*name*/ "Wind Fairy",
                              /*HP*/    40,
@@ -411,7 +469,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.AIR,
                              /*CATCH*/ 190,
                              /*EXP*/   61,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM),
+                             /*GROWTH*/GROWTH_RATE.MEDIUM,
+                             /*EVOID*/ "Wind Harpy",
+                             /*EVOLVL*/17),
 
             new DemonStats (/*name*/ "Wind Harpy",
                              /*HP*/    60,
@@ -424,7 +484,9 @@ public class BaseStats {
                              /*TYPE*/  TYPE.AIR,
                              /*CATCH*/ 75,
                              /*EXP*/   162,
-                             /*GROWTH*/GROWTH_RATE.MEDIUM)
+                             /*GROWTH*/GROWTH_RATE.MEDIUM,
+                             /*EVOID*/ "",
+                             /*EVOLVL*/101)
             
         });
     /**
