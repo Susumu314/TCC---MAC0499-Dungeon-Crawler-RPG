@@ -464,6 +464,25 @@ public class Battle_System : MonoBehaviour
                 unit.SetGuard(false);
         }
 
+        foreach (Unit u in partyMembers)
+        {
+            if(u){
+                if(!u.isDead){
+                    StartCoroutine(u.StatusConditionDamage());
+                }
+            }
+        }
+        yield return new WaitForSeconds(1);
+
+        foreach (Unit u in enemyUnits)
+        {
+            if(u){
+                if(!u.isDead){
+                    StartCoroutine(u.StatusConditionDamage());
+                }
+            }
+        }
+        yield return new WaitForSeconds(1);
         //End Battle Turn, return to moveselectionturn
         if(!(state == BattleState.WON || state == BattleState.LOST)){
             MoveSelectionTurn();

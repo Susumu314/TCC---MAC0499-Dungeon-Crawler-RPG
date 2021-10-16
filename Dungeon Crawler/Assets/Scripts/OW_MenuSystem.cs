@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class OW_MenuSystem : MonoBehaviour
 {
-    public enum OW_State { FREEROAMING, ONMAINMENU, DEMONSELECTION, TARGETSELECTION, PERFORMINGACTION, DEMONMENU, POSITIONSELECTION}
+    public enum OW_State { FREEROAMING, ONMAINMENU, DEMONSELECTION, TARGETSELECTION, PERFORMINGACTION, DEMONMENU, POSITIONSELECTION, NICKNAME}
     public OW_State state;
     public GameObject DialogueBox;
     private bool Battle_SystemReferenceOnSkillMenu = false;
@@ -53,6 +53,10 @@ public class OW_MenuSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(state == OW_State.NICKNAME){
+            return;
+        }
+
         if(GameManager.Instance.GameOver){
             GameManager.Instance.GameOver = false;
         }
@@ -771,5 +775,11 @@ public class OW_MenuSystem : MonoBehaviour
         yield return new WaitForEndOfFrame();
         state = OW_State.POSITIONSELECTION;
         partyMembersHUD[TargetPartyHUD].is_Target(true);
+    }
+
+    public void ChangeNickname(string nickname){
+        partyMembers[SelectedPartyMember].unitName = nickname;
+        partyMembers[SelectedPartyMember].HUD.SetHUD(partyMembers[SelectedPartyMember]);
+        ShowDemonInformation(partyMembers[SelectedPartyMember]);
     }
 }

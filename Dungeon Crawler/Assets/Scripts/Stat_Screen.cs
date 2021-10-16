@@ -34,10 +34,12 @@ public class Stat_Screen : MonoBehaviour
         SPDEF.text = "" + u.special_defence;
         SPEED.text = "" + u.speed;
         TYPE.text = u.type.ToString();
-        SKILL1.text = Skill.SkillList[u.skillList[0]].Name;
-        SKILL2.text = Skill.SkillList[u.skillList[1]].Name;
-        SKILL3.text = Skill.SkillList[u.skillList[2]].Name;
-        SKILL4.text = Skill.SkillList[u.skillList[3]].Name;
+        if(SKILL1){
+            SKILL1.text = Skill.SkillList[u.skillList[0]].Name;
+            SKILL2.text = Skill.SkillList[u.skillList[1]].Name;
+            SKILL3.text = Skill.SkillList[u.skillList[2]].Name;
+            SKILL4.text = Skill.SkillList[u.skillList[3]].Name;
+        }
         SPRITE.sprite = Resources.Load<Sprite>("Demon Sprites/" + u.species);
     }
 }

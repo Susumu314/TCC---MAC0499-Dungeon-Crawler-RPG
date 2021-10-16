@@ -19,6 +19,7 @@ public class BattleResults : MonoBehaviour
     private bool canExit = false;
     private float fillSpeed = 1f;
     private bool evolution = false;
+    private bool learnSkill = false;
     private bool open = false;
     public void OpenResultScreen(Unit[] p){
         open = true;
@@ -65,6 +66,9 @@ public class BattleResults : MonoBehaviour
                     if(u.canEvolve){
                         evolution = true;
                     }
+                    if(u.canLearnSkill){
+                        learnSkill = true;
+                    }
                 }
                 i++;
             }
@@ -82,6 +86,10 @@ public class BattleResults : MonoBehaviour
                 if(evolution){
                     GameManager.Instance.state = GameManager.State.Evolution;
                     SceneManager.LoadScene("EvolutionScene");
+                }
+                else if(learnSkill){
+                    GameManager.Instance.state = GameManager.State.LearnSkill;
+                    SceneManager.LoadScene("LearnSkill");
                 }
                 else{
                     GameManager.Instance.state = GameManager.State.Overworld;

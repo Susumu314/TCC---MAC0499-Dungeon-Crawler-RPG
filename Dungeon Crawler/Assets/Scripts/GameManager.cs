@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         InRandomEncounter,
         InTutorial,
         Evolution,
+        LearnSkill,
         GameOver,
     }
 

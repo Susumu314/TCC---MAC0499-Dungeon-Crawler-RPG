@@ -7,6 +7,7 @@ public class SelectableElement : MonoBehaviour, ISelectHandler// required interf
 {
     public Battle_System Battle_System;
     public OW_MenuSystem MenuSystem;
+    public Text dialogText;
     public string text = "Exit";
     public void OnSelect(BaseEventData eventData)
     {
@@ -17,6 +18,9 @@ public class SelectableElement : MonoBehaviour, ISelectHandler// required interf
         if(MenuSystem){
             MenuSystem.dialogueText.text = text;
             return;
+        }
+        if(dialogText){
+            dialogText.text = text;
         }
     }
 }

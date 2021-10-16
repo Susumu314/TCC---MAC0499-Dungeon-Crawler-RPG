@@ -135,6 +135,7 @@ public class MovePool
                 new LevelUp_Move(/*Level*/5, /*skillID*/23),
                 new LevelUp_Move(/*Level*/10, /*skillID*/3),
                 new LevelUp_Move(/*Level*/11, /*skillID*/24),
+                new LevelUp_Move(/*Level*/12, /*skillID*/46),
                 new LevelUp_Move(/*Level*/15, /*skillID*/34),
                 new LevelUp_Move(/*Level*/17, /*skillID*/20)
                 })),

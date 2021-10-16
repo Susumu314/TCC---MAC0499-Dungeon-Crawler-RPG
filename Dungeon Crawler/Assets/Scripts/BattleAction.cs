@@ -32,7 +32,7 @@ public class BattleAction : MonoBehaviour
                                                         /*power*/        (int)BASEPOWER, 
                                                         /*accuracy*/     100, 
                                                         /*cost*/         0,
-                                                        /*status_effect*/Skill.EFFECT.NULL, 
+                                                        /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.NULL}, 
                                                         /*isSpecial*/    false, 
                                                         /*isRanged*/     false,
                                                         /*ID*/           -1,
@@ -194,8 +194,10 @@ public class BattleAction : MonoBehaviour
                         yield return ShowDialog("Healed: " + damage, skipTime); 
                     }
                     //ativa efeitos especiais da habilidade
-                    if(s.Effect != Skill.EFFECT.NULL){
-                        yield return Skill_Effect(s.Effect, TargetList[i]);
+                    foreach(Skill.EFFECT effect in s.Effect){
+                        if(effect != Skill.EFFECT.NULL){
+                            yield return Skill_Effect(effect, TargetList[i]);
+                        }
                     }
                 }
                 break;
@@ -220,7 +222,7 @@ public class BattleAction : MonoBehaviour
                         continue;
                     }
                     wait += MoveAnimation(item.VFX, TargetList[i].HUD.transform, item.COLOR);
-                    if(item.Status_effect == Item.STATUS_EFFECT.CAPTURE){
+                    if(item.Status_effect[0] == Skill.EFFECT.CAPTURE){
                         StartCoroutine(TargetList[0].Capture(item.Power, item.COLOR));
                         continue;
                     }
@@ -244,13 +246,17 @@ public class BattleAction : MonoBehaviour
                         TargetList[i].HealDamage(damage);
                         yield return ShowDialog("Healed: " + damage, skipTime); 
                     }
+                    foreach(Skill.EFFECT effect in item.Status_effect){
+                        if(effect != Skill.EFFECT.NULL){
+                            yield return Skill_Effect(effect, TargetList[i]);
+                        }
+                    }
                 }
                 break;
             }
             default: 
             break;
         }
-        Debug.Log("Chegou ate aqui piroquinha mucha");
         yield return new WaitForSeconds(wait);
     }        
     float MoveAnimation(string animation, Transform target_transform, Color color){
@@ -705,10 +711,91 @@ public class BattleAction : MonoBehaviour
                 yield return ShowDialog("EVASION DOWN!", skipTime);
                 break;
             }
+            case Skill.EFFECT.POISON:
+                if(Target.type != BaseStats.TYPE.POISON){
+                    Target.statusCondition = Unit.STATUS_CONDITION.POISON;
+                    Target.HUD.SetStatusConditions();
+                    yield return ShowDialog("POISONED!", skipTime);
+                }
+                break;
+            
+            case Skill.EFFECT.LOWPOISON:
+                if(Target.type != BaseStats.TYPE.POISON){
+                    int r = Random.Range(0, 100);
+                    if(r < 10){ // 10% de chance de causar o efeito
+                        Target.statusCondition = Unit.STATUS_CONDITION.POISON;
+                        Target.HUD.SetStatusConditions();
+                        yield return ShowDialog("POISONED!", skipTime);
+                    }
+                }
+                break;
+            
+            case Skill.EFFECT.HIGHPOISON:
+                if(Target.type != BaseStats.TYPE.POISON){
+                    int r = Random.Range(0, 100);
+                    if(r < 30){ // 30% de chance de causar o efeito
+                        Target.statusCondition = Unit.STATUS_CONDITION.POISON;
+                        Target.HUD.SetStatusConditions();
+                        yield return ShowDialog("POISONED!", skipTime);
+                    }
+                }
+                break;
+
+            case Skill.EFFECT.HEALPOISON:
+                if(Target.statusCondition == Unit.STATUS_CONDITION.POISON){
+                    Target.statusCondition = Unit.STATUS_CONDITION.NULL;
+                    Target.HUD.SetStatusConditions();
+                    yield return ShowDialog("Poison cured!", skipTime);
+                }
+                else
+                    yield return ShowDialog("It did nothing.", skipTime);
+                break;
+            
+            case Skill.EFFECT.BURN:
+                if(Target.type != BaseStats.TYPE.FIRE){
+                    Target.statusCondition = Unit.STATUS_CONDITION.BURN;
+                    Target.HUD.SetStatusConditions();
+                    yield return ShowDialog("BURNED!", skipTime);
+                }
+                break;
+            
+            case Skill.EFFECT.LOWBURN:
+                if(Target.type != BaseStats.TYPE.FIRE){
+                    int r = Random.Range(0, 100);
+                    if(r < 10){ // 10% de chance de causar o efeito
+                        Target.statusCondition = Unit.STATUS_CONDITION.BURN;
+                        Target.HUD.SetStatusConditions();
+                        yield return ShowDialog("BURNED!", skipTime);
+                    }
+                }
+                break;
+            
+            case Skill.EFFECT.HIGHBURN:
+                if(Target.type != BaseStats.TYPE.FIRE){
+                    int r = Random.Range(0, 100);
+                    if(r < 30){ // 30% de chance de causar o efeito
+                        Target.statusCondition = Unit.STATUS_CONDITION.BURN;
+                        Target.HUD.SetStatusConditions();
+                        yield return ShowDialog("BURNED!", skipTime);
+                    }
+                }
+                break;
+
+            case Skill.EFFECT.HEALBURN:
+                if(Target.statusCondition == Unit.STATUS_CONDITION.BURN){
+                    Target.statusCondition = Unit.STATUS_CONDITION.NULL;
+                    Target.HUD.SetStatusConditions();
+                    yield return ShowDialog("Burn cured!", skipTime);
+                }
+                else
+                    yield return ShowDialog("It did nothing.", skipTime);
+                break;
+
             default:
             break;
         }
         Target.ShowStatusMods();
+        Target.HUD.SetStatusConditions();
     }
     public void InitEnemyPartyRef(List<Unit> Enemies){
         foreach (Unit e in Enemies)

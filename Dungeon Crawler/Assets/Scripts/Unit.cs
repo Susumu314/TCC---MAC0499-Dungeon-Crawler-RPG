@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Unit : MonoBehaviour
 {
-    public enum STATUS_CONDITION {NULL, POISON, BURN, FREEZE, PARALYSIS};
+    public enum STATUS_CONDITION {NULL, POISON, BURN, FREEZE, PARALYSIS, RAGE};
     public STATUS_CONDITION statusCondition;
     public int[] modStages = new int[7]{0,0,0,0,0,0,0};
     public float attackModifier;
@@ -69,6 +69,8 @@ public class Unit : MonoBehaviour
     private List<MovePool.LevelUp_Move> movePool;
     private Unit switchTarget;
     public bool canEvolve;
+    public bool canLearnSkill;
+    public int newSkillID;
     public Unit(string species, string unitName, int unitLevel/*, int hp, int mp*/){
         this.species = species;
         this.unitName = unitName;
@@ -130,8 +132,9 @@ public class Unit : MonoBehaviour
     }
 
     /**
-    * Gasta mana ou vida para utilizar habilidades,
-    * 
+    * Gasta mana ou vida para utilizar habilidades, unidades inimigas não apresentam custo de mana apenas custo de HP
+    * Caso um inimigo tenha HP inferior ao custo da skill, permitir o uso da skill, mas deixar inimigo com 1 de vida 
+    *
     * @param c Custo para utilizar uma habilidade
     * @param isSpecial se a habilidade é especial ou física
     */
@@ -149,7 +152,11 @@ public class Unit : MonoBehaviour
                 HPcost = 1;
             }
             if(currentHP < HPcost){
-                return false;
+                if(isPlayerUnit){
+                    return false;
+                }
+                //se for inimigo, permitir o uso da skill, mas deixa-lo com 1 de vida
+                HPcost = currentHP - 1;
             }
             StartCoroutine(HUD.SetHP(currentHP - HPcost));
         }
@@ -215,6 +222,8 @@ public class Unit : MonoBehaviour
         else{
             BS.Allies_Deaths += 1;
         }
+        statusCondition = STATUS_CONDITION.NULL;
+        HUD.SetStatusConditions();
         //avisa o Battle_System que uma unidade morreu para checar o fim da batalha
         BS.TestBattleEnd();
     }
@@ -293,6 +302,7 @@ public class Unit : MonoBehaviour
             unitName = stats.evolution;
         }
         species = stats.evolution;
+        movePool = MovePool.SearchMovePool(species);
         this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Demon Sprites/" + species);
         stats = BaseStats.SearchDex(species);
 
@@ -363,6 +373,13 @@ public class Unit : MonoBehaviour
         expForNextLevel = Mathf.CeilToInt(baseExp*Mathf.Pow(unitLevel + 1,exponent));
         if((unitLevel >= stats.evolutionlvl) && stats.evolution != ""){
             canEvolve = true;
+        }
+        foreach (MovePool.LevelUp_Move move in movePool)
+        {
+            if(move.Level == unitLevel){//deste modo, caso a unidade suba mais de um level é possível que pule a aprendizagem de algum golpe
+                newSkillID = move.SkillID;
+                canLearnSkill = true;
+            }
         }
     }
     /**
@@ -444,6 +461,43 @@ public class Unit : MonoBehaviour
         animator.Play("Heal");
         StartCoroutine(HUD.SetHP(currentHP));
         HUD.SetMP(currentMana);
+        HUD.SetStatusConditions();
+    }
+
+    /**
+    * Função que troca skills já aprendidas por novas skills.
+    *   
+    * @param index Index da skill a ser trocada pela nova skill, caso o index seja invalido não aprende a skill nova
+    */
+    public void LearnSkill(int i){
+        if(i >= 0 && i < 4){
+            skillList[i] = newSkillID;
+        }
+    }
+
+    /**
+    * Função que trata dos danos recebidos por status conditions
+    *
+    */
+    public IEnumerator StatusConditionDamage(){
+        int damage = 0;
+        switch (statusCondition)
+        {
+            case STATUS_CONDITION.POISON:
+                if(GameManager.Instance.state == GameManager.State.Overworld){
+                    damage = Mathf.Max(Mathf.FloorToInt(maxHP/16), 1);
+                }
+                else{
+                    damage = Mathf.Max(Mathf.FloorToInt(maxHP/8), 1);
+                }
+                AudioManager.instance.Play("Damage");
+                TakeDamage(damage, 1);
+            break;
+            
+            default:
+            break;
+        }
+        yield return null;
     }
 }
 

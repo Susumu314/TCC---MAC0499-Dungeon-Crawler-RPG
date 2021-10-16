@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
     RaycastHit hit;
     private Interactable interactable;
 
+    private Unit[] partyUnits;
+
+    private int poisonStepCount = 0;
     void Awake(){
         MenuSystem = GameObject.Find("OverworldMenu_System").GetComponent<OW_MenuSystem>();
     }
@@ -55,6 +58,7 @@ public class PlayerController : MonoBehaviour
         EncounterMask = (1<<9);//EncounterZone
         REScript = gameObject.GetComponent<RandomEncouters>();
         party = GameObject.Find("/GameManager/Party");
+        partyUnits = party.GetComponentsInChildren<Unit>();
         bagMenuContent = GameObject.Find("/Canvas/OW_ActionMenu").transform.GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetComponent<ScrollMenuContent>();
     }
 
@@ -80,6 +84,8 @@ public class PlayerController : MonoBehaviour
                     //terminou de dar um passo
                     REScript.Increment_Encouter(zone.EncounterRate, zone.ZoneID);
                     state = STATES.IDLE;
+                    //aplica dano de status condition
+                    PoisonDamage();
                 }
                 if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f){
                     movePoint.Rotate(0f, 90f * Input.GetAxisRaw("Horizontal"), 0f);
@@ -212,6 +218,22 @@ public class PlayerController : MonoBehaviour
     public void ShowDialog(string text){
         MenuSystem.DialogueBox.SetActive(true);
         MenuSystem.dialogueText.text = text;
+    }
+
+    /**
+    * Incrementa o counter de steps de poison e aplica o dano caso tenha andado 4 passos
+    */
+    public void PoisonDamage(){
+        poisonStepCount++;
+        poisonStepCount = poisonStepCount%4;
+        if(poisonStepCount == 0){
+            foreach (Unit u in partyUnits)
+            {
+                if(!u.isDead){
+                    StartCoroutine(u.StatusConditionDamage());
+                }
+            }
+        }
     }
 
 }

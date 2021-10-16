@@ -9,10 +9,6 @@ using UnityEngine;
 */
 public class Item {
     public enum PRIORITY {LOW, NORMAL, HIGH, MAX};
-    public enum STATUS_EFFECT {NULL, ATK_UP, ATK_DOWN, DEF_UP, DEF_DOWN, SPEED_UP, SPEED_DOWN,
-                               POISON, BURN, FREEZE, PARALYSIS, CAPTURE}
-
-    
     public struct ItemData{
         private readonly string name;
         private readonly BaseStats.TYPE type;
@@ -21,7 +17,7 @@ public class Item {
         private readonly int power;
         private readonly int accuracy;
         private readonly int cost;
-        private readonly STATUS_EFFECT status_effect;
+        private readonly Skill.EFFECT[] status_effect;
         private readonly bool isSpecial;
         private readonly bool isRanged;
         private readonly int skill_ID;
@@ -30,7 +26,7 @@ public class Item {
         private readonly string description;
         private readonly bool overworldUse;
         public ItemData (string name, BaseStats.TYPE type, Skill.TARGET_TYPE target_type, PRIORITY priority, int power, int accuracy, int cost,
-                          STATUS_EFFECT status_effect, bool isSpecial, bool isRanged, int skill_ID, string vfx, Color vfx_color, string description, bool overworldUse)
+                          Skill.EFFECT[] status_effect, bool isSpecial, bool isRanged, int skill_ID, string vfx, Color vfx_color, string description, bool overworldUse)
         {
             this.name = name;
             this.type = type;
@@ -55,7 +51,7 @@ public class Item {
         public int Power { get { return power; } }
         public int Accuracy { get { return accuracy; } }
         public int Cost { get { return cost; } }//Custo de itens devem sempre ser zero
-        public STATUS_EFFECT Status_effect { get { return status_effect; } }
+        public Skill.EFFECT[] Status_effect { get { return status_effect; } }
         public bool IsSpecial { get { return isSpecial; } }
         public bool IsRanged { get { return isRanged; } }//Deve sempre ser ranged
         public string VFX { get { return vfx; } }
@@ -73,7 +69,7 @@ public class Item {
                            /*power*/        -40, 
                            /*accuracy*/     100, 
                            /*cost*/         0,
-                           /*status_effect*/STATUS_EFFECT.NULL, 
+                           /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.NULL}, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
                            /*ID*/           0,
@@ -89,7 +85,7 @@ public class Item {
                            /*power*/        -30, 
                            /*accuracy*/     100, 
                            /*cost*/         0,
-                           /*status_effect*/STATUS_EFFECT.NULL, 
+                           /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.NULL}, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
                            /*ID*/           1,
@@ -105,7 +101,7 @@ public class Item {
                            /*power*/        -60, 
                            /*accuracy*/     100, 
                            /*cost*/         0,
-                           /*status_effect*/STATUS_EFFECT.NULL, 
+                           /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.NULL}, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
                            /*ID*/           2,
@@ -121,7 +117,7 @@ public class Item {
                            /*power*/        -40, 
                            /*accuracy*/     100, 
                            /*cost*/         0,
-                           /*status_effect*/STATUS_EFFECT.NULL, 
+                           /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.NULL}, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
                            /*ID*/           3,
@@ -137,7 +133,7 @@ public class Item {
                            /*power*/        -80, 
                            /*accuracy*/     100, 
                            /*cost*/         0,
-                           /*status_effect*/STATUS_EFFECT.NULL, 
+                           /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.NULL}, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
                            /*ID*/           4,
@@ -153,7 +149,7 @@ public class Item {
                            /*power*/        -40, 
                            /*accuracy*/     100, 
                            /*cost*/         0,
-                           /*status_effect*/STATUS_EFFECT.NULL, 
+                           /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.NULL}, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
                            /*ID*/           5,
@@ -169,7 +165,7 @@ public class Item {
                            /*power*/        10, //nesse caso o poder representa o bonus na chance de captura vezes 10
                            /*accuracy*/     100, 
                            /*cost*/         0,
-                           /*status_effect*/STATUS_EFFECT.CAPTURE, 
+                           /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.CAPTURE}, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
                            /*ID*/           6,
@@ -185,7 +181,7 @@ public class Item {
                            /*power*/        10, //nesse caso o poder representa o bonus na chance de captura vezes 10
                            /*accuracy*/     100, 
                            /*cost*/         0,
-                           /*status_effect*/STATUS_EFFECT.CAPTURE, 
+                           /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.CAPTURE}, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
                            /*ID*/           7,
@@ -201,7 +197,7 @@ public class Item {
                            /*power*/        20, //nesse caso o poder se torna o bonus na chance de captura vezes 10
                            /*accuracy*/     100, 
                            /*cost*/         0,
-                           /*status_effect*/STATUS_EFFECT.CAPTURE, 
+                           /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.CAPTURE}, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
                            /*ID*/           8,
@@ -217,13 +213,29 @@ public class Item {
                            /*power*/        30, //nesse caso o poder se torna o bonus na chance de captura vezes 10
                            /*accuracy*/     100, 
                            /*cost*/         0,
-                           /*status_effect*/STATUS_EFFECT.CAPTURE, 
+                           /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.CAPTURE}, 
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
-                           /*ID*/           8,
+                           /*ID*/           9,
                            /*VFX*/          "Barrier",
                            /*VFX_COLOR*/    new Color(1f, 0.9f, 0.2f, 1f),
                            /*DESC*/         "A tool with a decent success rate for taming Demons.",
-                           /*OWuse*/        false)
+                           /*OWuse*/        false),
+            
+            new ItemData (/*name*/        "Antidote", 
+                           /*type*/         BaseStats.TYPE.NORMAL, 
+                           /*target_type*/  Skill.TARGET_TYPE.SINGLE_ALLY, 
+                           /*priority*/     PRIORITY.NORMAL, 
+                           /*power*/        0, 
+                           /*accuracy*/     100, 
+                           /*cost*/         0,
+                           /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.HEALPOISON}, 
+                           /*isSpecial*/    true, 
+                           /*isRanged*/     true,
+                           /*ID*/           10,
+                           /*VFX*/          "Barrier",
+                           /*VFX_COLOR*/    Color.white,
+                           /*DESC*/         "An antidote for curing a poisoned Demon.",
+                           /*OWuse*/        true)
         });
 }

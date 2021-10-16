@@ -20,6 +20,7 @@ public class PlayerBattleHUD : MonoBehaviour
     public bool isSelected;
     public bool isTarget;
     public TextMeshProUGUI statusMod;
+    public TextMeshProUGUI statusCondition;
 
     public void Awake(){
         if(statusMod == null){
@@ -52,6 +53,7 @@ public class PlayerBattleHUD : MonoBehaviour
         }
         else
             nameText.text = unit.unitName + " L." + unit.unitLevel;
+        SetStatusConditions();
     }
 
     /**
@@ -126,6 +128,8 @@ public class PlayerBattleHUD : MonoBehaviour
         isTarget = false;
         Selection_Indicator.SetActive(false);
         isSelected = false;
+        statusCondition.text = "";
+        statusMod.text = "";
     }
 
     public void SetStatusModText(int[] modStages){
@@ -194,5 +198,33 @@ public class PlayerBattleHUD : MonoBehaviour
             }
         }
         statusMod.SetText(text);
+    }
+
+    /**
+    * Modifica o HUD para que o jogador tenha feedback visual da condição do estado da unidade
+    */
+    public void SetStatusConditions(){
+        statusCondition.gameObject.SetActive(true);
+        if(unit.statusCondition == Unit.STATUS_CONDITION.NULL){
+            if(unit.isPlayerUnit){
+                statusCondition.text = "" + unit.unitLevel;
+            }
+            else{
+                statusCondition.gameObject.SetActive(false);
+                statusCondition.text = "";
+            }
+            return;
+        }
+        switch (unit.statusCondition)
+        {
+            case(Unit.STATUS_CONDITION.POISON):
+                statusCondition.text = "<sprite=0>";
+            break;
+            case(Unit.STATUS_CONDITION.BURN):
+                statusCondition.text = "<sprite=9>";
+            break;
+            default:
+            break;
+        }
     }
 }

@@ -11,6 +11,7 @@ public class EvolutionSystem : MonoBehaviour
     private bool startTimer = false;
     private float timer = 0.0f;
     private bool skip = false;
+    private bool learnSkill = false;
     
     void Start(){
         InitQueue();
@@ -34,6 +35,9 @@ public class EvolutionSystem : MonoBehaviour
                 evolutionQueue.Add(u);
                 u.canEvolve = false;
             }
+            if(u.canLearnSkill){
+                learnSkill = true;
+            }
         }
         StartCoroutine(ShowEvolutions());
     }
@@ -48,8 +52,15 @@ public class EvolutionSystem : MonoBehaviour
             u.Evolve();
         }
         yield return null;
-        GameManager.Instance.state = GameManager.State.Overworld;
-        SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
+
+        if(learnSkill){
+            GameManager.Instance.state = GameManager.State.LearnSkill;
+            SceneManager.LoadScene("LearnSkillScene");
+        }
+        else{
+            GameManager.Instance.state = GameManager.State.Overworld;
+            SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
+        }
     }
 
     private IEnumerator ShowDialog(string text, float waitTime){
