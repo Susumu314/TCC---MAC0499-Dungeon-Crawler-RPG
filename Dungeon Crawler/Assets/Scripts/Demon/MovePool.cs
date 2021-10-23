@@ -135,7 +135,7 @@ public class MovePool
                 new LevelUp_Move(/*Level*/5, /*skillID*/23),
                 new LevelUp_Move(/*Level*/10, /*skillID*/3),
                 new LevelUp_Move(/*Level*/11, /*skillID*/24),
-                new LevelUp_Move(/*Level*/12, /*skillID*/46),
+                //new LevelUp_Move(/*Level*/12, /*skillID*/49),//test
                 new LevelUp_Move(/*Level*/15, /*skillID*/34),
                 new LevelUp_Move(/*Level*/17, /*skillID*/20)
                 })),
@@ -157,6 +157,7 @@ public class MovePool
                 new LevelUp_Move(/*Level*/5, /*skillID*/28),
                 new LevelUp_Move(/*Level*/7, /*skillID*/16),
                 new LevelUp_Move(/*Level*/9, /*skillID*/8),
+                //new LevelUp_Move(/*Level*/11, /*skillID*/50), //test
                 new LevelUp_Move(/*Level*/12, /*skillID*/3),
                 new LevelUp_Move(/*Level*/15, /*skillID*/20),
                 new LevelUp_Move(/*Level*/18, /*skillID*/29)

@@ -493,11 +493,36 @@ public class Unit : MonoBehaviour
                 AudioManager.instance.Play("Damage");
                 TakeDamage(damage, 1);
             break;
+
+            case STATUS_CONDITION.BURN:
+                if(GameManager.Instance.state != GameManager.State.Overworld){
+                    damage = Mathf.Max(Mathf.FloorToInt(maxHP/8), 1);
+                    AudioManager.instance.Play("Damage");
+                    TakeDamage(damage, 1);
+                }
+            break;
             
             default:
             break;
         }
         yield return null;
+    }
+
+    /**
+    * Função que cura a unidade de status condition volatil,
+    * que são as curadas ao final da batalha
+    */
+    public void HealVolatileCondition(){
+        switch (statusCondition)
+        {
+            case STATUS_CONDITION.RAGE:
+            case STATUS_CONDITION.FREEZE:
+                statusCondition = STATUS_CONDITION.NULL;
+                HUD.SetStatusConditions();
+            break;
+            default:
+            break;
+        }
     }
 }
 

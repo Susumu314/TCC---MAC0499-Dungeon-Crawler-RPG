@@ -5877,6 +5877,30 @@ MonoBehaviour:
     isIntro: 0
     mainMusic: 
     isMusic: 0
+  - name: Frozen
+    clip: {fileID: 8300000, guid: 0ac60ab2d02222e4393a347002605c95, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Paralysis
+    clip: {fileID: 8300000, guid: bdd56f52122abab41b436a6ae96b64ec, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
   - name: Damage
     clip: {fileID: 8300000, guid: 62ddff7c9e088f24193ebe9720a7d96b, type: 3}
     volume: 0.2

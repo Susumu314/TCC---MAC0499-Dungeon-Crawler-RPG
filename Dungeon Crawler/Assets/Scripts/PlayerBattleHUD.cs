@@ -223,6 +223,15 @@ public class PlayerBattleHUD : MonoBehaviour
             case(Unit.STATUS_CONDITION.BURN):
                 statusCondition.text = "<sprite=9>";
             break;
+            case(Unit.STATUS_CONDITION.RAGE):
+                statusCondition.text = "<sprite=4>";
+            break;
+            case(Unit.STATUS_CONDITION.FREEZE):
+                statusCondition.text = "<sprite=281>";
+            break;
+            case(Unit.STATUS_CONDITION.PARALYSIS):
+                statusCondition.text = "<sprite=8>";
+            break;
             default:
             break;
         }

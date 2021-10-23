@@ -81,11 +81,11 @@ public class PlayerController : MonoBehaviour
                 //MenuSystem.DialogueBox.SetActive(false);
                 CheckForInteractables();
                 if (state == STATES.WALKING){
+                    //aplica dano de status condition
+                    PoisonDamage();
                     //terminou de dar um passo
                     REScript.Increment_Encouter(zone.EncounterRate, zone.ZoneID);
                     state = STATES.IDLE;
-                    //aplica dano de status condition
-                    PoisonDamage();
                 }
                 if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f){
                     movePoint.Rotate(0f, 90f * Input.GetAxisRaw("Horizontal"), 0f);

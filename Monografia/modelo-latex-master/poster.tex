@@ -1,0 +1,139 @@
+% Authors: Nelson Lago, Arthur Del Esposte and Eduardo Zambom Santana
+% Portions of the example contents: Arthur Del Esposte
+% This file is distributed under the MIT Licence
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PREÂMBULO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% A língua padrão é a última citada
+\documentclass[
+  xcolor={hyperref,svgnames,x11names,table},
+  hyperref={pdfencoding=unicode,plainpages=false,pdfpagelabels=true,breaklinks=true},
+  brazilian,english,
+]{beamer}
+
+% Vários pacotes e opções de configuração genéricos
+\input{extras/basics}
+\input{extras/languages}
+\input{extras/fonts}
+\input{extras/floats}
+\input{extras/index}
+\input{extras/bibconfig}
+\input{extras/hyperlinks}
+\hidelinks % desabilita cor/sublinhado dos links (URLs, refs etc.)
+\input{extras/source-code}
+\input{extras/utils}
+
+% Diretórios onde estão as figuras; com isso, não é preciso colocar o caminho
+% completo em \includegraphics (e nem a extensão).
+\graphicspath{{figuras/},{logos/}}
+
+% Comandos rápidos para mudar de língua:
+% \en -> muda para o inglês
+% \br -> muda para o português
+% \texten{blah} -> o texto "blah" é em inglês
+% \textbr{blah} -> o texto "blah" é em português
+\babeltags{br = brazilian, en = english}
+
+% Espaçamento simples
+\singlespacing
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% APARÊNCIA DO BEAMER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Possible paper sizes: a0, a0b, a1, a2, a3, a4.
+%% Possible orientations: portrait, landscape
+%% Font sizes can be changed using the scale option.
+\usepackage[size=a1,orientation=portrait,scale=1.8]{beamerposter}
+
+\usetheme{imeusp-poster} % carregado do diretório extras (veja basics.tex)
+
+% O padrão usa um tom de vermelho escuro como cor principal; a opção
+% "greeny" troca essa cor por um tom de verde; a opção "sandy" usa o
+% mesmo tom de verde mas modifica a cor padrão dos blocos para um
+% tom amarelado.
+\usecolortheme[sandy]{imeusp} % carregado do diretório extras (veja basics.tex)
+
+%Remove ícones de navegação
+\beamertemplatenavigationsymbolsempty
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% COMANDOS PARA O USUÁRIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Medidas feitas "a olho"
+\newcommand\singlecol{\column{.963\textwidth}}
+\newcommand\halfcol{\column{.46\textwidth}}
+\newcommand\onethirdcol{\column{.2922\textwidth}}
+\newcommand\twothirdscol{\column{.626\textwidth}}
+\newcommand\onefourthcol{\column{.2084\textwidth}}
+
+% Blocos de cor personalizada
+\newenvironment{coloredblock}[2]%
+{
+    \setbeamercolor{block title}{fg=white,bg=#1!80!white}
+    \setbeamercolor{block body}{fg=darkgray,bg=#1!20!white}
+    \setbeamercolor{local structure}{fg=darkgray,bg=#1!20!white}
+    \begin{block}{#2}
+}{
+    \end{block}
+}
+
+% Bibliografia
+\usepackage[
+  %style=extras/plainnat-ime, % variante de autor-data, similar a plainnat
+  %style=alphabetic, % similar a alpha
+  style=numeric, % comum em artigos
+  %style=authoryear-comp, % autor-data "padrão" do biblatex
+  %style=apa, % variante de autor-data, muito usado
+  %style=abnt,
+]{biblatex}
+
+% Num poster, a bibliografia pode ficar em tamanho menor
+\renewcommand*{\bibfont}{\footnotesize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% METADADOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% O arquivo com os dados bibliográficos para biblatex; você pode usar
+% este comando mais de uma vez para acrescentar múltiplos arquivos
+\addbibresource{bibliografia.bib}
+
+% Este comando permite acrescentar itens à lista de referências sem incluir
+% uma referência de fato no texto (pode ser usado em qualquer lugar do texto)
+%\nocite{bronevetsky02,schmidt03:MSc, FSF:GNU-GPL, CORBA:spec, MenaChalco08}
+% Com este comando, todos os itens do arquivo .bib são incluídos na lista
+% de referências
+%\nocite{*}
+
+\title[The InterSCity Platform]{InterSCity: A Scalable Microservice-based\\Open Source Platform for Smart Cities}
+
+\institute{Department of Computer Science --- University of São Paulo}
+
+\author[interscity@ime.usp.br]{\textbf{interscity.org}}
+
+\date{Month and day, year}
+
+% Optional foot image
+\footimage{
+  \includegraphics[width=13cm]{interscity-logo-branco}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INÍCIO DO POSTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% Em um poster não há \maketitle
+
+\input{conteudo/corpo-poster}
+\par
+
+% Como o local da bibliografia em uma apresentação pode variar, os comandos
+% relacionados estão em corpo-poster.tex e não aqui.
+
+\end{document}

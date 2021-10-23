@@ -1,0 +1,172 @@
+% Authors: Nelson Lago and Fernanda Magano
+% This file is distributed under the MIT Licence
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PREÂMBULO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% aspectratio default é 4:3;
+% as mais úteis são 169 (16:9), 1610 (16:10) e 149 (14:9)
+% A língua padrão é a última citada
+\documentclass[
+  xcolor={hyperref,svgnames,x11names,table},
+  hyperref={pdfencoding=unicode,plainpages=false,pdfpagelabels=true,breaklinks=true},
+  brazilian,english,12pt,aspectratio=149,
+]{beamer}
+
+% Vários pacotes e opções de configuração genéricos
+\input{extras/basics}
+\input{extras/languages}
+% A fonte precisa ser definida depois que o tema metropolis foi carregado
+%\input{extras/fonts}
+\input{extras/floats}
+% index não é necessário, mas deixamos aqui para usar os mesmos
+% passos de compilação que a tese
+\input{extras/index}
+\input{extras/bibconfig}
+\input{extras/hyperlinks}
+\hidelinks % desabilita cor/sublinhado dos links (URLs, refs etc.)
+\input{extras/source-code}
+\input{extras/utils}
+
+% Diretórios onde estão as figuras; com isso, não é preciso colocar o caminho
+% completo em \includegraphics (e nem a extensão).
+\graphicspath{{figuras/},{logos/}}
+
+% Comandos rápidos para mudar de língua:
+% \en -> muda para o inglês
+% \br -> muda para o português
+% \texten{blah} -> o texto "blah" é em inglês
+% \textbr{blah} -> o texto "blah" é em português
+\babeltags{br = brazilian, en = english}
+
+% Espaçamento simples
+\singlespacing
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% APARÊNCIA DO BEAMER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{appendixnumberbeamer}
+
+% Tema metropolis com algumas modificações
+\usetheme{imeusp} % carregado do diretório extras (veja basics.tex)
+
+% O padrão usa um tom de vermelho escuro como cor principal; a opção
+% "greeny" troca essa cor por um tom de verde; a opção "sandy" usa o
+% mesmo tom de verde mas modifica a cor padrão dos blocos para um
+% tom amarelado.
+\usecolortheme[greeny]{imeusp} % carregado do diretório extras (veja basics.tex)
+% Desabilita a cor de rodapé
+\setbeamercolor{footline}{fg=,bg=}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% COMANDOS PARA O USUÁRIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\col{\column{.5\textwidth}}
+
+% A cada nova seção, recapitula o sumário
+% Para desabilitar, é só comentar este trecho
+\AtBeginSection[]{
+  \begin{frame}<beamer>{Overview}
+    \intermezzo
+  \end{frame}
+}
+
+% Blocos de cor personalizada
+\newenvironment{coloredblock}[2]%
+{
+    \setbeamercolor{block title}{fg=white,bg=#1!80!white}
+    \setbeamercolor{block body}{fg=darkgray,bg=#1!20!white}
+    \setbeamercolor{local structure}{fg=darkgray,bg=#1!20!white}
+    \begin{block}{#2}
+}{
+    \end{block}
+}
+
+% Bibliografia
+\usepackage[
+  %style=extras/plainnat-ime, % variante de autor-data, similar a plainnat
+  %style=alphabetic, % similar a alpha
+  style=numeric, % comum em artigos
+  %style=authoryear-comp, % autor-data "padrão" do biblatex
+  %style=apa, % variante de autor-data, muito usado
+  %style=abnt,
+]{biblatex}
+
+% Numa apresentação, a bibliografia pode ficar em tamanho menor
+\renewcommand*{\bibfont}{\footnotesize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% METADADOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% O arquivo com os dados bibliográficos para biblatex; você pode usar
+% este comando mais de uma vez para acrescentar múltiplos arquivos
+\addbibresource{bibliografia.bib}
+
+% Este comando permite acrescentar itens à lista de referências sem incluir
+% uma referência de fato no texto (pode ser usado em qualquer lugar do texto)
+%\nocite{bronevetsky02,schmidt03:MSc, FSF:GNU-GPL, CORBA:spec, MenaChalco08}
+% Com este comando, todos os itens do arquivo .bib são incluídos na lista
+% de referências
+%\nocite{*}
+
+\title[The shortened title]{The full title, which may be quite,\\ quite long indeed}
+\subtitle{The (optional) subtitle}
+
+\author[Authors Name]{Authors Name}
+
+\institute[USP]{\textbf{Workshop Name} \\ Computer Science Department \\ IME USP}
+%\institute[USP]{\textbf{Orientador:} \\ Computer Science Department \\ IME USP}
+
+\date{Month and day, year}
+
+% Coloca a imagem no fundo da página de título
+\bgimage{\includegraphics[width=\paperwidth]{fundo_predios_e_grafo}}
+
+% Logotipos no rodapé da página de título
+\logos{
+  \hfil\hfil\includegraphics[width=.1\textwidth]{usp-logo}\hfil%
+  \raisebox{-.0103\paperheight}{\includegraphics[height=.0932\paperheight]{interscity-logo}}\hfil%
+  \raisebox{-.033\paperheight}{\includegraphics[width=.07\textwidth,trim=0 230 0 0,clip]{ime-logo}}\hfil\hfil
+}
+
+%\logos{
+%  \hfil\hfil\includegraphics[width=.1\textwidth]{usp-logo}\hfil%
+%  \raisebox{-.0103\paperheight}{\includegraphics[height=.0932\paperheight]{interscity-logo}}\hfil%
+%  \raisebox{-.00517\paperheight}{\includegraphics[height=.057\paperheight]{cnpq-logo}}\hfil%
+%  \raisebox{-.0342\paperheight}{\includegraphics[height=.1035\paperheight]{capes-logo}}\hfil%
+%  \includegraphics[height=.044\paperheight]{fapesp-logo}\hfil\hfil
+%}
+
+% Usado para criar o qrcode com o endereço da apresentação
+\presentationurl{http://interscity.org}
+
+% Inclui o qrcode no sumário da apresentação
+\includeqrcodeintoc
+
+% O slide de sumário pode ser dividido em colunas; o parâmetro
+% determina após qual o número da seção fazer a quebra de coluna
+% (use zero para uma coluna ou simplesmente omita este comando).
+\toccolumns{4}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% INÍCIO DA APRESENTAÇÃO %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% Em uma apresentação não há \maketitle
+
+\input{conteudo/corpo-apresentacao}
+% Um parágrafo em LaTeX termina com uma linha vazia; como não é possível ter
+% certeza que um arquivo incluído (neste caso, "corpo-apresentacao") terminou
+% com uma linha vazia, é recomendável usar o comando "par" após "input" para
+% garantir que o último parágrafo do arquivo incluído realmente terminou.
+\par
+
+% Como o local da bibliografia em uma apresentação pode variar, os comandos
+% relacionados estão em corpo-apresentacao.tex e não aqui.
+
+\end{document}

@@ -29,7 +29,16 @@ class Comparer : IComparer<Unit>
         }
           
         // CompareTo() method
-        return (y.speed*y.speedModifier).CompareTo(x.speed*x.speedModifier);
+        float xStatusConditionModifier = 1f;
+        float yStatusConditionModifier = 1f;
+        if(x.statusCondition == Unit.STATUS_CONDITION.PARALYSIS){
+            xStatusConditionModifier = 0.5f;
+        }
+        if(y.statusCondition == Unit.STATUS_CONDITION.PARALYSIS){
+            yStatusConditionModifier = 0.5f;
+        }
+
+        return (y.speed*y.speedModifier*yStatusConditionModifier).CompareTo(x.speed*x.speedModifier*xStatusConditionModifier);
           
     }
 }
@@ -94,6 +103,11 @@ public class Battle_System : MonoBehaviour
     public int turno;
     private bool tutorialFlag;
     public BattleResults battleResults;
+    private GameObject skillMenu;
+    private Button guardButton;
+    private Button skillMenuButton;
+    private Button bagButton;
+    private Button escapeButton;
     /**
     * Chamado no primeiro frame em que o objeto é instanciado
     */
@@ -119,6 +133,11 @@ public class Battle_System : MonoBehaviour
             default:
             break;
         }
+        skillMenu = ActionMenu.transform.GetChild(1).gameObject;
+        guardButton = ActionMenu.transform.GetChild(0).GetChild(1).GetComponent<Button>();
+        skillMenuButton = ActionMenu.transform.GetChild(0).GetChild(2).GetComponent<Button>();
+        bagButton = ActionMenu.transform.GetChild(0).GetChild(3).GetComponent<Button>();
+        escapeButton = ActionMenu.transform.GetChild(0).GetChild(4).GetComponent<Button>();
     }
 
     /**
@@ -1150,7 +1169,6 @@ public class Battle_System : MonoBehaviour
     }
     public void OpenMenu(){
         ActionMenu.transform.GetChild(0).gameObject.SetActive(true);//abre main menu
-        GameObject skillMenu = ActionMenu.transform.GetChild(1).gameObject;
         for (int i = 0; i < 4; i++)
         {   
             int skillID = partyMembers[SelectedPartyMember].skillList[i];
@@ -1181,8 +1199,37 @@ public class Battle_System : MonoBehaviour
                 selectable.Battle_System = this;
                 Battle_SystemReferenceOnSkillMenu = true;
             }
+            //Checa para ver se a unidade tem como pagar o custo da skill, caso nao tenha, deixar o botão inativo
+            skillMenu.transform.GetChild(i).GetComponent<Button>().interactable = true;
+            if(s.IsSpecial){
+                if(partyMembers[SelectedPartyMember].currentMana < s.Cost){
+                    skillMenu.transform.GetChild(i).GetComponent<Button>().interactable = false;
+                }
+            }
+            else{
+                //o custo de HP para realizar ataques é uma porcentagem fixa da vida maxima
+                int HPcost = (partyMembers[SelectedPartyMember].maxHP*s.Cost)/100;
+                if(HPcost == 0){
+                    HPcost = 1;
+                }
+                if(partyMembers[SelectedPartyMember].currentHP < HPcost){
+                    skillMenu.transform.GetChild(i).GetComponent<Button>().interactable = false;
+                }
+            }
         }
-        
+        //Checa para ver ser a unidade está com status RAGE, se sim, desabilita botão de skill
+        if(!guardButton.interactable){
+            guardButton.interactable = true;
+            skillMenuButton.interactable = true;
+            bagButton.interactable = true;
+            escapeButton.interactable = true;
+        }
+        if(partyMembers[SelectedPartyMember].statusCondition == Unit.STATUS_CONDITION.RAGE){
+            guardButton.interactable = false;
+            skillMenuButton.interactable = false;
+            bagButton.interactable = false;
+            escapeButton.interactable = false;
+        }
         bagMenuContent.UpdateButtons(bag);
     }
 
@@ -1224,5 +1271,27 @@ public class Battle_System : MonoBehaviour
         
     }
 
+    /**
+    * Função que retorna o próximo inimigo na lista de inimigos
+    * 
+    * @param Unit u Unidade a qual quero encontrar o proximo da lista.
+    */
+    public Unit FindNextTarget(Unit u){
+        int index = System.Array.IndexOf(enemyUnits, u);
+        int unitIndex = index;
+        index++;
+        if(index >= enemyUnits.Length)
+                index = 0;
+        //Loop to get an alive unit, assumes that there is at least 1 alive unit
+        while(!enemyUnits[index] || enemyUnits[index].isDead){
+            index++;
+            if(index == unitIndex){
+                return null;
+            }
+            if(index >= enemyUnits.Length)
+                index = 0;
+        }
+        return enemyUnits[index];
+    }
 
 }

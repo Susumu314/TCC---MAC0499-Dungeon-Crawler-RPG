@@ -1,0 +1,224 @@
+% Arquivo LaTeX de exemplo de dissertação/tese a ser apresentada à CPG do IME-USP
+%
+% Criação: Jesús P. Mena-Chalco
+% Revisão: Fabio Kon e Paulo Feofiloff
+% Adaptação para UTF8, biblatex e outras melhorias: Nelson Lago
+%
+% Except where otherwise indicated, these files are distributed under
+% the MIT Licence. The example text, which includes the tutorial and
+% examples as well as the explanatory comments in the source, are
+% available under the Creative Commons Attribution International
+% Licence, v4.0 (CC-BY 4.0) - https://creativecommons.org/licenses/by/4.0/
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PREÂMBULO LaTeX %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% A opção twoside (frente-e-verso) significa que a aparência das páginas pares
+% e ímpares pode ser diferente. Por exemplo, as margens podem ser diferentes ou
+% os números de página podem aparecer à direita ou à esquerda alternadamente.
+% Mas nada impede que você crie um documento "só frente" e, ao imprimir, faça
+% a impressão frente-e-verso.
+%
+% Aqui também definimos a língua padrão do documento
+% (a última da lista) e línguas adicionais.
+%\documentclass[12pt,twoside,brazilian,english]{book}
+\documentclass[12pt,twoside,english,brazilian]{book}
+
+% Ao invés de definir o tamanho das margens, vamos definir os tamanhos do
+% texto, do cabeçalho e do rodapé, e deixamos a package geometry calcular
+% o tamanho das margens em função do tamanho do papel. Assim, obtemos o
+% mesmo resultado impresso, mas com margens diferentes, se o tamanho do
+% papel for diferente.
+\usepackage[a4paper]{geometry}
+
+\geometry{
+  textwidth=152mm,
+  hmarginratio=12:17, % 24:34 -> com papel A4, 24mm + 152mm + 34mm = 210mm
+  textheight=237mm,
+  vmarginratio=8:7, % 32:28 -> com papel A4, 32mm + 237mm + 28mm = 297mm
+  headsep=11mm, % distância entre a base do cabeçalho e o texto
+  headheight=21mm, % qualquer medida grande o suficiente, p.ex., top - headsep
+  footskip=10mm,
+  marginpar=20mm,
+  marginparsep=5mm,
+}
+
+% Vários pacotes e opções de configuração genéricos; para personalizar o
+% resultado, modifique estes arquivos.
+\input{extras/basics}
+\input{extras/languages}
+\input{extras/fonts}
+\input{extras/floats}
+\input{extras/imeusp-thesis} % capa, páginas preliminares e alguns detalhes
+\input{extras/imeusp-formatting}
+\input{extras/index}
+\input{extras/bibconfig}
+\input{extras/hyperlinks}
+%\nocolorlinks % para impressão em P&B
+\input{extras/source-code}
+\input{extras/utils}
+
+% Diretórios onde estão as figuras; com isso, não é preciso colocar o caminho
+% completo em \includegraphics (e nem a extensão).
+\graphicspath{{figuras/},{logos/}}
+
+% Comandos rápidos para mudar de língua:
+% \en -> muda para o inglês
+% \br -> muda para o português
+% \texten{blah} -> o texto "blah" é em inglês
+% \textbr{blah} -> o texto "blah" é em português
+\babeltags{br = brazilian, en = english}
+
+% Bibliografia
+\usepackage[
+  style=extras/plainnat-ime, % variante de autor-data, similar a plainnat
+  %style=alphabetic, % similar a alpha
+  %style=numeric, % comum em artigos
+  %style=authoryear-comp, % autor-data "padrão" do biblatex
+  %style=apa, % variante de autor-data, muito usado
+  %style=abnt,
+]{biblatex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% METADADOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% O arquivo com os dados bibliográficos para biblatex; você pode usar
+% este comando mais de uma vez para acrescentar múltiplos arquivos
+\addbibresource{bibliografia.bib}
+
+% Este comando permite acrescentar itens à lista de referências sem incluir
+% uma referência de fato no texto (pode ser usado em qualquer lugar do texto)
+%\nocite{bronevetsky02,schmidt03:MSc, FSF:GNU-GPL, CORBA:spec, MenaChalco08}
+% Com este comando, todos os itens do arquivo .bib são incluídos na lista
+% de referências
+%\nocite{*}
+
+% É possível definir como determinadas palavras podem (ou não) ser
+% hifenizadas; no entanto, a hifenização automática geralmente funciona bem
+\babelhyphenation{documentclass latexmk soft-ware} % todas as línguas
+\babelhyphenation[brazilian]{Fu-la-no}
+\babelhyphenation[english]{what-ever}
+
+\input{conteudo/metadados} % título, autor, resumo/abstract, banca etc.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%% AQUI COMEÇA O CONTEÚDO DE FATO %%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% CAPA E PÁGINAS INICIAIS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Aqui começa o conteúdo inicial que aparece antes do capítulo 1, ou seja,
+% página de rosto, resumo, sumário etc. O comando frontmatter faz números
+% de página aparecem em algarismos romanos ao invés de arábicos e
+% desabilita a contagem de capítulos.
+\frontmatter
+
+\pagestyle{plain}
+
+\onehalfspacing % Espaçamento 1,5 na capa e páginas iniciais
+
+\maketitle % capa e folha de rosto
+
+\input{conteudo/paginas-preliminares} % Demais páginas iniciais
+
+% Um parágrafo em LaTeX termina com uma linha vazia; como não é possível ter
+% certeza que um arquivo incluído (neste caso, "paginas-preliminares") terminou
+% com uma linha vazia, é recomendável usar o comando "par" após "input" para
+% garantir que o último parágrafo do arquivo incluído realmente terminou.
+\par
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CAPÍTULOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Aqui vai o conteúdo principal do trabalho, ou seja, os capítulos que compõem
+% a dissertação/tese. O comando mainmatter reinicia a contagem de páginas,
+% modifica a numeração para números arábicos e ativa a contagem de capítulos.
+\mainmatter
+
+\pagestyle{mainmatter}
+
+% Espaçamento simples
+\singlespacing
+
+\input{conteudo/capitulos}
+\par
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% APÊNDICES E ANEXOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Um apêndice é algum conteúdo adicional de sua autoria que faz parte e
+% colabora com a ideia geral do texto mas que, por alguma razão, não precisa
+% fazer parte da sequência do discurso; por exemplo, a demonstração de um
+% teorema intermediário, as perguntas usadas em uma pesquisa qualitativa etc.
+%
+% Um anexo é um documento que não faz parte da tese (em geral, nem é de sua
+% autoria) mas é relevante para o conteúdo; por exemplo, a especificação do
+% padrão técnico ou a legislação que o trabalho discute, um artigo de jornal
+% apresentando a percepção do público sobre o tema da tese etc.
+%
+% Os comandos appendix e annex reiniciam a numeração de capítulos e passam
+% a numerá-los com letras. "annex" não faz parte de nenhuma classe padrão,
+% ele foi criado para este modelo (em annex.sty e utils.tex). Se o
+% trabalho não tiver apêndices ou anexos, remova estas linhas.
+%
+% Diferentemente de \mainmatter, \backmatter etc., \appendix e \annex não
+% forçam o início de uma nova página. Em geral isso não é importante, pois
+% o comando seguinte costuma ser "\chapter", mas pode causar problemas com
+% a formatação dos cabeçalhos. Assim, vamos forçar uma nova página antes
+% de cada um deles.
+
+%%%% Apêndices %%%%
+
+\makeatletter
+\if@openright\cleardoublepage\else\clearpage\fi
+\makeatother
+
+\pagestyle{appendix}
+
+\appendix
+
+\input{conteudo/apendices}
+\par
+
+%%%% Anexos %%%%
+
+\makeatletter
+\if@openright\cleardoublepage\else\clearpage\fi
+\makeatother
+
+\pagestyle{appendix} % repete o anterior, caso você não use apêndices
+
+\annex
+
+\input{conteudo/anexos}
+\par
+
+
+%%%%%%%%%%%%%%% SEÇÕES FINAIS (BIBLIOGRAFIA E ÍNDICE REMISSIVO) %%%%%%%%%%%%%%%%
+
+% O comando backmatter desabilita a numeração de capítulos.
+\backmatter
+
+\pagestyle{backmatter}
+
+% Espaço adicional no sumário antes das referências / índice remissivo
+\addtocontents{toc}{\vspace{2\baselineskip plus .5\baselineskip minus .5\baselineskip}}
+
+% A bibliografia é obrigatória
+
+\printbibliography[
+  title=\refname\label{bibliografia}, % "Referências", recomendado pela ABNT
+  %title=\bibname\label{bibliografia}, % "Bibliografia"
+  heading=bibintoc, % Inclui a bibliografia no sumário
+]
+
+\printindex % imprime o índice remissivo no documento (opcional)
+
+\end{document}

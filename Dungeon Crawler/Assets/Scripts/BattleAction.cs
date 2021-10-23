@@ -100,14 +100,49 @@ public class BattleAction : MonoBehaviour
     public IEnumerator PerformAction(){
         float wait = 0.0f;
         /*por enquanto, ações em alvos mortos, resultam em pular a ação*/
-        switch (act)
+        /*Checa status conditions para verificar se a unidade consegue agir neste turno*/
+        int rng = Random.Range(0,100);
+        bool canAct = true;
+        switch (unitRef.statusCondition)
         {
-            case Act.ATTACK://deals normal physical damage to the target
+            case Unit.STATUS_CONDITION.FREEZE:
+                if(rng < 20){//descongela
+                    unitRef.HealVolatileCondition();
+                    yield return ShowDialog(unitRef.unitName + " is no longer frozen!", skipTime);
+                }
+                else{//congelado
+                    wait += MoveAnimation("Frozen", unitRef.HUD.transform, new Color(0.23f, 0.84f, 0.99f, 1.0f));
+                    yield return ShowDialog(unitRef.unitName + " is frozen solid!", skipTime);
+                    canAct = false;
+                }
+            break;
+            case Unit.STATUS_CONDITION.PARALYSIS:
+                if(rng < 25){
+                    wait += MoveAnimation("Paralysis", unitRef.HUD.transform, Color.white);
+                    yield return ShowDialog(unitRef.unitName + " is paralyzed!\nIt can't move!", skipTime);
+                    canAct = false;
+                }
+            break;
+            default:
+            break;
+        }
+        if(canAct){
+            switch (act)
             {
-                if(!TargetList[0].isDead){
+                case Act.ATTACK://deals normal physical damage to the target
+                {
+                    if(TargetList[0].isDead){
+                        if(TargetList.Count == 1){
+                            TargetList[0] = Battle_System.FindNextTarget(TargetList[0]);
+                            if(!TargetList[0]){
+                                break;
+                            }
+                        }
+                        else{
+                            break;
+                        }
+                    }
                     //criar uma skill pra ataque basico e sumir com esse act.ATTACK
-                    
-
                     int damage = DamageCalculation(attackAction, TargetList[0]);
                     wait += MoveAnimation("Punch", TargetList[0].HUD.transform, Color.white);
                     //play soundfx
@@ -116,147 +151,153 @@ public class BattleAction : MonoBehaviour
                     Debug.Log(damage);
                     TargetList[0].TakeDamage(damage,1);
                     yield return ShowDialog(unitRef.unitName + " attacked " + TargetList[0].unitName + ".", skipTime);
+                    break;
                 }
-                break;
-            }
-            case Act.GUARD://Guard Action
-            {
-                TargetList[0].SetGuard(true);//aqui esta assumindo que o target está sendo corretamente associado ao usuário
-                wait += MoveAnimation("Barrier", TargetList[0].HUD.transform, Color.white);
-                yield return ShowDialog(unitRef.unitName + " is on guard.", skipTime);
-                break;
-            }
-            case Act.SWITCH://Switch Action
-            {
-                unitRef.Switch(TargetList[0]);
-                break;
-            }
-            case Act.ESCAPE://Tenta escapar
-            {
-                yield return ShowDialog(unitRef.unitName + " is trying to escape.", skipTime);
-                bool success = TargetList[0].Escape();
-                if(success){
-                    yield return Battle_System.EscapeBattle(unitRef.unitName);
-                }
-                else{
-                    yield return ShowDialog("The party couldn't escape!", skipTime);
-                }
-                break;
-            }
-            case Act.SKILL://tenta capturar o demonio
-            {
-                int damage;
-                bool payed = false;
-                Skill.SkillData s = Skill.SkillList[skillID];
-                for (int i = 0; i < TargetList.Count; i++)
+                case Act.GUARD://Guard Action
                 {
-                    if(TargetList[i].isDead){
-                        if (TargetList.Count == 1){
+                    TargetList[0].SetGuard(true);//aqui esta assumindo que o target está sendo corretamente associado ao usuário
+                    wait += MoveAnimation("Barrier", TargetList[0].HUD.transform, Color.white);
+                    yield return ShowDialog(unitRef.unitName + " is on guard.", skipTime);
+                    break;
+                }
+                case Act.SWITCH://Switch Action
+                {
+                    unitRef.Switch(TargetList[0]);
+                    break;
+                }
+                case Act.ESCAPE://Tenta escapar
+                {
+                    yield return ShowDialog(unitRef.unitName + " is trying to escape.", skipTime);
+                    bool success = TargetList[0].Escape();
+                    if(success){
+                        yield return Battle_System.EscapeBattle(unitRef.unitName);
+                    }
+                    else{
+                        yield return ShowDialog("The party couldn't escape!", skipTime);
+                    }
+                    break;
+                }
+                case Act.SKILL://tenta capturar o demonio
+                {
+                    int damage;
+                    bool payed = false;
+                    Skill.SkillData s = Skill.SkillList[skillID];
+                    for (int i = 0; i < TargetList.Count; i++)
+                    {
+                        if(TargetList[i].isDead){
+                            if(TargetList.Count == 1){
+                                TargetList[i] = Battle_System.FindNextTarget(TargetList[0]);
+                                if(!TargetList[i]){
+                                    break;
+                                }
+                            }
+                            else{
+                                continue;
+                            }
+                        }
+                        if(!payed){//paga o custo para usar a skill
+                            payed = unitRef.PaySkillCost(s.Cost, s.IsSpecial);
+                        }
+                        if(!payed){//caso nao tenha conseguido pagar o custo da skill, não executa a skill
+                            yield return ShowDialog(unitRef.unitName + " can't pay the skill cost.", skipTime);
+                            i = TargetList.Count;
+                            continue;
+                        }
+                        if(i == 0){
+                            yield return ShowDialog(unitRef.unitName + " used " + s.Name, skipTime);
+                        }
+                        if(!Accuracy_Check(s, TargetList[i])){
+                            Debug.Log("Missed " + TargetList[i].unitName);
+                            yield return ShowDialog(unitRef.unitName + " missed " + TargetList[i].unitName, skipTime);
+                            continue;
+                        }
+                        wait += MoveAnimation(s.VFX, TargetList[i].HUD.transform, s.COLOR);
+                        //calcula o dano e registra o dano (se a habilidade causar dano)
+                        if(s.Power > 0){
+                            damage = DamageCalculation(s, TargetList[i]);
+                            Debug.Log(damage);
+                            TargetList[i].TakeDamage(damage, resistMod);
+                            if(resistMod > 1){
+                                yield return ShowDialog("It's SUPER EFFECTIVE!!!\nDamage:" + damage, skipTime); 
+                            }
+                            if(resistMod == 0){
+                                yield return ShowDialog("It's not effective.\nDamage:" + damage, skipTime); 
+                            }
+                            else if(resistMod < 1){
+                                yield return ShowDialog("It's not very effective.\nDamage:" + damage, skipTime); 
+                            }
+                        }
+                        else if(s.Power < 0){
+                            damage = HealCalculation(-(float)s.Power, TargetList[i]);
+                            TargetList[i].HealDamage(damage);
+                            yield return ShowDialog("Healed: " + damage, skipTime); 
+                        }
+                        //ativa efeitos especiais da habilidade
+                        foreach(Skill.EFFECT effect in s.Effect){
+                            if(effect != Skill.EFFECT.NULL){
+                                yield return Skill_Effect(effect, TargetList[i]);
+                            }
+                        }
+                    }
+                    break;
+                }
+                case Act.ITEM://tenta capturar o demonio
+                {
+                    int damage;
+                    bool payed = false;
+                    Item.ItemData item = Item.ItemList[itemID];
+                    for (int i = 0; i < TargetList.Count; i++)//esta pelo menos entrando aqui
+                    {
+                        if(TargetList[i].isDead){
                             yield return ShowDialog("The target is already defeated", skipTime);
+                            continue;
                         }
-                        continue;
-                    }
-                    if(!payed){//paga o custo para usar a skill
-                        payed = unitRef.PaySkillCost(s.Cost, s.IsSpecial);
-                    }
-                    if(!payed){//caso nao tenha conseguido pagar o custo da skill, não executa a skill
-                        yield return ShowDialog(unitRef.unitName + " can't pay the skill cost.", skipTime);
-                        i = TargetList.Count;
-                        continue;
-                    }
-                    if(i == 0){
-                        yield return ShowDialog(unitRef.unitName + " used " + s.Name, skipTime);
-                    }
-                    if(!Accuracy_Check(s, TargetList[i])){
-                        Debug.Log("Missed " + TargetList[i].unitName);
-                        yield return ShowDialog(unitRef.unitName + " missed " + TargetList[i].unitName, skipTime);
-                        continue;
-                    }
-                    wait += MoveAnimation(s.VFX, TargetList[i].HUD.transform, s.COLOR);
-                    //calcula o dano e registra o dano (se a habilidade causar dano)
-                    if(s.Power > 0){
-                        damage = DamageCalculation(s, TargetList[i]);
-                        Debug.Log(damage);
-                        TargetList[i].TakeDamage(damage, resistMod);
-                        if(resistMod > 1){
-                            yield return ShowDialog("It's SUPER EFFECTIVE!!!\nDamage:" + damage, skipTime); 
+                        if(!payed){//paga o custo para usar a skill
+                            payed = unitRef.PayItemCost(itemID);
                         }
-                        if(resistMod == 0){
-                            yield return ShowDialog("It's not effective.\nDamage:" + damage, skipTime); 
+                        if(!payed){//caso nao tenha conseguido pagar o custo da skill, não executa a skill
+                            yield return ShowDialog("You don't have any " + item.Name + " left.", skipTime);
+                            i = TargetList.Count;
+                            continue;
                         }
-                        else if(resistMod < 1){
-                            yield return ShowDialog("It's not very effective.\nDamage:" + damage, skipTime); 
+                        wait += MoveAnimation(item.VFX, TargetList[i].HUD.transform, item.COLOR);
+                        if(item.Status_effect[0] == Skill.EFFECT.CAPTURE){
+                            StartCoroutine(TargetList[0].Capture(item.Power, item.COLOR));
+                            continue;
                         }
-                    }
-                    else if(s.Power < 0){
-                        damage = HealCalculation(-(float)s.Power, TargetList[i]);
-                        TargetList[i].HealDamage(damage);
-                        yield return ShowDialog("Healed: " + damage, skipTime); 
-                    }
-                    //ativa efeitos especiais da habilidade
-                    foreach(Skill.EFFECT effect in s.Effect){
-                        if(effect != Skill.EFFECT.NULL){
-                            yield return Skill_Effect(effect, TargetList[i]);
+                        //calcula o dano e registra o dano (se a habilidade causar dano)
+                        if(item.Power > 0){
+                            damage = ItemDamageCalculation(item, TargetList[i]);
+                            Debug.Log(damage);
+                            TargetList[i].TakeDamage(damage, resistMod);
+                            if(resistMod > 1){
+                                yield return ShowDialog("It's SUPER EFFECTIVE!!!\nDamage:" + damage, skipTime); 
+                            }
+                            if(resistMod == 0){
+                                yield return ShowDialog("It's not effective.\nDamage:" + damage, skipTime); 
+                            }
+                            else if(resistMod < 1){
+                                yield return ShowDialog("It's not very effective.\nDamage:" + damage, skipTime); 
+                            }
+                        }
+                        else if(item.Power < 0){
+                            damage = HealCalculation(-(float)item.Power, TargetList[i]);
+                            TargetList[i].HealDamage(damage);
+                            yield return ShowDialog("Healed: " + damage, skipTime); 
+                        }
+                        foreach(Skill.EFFECT effect in item.Status_effect){
+                            if(effect != Skill.EFFECT.NULL){
+                                yield return Skill_Effect(effect, TargetList[i]);
+                            }
                         }
                     }
+                    break;
                 }
+                default: 
                 break;
             }
-            case Act.ITEM://tenta capturar o demonio
-            {
-                int damage;
-                bool payed = false;
-                Item.ItemData item = Item.ItemList[itemID];
-                for (int i = 0; i < TargetList.Count; i++)//esta pelo menos entrando aqui
-                {
-                    if(TargetList[i].isDead){
-                        yield return ShowDialog("The target is already defeated", skipTime);
-                        continue;
-                    }
-                    if(!payed){//paga o custo para usar a skill
-                        payed = unitRef.PayItemCost(itemID);
-                    }
-                    if(!payed){//caso nao tenha conseguido pagar o custo da skill, não executa a skill
-                        yield return ShowDialog("You don't have any " + item.Name + " left.", skipTime);
-                        i = TargetList.Count;
-                        continue;
-                    }
-                    wait += MoveAnimation(item.VFX, TargetList[i].HUD.transform, item.COLOR);
-                    if(item.Status_effect[0] == Skill.EFFECT.CAPTURE){
-                        StartCoroutine(TargetList[0].Capture(item.Power, item.COLOR));
-                        continue;
-                    }
-                    //calcula o dano e registra o dano (se a habilidade causar dano)
-                    if(item.Power > 0){
-                        damage = ItemDamageCalculation(item, TargetList[i]);
-                        Debug.Log(damage);
-                        TargetList[i].TakeDamage(damage, resistMod);
-                        if(resistMod > 1){
-                            yield return ShowDialog("It's SUPER EFFECTIVE!!!\nDamage:" + damage, skipTime); 
-                        }
-                        if(resistMod == 0){
-                            yield return ShowDialog("It's not effective.\nDamage:" + damage, skipTime); 
-                        }
-                        else if(resistMod < 1){
-                            yield return ShowDialog("It's not very effective.\nDamage:" + damage, skipTime); 
-                        }
-                    }
-                    else if(item.Power < 0){
-                        damage = HealCalculation(-(float)item.Power, TargetList[i]);
-                        TargetList[i].HealDamage(damage);
-                        yield return ShowDialog("Healed: " + damage, skipTime); 
-                    }
-                    foreach(Skill.EFFECT effect in item.Status_effect){
-                        if(effect != Skill.EFFECT.NULL){
-                            yield return Skill_Effect(effect, TargetList[i]);
-                        }
-                    }
-                }
-                break;
-            }
-            default: 
-            break;
         }
+        
         yield return new WaitForSeconds(wait);
     }        
     float MoveAnimation(string animation, Transform target_transform, Color color){
@@ -276,8 +317,16 @@ public class BattleAction : MonoBehaviour
     int DamageCalculation(Skill.SkillData s, Unit Target){
         float POWERRATIO = (s.Power/BASEPOWER);
         float ATKDEFRATIO;
+        //checa por condições de status que afetam dano
+        float CONDITIONMODIFIER = 1;
         if(!s.IsSpecial){
             ATKDEFRATIO = ((float)unitRef.attack*unitRef.attackModifier/((float)Target.defence*Target.defenceModifier));
+            if(unitRef.statusCondition == Unit.STATUS_CONDITION.BURN){//se está burn, dê metade do dano com golpes fisicos
+                CONDITIONMODIFIER = 0.5f;
+            }
+            if(unitRef.statusCondition == Unit.STATUS_CONDITION.RAGE){//se está burn, dê metade do dano com golpes fisicos
+                CONDITIONMODIFIER = 1.25f;
+            }
         }
         else{
             ATKDEFRATIO = ((float)unitRef.special_attack*unitRef.special_attackModifier/((float)Target.special_defence*Target.special_defenceModifier));
@@ -295,7 +344,7 @@ public class BattleAction : MonoBehaviour
         }
         float RESISTMODIFIER = BaseStats.Type_Chart[(int)s.Type,(int)Target.type];
         resistMod = RESISTMODIFIER;
-        int damage = Mathf.CeilToInt(((5*unitRef.unitLevel)/5 + 2) * POWERRATIO * ATKDEFRATIO * TARGETLANEMODIFIER * ATTACKERLANEMODIFIER * RESISTMODIFIER);
+        int damage = Mathf.CeilToInt(((5*unitRef.unitLevel)/5 + 2) * POWERRATIO * ATKDEFRATIO * TARGETLANEMODIFIER * ATTACKERLANEMODIFIER * RESISTMODIFIER * CONDITIONMODIFIER);
         return damage;
     }
 
@@ -368,6 +417,7 @@ public class BattleAction : MonoBehaviour
     * Função que executa os efeitos das habilidades
     */
     private IEnumerator Skill_Effect(Skill.EFFECT e, Unit Target){
+        int r = Random.Range(0, 100);
         switch (e)
         {   
             //buffs e debuffs a status incrementam e decrementam os modificadores em multiplos de 50% de cada vez
@@ -721,7 +771,6 @@ public class BattleAction : MonoBehaviour
             
             case Skill.EFFECT.LOWPOISON:
                 if(Target.type != BaseStats.TYPE.POISON){
-                    int r = Random.Range(0, 100);
                     if(r < 10){ // 10% de chance de causar o efeito
                         Target.statusCondition = Unit.STATUS_CONDITION.POISON;
                         Target.HUD.SetStatusConditions();
@@ -732,7 +781,6 @@ public class BattleAction : MonoBehaviour
             
             case Skill.EFFECT.HIGHPOISON:
                 if(Target.type != BaseStats.TYPE.POISON){
-                    int r = Random.Range(0, 100);
                     if(r < 30){ // 30% de chance de causar o efeito
                         Target.statusCondition = Unit.STATUS_CONDITION.POISON;
                         Target.HUD.SetStatusConditions();
@@ -761,7 +809,6 @@ public class BattleAction : MonoBehaviour
             
             case Skill.EFFECT.LOWBURN:
                 if(Target.type != BaseStats.TYPE.FIRE){
-                    int r = Random.Range(0, 100);
                     if(r < 10){ // 10% de chance de causar o efeito
                         Target.statusCondition = Unit.STATUS_CONDITION.BURN;
                         Target.HUD.SetStatusConditions();
@@ -772,7 +819,6 @@ public class BattleAction : MonoBehaviour
             
             case Skill.EFFECT.HIGHBURN:
                 if(Target.type != BaseStats.TYPE.FIRE){
-                    int r = Random.Range(0, 100);
                     if(r < 30){ // 30% de chance de causar o efeito
                         Target.statusCondition = Unit.STATUS_CONDITION.BURN;
                         Target.HUD.SetStatusConditions();
@@ -790,6 +836,109 @@ public class BattleAction : MonoBehaviour
                 else
                     yield return ShowDialog("It did nothing.", skipTime);
                 break;
+            
+            case Skill.EFFECT.RAGE:
+                Target.statusCondition = Unit.STATUS_CONDITION.RAGE;
+                Target.HUD.SetStatusConditions();
+                yield return ShowDialog("ENRAGED!", skipTime);
+                break;
+            
+            case Skill.EFFECT.LOWRAGE:
+                if(r < 10){ // 10% de chance de causar o efeito
+                    Target.statusCondition = Unit.STATUS_CONDITION.RAGE;
+                    Target.HUD.SetStatusConditions();
+                    yield return ShowDialog("ENRAGED!", skipTime);
+                }
+                break;
+            
+            case Skill.EFFECT.HIGHRAGE:
+                if(r < 30){ // 30% de chance de causar o efeito
+                    Target.statusCondition = Unit.STATUS_CONDITION.RAGE;
+                    Target.HUD.SetStatusConditions();
+                    yield return ShowDialog("ENRAGED!", skipTime);
+                }
+                break;
+
+            case Skill.EFFECT.HEALRAGE:
+                if(Target.statusCondition == Unit.STATUS_CONDITION.RAGE){
+                    Target.statusCondition = Unit.STATUS_CONDITION.NULL;
+                    Target.HUD.SetStatusConditions();
+                    yield return ShowDialog("Rage cured!", skipTime);
+                }
+                else
+                    yield return ShowDialog("It did nothing.", skipTime);
+                break;
+
+            case Skill.EFFECT.FREEZE:
+                if(Target.type != BaseStats.TYPE.ICE){
+                    Target.statusCondition = Unit.STATUS_CONDITION.FREEZE;
+                    Target.HUD.SetStatusConditions();
+                    yield return ShowDialog("FROZEN!", skipTime);
+                }
+                break;
+            
+            case Skill.EFFECT.LOWFREEZE:
+                if(Target.type != BaseStats.TYPE.ICE){
+                    if(r < 10){ // 10% de chance de causar o efeito
+                        Target.statusCondition = Unit.STATUS_CONDITION.FREEZE;
+                        Target.HUD.SetStatusConditions();
+                        yield return ShowDialog("FROZEN!", skipTime);
+                    }
+                }
+                break;
+            
+            case Skill.EFFECT.HIGHFREEZE:
+                if(Target.type != BaseStats.TYPE.ICE){
+                    if(r < 30){ // 30% de chance de causar o efeito
+                        Target.statusCondition = Unit.STATUS_CONDITION.FREEZE;
+                        Target.HUD.SetStatusConditions();
+                        yield return ShowDialog("FROZEN!", skipTime);
+                    }
+                }
+                break;
+
+            case Skill.EFFECT.HEALFREEZE:
+                if(Target.statusCondition == Unit.STATUS_CONDITION.FREEZE){
+                    Target.statusCondition = Unit.STATUS_CONDITION.NULL;
+                    Target.HUD.SetStatusConditions();
+                    yield return ShowDialog("Freeze cured!", skipTime);
+                }
+                else
+                    yield return ShowDialog("It did nothing.", skipTime);
+                break;
+
+            case Skill.EFFECT.PARALYSIS:
+                Target.statusCondition = Unit.STATUS_CONDITION.PARALYSIS;
+                Target.HUD.SetStatusConditions();
+                yield return ShowDialog("PARALYSED!", skipTime);
+                break;
+            
+            case Skill.EFFECT.LOWPARALYSIS:
+                if(r < 10){ // 10% de chance de causar o efeito
+                    Target.statusCondition = Unit.STATUS_CONDITION.PARALYSIS;
+                    Target.HUD.SetStatusConditions();
+                    yield return ShowDialog("PARALYSED!", skipTime);
+                }
+                break;
+            
+            case Skill.EFFECT.HIGHPARALYSIS:
+                if(r < 30){ // 30% de chance de causar o efeito
+                    Target.statusCondition = Unit.STATUS_CONDITION.PARALYSIS;
+                    Target.HUD.SetStatusConditions();
+                    yield return ShowDialog("PARALYSED!", skipTime);
+                }
+                break;
+
+            case Skill.EFFECT.HEALPARALYSIS:
+                if(Target.statusCondition == Unit.STATUS_CONDITION.PARALYSIS){
+                    Target.statusCondition = Unit.STATUS_CONDITION.NULL;
+                    Target.HUD.SetStatusConditions();
+                    yield return ShowDialog("Paralysis cured!", skipTime);
+                }
+                else
+                    yield return ShowDialog("It did nothing.", skipTime);
+                break;
+
 
             default:
             break;

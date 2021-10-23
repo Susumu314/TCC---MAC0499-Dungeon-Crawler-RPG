@@ -62,6 +62,12 @@ public class GameHandler_Overmap : MonoBehaviour
         PlayerOverworld.GetComponent<RandomEncouters>().OverWorldID = OverWorldID;
         GameManager.Instance.CurrentOverworldID = OverWorldID;
         AudioManager.instance.Play(BGM);
+        foreach (Unit u in GameManager.Instance.party.GetComponentsInChildren<Unit>())
+        {
+            if(u){
+                u.HealVolatileCondition();
+            }
+        }
     }
 
     /**
