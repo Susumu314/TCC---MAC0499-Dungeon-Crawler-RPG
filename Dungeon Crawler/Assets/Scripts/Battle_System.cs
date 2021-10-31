@@ -391,8 +391,6 @@ public class Battle_System : MonoBehaviour
     */
     void MoveSelectionTurn(){
         //At the start of the MOveSelectionTurn, input the AI moves
-        //talvez fazer uma AI que trapaceia igual nos primeiros pokemons, onde o input do computador era
-        //dado depois que o jogador escolhia a ação
         foreach (Unit unit in enemyUnits)
         {
             if(!unit || unit.isDead){

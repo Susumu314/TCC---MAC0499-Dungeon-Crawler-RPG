@@ -1300,6 +1300,27 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 251305916}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &52528539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52528538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5828bf25712254a91d678e0e56af51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  demonomicon:
+  - species: Fire Snake
+    totalExp: 10000
+    nickname: Sylvie
+    skills: 030000000800000009000000
+  - species: Wind Harpy
+    totalExp: 10000
+    nickname: Livia
+    skills: 160000000d000000
 --- !u!1 &52820917
 GameObject:
   m_ObjectHideFlags: 0

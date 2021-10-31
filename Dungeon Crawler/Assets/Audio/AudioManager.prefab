@@ -1,0 +1,335 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4454327182156839949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4454327182156839951}
+  - component: {fileID: 4454327182156839948}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4454327182156839951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4454327182156839949}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4454327182156839948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4454327182156839949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b4cdd57a5237e4a89fea98c3a9e6b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 0}
+  sounds:
+  - name: Battle1_intro
+    clip: {fileID: 8300000, guid: 59f638f69d79a2345a5404c087560aae, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 1
+    mainMusic: Battle1_loop
+    isMusic: 1
+  - name: Battle1_loop
+    clip: {fileID: 8300000, guid: 8da35e0498c23024083aebf51a3a8245, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 1
+  - name: Battle2_intro
+    clip: {fileID: 8300000, guid: c2e4a4b25c6c6a04e92eaf9c59449d4c, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 1
+    mainMusic: Battle2_loop
+    isMusic: 1
+  - name: Battle2_loop
+    clip: {fileID: 8300000, guid: 5731e1c3f38651d4d86fc6873a5bfec8, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 1
+  - name: Forest1
+    clip: {fileID: 8300000, guid: 49028fdbaefce354ea2b53025217c599, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 1
+  - name: Bash
+    clip: {fileID: 8300000, guid: 1111db4cb8dce71498006a00f4fd1234, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Guard
+    clip: {fileID: 8300000, guid: 60c8d7043193fc7448b1fa5110a12c8d, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Flame_Swoosh
+    clip: {fileID: 8300000, guid: 0c3920efc55f1bf4bacab6c40b5f13cf, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Splash
+    clip: {fileID: 8300000, guid: 2c12e45cd70efb94c8474dd06355e353, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Absorb
+    clip: {fileID: 8300000, guid: d61ddef4b468df246b2b451eb045c2f3, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Blue_Slice
+    clip: {fileID: 8300000, guid: d61ddef4b468df246b2b451eb045c2f3, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Dark_Void
+    clip: {fileID: 8300000, guid: ff148d7338ec5034cacadd0d30b0b165, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Iceball
+    clip: {fileID: 8300000, guid: b99eff348e9267641a80bf3c6c4c66e7, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Shimmer
+    clip: {fileID: 8300000, guid: 5feabab1b9b9ed04596cfcc3176688f6, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Light_Vortex
+    clip: {fileID: 8300000, guid: ff148d7338ec5034cacadd0d30b0b165, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Thrust
+    clip: {fileID: 8300000, guid: b635696df0169324c8a06d466a404bd9, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Heal
+    clip: {fileID: 8300000, guid: 218d06a8a21c97f41b1979b6e58a7b00, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Buff
+    clip: {fileID: 8300000, guid: 92fd3197adcf6a846a88ccc4b2b161ec, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Debuff
+    clip: {fileID: 8300000, guid: ca3a0fa2a94d50a4f8d58fcdbf2620fb, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: SuperEffective
+    clip: {fileID: 8300000, guid: a90c6d693f18abd4582638240c3f3d0f, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Text
+    clip: {fileID: 8300000, guid: 86a85fc0f481ad84cb3626bcd7507134, type: 3}
+    volume: 0.4
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Frozen
+    clip: {fileID: 8300000, guid: 0ac60ab2d02222e4393a347002605c95, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Paralysis
+    clip: {fileID: 8300000, guid: bdd56f52122abab41b436a6ae96b64ec, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0
+  - name: Damage
+    clip: {fileID: 8300000, guid: 62ddff7c9e088f24193ebe9720a7d96b, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+    isIntro: 0
+    mainMusic: 
+    isMusic: 0

@@ -21,8 +21,6 @@ public class Unit : MonoBehaviour
     public string unitName;
     public int unitLevel;
 
-    public int damage;
-
     public int maxHP;
     public int currentHP;
 
@@ -242,7 +240,6 @@ public class Unit : MonoBehaviour
         if(isInit){
             return;
         }
-        // setando skills para teste
         movePool = MovePool.SearchMovePool(species);
         int m = 0;
         foreach (MovePool.LevelUp_Move move in movePool)
@@ -292,6 +289,54 @@ public class Unit : MonoBehaviour
             break;
         }
         totalExp = Mathf.CeilToInt(baseExp*Mathf.Pow(unitLevel,exponent));
+        expForNextLevel = Mathf.CeilToInt(baseExp*Mathf.Pow(unitLevel + 1,exponent));
+        isInit = true;
+        statusCondition = STATUS_CONDITION.NULL;
+    }
+
+    public void Summon(string SPECIES, int totalExp, string nickname, int[] skills, int backline){
+        species = SPECIES;
+        skillList = skills;
+        unitName = nickname;
+        isBackLine = backline;
+        stats = BaseStats.SearchDex(species);
+        exponent = 3;
+        switch (growth_rate)
+        {
+            case BaseStats.GROWTH_RATE.SLOW:
+                baseExp = 5f/4f;
+            break;
+            case BaseStats.GROWTH_RATE.MEDIUM_SLOW:
+                baseExp = 6f/5f;
+            break;
+            case BaseStats.GROWTH_RATE.MEDIUM:
+                baseExp = 1;
+            break;
+            case BaseStats.GROWTH_RATE.FAST:
+                baseExp = 4f/5f;
+            break;
+            default:
+                baseExp = 1;
+            break;
+        }
+        unitLevel = Mathf.FloorToInt(Mathf.Pow(totalExp/baseExp, (1.0f/3.0f)));
+        this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Demon Sprites/" + species);
+
+        maxHP = Mathf.FloorToInt(3*stats.Hp * unitLevel/100) + unitLevel + 10;
+        currentHP = maxHP;
+
+        maxMana = Mathf.FloorToInt(3*stats.Mp * unitLevel/100) + unitLevel + 10;
+        currentMana = maxMana;
+
+        attack = Mathf.FloorToInt(3*stats.atk * unitLevel/100) + 5;
+        defence = Mathf.FloorToInt(3*stats.def * unitLevel/100) + 5;
+        special_attack = Mathf.FloorToInt(3*stats.spatk * unitLevel/100) + 5;
+        special_defence = Mathf.FloorToInt(3*stats.spdef * unitLevel/100) + 5;
+        speed = Mathf.FloorToInt(3*stats.spd * unitLevel/100) + 5;
+        type = stats.Type;
+        xp_yield = stats.xpYield; 
+        growth_rate = stats.growthRate; 
+        catch_rate = stats.catchRate;
         expForNextLevel = Mathf.CeilToInt(baseExp*Mathf.Pow(unitLevel + 1,exponent));
         isInit = true;
         statusCondition = STATUS_CONDITION.NULL;

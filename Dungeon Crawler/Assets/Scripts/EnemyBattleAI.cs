@@ -7,6 +7,7 @@ public class EnemyBattleAI : MonoBehaviour
     enum AI_type{ NULL, DUMB, SMART, AGRESSIVE, DEFENSIVE, ESPECIFIC, STATUS_CONDITION_USER, BUFF_USER, DEBUF_USER}
 
     private AI_type AI = AI_type.DUMB;
+    public Unit thisUnit;
     /**
     * IA usada para decidir a ação de um inimigo durante a batalha, 
     * usa as informações recebidas como parâmetro para decidir a ação de uma unidade controlada pelo PC.
@@ -20,7 +21,6 @@ public class EnemyBattleAI : MonoBehaviour
     * @retval 3 Ação decidida é de máxima prioridade
     */
     public int EnemyMove(Unit[] PlayerUnits, Unit[] EnemyUnits){
-
         int priority = 1;
         BattleAction.Act act = BattleAction.Act.ATTACK;
         List<Unit> PUnits = new List<Unit>();
@@ -43,7 +43,7 @@ public class EnemyBattleAI : MonoBehaviour
         switch (AI)
         {
             case AI_type.DUMB:{
-                if (rng < 20.0f){// 20% de chance de dar um ataque normal em uma unidade aleatoria
+                if (rng < 20.0f || thisUnit.statusCondition == Unit.STATUS_CONDITION.RAGE){// 20% de chance de dar um ataque normal em uma unidade aleatoria
                     act = BattleAction.Act.ATTACK;
                     TargetList.Add(PUnits[Random.Range(0, PUnits.Count)]);
                     priority = 1;
@@ -56,7 +56,7 @@ public class EnemyBattleAI : MonoBehaviour
                     gameObject.GetComponent<BattleAction>().SetAction(act, TargetList);
                 }
                 else{//70% de chance de usar uma habilidade aleatoria
-                    priority = SetSkill(PUnits, EUnits);
+                    priority = SetRandomSkill(PUnits, EUnits);
                 }
             }break;
 
@@ -66,7 +66,7 @@ public class EnemyBattleAI : MonoBehaviour
         return priority;
     }
 
-    private int SetSkill(List<Unit> PUnits, List<Unit> EUnits){
+    private int SetRandomSkill(List<Unit> PUnits, List<Unit> EUnits){
         //Escolhe uma skill aleatoria
         List<Unit> TargetList = new List<Unit>(); 
         int i = Random.Range(0,4);

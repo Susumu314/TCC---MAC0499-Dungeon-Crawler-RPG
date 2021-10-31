@@ -9,6 +9,7 @@ public class ScrollMenuContent : MonoBehaviour
     public GameObject ButtonRef;
     Battle_System BS;
     OW_MenuSystem MS;
+    Demonologist demonologist;
     public ActionMenu AM;
     bool isInit = false;
     public ButtonSelectionController scrollControler;
@@ -54,6 +55,19 @@ public class ScrollMenuContent : MonoBehaviour
         SetCancelButton();
     }
 
+    public void InitDemonomiconMenu(Demonomicon demonomicon, Demonologist d){
+        if(isInit){
+            return;
+        }
+        isInit = true;
+        demonologist = d;
+        for (int i = 0; i < demonomicon.demonomicon.Count; i++)
+        {   
+            AddButton(demonomicon.demonomicon[i], i);
+        }
+        SetCancelButton();
+    }
+
     /**
     *   Reseta o menu da mochila, utilizado para quando se obtem um item novo
     */
@@ -95,6 +109,16 @@ public class ScrollMenuContent : MonoBehaviour
         if(MS != null && !item.OverworldUse){
             newButton.transform.GetComponent<SelectableElement>().text = "Can't use this item outside of battle!";
         }
+    } 
+
+    public void AddButton(Demonomicon.SavedDemon demon, int ID){
+        GameObject newButton = Instantiate(ButtonRef, this.transform);
+        Buttons.Add(new MenuButton(newButton, ID));
+        newButton.transform.GetComponent<Button>().onClick.AddListener(() => demonologist.OnSavedDemonButton(ID));
+        newButton.transform.GetChild(0).GetComponent<Text>().text = demon.SPECIES + "/" + demon.Nickname;
+        //adicionar a parte para o selectableElement para quando tiver tudo funcionando menos o display dos status do demonio
+        //newButton.transform.GetComponent<SelectableElement>().Battle_System = BS;
+        //newButton.transform.GetComponent<SelectableElement>().text = item.Description;
     } 
 
     public void UpdateButtons(Bag bag){
