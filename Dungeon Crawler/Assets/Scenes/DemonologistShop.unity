@@ -255,7 +255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9c667a10eabcd264e9836ff6ee5264ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 35bb7da7628180f48a708df72e1c8a13, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -355,6 +355,7 @@ MonoBehaviour:
   menu: {fileID: 1108332434}
   partyHUD: {fileID: 460518865}
   scrollMenuContent: {fileID: 1437505823}
+  npc_name: Clara
 --- !u!1 &405817773 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1097041304910472323, guid: 2ecd51e51cd5660458aa37a6d459e736,
@@ -827,15 +828,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 443200479}
-        m_MethodName: TriggerDialogue
-        m_Mode: 1
+      - m_Target: {fileID: 370573708}
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: City_Template
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &443200481
@@ -2431,13 +2432,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1781492825}
-        m_MethodName: TriggerDialogue
-        m_Mode: 1
+      - m_Target: {fileID: 370573710}
+        m_MethodName: OnMenuButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2640,6 +2641,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1097041305497750428, guid: 2ecd51e51cd5660458aa37a6d459e736,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1097041305497750428, guid: 2ecd51e51cd5660458aa37a6d459e736,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1097041305497750428, guid: 2ecd51e51cd5660458aa37a6d459e736,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1097041305497750428, guid: 2ecd51e51cd5660458aa37a6d459e736,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2678951745063169799, guid: 2ecd51e51cd5660458aa37a6d459e736,
         type: 3}

@@ -35,10 +35,18 @@ public class Stat_Screen : MonoBehaviour
         SPEED.text = "" + u.speed;
         TYPE.text = u.type.ToString();
         if(SKILL1){
-            SKILL1.text = Skill.SkillList[u.skillList[0]].Name;
-            SKILL2.text = Skill.SkillList[u.skillList[1]].Name;
-            SKILL3.text = Skill.SkillList[u.skillList[2]].Name;
-            SKILL4.text = Skill.SkillList[u.skillList[3]].Name;
+            if(u.skillList[0] != -1){
+                SKILL1.text = Skill.SkillList[u.skillList[0]].Name;
+            }
+            if(u.skillList[1] != -1){
+                SKILL2.text = Skill.SkillList[u.skillList[1]].Name;
+            }
+            if(u.skillList[2] != -1){
+                SKILL3.text = Skill.SkillList[u.skillList[2]].Name;
+            }
+            if(u.skillList[3] != -1){
+                SKILL4.text = Skill.SkillList[u.skillList[3]].Name;
+            }
         }
         SPRITE.sprite = Resources.Load<Sprite>("Demon Sprites/" + u.species);
     }

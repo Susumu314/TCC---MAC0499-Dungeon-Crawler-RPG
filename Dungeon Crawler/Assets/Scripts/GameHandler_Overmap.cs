@@ -24,8 +24,9 @@ public class GameHandler_Overmap : MonoBehaviour
     */
     void Start()
     {
-        if (!GameManager.Instance.GetIsInit()){
-            GameManager.Instance.Init();
+        GameManager.Instance.Init();
+        if (!GameManager.Instance.EventList[(int)GameManager.Event.EnteredForest]){
+            GameManager.Instance.EventList[(int)GameManager.Event.EnteredForest] = true;
             PlayerOverworld = Instantiate(PlayerPrefab, new Vector3(0, 1, 0), Quaternion.identity);
             GameManager.Instance.state = GameManager.State.Overworld;
             SavePlayerObject();

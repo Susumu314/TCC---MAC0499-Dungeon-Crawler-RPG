@@ -78,6 +78,7 @@ public class Unit : MonoBehaviour
         // this.currentMana = mp;
     }
 
+
     void Awake(){
         MAX_SKILL_NUMBER = 4;
         skillList = new int[MAX_SKILL_NUMBER];
@@ -85,6 +86,7 @@ public class Unit : MonoBehaviour
         {
             skillList[i] = -1;
         }
+        modStages = new int[7]{0,0,0,0,0,0,0};
     }
     void Update(){
     }
@@ -296,12 +298,16 @@ public class Unit : MonoBehaviour
 
     public void Summon(string SPECIES, int totalExp, string nickname, int[] skills, int backline){
         species = SPECIES;
-        skillList = skills;
+        for (int i = 0; i < skills.Length; i++)
+        {
+            skillList[i] = skills[i];
+        }
         unitName = nickname;
         isBackLine = backline;
+        this.totalExp = totalExp;
         stats = BaseStats.SearchDex(species);
-        exponent = 3;
-        switch (growth_rate)
+        float exponent = 3;
+        switch (stats.growthRate)
         {
             case BaseStats.GROWTH_RATE.SLOW:
                 baseExp = 5f/4f;
@@ -319,7 +325,7 @@ public class Unit : MonoBehaviour
                 baseExp = 1;
             break;
         }
-        unitLevel = Mathf.FloorToInt(Mathf.Pow(totalExp/baseExp, (1.0f/3.0f)));
+        unitLevel = Mathf.FloorToInt(Mathf.Pow(totalExp/baseExp, (1.0f/exponent)));
         this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Demon Sprites/" + species);
 
         maxHP = Mathf.FloorToInt(3*stats.Hp * unitLevel/100) + unitLevel + 10;
@@ -340,6 +346,7 @@ public class Unit : MonoBehaviour
         expForNextLevel = Mathf.CeilToInt(baseExp*Mathf.Pow(unitLevel + 1,exponent));
         isInit = true;
         statusCondition = STATUS_CONDITION.NULL;
+        ResetStatMods();
     }
 
     public void Evolve(){

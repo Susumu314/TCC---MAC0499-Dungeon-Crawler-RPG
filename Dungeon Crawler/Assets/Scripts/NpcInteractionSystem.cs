@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NpcInteractionSystem : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class NpcInteractionSystem : MonoBehaviour
 				Menu.gameObject.SetActive(true);
 			}
 		}
+    }
+    public void ChangeScene(string sceneName){
+        SceneManager.LoadScene(sceneName);
     }
 
 }

@@ -33,8 +33,10 @@ public class Demonomicon : MonoBehaviour
     * Adiciona demonio ao demonomicon
     * @param unit Unidade a ser adicionada ao demonomicon
     */
-    public void AddDemon(Unit unit){
-        demonomicon.Add(new SavedDemon(unit.species, unit.totalExp, unit.unitName, unit.skillList));
+    public SavedDemon AddDemon(Unit unit){
+        SavedDemon demon = new SavedDemon(unit.species, unit.totalExp, unit.unitName, unit.skillList);
+        demonomicon.Add(demon);
+        return demon;
     }
 
     /**

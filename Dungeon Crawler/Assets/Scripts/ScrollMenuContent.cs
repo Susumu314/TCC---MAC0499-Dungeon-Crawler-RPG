@@ -17,10 +17,14 @@ public class ScrollMenuContent : MonoBehaviour
     {
         public GameObject Button;
         public int ID;
-
+        public Demonomicon.SavedDemon demon;
         public MenuButton (GameObject Button, int ID){
             this.Button = Button;
             this.ID = ID;
+        }
+        public MenuButton (GameObject Button, Demonomicon.SavedDemon demon){
+            this.Button = Button;
+            this.demon = demon;
         }
     }
     public List<MenuButton> Buttons = new List<MenuButton>();
@@ -63,7 +67,7 @@ public class ScrollMenuContent : MonoBehaviour
         demonologist = d;
         for (int i = 0; i < demonomicon.demonomicon.Count; i++)
         {   
-            AddButton(demonomicon.demonomicon[i], i);
+            AddButton(demonomicon.demonomicon[i]);
         }
         SetCancelButton();
     }
@@ -111,15 +115,65 @@ public class ScrollMenuContent : MonoBehaviour
         }
     } 
 
-    public void AddButton(Demonomicon.SavedDemon demon, int ID){
+    public void AddButton(Demonomicon.SavedDemon demon){
         GameObject newButton = Instantiate(ButtonRef, this.transform);
-        Buttons.Add(new MenuButton(newButton, ID));
-        newButton.transform.GetComponent<Button>().onClick.AddListener(() => demonologist.OnSavedDemonButton(ID));
-        newButton.transform.GetChild(0).GetComponent<Text>().text = demon.SPECIES + "/" + demon.Nickname;
+        Buttons.Add(new MenuButton(newButton, demon));
+        newButton.transform.GetComponent<Button>().onClick.AddListener(() => demonologist.OnSummonDemonButton(demon));
+        BaseStats.GROWTH_RATE g = BaseStats.SearchDex(demon.SPECIES).growthRate;
+        float exponent = 3.0f;
+        float baseExp;
+        switch (g)
+        {
+            case BaseStats.GROWTH_RATE.SLOW:
+                baseExp = 5f/4f;
+            break;
+            case BaseStats.GROWTH_RATE.MEDIUM_SLOW:
+                baseExp = 6f/5f;
+            break;
+            case BaseStats.GROWTH_RATE.MEDIUM:
+                baseExp = 1;
+            break;
+            case BaseStats.GROWTH_RATE.FAST:
+                baseExp = 4f/5f;
+            break;
+            default:
+                baseExp = 1;
+            break;
+        }
+        int demonLevel = Mathf.FloorToInt(Mathf.Pow(demon.totalExp/baseExp, (1.0f/exponent)));
+        newButton.transform.GetChild(0).GetComponent<Text>().text = demon.SPECIES + "." +  demonLevel + "/" + demon.Nickname;
         //adicionar a parte para o selectableElement para quando tiver tudo funcionando menos o display dos status do demonio
         //newButton.transform.GetComponent<SelectableElement>().Battle_System = BS;
         //newButton.transform.GetComponent<SelectableElement>().text = item.Description;
     } 
+
+    /**
+    *   Deleta uma entrada do Demonomicon quando se invoca um dos demonios
+    */
+    public void DeleteDemonomiconEntry(Demonomicon.SavedDemon demon){
+        MenuButton button;
+        foreach (MenuButton mb in Buttons)
+        {
+            if(mb.demon == demon){
+                button = mb;
+                Destroy(button.Button);
+                Buttons.Remove(button);
+                scrollControler.UpdateButtonList();
+                return;
+            }
+        }
+    }
+
+    /**
+    *   Adiciona uma entrada do Demonomicon quando se salva um dos demonios
+    */
+    public void AddDemonomiconEntry(Demonomicon.SavedDemon demon){
+        int cancelButtonIndex = transform.childCount - 1;
+        AddButton(demon);
+        transform.GetChild(cancelButtonIndex).SetAsLastSibling();
+        AM.defaultButton = transform.GetChild(0).GetComponent<Button>();
+        scrollControler.UpdateButtonList();
+    }
 
     public void UpdateButtons(Bag bag){
         if(MS == null){

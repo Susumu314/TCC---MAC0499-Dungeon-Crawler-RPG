@@ -101,6 +101,9 @@ public class GameManager : MonoBehaviour
 
     public List<Tutorial> tutorials = new List<Tutorial>();
 
+    public enum Event {GotFirstDemon, EnteredForest, EventsSize}
+    public List<bool> EventList = new List<bool>();
+
     public bool GameOver = false;
 
     /**
@@ -145,6 +148,11 @@ public class GameManager : MonoBehaviour
         tutorials.Add(new Tutorial("SpecialSpots"));
         tutorials.Add(new Tutorial("Switch"));
         tutorials.Add(new Tutorial("Taming"));
+        //inicia a lista de eventos, todos false
+        for(int i = 0; i < (int)Event.EventsSize; i++)
+        {
+            EventList.Add(false);
+        }
     }
 
     /**
@@ -224,7 +232,7 @@ public class GameManager : MonoBehaviour
             unit.isPlayerUnit = true;
         }
         else{
-            //aloca em um banco em que o jogador pode visitar e trocar os demonios ativos 
+            //aloca o demonio no Demonomicon
         }
     }
 

@@ -10,6 +10,8 @@ public class SelectableElement : MonoBehaviour, ISelectHandler// required interf
     public OW_MenuSystem MenuSystem;
     public Text dialogText;
     public string text = "Exit";
+    public GuildMaster GM;
+    public Unit unit;
     public void OnSelect(BaseEventData eventData) // modificar esse OnSelect Para mostrar informações de demonios no demonomicon tambem
     {
         if(Battle_System){
@@ -22,6 +24,9 @@ public class SelectableElement : MonoBehaviour, ISelectHandler// required interf
         }
         if(dialogText){
             dialogText.text = text;
+        }
+        if(GM){
+            GM.ShowDemonInformation(unit);
         }
     }
 }
