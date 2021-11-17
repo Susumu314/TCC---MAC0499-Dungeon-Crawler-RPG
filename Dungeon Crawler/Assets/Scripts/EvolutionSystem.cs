@@ -55,10 +55,9 @@ public class EvolutionSystem : MonoBehaviour
 
         if(learnSkill){
             GameManager.Instance.state = GameManager.State.LearnSkill;
-            SceneManager.LoadScene("LearnSkillScene");
+            SceneManager.LoadScene("LearnSkill");
         }
         else{
-            GameManager.Instance.state = GameManager.State.Overworld;
             SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
         }
     }

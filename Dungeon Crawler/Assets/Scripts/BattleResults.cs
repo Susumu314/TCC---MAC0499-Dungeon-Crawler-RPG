@@ -22,7 +22,6 @@ public class BattleResults : MonoBehaviour
     private bool learnSkill = false;
     private bool open = false;
     public void OpenResultScreen(Unit[] p){
-        open = true;
         this.gameObject.GetComponent<RawImage>().enabled = true;
         foreach(Transform child in transform) {
             if(child.GetSiblingIndex() > 5){
@@ -73,6 +72,8 @@ public class BattleResults : MonoBehaviour
                 i++;
             }
         }
+        print("Chegou ao final do Open Results");
+        open = true;
     }
     public void TotalEXP(int xp){
         EXP = xp;
@@ -92,7 +93,6 @@ public class BattleResults : MonoBehaviour
                     SceneManager.LoadScene("LearnSkill");
                 }
                 else{
-                    GameManager.Instance.state = GameManager.State.Overworld;
                     SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
                 }
             }
@@ -101,7 +101,7 @@ public class BattleResults : MonoBehaviour
 
     private void FillXpBars(){
         canExit = true;
-        for (int i = 0; i < Units.Count; i++)
+        for (int i = 0; i < xpProgressBars.Count; i++)
         {
             if(xpProgressBars[i].fillAmount < targetProgress[i]){
                 canExit = false;
@@ -116,6 +116,7 @@ public class BattleResults : MonoBehaviour
                 }
             }
         }
+        
     }
 
 }

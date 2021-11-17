@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Interactable : MonoBehaviour
 {
-    public enum InteractableType {Door, Shortcut};
+    public enum InteractableType {LoadZone, Shortcut};
     public InteractableType type;
     public int ID;
     public bool used; //o valor desse used deve estar salvo no game manager
+    public string LoadingZone = "";
 
     void Start(){
         if(used){
@@ -16,10 +18,10 @@ public class Interactable : MonoBehaviour
         }
     }
     public void Act(PlayerController p){
-        if (type == Interactable.InteractableType.Shortcut){
+        if (type == InteractableType.Shortcut){
             Vector3 direction = (this.transform.position - p.transform.position).normalized;
             print(direction);
-            if((direction == Vector3.forward) || used){
+            if((direction == transform.forward) || used){//mexi aqui para tentar consertar o shortcut era Vector3.foward antes
                 p.movePoint.position += p.transform.rotation * Vector3.forward * 2 *p.step;
                 if(!used){
                     used = true;
@@ -34,5 +36,9 @@ public class Interactable : MonoBehaviour
                 p.ShowDialog("Looks like you can open a passage from the other side.");
             }
         }  
+        if (type == InteractableType.LoadZone){
+            FindObjectOfType<GameHandler_Overmap>().SaveInitialPosition();
+            SceneManager.LoadScene(LoadingZone);
+        }
     }
 }

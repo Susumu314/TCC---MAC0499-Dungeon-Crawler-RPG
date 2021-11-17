@@ -252,6 +252,22 @@ public class Item {
                            /*VFX*/          "Barrier",
                            /*VFX_COLOR*/    Color.white,
                            /*DESC*/         "Medicine for curing a Demon that is suffering from burn.",
+                           /*OWuse*/        true),
+            
+            new ItemData (/*name*/        "Gohome", 
+                           /*type*/         BaseStats.TYPE.NORMAL, 
+                           /*target_type*/  Skill.TARGET_TYPE.SELF, 
+                           /*priority*/     PRIORITY.NORMAL, 
+                           /*power*/        0, 
+                           /*accuracy*/     100, 
+                           /*cost*/         0,
+                           /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.RETURNCITY}, 
+                           /*isSpecial*/    true, 
+                           /*isRanged*/     true,
+                           /*ID*/           12,
+                           /*VFX*/          "Barrier",
+                           /*VFX_COLOR*/    Color.white,
+                           /*DESC*/         "Medicine for curing a Demon that is suffering from burn.",
                            /*OWuse*/        true)
         });
 }

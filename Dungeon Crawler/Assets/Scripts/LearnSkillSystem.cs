@@ -136,7 +136,6 @@ public class LearnSkillSystem : MonoBehaviour
             learnQueue[selectedUnit].LearnSkill(selectedSkill);
             selectedUnit++;
             if(selectedUnit >= learnQueue.Count){
-                GameManager.Instance.state = GameManager.State.Overworld;
                 SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
             }
             stat_Screen.UpdateStatScreen(learnQueue[selectedUnit]);

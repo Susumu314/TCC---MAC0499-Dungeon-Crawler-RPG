@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         Evolution,
         LearnSkill,
         GameOver,
+        City
     }
 
     public enum BattleID{
@@ -232,7 +233,7 @@ public class GameManager : MonoBehaviour
             unit.isPlayerUnit = true;
         }
         else{
-            //aloca o demonio no Demonomicon
+            party.GetComponent<Demonomicon>().AddDemon(u);
         }
     }
 

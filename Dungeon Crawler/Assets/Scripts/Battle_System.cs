@@ -428,6 +428,7 @@ public class Battle_System : MonoBehaviour
         state = BattleState.BATTLETURN;
         //sort BattleOrder lists based on user speed and speedmodifiers
         SortLists();
+        print("Sorted");
         //Play every unit action in order of priority and speed
         foreach (Unit unit in MaxPriorityBattleOrder)//First play all MaxPriority moves in order of user speed
         {
@@ -438,7 +439,7 @@ public class Battle_System : MonoBehaviour
             }
         }
         MaxPriorityBattleOrder.Clear();
-        
+        print("Max Cleared");
         foreach (Unit unit in PriorityBattleOrder)//Second play all Priority moves in order of user speed
         {
             if(!unit.isDead){
@@ -448,26 +449,29 @@ public class Battle_System : MonoBehaviour
             }
         }
         PriorityBattleOrder.Clear();
-
+        print("Priority Cleared");
         foreach (Unit unit in BattleOrder)//Third play all normal Priority moves in order of user speed
         {
             if(!unit.isDead){
                 unit.HUD.is_Selected(true);//isso aqui funciona bem para as unidades do jogador, mas nao tao bem para as unidade inimigas, criar uma nova função semelhante para funcionar para os 2 (por enquanto é o sufiente)
-                yield return unit.Move.PerformAction();
+                yield return unit.Move.PerformAction();//eh exatamente aqui que esta cagando
+                print("Fez ação" + unit.unitName);
                 unit.HUD.is_Selected(false);
             }
         }
         BattleOrder.Clear();
-
+        print("Normal Cleared");
         foreach (Unit unit in LowPriorityBattleOrder)//Last play all low Priority moves in order of user speed
         {
             if(!unit.isDead){
                 unit.HUD.is_Selected(true);//isso aqui funciona bem para as unidades do jogador, mas nao tao bem para as unidade inimigas, criar uma nova função semelhante para funcionar para os 2 (por enquanto é o sufiente)
-                yield return unit.Move.PerformAction();
+                StartCoroutine(unit.Move.PerformAction());
                 unit.HUD.is_Selected(false);
             }
         }
         LowPriorityBattleOrder.Clear();
+        print("Low Cleared");
+        print("Reset guards");
 
         //reset every unit guard
         foreach (Unit unit in partyMembers)
@@ -475,33 +479,40 @@ public class Battle_System : MonoBehaviour
             if(unit)
                 unit.SetGuard(false);
         }
+        print("Reseted party guards");
         foreach (Unit unit in enemyUnits)
         {
             if(unit)
                 unit.SetGuard(false);
         }
-
+        print("Reseted enemy guards");
         foreach (Unit u in partyMembers)
         {
             if(u){
                 if(!u.isDead){
-                    StartCoroutine(u.StatusConditionDamage());
+                    yield return u.StatusConditionDamage();
                 }
             }
         }
-        yield return new WaitForSeconds(1);
-
+        print("status Condition party");
         foreach (Unit u in enemyUnits)
         {
             if(u){
                 if(!u.isDead){
-                    StartCoroutine(u.StatusConditionDamage());
+                    yield return u.StatusConditionDamage();
                 }
             }
         }
-        yield return new WaitForSeconds(1);
+        print("status Condition enemy");
+        yield return TestBattleEnd();
+        if (state == BattleState.WON){
+            Won();
+        }
+        else if (state == BattleState.LOST){
+            Lost();
+        }
         //End Battle Turn, return to moveselectionturn
-        if(!(state == BattleState.WON || state == BattleState.LOST)){
+        else{
             MoveSelectionTurn();
         }
         
@@ -1031,71 +1042,49 @@ public class Battle_System : MonoBehaviour
     /**
     * Verifica se a batalha terminou.
     */
-    public void TestBattleEnd(){
+    public IEnumerator TestBattleEnd(){
         print("Testando final da batalha\n");
         for(int i = 0; i < MAX_UNIT_SIZE; i++){//checa se tem inimigos vivos
-            if (enemyUnits[i] && !enemyUnits[i].isDead)//se tiver pelo menos 1 vivo, para de checar
+            if (enemyUnits[i] && !enemyUnits[i].isDead){//se tiver pelo menos 1 vivo, para de checar
                 break;
-            if(i == MAX_UNIT_SIZE - 1)
-                StartCoroutine(Won());
+            }
+            if(i == MAX_UNIT_SIZE - 1){
+                state = BattleState.WON;
+            }
         }
         for(int i = 0; i < MAX_UNIT_SIZE; i++){//checa se tem aliados vivos
             if (partyMembers[i] && !partyMembers[i].isDead)//se tiver pelo menos 1 vivo, para de checar
                 break;
-            if(i == MAX_UNIT_SIZE - 1)
-                StartCoroutine(Lost());
+            if(i == MAX_UNIT_SIZE - 1){
+                state = BattleState.LOST;
+            }
         }
+        yield return null;
     }
 
     /**
     * Função chamada quando o jogador ganha a batalha,
     * ao ser chamada, realiza a rotina de vitória.
     */
-    IEnumerator Won(){
+    private void Won(){
         print("YOU WIN");
-        dialogueText.text = "You WIN!";
-        state = BattleState.WON;
         //PlayFanfare();
-        yield return new WaitForSeconds(1f);
-        // //Calcula o numero de unidades do jogador vivos:
-        // int s = 0;
-        // foreach (Unit unit in partyMembers)
-        // {   
-        //     if(unit){
-        //         if(!unit.isDead){
-        //             s++;
-        //         }
-        //     }
-        // }
-        // Debug.Log(s);
-        // //calcula a experiencia que cada unidade deve ganhar
-        // foreach (Unit unit in partyMembers)
-        // {
-        //     if(unit){
-        //         if(!unit.isDead){
-        //             yield return unit.GainExp(Mathf.RoundToInt((float)expEarned/(float)s));
-        //         }
-        //     }
-        // }
         battleResults.TotalEXP(expEarned);
         battleResults.OpenResultScreen(partyMembers);
-        //GameManager.Instance.state = GameManager.State.Overworld;
-        //SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
     }
 
     /**
     * Função chamada quando o jogador perde a batalha,
     * ao ser chamada, realiza a rotina de derrota.
     */
-    IEnumerator Lost(){
+    //IEnumerator Lost(){
+    private void Lost(){
         dialogueText.text = "You LOSE!";
-        state = BattleState.LOST;
         //PlayLoseTheme();
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(2f);
         //GameOverScreen();
         GameManager.Instance.GameOver = true;
-        GameManager.Instance.state = GameManager.State.Overworld;
-        SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
+        SceneManager.LoadScene("City_Template");
     }
 
     /**
@@ -1127,7 +1116,6 @@ public class Battle_System : MonoBehaviour
         //         }
         //     }
         // }
-        GameManager.Instance.state = GameManager.State.Overworld;
         SceneManager.LoadScene(GameManager.Instance.CurrentOverworldScene);
         //ResultScreen();
     }
@@ -1282,6 +1270,7 @@ public class Battle_System : MonoBehaviour
                 index = 0;
         //Loop to get an alive unit, assumes that there is at least 1 alive unit
         while(!enemyUnits[index] || enemyUnits[index].isDead){
+            print("oh shit");
             index++;
             if(index == unitIndex){
                 return null;

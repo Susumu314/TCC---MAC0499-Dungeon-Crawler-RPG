@@ -21,14 +21,19 @@ public class GuildMaster : MonoBehaviour
     public Stat_Screen statScreen;
     void Start(){
         GameManager.Instance.Init();
+        AudioManager.instance.Play("Guild");
+        dialogueManager = FindObjectOfType<DialogueManager>();
         if(!GameManager.Instance.EventList[(int)GameManager.Event.GotFirstDemon]){
             menu.transform.GetChild(0).gameObject.SetActive(true);
         }
         else{
             menu.transform.GetChild(3).gameObject.SetActive(true);
+            dialogueManager.EndDialogue();
+            dialogueManager.StartDialogue(new Dialogue(npc_name, 
+                                      new string[1] {"Welcome back."},
+                                                    1f));
         }
         npcInteractionSystem = FindObjectOfType<NpcInteractionSystem>();
-        dialogueManager = FindObjectOfType<DialogueManager>();
         SetupGUI();
         foreach (Unit unit in giftUnits.GetComponentsInChildren<Unit>())
         {
@@ -54,9 +59,10 @@ public class GuildMaster : MonoBehaviour
         GameManager.Instance.CapturedUnit(chosenUnit);
         HideDemonInformation();
         dialogueManager.StartDialogue(new Dialogue(npc_name, 
-                                      new string[4] {
+                                      new string[5] {
                                     "That was a good choice, " + chosenUnit.unitName + "it’s a great demon.",
-                                    "Since I’m in a really good mood, you can have this 10 Demon Sealers so you can capture your on demons, and this Demonomicon so you can store demons that you are not currently using.",
+                                    "Since I’m in a really good mood, you can have this 50 Demon Sealers so you can capture your on demons,",
+                                     "And this Demonomicon so you can store demons that you are not currently using.",
                                     "And here is the package that you need to deliver. If you can deliver it safely, there will be more jobs for you.",
                                     "..."
                                       },

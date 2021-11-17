@@ -64,7 +64,7 @@ public class DialogueManager : MonoBehaviour
 		StartCoroutine(typeSentenceCo);
 	}
 
-	void EndDialogue()
+	public void EndDialogue()
 	{
 		dialogueFinished = true;
 		// if(Menu){

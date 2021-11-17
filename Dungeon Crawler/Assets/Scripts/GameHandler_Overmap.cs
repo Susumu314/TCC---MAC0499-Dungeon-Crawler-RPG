@@ -14,6 +14,7 @@ public class GameHandler_Overmap : MonoBehaviour
 
     public int OverWorldID;
     public string BGM;
+    public string BGMAlternative;
     public GameObject lootList;
     public GameObject interactableList;
     public Transform healZoneTransform;
@@ -28,16 +29,16 @@ public class GameHandler_Overmap : MonoBehaviour
         if (!GameManager.Instance.EventList[(int)GameManager.Event.EnteredForest]){
             GameManager.Instance.EventList[(int)GameManager.Event.EnteredForest] = true;
             PlayerOverworld = Instantiate(PlayerPrefab, new Vector3(0, 1, 0), Quaternion.identity);
-            GameManager.Instance.state = GameManager.State.Overworld;
             SavePlayerObject();
         }
-        else if(GameManager.Instance.GameOver){
-            PlayerOverworld = Instantiate(PlayerPrefab, new Vector3(healZoneTransform.position.x, 1, healZoneTransform.position.z) , GameManager.Instance.overworldPlayerRotation);
+        else if(GameManager.Instance.state == GameManager.State.City){
+            PlayerOverworld = Instantiate(PlayerPrefab, new Vector3(0, 1, 0), Quaternion.identity);
         }
         else
         {
             PlayerOverworld = Instantiate(PlayerPrefab, GameManager.Instance.overworldPlayerPosition, GameManager.Instance.overworldPlayerRotation);//acho que o que esta cagando aqui eh que ele ta pegando o GameData script e não o instanciado
         }
+        GameManager.Instance.state = GameManager.State.Overworld;
         foreach (GameManager.LootAcquired l in GameManager.Instance.loot)
         {
             if(l.OverworldID == OverWorldID){
@@ -62,7 +63,12 @@ public class GameHandler_Overmap : MonoBehaviour
         }
         PlayerOverworld.GetComponent<RandomEncouters>().OverWorldID = OverWorldID;
         GameManager.Instance.CurrentOverworldID = OverWorldID;
-        AudioManager.instance.Play(BGM);
+        if((BGMAlternative != "") && (Random.Range(0,4) == 0)){
+            AudioManager.instance.Play(BGMAlternative);
+        }
+        else{
+            AudioManager.instance.Play(BGM);
+        }
         foreach (Unit u in GameManager.Instance.party.GetComponentsInChildren<Unit>())
         {
             if(u){
@@ -75,6 +81,10 @@ public class GameHandler_Overmap : MonoBehaviour
     * Salva o estado atual do jogador para ser acessado de novo futuramente
     */
     public static void SavePlayerObject(){//depois isso deve virar um "SaveOverworldState()
+        GameManager.Instance.SaveOverwoldPlayer(PlayerOverworld.transform);
+    }
+
+    public void SaveInitialPosition(){//Salva a localização do jogador no inicio do
         GameManager.Instance.SaveOverwoldPlayer(PlayerOverworld.transform);
     }
 

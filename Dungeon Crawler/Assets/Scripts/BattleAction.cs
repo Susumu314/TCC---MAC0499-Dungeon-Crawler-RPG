@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /**
 * Classe que representa o sistema de ações que podem ser realizadas em uma batalha
@@ -98,8 +99,7 @@ public class BattleAction : MonoBehaviour
     * Realiza a ação de batalhas setadas pelo jogador durante o turno de seleção de ações
     */
     public IEnumerator PerformAction(){
-        float wait = 0.0f;
-        /*por enquanto, ações em alvos mortos, resultam em pular a ação*/
+        float wait = 0.1f;
         /*Checa status conditions para verificar se a unidade consegue agir neste turno*/
         int rng = Random.Range(0,100);
         bool canAct = true;
@@ -179,7 +179,7 @@ public class BattleAction : MonoBehaviour
                 }
                 case Act.SKILL://tenta capturar o demonio
                 {
-                    int damage;
+                    int damage = 0;
                     bool payed = false;
                     Skill.SkillData s = Skill.SkillList[skillID];
                     for (int i = 0; i < TargetList.Count; i++)
@@ -237,16 +237,24 @@ public class BattleAction : MonoBehaviour
                             if(effect != Skill.EFFECT.NULL){
                                 yield return Skill_Effect(effect, TargetList[i]);
                             }
+                            if(effect == Skill.EFFECT.LIFESTEAL){
+                                unitRef.HealDamage(Mathf.CeilToInt(damage*0.5f));
+                            }
                         }
                     }
                     break;
                 }
-                case Act.ITEM://tenta capturar o demonio
+                case Act.ITEM:
                 {
                     int damage;
                     bool payed = false;
                     Item.ItemData item = Item.ItemList[itemID];
-                    for (int i = 0; i < TargetList.Count; i++)//esta pelo menos entrando aqui
+                    if(item.Status_effect[0] == Skill.EFFECT.RETURNCITY){
+                        if(GameManager.Instance.state == GameManager.State.Overworld){
+                            SceneManager.LoadScene("City_Template");
+                        }
+                    }
+                    for (int i = 0; i < TargetList.Count; i++)
                     {
                         if(TargetList[i].isDead){
                             yield return ShowDialog("The target is already defeated", skipTime);
@@ -297,8 +305,9 @@ public class BattleAction : MonoBehaviour
                 break;
             }
         }
-        
-        yield return new WaitForSeconds(wait);
+        //yield return new WaitForSeconds(wait);//esse yield return que esta crashando tudo
+        yield return new WaitForSeconds(0.7f);
+        print("Oh baby" + unitRef.unitName + wait);
     }        
     float MoveAnimation(string animation, Transform target_transform, Color color){
         GameObject Anim = Instantiate(Resources.Load("VFX/Skill_Animation"), target_transform.position, Quaternion.identity) as GameObject;
@@ -406,7 +415,7 @@ public class BattleAction : MonoBehaviour
             Battle_System.dialogueText.text = text;
             startTimer = true;
             timer = 0f;
-            yield return new WaitUntil(() => ((timer >= waitTime) || skip));//isso aqui nao esta funcionando por algum motivo
+            yield return new WaitUntil(() => ((timer >= waitTime) || skip));
             startTimer = false;
             skip = false;
         }

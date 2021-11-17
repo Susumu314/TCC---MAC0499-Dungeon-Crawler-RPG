@@ -22,6 +22,7 @@ public class Demonologist : MonoBehaviour
         dialogueManager = FindObjectOfType<DialogueManager>();
         SetupGUI();
         scrollMenuContent.InitDemonomiconMenu(GameManager.Instance.party.GetComponent<Demonomicon>(), this);
+        AudioManager.instance.Play("Demonologist");
     }
 
     void Update(){
@@ -164,6 +165,14 @@ public class Demonologist : MonoBehaviour
         if(onDemonSelect){
             if (Input.GetButtonDown("Submit"))
             {
+                if(LastHealthyDemon(SelectedPartyMember)){ // checa se esta querendo depositar o ultimo demonio com vida acima de 0
+                    dialogueManager.StartDialogue(new Dialogue(npc_name, 
+                                                                  new string[1] {"You cannot store you last healthy demon!"},
+                                                                                 2f));
+                    npcInteractionSystem.canOpenMenu = true;
+                    onDemonSelect = false;
+                    return;
+                }
                 scrollMenuContent.AddDemonomiconEntry(GameManager.Instance.party.GetComponent<Demonomicon>().AddDemon(party[SelectedPartyMember]));
                 party[SelectedPartyMember].HUD.Reset();
                 party[SelectedPartyMember].species = "";
@@ -265,5 +274,20 @@ public class Demonologist : MonoBehaviour
         yield return null;//waits 1 frame
     }
 
+    /**
+    * Checa se tem mais de um membro na equipe
+    */
+    public bool LastHealthyDemon(int unitId){
+        for (int i = 0; i < 6; i++)
+        {
+            if(i == unitId){
+                continue;
+            }
+            if(party[i] && !party[i].isDead){
+                return false;
+            }
+        }
+        return true;
+    }
 
 }

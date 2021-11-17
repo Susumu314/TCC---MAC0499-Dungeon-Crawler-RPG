@@ -224,8 +224,6 @@ public class Unit : MonoBehaviour
         }
         statusCondition = STATUS_CONDITION.NULL;
         HUD.SetStatusConditions();
-        //avisa o Battle_System que uma unidade morreu para checar o fim da batalha
-        BS.TestBattleEnd();
     }
 
     /**
@@ -302,6 +300,7 @@ public class Unit : MonoBehaviour
         {
             skillList[i] = skills[i];
         }
+        movePool = MovePool.SearchMovePool(species);
         unitName = nickname;
         isBackLine = backline;
         this.totalExp = totalExp;
@@ -544,6 +543,7 @@ public class Unit : MonoBehaviour
                 }
                 AudioManager.instance.Play("Damage");
                 TakeDamage(damage, 1);
+                yield return new WaitForSeconds(0.5f);
             break;
 
             case STATUS_CONDITION.BURN:
@@ -551,13 +551,13 @@ public class Unit : MonoBehaviour
                     damage = Mathf.Max(Mathf.FloorToInt(maxHP/8), 1);
                     AudioManager.instance.Play("Damage");
                     TakeDamage(damage, 1);
+                    yield return new WaitForSeconds(0.5f);
                 }
             break;
             
             default:
             break;
         }
-        yield return null;
     }
 
     /**
