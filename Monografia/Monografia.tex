@@ -1191,7 +1191,7 @@ Para concentrar o esforço de criação do jogo na implementação de sistemas e
 \section{Arquitetura das Mecânicas de Exploração}
 
 
-\subsection{Movimentação do personagem}
+\subsection{Representação do jogador}
 
 O jogador, como é representado durante a exploração do labirinto, é um objeto 3D com duas câmeras acopladas, a primeira é a câmera principal que dá o jogo a visão em primeira pessoa, já a segunda se encontra bem acima do jogador, a qual gera a imagem reproduzida pelo mini mapa do jogo.
  
@@ -1202,8 +1202,16 @@ O jogador, como é representado durante a exploração do labirinto, é um objet
   \caption{O objeto \emph{OverworldPlayer} visto pelo editor Unity.}
   \label{fig:playerobject}
 \end{figure}
-	
 
+Atrelado à caixa de colisão do jogador há rotinas que definem como o jogador consegue interagir com o ambiente do labirinto, como interação com os itens e objetos interativos, e zonas especiais que indicam quando e como encontros aleatórios e eventos especiais, tais como tutoriais, ocorrem durante a exploração do labirinto.
+
+\subsection{Random Encounters}
+
+Os diferentes métodos de realizar encontros aleatórios estudados foram os encontrados nos jogos da primeira geração de \emph{Pokémon} e em \emph{Etrian Odyssey V}.
+
+Em \emph{Etrian Odyssey V}, ao entrar no labirinto ou após cada batalha, um número aleatório de 64 a 256 é setado como limite de um contador, e cada espaço do labirinto em que o jogador pode dar um passo têm a ele associado um valor de 0 a 20, o qual é adicionado ao contador cada vez que o jogador entra em um desses espaços. Quando o contador ultrapassa o limite definido uma encontro aleatório é iniciado de acordo com uma tabela que indica quais são os possíveis encontros que o jogador pode batalhar em cada espaço. Este método garante que o jogador possa dar um número minimo de passos antes que encontre outra batalha, e permite que os designers façam ajustes finos a taxa de encontros para que a experiencia do jogador não se torne frustrante durante o jogo. A desvantagem deste método é grande quantidade de recursos que se deve ser alocada a implementação da mecânica, dado que cada passo do labirinto deve ser ajustado e reajustado a cada modificação do design do labirinto.
+
+Em \emph{Pokémon}, a cada passo que o jogador executa dentro de àreas onde pode encontrar pokémons selvagens é gerado um valor aleatório entre 0 e 255, este valor então é comparado com a taxa de encontro da àrea em que se encontra, caso o valor gerado seja maior que a taxa de encontro o jogo inicia uma batalha. A espécie e nível do pokémon selvagem gerado para esse encontro é decidido aleatóriamente a partir de uma tabela de encontros. A vantagem deste método é de ser muito simples e facil de implementar no jogo, a desvantagem é que prejudica a exploração em àreas onde não se pode desviar de zonas em que encontros aleatórios ocorrem ou em àreas com taxa de encontro muito altas.
 
 
 % ----------------------------------------------------------
