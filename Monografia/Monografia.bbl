@@ -1,0 +1,51 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{v-1.9.7 }
+
+\bibitem[Dobrilova 2021]{Techjury}
+\abntrefinfo{Dobrilova}{DOBRILOVA}{2021}
+{DOBRILOVA, T. \emph{How Much Is the Gaming Industry Worth in 2021? [+25
+  Powerful Stats]}. 2021.
+Dispon{\'\i}vel em: \url{https://techjury.net/blog/gaming-industry-worth/}.}
+
+\bibitem[gamedesigning 2021]{GD:2021}
+\abntrefinfo{gamedesigning}{GAMEDESIGNING}{2021}
+{GAMEDESIGNING. \emph{basic game mechanics}. 2021.
+Dispon{\'\i}vel em:
+  \url{https://www.gamedesigning.org/learn/basic-game-mechanics/}.}
+
+\bibitem[gamedeveloper 2021]{GameDev:2021}
+\abntrefinfo{gamedeveloper}{GAMEDEVELOPER}{2021}
+{GAMEDEVELOPER. \emph{game engines on steam the definitive breakdown}. 2021.
+Dispon{\'\i}vel em:
+  \url{https://www.gamedeveloper.com/business/game-engines-on-steam-the-definitive-breakdown}.}
+
+\bibitem[Koster]{TheFun}
+\abntrefinfo{Koster}{KOSTER}{}
+{KOSTER, R. [S.l.: s.n.].}
+
+\bibitem[Schell 2014]{TheArt}
+\abntrefinfo{Schell}{SCHELL}{2014}
+{SCHELL, J. \emph{The Art of Game Design a Book of Lenses}. [S.l.]: AK Peters,
+  2014.}
+
+\bibitem[Wikipedia 2021]{Wiki03}
+\abntrefinfo{Wikipedia}{WIKIPEDIA}{2021a}
+{WIKIPEDIA. \emph{Game Engine}. 2021.
+Dispon{\'\i}vel em: \url{https://en.wikipedia.org/wiki/Game\_engine}.}
+
+\bibitem[Wikipedia 2021]{Wiki01}
+\abntrefinfo{Wikipedia}{WIKIPEDIA}{2021b}
+{WIKIPEDIA. \emph{Role-playing video game}. 2021.
+Dispon{\'\i}vel em:
+  \url{https://en.wikipedia.org/wiki/Role-playing\_video\_game}.}
+
+\bibitem[Wikipedia 2021]{Wiki02}
+\abntrefinfo{Wikipedia}{WIKIPEDIA}{2021c}
+{WIKIPEDIA. \emph{Video game}. 2021.
+Dispon{\'\i}vel em: \url{https://en.wikipedia.org/wiki/Video\_game}.}
+
+\end{thebibliography}

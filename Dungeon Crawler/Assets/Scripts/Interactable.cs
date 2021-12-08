@@ -12,10 +12,7 @@ public class Interactable : MonoBehaviour
     public string LoadingZone = "";
 
     void Start(){
-        if(used){
-            this.transform.GetChild(0).gameObject.SetActive(false);
-            this.transform.GetChild(1).gameObject.SetActive(true);
-        }
+        StartCoroutine(CheckUsage());
     }
     public void Act(PlayerController p){
         if (type == InteractableType.Shortcut){
@@ -39,6 +36,14 @@ public class Interactable : MonoBehaviour
         if (type == InteractableType.LoadZone){
             FindObjectOfType<GameHandler_Overmap>().SaveInitialPosition();
             SceneManager.LoadScene(LoadingZone);
+        }
+    }
+    //espera 1 frame para checar se o used foi setado como true no start de outro gameobject
+    private IEnumerator CheckUsage(){
+        yield return null;
+        if(used){
+            this.transform.GetChild(0).gameObject.SetActive(false);
+            this.transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 }

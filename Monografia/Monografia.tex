@@ -56,6 +56,12 @@
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{microtype} 			% para melhorias de justificação
+\usepackage{cite}
+\usepackage{subcaption}
+\usepackage{booktabs, multirow} % for borders and merged ranges
+\usepackage{soul}% for underlines
+\usepackage[table]{xcolor} % for cell colors
+\usepackage{changepage,threeparttable} % for wide tables
 % ---
 		
 % ---
@@ -94,22 +100,21 @@
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
-\titulo{Trabalho de Conclusão de Curso}
+\titulo{Trabalho de Formatura Supervisionado - Jogo Digital.}
 \autor{Hugo Susumu Mota Asaga}
 \local{Brasil}
-\data{2021, v-1.0.0}
+\data{2021}
 \orientador{Ricardo Nakamura}
 \instituicao{%
   Universidade de São Paulo -- USP
   \par
   Instituto de Matemática e Estatística
   \par
-  Programa de Pós-Graduação}
-\tipotrabalho{Tese (Doutorado)}
+  Bacharelado em Ciência da Computação}
+\tipotrabalho{Monografia Final}
 % O preambulo deve conter o tipo do trabalho, o objetivo, 
 % o nome da instituição e a área de concentração 
-\preambulo{Modelo canônico de trabalho monográfico acadêmico em conformidade com
-as normas ABNT apresentado à comunidade de usuários \LaTeX.}
+\preambulo{Jogo Digital 3D inspirado por jogos de captura de criaturas e RPGs clássicos.}
 % ---
 
 
@@ -248,13 +253,16 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 	\imprimirdata.}\\
 	
 	\hspace{0.5cm}
-		1. Palavra-chave1.
-		2. Palavra-chave2.
-		2. Palavra-chave3.
-		I. Orientador.
-		II. Universidade xxx.
-		III. Faculdade de xxx.
-		IV. Título 			
+		1. Jogo Digital.
+		2. Videogame.
+		3. RPG.
+		4. Pokémon.
+		5. Dungeon Crawler.
+		6. Game Design.
+		I. Ricardo Nakamura.
+		II. Universidade de São Paulo.
+		III. Instituto de Matemática e Estatística.
+		IV. Trabalho de Formatura Supervisionado - Jogo Digital.			
 	\end{minipage}}
 	\end{center}
 \end{fichacatalografica}
@@ -263,30 +271,30 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 % ---
 % Inserir errata
 % ---
-\begin{errata}
-Elemento opcional da \citeonline[4.2.1.2]{NBR14724:2011}. Exemplo:
+%\begin{errata}
+%Elemento opcional da \citeonline[4.2.1.2]{NBR14724:2011}. %Exemplo:
+%
+%\vspace{\onelineskip}
+%
+%FERRIGNO, C. R. A. \textbf{Tratamento de neoplasias ósseas %apendiculares com
+%reimplantação de enxerto ósseo autólogo autoclavado %associado ao plasma
+%rico em plaquetas}: estudo crítico na cirurgia de %preservação de membro em
+%cães. 2011. 128 f. Tese (Livre-Docência) - Faculdade de %Medicina Veterinária e
+%Zootecnia, Universidade de São Paulo, São Paulo, 2011.
+%
+%\begin{table}[htb]
+%\center
+%\footnotesize
+%\begin{tabular}{|p{1.4cm}|p{1cm}|p{3cm}|p{3cm}|}
+%  \hline
+%   \textbf{Folha} & \textbf{Linha}  & \textbf{Onde se lê}  & %\textbf{Leia-se}  \\
+%    \hline
+%    1 & 10 & auto-conclavo & autoconclavo\\
+%   \hline
+%\end{tabular}
+%\end{table}
 
-\vspace{\onelineskip}
-
-FERRIGNO, C. R. A. \textbf{Tratamento de neoplasias ósseas apendiculares com
-reimplantação de enxerto ósseo autólogo autoclavado associado ao plasma
-rico em plaquetas}: estudo crítico na cirurgia de preservação de membro em
-cães. 2011. 128 f. Tese (Livre-Docência) - Faculdade de Medicina Veterinária e
-Zootecnia, Universidade de São Paulo, São Paulo, 2011.
-
-\begin{table}[htb]
-\center
-\footnotesize
-\begin{tabular}{|p{1.4cm}|p{1cm}|p{3cm}|p{3cm}|}
-  \hline
-   \textbf{Folha} & \textbf{Linha}  & \textbf{Onde se lê}  & \textbf{Leia-se}  \\
-    \hline
-    1 & 10 & auto-conclavo & autoconclavo\\
-   \hline
-\end{tabular}
-\end{table}
-
-\end{errata}
+%\end{errata}
 % ---
 
 % ---
@@ -302,41 +310,41 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 % \includepdf{folhadeaprovacao_final.pdf}
 % \end{folhadeaprovacao}
 %
-\begin{folhadeaprovacao}
-
-  \begin{center}
-    {\ABNTEXchapterfont\large\imprimirautor}
-
-    \vspace*{\fill}\vspace*{\fill}
-    \begin{center}
-      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
-    \end{center}
-    \vspace*{\fill}
+%\begin{folhadeaprovacao}
+%
+%  \begin{center}
+%    {\ABNTEXchapterfont\large\imprimirautor}%
+%
+%    \vspace*{\fill}\vspace*{\fill}
+%    \begin{center}
+%      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+%    \end{center}
+%    \vspace*{\fill}
     
-    \hspace{.45\textwidth}
-    \begin{minipage}{.5\textwidth}
-        \imprimirpreambulo
-    \end{minipage}%
-    \vspace*{\fill}
-   \end{center}
+%    \hspace{.45\textwidth}
+%    \begin{minipage}{.5\textwidth}
+%        \imprimirpreambulo
+%    \end{minipage}%
+%    \vspace*{\fill}
+%   \end{center}
         
-   Trabalho aprovado. \imprimirlocal, 24 de novembro de 2012:
+%   Trabalho aprovado. \imprimirlocal, 24 de novembro de %2012:
 
-   \assinatura{\textbf{\imprimirorientador} \\ Orientador} 
-   \assinatura{\textbf{Professor} \\ Convidado 1}
-   \assinatura{\textbf{Professor} \\ Convidado 2}
-   %\assinatura{\textbf{Professor} \\ Convidado 3}
-   %\assinatura{\textbf{Professor} \\ Convidado 4}
-      
-   \begin{center}
-    \vspace*{0.5cm}
-    {\large\imprimirlocal}
-    \par
-    {\large\imprimirdata}
-    \vspace*{1cm}
-  \end{center}
+%   \assinatura{\textbf{\imprimirorientador} \\ Orientador} 
+%   \assinatura{\textbf{Professor} \\ Convidado 1}
+%   \assinatura{\textbf{Professor} \\ Convidado 2}
+%   %\assinatura{\textbf{Professor} \\ Convidado 3}
+%   %\assinatura{\textbf{Professor} \\ Convidado 4}
+%      
+%   \begin{center}
+%    \vspace*{0.5cm}
+%    {\large\imprimirlocal}
+%    \par
+%    {\large\imprimirdata}
+%    \vspace*{1cm}
+%  \end{center}
   
-\end{folhadeaprovacao}
+%\end{folhadeaprovacao}
 % ---
 
 % ---
@@ -346,8 +354,7 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
    \vspace*{\fill}
    \centering
    \noindent
-   \textit{ Este trabalho é dedicado às crianças adultas que,\\
-   quando pequenas, sonharam em se tornar cientistas.} \vspace*{\fill}
+   \textit{ Este trabalho é dedicado a minha familha e amigos por todo suporte que me deram durante os anos de graduação.} \vspace*{\fill}
 \end{dedicatoria}
 % ---
 
@@ -378,16 +385,16 @@ contribuirão para a evolução do \abnTeX.
 % ---
 % Epígrafe
 % ---
-\begin{epigrafe}
-    \vspace*{\fill}
-	\begin{flushright}
-		\textit{``Não vos amoldeis às estruturas deste mundo, \\
-		mas transformai-vos pela renovação da mente, \\
-		a fim de distinguir qual é a vontade de Deus: \\
-		o que é bom, o que Lhe é agradável, o que é perfeito.\\
-		(Bíblia Sagrada, Romanos 12, 2)}
-	\end{flushright}
-\end{epigrafe}
+%\begin{epigrafe}
+%    \vspace*{\fill}
+%	\begin{flushright}
+%		\textit{``Não vos amoldeis às estruturas deste mundo, \\
+%		mas transformai-vos pela renovação da mente, \\
+%		a fim de distinguir qual é a vontade de Deus: \\
+%		o que é bom, o que Lhe é agradável, o que é perfeito.\\
+%		(Bíblia Sagrada, Romanos 12, 2)}
+%	\end{flushright}
+%\end{epigrafe}
 % ---
 
 % ---
@@ -397,47 +404,24 @@ contribuirão para a evolução do \abnTeX.
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}
- Segundo a \citeonline[3.1-3.2]{NBR6028:2003}, o resumo deve ressaltar o
- objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
- destes itens dependem do tipo de resumo (informativo ou indicativo) e do
- tratamento que cada item recebe no documento original. O resumo deve ser
- precedido da referência do documento, com exceção do resumo inserido no
- próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do
- resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
- ponto e finalizadas também por ponto.
+ O objetivo deste trabalho foi desenvolver um jogo digital, do gênero \emph{Role-Playing Game} (RPG), \emph{Dungeon Crawler}, que busca agradar os jogadores que gostam de jogos de captura e criação de criaturas, e jogos RPG antigos. A partir da análise de jogos bem avaliados pela crítica se criou o design base do jogo, o qual foi implementado durante a fase de desenvolvimento e refinado por meio de \emph{feedbacks} recebidos durante o primeiro teste com público.
 
- \textbf{Palavras-chave}: latex. abntex. editoração de texto.
+
+ \textbf{Palavras-chave}: Jogo Digital, Videogame, RPG, Pokémon, Dungeon Crawler, Game Design.
 \end{resumo}
 
 % resumo em inglês
-\begin{resumo}[Abstract]
- \begin{otherlanguage*}{english}
-   This is the english abstract.
+%\begin{resumo}[Abstract]
+% \begin{otherlanguage*}{english}
+%   This is the english abstract.
 
-   \vspace{\onelineskip}
+%   \vspace{\onelineskip}
  
-   \noindent 
-   \textbf{Keywords}: latex. abntex. text editoration.
- \end{otherlanguage*}
-\end{resumo}
+%   \noindent 
+%   \textbf{Keywords}: latex. abntex. text editoration.
+% \end{otherlanguage*}
+%\end{resumo}
 
-% resumo em francês 
-\begin{resumo}[Résumé]
- \begin{otherlanguage*}{french}
-    Il s'agit d'un résumé en français.
- 
-   \textbf{Mots-clés}: latex. abntex. publication de textes.
- \end{otherlanguage*}
-\end{resumo}
-
-% resumo em espanhol
-\begin{resumo}[Resumen]
- \begin{otherlanguage*}{spanish}
-   Este es el resumen en español.
-  
-   \textbf{Palabras clave}: latex. abntex. publicación de textos.
- \end{otherlanguage*}
-\end{resumo}
 % ---
 
 % ---
@@ -446,42 +430,42 @@ contribuirão para a evolução do \abnTeX.
 \pdfbookmark[0]{\listfigurename}{lof}
 \listoffigures*
 \cleardoublepage
-% ---
+ ---
 
 % ---
 % inserir lista de quadros
 % ---
-\pdfbookmark[0]{\listofquadrosname}{loq}
-\listofquadros*
-\cleardoublepage
+%\pdfbookmark[0]{\listofquadrosname}{loq}
+%\listofquadros*
+%\cleardoublepage
 % ---
 
 % ---
 % inserir lista de tabelas
 % ---
-\pdfbookmark[0]{\listtablename}{lot}
-\listoftables*
-\cleardoublepage
+%\pdfbookmark[0]{\listtablename}{lot}
+%\listoftables*
+%\cleardoublepage
 % ---
 
 % ---
 % inserir lista de abreviaturas e siglas
 % ---
-\begin{siglas}
-  \item[ABNT] Associação Brasileira de Normas Técnicas
-  \item[abnTeX] ABsurdas Normas para TeX
-\end{siglas}
+%\begin{siglas}
+%  \item[ABNT] Associação Brasileira de Normas Técnicas
+%  \item[abnTeX] ABsurdas Normas para TeX
+%\end{siglas}
 % ---
 
 % ---
 % inserir lista de símbolos
 % ---
-\begin{simbolos}
-  \item[$ \Gamma $] Letra grega Gama
-  \item[$ \Lambda $] Lambda
-  \item[$ \zeta $] Letra grega minúscula zeta
-  \item[$ \in $] Pertence
-\end{simbolos}
+%\begin{simbolos}
+%  \item[$ \Gamma $] Letra grega Gama
+%  \item[$ \Lambda $] Lambda
+%  \item[$ \zeta $] Letra grega minúscula zeta
+%  \item[$ \in $] Pertence
+%\end{simbolos}
 % ---
 
 % ---
@@ -504,159 +488,728 @@ contribuirão para a evolução do \abnTeX.
 % ----------------------------------------------------------
 \chapter{Introdução}
 % ----------------------------------------------------------
+\section{Motivação}
 
-Este documento e seu código-fonte são exemplos de referência de uso da classe
-\textsf{abntex2} e do pacote \textsf{abntex2cite}. O documento 
-exemplifica a elaboração de trabalho acadêmico (tese, dissertação e outros do
-gênero) produzido conforme a ABNT NBR 14724:2011 \emph{Informação e documentação
-- Trabalhos acadêmicos - Apresentação}.
+A indústria de jogos digitais é uma das indústrias mais valiosas do mundo contemporâneo,ao todo lucrando mais de 90 bilhões de dólares em 2020 ~\cite{Techjury}. Jogos digitais, assim como filmes, podem ser separados em diversos gêneros, e um dos gêneros mais mundialmente amado é o gênero RPG (Role-Playing Game).
 
-A expressão ``Modelo Canônico'' é utilizada para indicar que \abnTeX\ não é
-modelo específico de nenhuma universidade ou instituição, mas que implementa tão
-somente os requisitos das normas da ABNT. Uma lista completa das normas
-observadas pelo \abnTeX\ é apresentada em \citeonline{abntex2classe}.
+Um jogo RPG é um gênero de jogos digitais onde o jogador controla as ações de um ou muitos personagens imersos em um mundo bem definido, geralmente envolvendo alguma forma de desenvolvimento de personagem por meio de melhorias em atributos. Vários jogos RPG herdam muitas das suas terminologias, mecânicas e ambientação de jogos de RPG de mesa. ~\cite{Wiki01}
+	
+Pokémon é a maior franquia de jogos de gênero de RPGs e uma das maiores franquias do mundo, mas apesar de ser extremamente bem sucedida, é criticada por muitos fãs, principalmente os mais velhos, por se manter presa a uma fórmula rígida e ser desenvolvida dando prioridade apenas para o público alvo infantil, tornando a experiência de jogar os jogos da franquia alienadora ao público mais velho que cresceu com a franquia.
 
-Sinta-se convidado a participar do projeto \abnTeX! Acesse o site do projeto em
-\url{http://www.abntex.net.br/}. Também fique livre para conhecer,
-estudar, alterar e redistribuir o trabalho do \abnTeX, desde que os arquivos
-modificados tenham seus nomes alterados e que os créditos sejam dados aos
-autores originais, nos termos da ``The \LaTeX\ Project Public
-License''\footnote{\url{http://www.latex-project.org/lppl.txt}}.
+\section{Objetivos}
 
-Encorajamos que sejam realizadas customizações específicas deste exemplo para
-universidades e outras instituições --- como capas, folha de aprovação, etc.
-Porém, recomendamos que ao invés de se alterar diretamente os arquivos do
-\abnTeX, distribua-se arquivos com as respectivas customizações.
-Isso permite que futuras versões do \abnTeX~não se tornem automaticamente
-incompatíveis com as customizações promovidas. Consulte
-\citeonline{abntex2-wiki-como-customizar} para mais informações.
+A proposta deste trabalho é criar um protótipo de um jogo que possa atender as necessidades de um público que gostaria de uma experiência semelhante a encontrada em Pokémon, porém mais desafiadora e com temas menos infantis, ou a jogadores fãs de jogos RPGs mais tradicionais.
 
-Este documento deve ser utilizado como complemento dos manuais do \abnTeX\ 
-\cite{abntex2classe,abntex2cite,abntex2cite-alf} e da classe \textsf{memoir}
-\cite{memoir}. 
+	Vale ressaltar que jogos digitais, por serem um entretenimento interativo, são softwares complexos compostos por diversos componentes, cada um responsável por um elemento diferente, tais como: interpretar inputs do jogador, reprodução audiovisual, simulação de mundos, cálculo de lógica de jogo, apresentação de interfaces, etc. Assim, para implementação do sistema será necessário a aplicação de conhecimentos adquiridos no curso de Ciência da Computação do IME-USP, principalmente nas disciplinas de Princípios de Interação Humano-computador, Algoritmos e Estruturas de Dados II, Design e Programação de Games, Atividade Curricular em Cultura e Extensão, e Técnicas de Programação I. Também serão aplicados os conhecimentos adquiridos durante 1 ano e meio de participação nas atividades extracurriculares do grupo de extensão USPGameDev.
 
-Esperamos, sinceramente, que o \abnTeX\ aprimore a qualidade do trabalho que
-você produzirá, de modo que o principal esforço seja concentrado no principal:
-na contribuição científica.
+\section{Metodologia}
 
-Equipe \abnTeX 
+Antes de começar o desenvolvimento foi feito um estudo de jogos de franquias de jogos digitais do gênero RPG e de suas mecânicas, em seguida se criou do design básico dos elementos fundamentais do jogo.
 
-Lauro César Araujo
+	A partir do design básico do jogo, se deu início ao processo de desenvolvimento, onde foram implementados os personagens, ambientes, menus, interações entre os objetos, interfaces, sistemas, e reprodução de efeitos sonoros e visuais.
 
-% ----------------------------------------------------------
-% PARTE
-% ----------------------------------------------------------
-\part{Preparação da pesquisa}
-% ----------------------------------------------------------
+Com os elementos básicos do jogo já funcionais, foi criado um primeiro teste com jogadores reais, os quais forneceram o feedback utilizado para avaliar o estado do projeto.
 
-% ---
-% Capitulo com exemplos de comandos inseridos de arquivo externo 
-% ---
-\include{abntex2-modelo-include-comandos}
-% ---
+A partir do feedback fornecido, foram feitas mudanças e melhorias no design do jogo permitindo a melhoria dos sistemas já desenvolvidos, assim como o desenvolvimento de novos sistemas, resultando na versão final do protótipo.
 
-\chapter{Conteúdos específicos do modelo de trabalho acadêmico}\label{cap_trabalho_academico}
+Todas as etapas de produção do jogo digital foram acompanhadas e validadas pelo professor orientador Ricardo Nakamura.
 
-\section{Quadros}
+\chapter{Conceitos}
 
-Este modelo vem com o ambiente \texttt{quadro} e impressão de Lista de quadros 
-configurados por padrão. Verifique um exemplo de utilização:
+Neste capítulo serão apresentados os principais conceitos básicos de desenvolvimento de jogos, que serão importantes para o entendimento e discussão do restante do texto
 
-\begin{quadro}[htb]
-\caption{\label{quadro_exemplo}Exemplo de quadro}
-\begin{tabular}{|c|c|c|c|}
-	\hline
-	\textbf{Pessoa} & \textbf{Idade} & \textbf{Peso} & \textbf{Altura} \\ \hline
-	Marcos & 26    & 68   & 178    \\ \hline
-	Ivone  & 22    & 57   & 162    \\ \hline
-	...    & ...   & ...  & ...    \\ \hline
-	Sueli  & 40    & 65   & 153    \\ \hline
+\section{Jogos Digitais}
+
+Segundo Jesse Schell em The art of game design, jogos são atividades em que os participantes praticam por vontade própria; apresentam objetivos, conflitos, desafios e regras; possuem ser vencidas e perdidas; são interativas; engajam os participantes; e são sistemas fechados. O autor utiliza essas características para definir jogos em uma única frase: "Um jogo é uma atividade de resolução de problemas, abordada com uma atitude lúdica”.~\cite{TheArt}
+
+De acordo com Raph Koster, autor de A Theory of Fun for Game Design, jogos são quebra-cabeças a serem resolvidos, e a diversão de se jogar um jogo provém do domínio e compreensão do jogo, e o ato de resolver problemas é o que torna jogos divertidos.~\cite{TheFun}
+
+Um jogo digital é um jogo eletrônico que envolve a interação com uma interface gráfica de vídeo e um dispositivo de entrada, como um joystick, teclado, sensor de movimento ou controle, para gerar um feedback visual. Este feedback é mostrado em um dispositivo de vídeo, geralmente acompanhado por feedbacks de áudio e podendo ter outros tipos de feedback agregado dependendo do jogo.~\cite{Wiki02}
+
+\section{Mecânica de jogo}
+
+Mecânicas de jogos são o aspecto do game design, ou regras, as quais o jogador segue dentro do mundo do jogo. Mecânicas de jogo ditam como o jogador age dentro do jogo. Por exemplo, a mecânica de se ter missões e objetivos para a missão forçam o jogador a aderir a essas mecânicas.~\cite{GD:2021}
+
+Algumas das mecânicas mais utilizadas em jogos RPG ,e que foram relevantes para o desenvolvimento do projeto, são o desenvolvimento de personagens jogáveis por meio de melhorias de atributos, batalhas em turnos, encontros aleatórios e exploração de ambientes.
+
+\section{Game Design}
+
+“Game Design é a arte de decidir o que o jogo deve ser”, ou seja, o game design é o ato de se fazer as decisões de como será o jogo. Para se decidir o que o jogo é, se deve fazer centenas, normalmente milhares de decisões.As decisões que se deve fazer durante a produção de um jogo, incluindo as regras, a aparência e sensação, cronologia dos eventos, ritmo, tomadas de risco, recompensas, punições, e qualquer outra coisa que o jogador experiencie é responsabilidade do game designer. Por essa razão o designer geralmente está envolvido com o desenvolvimento do jogo desde o começo até o fim do jogo, fazendo decisões durante o processo de criação do jogo. ~\cite{TheArt}
+
+	Vale lembrar que “Designer” é um papel, não uma pessoa em específico. Todos que tomam decisões durante o jogo estão cumprindo o papel de um game designer. Quase todos desenvolvedores da equipe tomam decisões sobre o jogo apenas pelo fato de estarem criando conteúdo para o jogo. Por essa razão, não importando o cargo, todos desenvolvedores da equipe devem ter um entendimento básico dos princípios de design de jogo.~\cite{TheArt}
+
+\section{Game Engine}
+
+Uma Game Engine, ou Motor de Jogos, é um framework de software projetado para 
+o desenvolvimento de jogos digitais, e geralmente inclui livrarias e programas de suporte relevantes. O termo Game Engine também pode se referir a um software de desenvolvimento que utilize este framework, tipicamente oferecendo uma grande variedade de ferramentas e recursos para desenvolvimento de jogos.~\cite{Wiki03}
+
+	Para este trabalho foi utilizado o motor de jogos Unity, devido a sua grande versatilidade para criação de jogos 2D e 3D, grande variedade de recursos de aprendizado gratuito online,  possibilidade de exportação de jogos a uma grande variedade de plataformas incluindo WebGL, Windows, Linux e Mac. 
+
+\subsection{Scenes}
+
+Scenes é o local onde se trabalha com o conteúdo do jogo dentro do Unity. Eles são os assets que contém todo ou parte do jogo, sendo que um jogo pode ter quantas scenes forem necessárias com no mínimo uma.
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{scene.jpg}
+  \caption{Uma scene como apresentada no editor do Unity.}
+  \label{fig:scene1}
+\end{figure}
+\pagebreak
+\subsection{Game Objects}
+
+Game Objects são os objetos fundamentais no Unity que representam personagens, adereços e cenários, todos objetos de um jogo Unity são Game Objects. Game Objects não apresentam nenhuma funcionalidade própria, mas são containers para Componentes que dão funcionalidade e propriedades a um Game Object.
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{object.jpg}
+  \caption{Objects representados no editor do Unity.}
+  \label{fig:objects}
+\end{figure}
+
+Dependendo do tipo de Game Object que se deseja criar no Unity, se deve utilizar uma combinação diferente de componentes. O Unity apresenta vários tipos de componentes pré-programados, mas é possível se criar novos utilizando a API de script do Unity em C\#.
+\begin{figure}
+  \includegraphics[width=\linewidth, scale = 0.2]{objprop.jpg}
+  \caption{Objeto e seu menu de componentes.}
+  \label{fig:objprop}
+\end{figure}
+\pagebreak
+\subsection{Prefabs}
+
+O sistema de Prefabs permite que o desenvolvedor crie, configure e armazene Game Objects completos com todos seus componentes, propriedades e gameObjects acoplados como um asset reutilizável. O Prefab age como um template com o qual o desenvolvedor pode criar novas instâncias dentro de uma Scene.
+
+	O sistema de Prefabs é melhor utilizado quando se precisa utilizar o mesmo GameObject múltiplas vezes dentro de uma Scene, ou em múltiplas Scenes dentro de um projeto, pois o uso de Prefabs permite que sejam feitas modificações síncronas em todas suas instâncias a partir de modificações no Prefab original.
+	
+	Qualquer modificação que se faz em um Prefab é automaticamente refletida em suas instâncias, mas modificações em instâncias do Prefab não afetam as outras instâncias ou o Prefab, possibilitando que as instâncias sejam customizadas de acordo com as necessidades.
+	
+	Outro utilidade importante de Prefabs é a instanciação de GameObjects em tempo de execução, o que pode ser utilizado para adicionar efeitos especiais, power ups, ou projéteis à Scene durante a execução do jogo.
+\begin{figure}
+  \includegraphics[width=\linewidth]{prefab.jpg}
+  \caption{Uma prefab.}
+  \label{fig:prefab}
+\end{figure}	
+
+\subsection{Scripts}
+
+O Unity permite que sejam criados novos Componentes por meio de scripts em C\#, permitindo assim que o desenvolvedor modifique e adicione propriedades a GameObjects da maneira que desejar.
+
+Um script se conecta ao funcionamento interno do Unity pela implementação de uma classe que deriva da classe interna chamada MonoBehaviour, o que permite que scripts sejam acopladas a GameObjects como Componentes.
+
+\chapter{Estudo de Jogos Relevantes}
+
+Neste capítulo serão apresentados as principais mecânicas básicas dos gêneros \emph{Monster Collecting}, \emph{RPG} e Exploradores de Masmorras, e a análise dos jogos que foram estudados como base para o desenvolvimento do projeto. 
+
+
+\section{Mecânicas Relevantes}
+
+As quatro mecânicas mais relevantes consideradas para a produção do projeto foram: Exploração de labirintos, encontros aleatórios, progressão por níveis e a captura de monstros, pois são as mecânicas que formam o pilar base para os jogos da franquia Pokémon e de outros RPGs similares.
+
+	A mecânica de Exploração de Labirintos consiste em dividir cada área do jogo em diversos labirintos, onde o jogador deve atravessar para continuar o jogo. O fator diversão desse tipo de mecânica deriva da exploração do ambiente, da batalha contra inimigos encontrados pelo caminho, de descobrir segredos presentes nos labirintos e a sensação de conquista ao superar os obstáculos presentes no labirinto. 
+
+	As batalhas em encontros aleatórios são obstáculos que os jogadores podem encontrar aleatoriamente ao se movimentar pelos ambientes do jogo. Durante os encontros aleatórios, jogadores precisam derrotar inimigos aleatórios para continuarem a progredir em direção ao objetivo principal. O fator diversão desta mecânica deriva da satisfação de ganhar uma batalha, e das possíveis recompensas que podem ganhar ao superar cada batalha.
+
+	A progressão de força se refere a capacidade do jogador de se tornar mais forte durante o jogo, geralmente por meio de aquisição de recursos como equipamentos melhores e itens, por meio de novas habilidades ou por melhoria dos atributos dos personagens jogáveis. 
+
+	A captura de monstros é a mecânica que permite que o jogador capture criaturas para utilizá-las para progredir no jogo.
+
+\section{Séries de Jogos Estudas}
+
+Durante esta seção será apresentado uma breve análise dos jogos estudados com o funcionamento das principais mecânicas de jogos que foram escolhidos para análises. Uma explicação mais profunda destas mecânicas serão apresentadas durante o capítulo 5, onde as análises foram fundamentais para a implementação do jogo.
+
+\subsection{Pokémon}
+
+Pokémon é a franquia de jogos mais bem sucedida da história, com mais de 90 bilhões de dólares arrecadados em vendas, seus jogos se destacam por serem acessíveis, fáceis de aprender, e terem um forte apelo ao público infantil.
+
+Na maioria dos jogos \emph{mainline} de Pokémon a exploração do mundo é feita por meio de uma perspectiva \emph{top-down}, uma perspectiva onde o jogador enxerga o mundo de um ponto de vista acima do personagem que controla. No mundo explorável do jogo, o jogador pode descobrir novas áreas, segredos, itens espalhados, além de poder entrar em batalhas contra pokémons selvagens ou treinadores pokémons espalhados.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{red.jpg}
+     \caption{Pokémon Red - 1996.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{firered.jpg}
+    \caption{Pokémon Fire Red - 2004.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{bw.jpg}
+    \caption{Pokémon Black \& White - 2011.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{lgpikachu.jpg}
+    \caption{Pokémon Let’s Go Pikachu - 2018.}
+  \end{subfigure}
+  \caption{Evolução da visão do mundo em Pokémon durante os anos.}
+  \label{fig:pokemon}
+\end{figure}
+
+Este tipo de exploração de mundo é simples de se desenvolver, fácil para jogadores se entenderem e se localizarem, porém a imersão dentro do mundo do jogo pode ser mais rasa para alguns jogadores.
+
+	As batalhas em pokémon podem ocorrer de várias maneiras durante a exploração do mundo, sendo que o tipo mais comum é contra Pokémons selvagens encontrados randomicamente durante a exploração do mundo.
+
+	Batalhas normalmente ocorrem no formato 1 contra 1, onde um dos pokémons do jogador troca turnos com um dos pokémons adversários até que os \emph{Hit Points} ou \emph{HP} de um deles cheguem a zero.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{redb.jpg}
+     \caption{Pokémon Red - 1996.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{fireredb.jpg}
+    \caption{Pokémon Fire Red - 2004.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.6\linewidth}
+    \includegraphics[width=\linewidth]{xyb.jpg}
+    \caption{Pokémon XY - 2013.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.6\linewidth}
+    \includegraphics[width=\linewidth]{swsh.jpg}
+    \caption{Pokémon Sword \& Shield - 2019.}
+  \end{subfigure}
+  \caption{Evolução das batalhas em Pokémon durante os anos.}
+  \label{fig:pokemon2}
+\end{figure}
+
+O sistema de batalhas é simples e fácil de se aprender, possibilitando que até mesmo crianças que não saibam ler consigam se divertir com o jogo, ao mesmo tempo que apresenta mecânicas complexas e profundas, de modo que possa agradar fãs mais avançados. O problema deste modelo é que o design do jogo considera apenas os jogadores mais casuais da série, resultando em um jogo fácil onde não é necessário o uso eficiente das mecânicas de combate mais complexas e profundas que o jogo oferece.
+
+\subsection{Shin Megami Tensei}
+
+Shin Megami Tensei, também conhecidos pela sigla SMT, é uma franquia de jogos que, em sua maioria, consistem de jogos RPG de exploração de labirintos e negociação com demônios com os quais se podem fazer alianças para utilizá-los em batalhas.
+
+	A exploração do mundo dos jogos SMT é feita de diferentes maneiras atualmente, mas esta análise se baseará nos jogos mais antigos, onde a exploração era feita por meio de exploração em primeira pessoa de diversos labirintos que formam cada pedaço do jogo, durante essa exploração jogadores podem encontrar itens, segredos, e demônios recrutáveis que podem ser utilizados para progredir dentro do jogo.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{mt.jpg}
+     \caption{Digital Devil Story: Megami Tensei - 1987.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{smt1.jpg}
+    \caption{Shin Megami Tensei - 1992.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{smt2.jpg}
+    \caption{Shin Megami Tensei II - 1994.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{smtif.jpg}
+    \caption{Shin Megami Tensei IF PS1 - 2002.}
+  \end{subfigure}
+  \caption{Exploração de mundo nos primeiros jogos da série Shin Megami Tensei.}
+  \label{fig:smt}
+\end{figure}
+
+A exploração em primeira pessoa aumenta a imersão do jogador dentro do jogo, pode ser utilizada para criar uma sensação de maior claustrofobia, desorientação, e solidão, o que é utilizado para a criação da atmosfera e ambientação do jogo. A principal desvantagem deste tipo de exploração é a dificuldade de se localizar e a grande quantidade de batalhas que se deve enfrentar durante o percurso dos labirintos, o que pode se tornar uma atividade frustrante ao invés de recompensadora.
+
+As batalhas em SMT ocorrem via encontros aleatórios durante a exploração de labirintos, o jogador deve utilizar seu grupo de aliados, podem ser ou não ser demônios, para derrotar os grupos de inimigos. Durante o combate, o jogador tem a opção de negociar com demônios para que eles se tornem aliados.
+
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{mtb.jpg}
+     \caption{Digital Devil Story - 1987.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{smt1b.jpg}
+    \caption{Shin Megami Tensei - 1992.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{smt2b.jpg}
+    \caption{Shin Megami Tensei II - 1994.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{smtifb.jpg}
+    \caption{Shin Megami Tensei IF PS1 - 2002.}
+  \end{subfigure}
+  \caption{Batalhas nos primeiros jogos da série Shin Megami Tensei.}
+  \label{fig:smtb}
+\end{figure}
+
+O sistema de batalhas dos jogos SMT é bem complexo, com várias opções para o jogador utilizar estrategicamente e derrotar os diversos demônios e inimigos encontrados durante o jogo. A alta dificuldade das batalhas do jogo requer que o jogador utilize de todos os recursos disponíveis de maneira eficiente para progredir, tornando assim muito satisfatório e divertido a aprendizagem e eventual maestria do sistema de combate. A desvantagem deste modelo de batalhas é a necessidade do jogador dedicar tempo para entender todos os sistemas presentes, o que pode ser desencorajador para muitos jogadores mais casuais.
+
+\subsection{Shin Megami Tensei}
+
+Etrian Odyssey é uma série de jogos de RPGs de exploração de labirintos desenvolvido pela Atlus, a mesma desenvolvedora da série de jogos Shin Megami Tensei, apresenta uma jogabilidade semelhante à série SMT mas com um foco bem maior em exploração de ambientes.
+
+	A exploração do mundo em Etrian Odyssey é um dos principais focos do jogos, o jogador se move por labirintos com diversas temas diferentes, devendo criar seus próprios mapas por meio da tela touchscreen do Nintendo DS, e durante a exploração o jogador pode encontrar com diversos monstros, armadilhas, atalhos, itens, chefes e eventos especiais.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.36\linewidth}
+    \includegraphics[width=\linewidth]{eo.jpg}
+     \caption{Etrian Odyssey - 2007.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.44\linewidth}
+    \includegraphics[width=\linewidth]{eonexus.jpg}
+    \caption{Etrian Odyssey Nexus - 2018.}
+  \end{subfigure}
+  \caption{Evolução da exploração de mundo em Etrian Odyssey.}
+  \label{fig:eo}
+\end{figure}
+
+As batalhas em Etrian Odyssey podem ocorrer por meio de encontros aleatórios durante a exploração do ambiente, ou por interação direta com monstros presentes nos labirintos. O jogo usa um sistema de classes semelhante aos presentes em RPGs de mesa tradicionais, onde o jogador deve montar um time de até 5 personagens, cada um com uma especialidade e habilidades diferentes. O sistema do jogo permite que o jogador crie cada personagem de maneira independente de forma que o time tenha as capacidades de ataque, defesa e suporte necessárias para conseguir derrotar todos os inimigos que encontrar em cada labirinto.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.36\linewidth}
+    \includegraphics[width=\linewidth]{eob.jpg}
+     \caption{Etrian Odyssey - 2007.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.44\linewidth}
+    \includegraphics[width=\linewidth]{eonexusb.jpg}
+    \caption{Etrian Odyssey Nexus - 2018.}
+  \end{subfigure}
+  \caption{Evolução das batalhas em Etrian Odyssey.}
+  \label{fig:eo}
+\end{figure}
+
+\chapter{Design do Jogo}
+
+O jogo foi dividido em duas partes principais, a exploração de labirintos, onde o jogador percorre o mundo em direção a um objetivo, e as batalhas por encontros aleatórios que podem ocorrer durante a exploração. Por meio do estudo dos jogos selecionados, o jogo foi desenvolvido implementando mecânicas desses diferentes jogos de maneira a criar o protótipo de um produto novo.
+
+	Este capítulo é dedicado a uma visão geral de como foi feito o design do jogo e de como cada mecânica presente no jogo funciona, detalhes de implementação e funcionamento das mecânicas serão apresentados no capítulo 5.
+
+\section{Objetivos}
+
+Objetivos em jogos servem para focar o jogador em uma determinada tarefa, dão propósito ao jogador, e servem como uma forma de guiar a experiência do jogador, no caso do protótipo feito, o objetivo apresentado ao jogador no começo do jogo é simples, entregar um pacote dado ao jogador por um NPC na cidade inicial a um NPC em uma outra cidade, e para chegar nesta cidade o jogador deve atravessar uma floresta. Apesar de parecer um objetivo muito simples e genérico, a real motivação para o jogador continuar jogando é a curiosidade de descobrir novos ambientes, novos monstros para interagir, e novas habilidades.
+
+	O objetivo inicial de entregar o pacote de uma cidade a outra se traduz em vários pequenos objetivos intermediários durante o jogo, tais como: ficar mais forte para progredir; conseguir novos aliados; encontrar o caminho pelo labirinto; encontrar itens úteis; e desenvolver estratégias para otimizar batalhas.
+
+\section{Obstáculos}
+
+Obstáculos em jogos são os elementos que desafiam o jogador, que testam sua capacidade de resolver problemas, e que testam a habilidade do jogador de usar os recursos presentes no jogo.
+
+	Neste protótipo os obstáculos são os labirintos que representam o ambiente explorável do jogo, e as batalhas aleatórias contra inimigos encontrados durante a exploração do ambiente.
+
+\subsection{Labirintos}
+
+A escolha de se ter a exploração do mundo em forma de labirintos em primeira pessoa partiu da limitação de assets disponíveis para se criar um vasto mundo que fosse interessante para o jogador. O uso de labirintos semelhantes aos encontrados em Shin Megami Tensei e Etrian Odyssey permitiu que se fosse usado poucos assets visuais para se criar um mapa grande e interessante para os jogadores explorarem.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{lab1.jpg}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{lab2.jpg}
+  \end{subfigure}
+  \caption{Etapa de exploração de labirintos.}
+  \label{fig:jogo1}
+\end{figure}
+
+\subsubsection{Movimentação}
+
+O jogador tem três opções de movimento: dar passos na direção da câmera, rotacionar em incrementos de 90° ao redor do eixo vertical, e passos para direita e esquerda.
+A cada passo o que o jogador executa é incrementado um contador que decide se o jogador encontrou inimigos para iniciar uma batalha ou não.
+
+\subsubsection{Menus}
+
+Durante a exploração do labirinto o jogador pode abrir um Menu dividido em várias opções: \emph{Party} (Equipe), \emph{Bag} (Bolsa), \emph{Map} (Mapa), e Save. Apenas as funcionalidades de \emph{Party} e \emph{Bag} foram implementadas por serem as relevantes ao funcionamento do protótipo.
+
+\begin{figure}[h!]
+  \includegraphics[width=\linewidth]{mainmenu.jpg}
+  \caption{Main Menu aberto durante a exploração.}
+  \label{fig:menu1}
+\end{figure}
+
+A opção \emph{Party} permite que o jogador veja informações dos demônios em seu grupo atual e os selecione para executar ações por meio de um novo menu que permite executar ações com o demônio selecionado. Essas ações são: Dar apelido ao demônio; Trocá-lo de posição no grupo; e utilizar habilidades.
+
+A opção Bag permite que o jogador use e veja informações sobre os itens que adquirir durante o jogo, uma caixa de mensagem é aberta e apresenta as informações do item atualmente selecionado.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{status.jpg}
+     \caption{O jogador escolhe entre um dos membros da equipe após selecionar "Party".}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{nickname.jpg}
+    \caption{Um submenu de ações do personagem escolhido.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{skills.jpg}
+    \caption{SubMenu de \emph{skills} do personagem.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{bag.jpg}
+    \caption{Um submenu de ações é aberto após a escolha de "Bag".}
+  \end{subfigure}
+  \caption{SubMenu Bag de ações contendo os itens adquiridos.}
+  \label{fig:menu2}
+\end{figure}
+\pagebreak
+\subsubsection{Objetos Interativos}
+
+Para deixar a exploração dos labirintos mais interessante e recompensadora para o jogador, foram criados objetos com os quais o jogador pode encontrar e interagir dentro dos labirintos.
+
+	Itens podem ser encontrados espalhados pelo labirinto, indicados por partículas que saem do chão e por um ícone presente no minimapa no canto inferior direito. Partículas foram escolhidas para indicar a localização de itens devido a limitação de \emph{assets} disponíveis.
+	
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{itemspot.jpg}
+    \caption{Estrelas representam a localização de itens coletáveis.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{itemprompt.jpg}
+    \caption{Uma caixa de mensagem é aberta ao se pisar sobre o item.}
+  \end{subfigure}
+  \caption{Representação de itens espalhados dentro do labirinto.}
+  \label{fig:item1}
+\end{figure}
+
+Em jogos que apresentam ambientes em forma de labirintos e requerem que o jogador volte ao começo do labirinto como ocorre em jogos das franquias \emph{Etrian Odyssey} e \emph{Dark Souls}, o jogo garante que o jogador possa liberar atalhos para alcançar as áreas previamente alcançadas de maneira mais rápida e fácil, garantindo assim que o jogador não perca o sentimento de progresso mesmo que precise voltar ao começo do labirinto. Por essa razão foram criados atalhos semelhantes aos encontrados em \emph{Etrian Odyssey}, que permitem que o jogador atravesse paredes do labirinto.
+
+	Os atalhos começam permitindo a passagem apenas por um dos lados da parede, mas após serem utilizados pelo menos 1 vezes, eles passam a permitir a travessia por ambos os lados da parede. Os atalhos devem ser algo que o jogador deve procurar ativamente, assim por design os locais com atalho são indicados apenas por pequenos indicadores visuais (como colônias de cogumelo crescendo juntos), ou pelo próprio design do labirinto em si.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.47\linewidth}
+    \includegraphics[width=\linewidth]{cogumelos.jpg}
+     \caption{Conjunto de cogumelos dando a dica de que existe uma passagem.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.47\linewidth}
+    \includegraphics[width=\linewidth]{prompt.jpg}
+    \caption{Caixa de diálogos se abre ao ficar de frente ao atalho.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.47\linewidth}
+    \includegraphics[width=\linewidth]{warning.jpg}
+    \caption{Mensagem indica que é necessário se abrir caminho pelo outro lado.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.47\linewidth}
+    \includegraphics[width=\linewidth]{exit.jpg}
+    \caption{A saída dos labirintos são indicadas por estrelas em frente a áreas vazias.}
+  \end{subfigure}
+  \caption{Interação com atalhos durante a exploração do labirinto.}
+  \label{fig:shortcut}
+\end{figure}
+\pagebreak
+\subsubsection{Mini-mapa}
+
+A visão em primeira pessoa torná muito desorientador trafegar pelo labirinto portanto para melhorar a capacidade de localização durante a exploração dos labirintos, foi criado um mini mapa que apresenta a visão superior do labirinto com ícones que indicam objetos interativos e que não rotaciona junto com o jogador, permitindo que o jogador mais facilmente se localize e não fique andando em círculos, o que poderia se tornar um fator muito frustrante dentro do jogo.
+
+\begin{figure}[h!]
+ \centering
+  \includegraphics[width=0.4\linewidth]{minimap.jpg}
+  \caption{O minimapa apresenta uma representação do labirinto visto de cima.}
+  \label{fig:minimapa1}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.1\linewidth}
+    \includegraphics[width=\linewidth]{icon1.jpg}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.1\linewidth}
+    \includegraphics[width=\linewidth]{icon2.jpg}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.1\linewidth}
+    \includegraphics[width=\linewidth]{icon3.jpg}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.1\linewidth}
+    \includegraphics[width=\linewidth]{icon4.jpg}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.1\linewidth}
+    \includegraphics[width=\linewidth]{playericon.png}
+  \end{subfigure}
+  \caption{Conjunto de Ícones presentes no minimapa.}
+  \label{fig:shortcut}
+\end{figure}
+
+\subsection{Batalhas}
+
+Encontros aleatórios são uma mecânica que os videogames adotaram diretamente dos RPGs de mesa, onde ocasionalmente o DM (do inglês \emph{Dungeon Master}) jogava dados para determinar quando e quais inimigos o grupo de jogadores iria ter que enfrentar durante o jogo.
+
+	Encontros aleatórios adiciona ao jogo um elemento de surpresa e mistério, onde o jogador nunca sabe quando e o que terá que enfrentar diante, e assim é capaz de invocar sentimentos de suspense, curiosidade, alívio e até medo. Esta mecânica também apresenta suas desvantagens, encontros aleatórios interrompem o fluxo de exploração do mundo e progresso dos jogadores podendo se tornar muito frustrantes, o que é um problema recorrente nos jogos mais antigos da série \emph{Shin Megami Tensei}. 
+
+	O sistema de encontros aleatórios desenvolvido é semelhante ao encontrado em \emph{Etrian Odyssey}, que por apresentar um sistema onde o jogador deve dar um certo número de passos antes de encontrar uma batalha contra inimigos, possibilitando assim um fluxo mais natural e menos frustrante da exploração do labirinto. 
+
+	As batalhas são em turnos divididos em duas partes: A escolha de ações, onde o jogador deve escolher estrategicamente as ações de cada um de seus personagens; e a etapa de batalha, onde as ações de todos os personagens em batalha são executadas por ordem de prioridade e velocidade. O sistema de batalha foi desenvolvido aplicando conceitos aprendidos ao estudar os sistemas de batalha encontrados em \emph{Shin Megami Tensei}, \emph{Etrian Odyssey}, e \emph{Pokémon}.
+
+\subsubsection{Inimigos}
+
+Os inimigos são encontrados aleatoriamente em grupos de 1 a 6 demônios, cada grupo de demônios é predefinido por uma tabela de encontros e são balanceados de acordo com as áreas em que são encontrados.
+
+\subsubsection{Stats}
+
+\emph{Stats} (do inglês \emph{Statistics}) são as características dos demônios que determinam sua força dentro do jogo.
+
+\begin{itemize}
+\item Level: Determina a força geral de um demônio, quanto maior o level de um demônio maior seus outros \emph{stats}.
+\item HP: Sigla para \emph{Hit Point}, determina quanto dano um demônio pode receber antes de ficar incapacitado.
+\item MP: Sigla para \emph{Mana Point}, são pontos que podem ser gastos para utilizar habilidades especiais em batalha.
+\item ATK: O status de ataque, determina parcialmente o quanto de dano um demônio causa quando utiliza golpes de corpo a corpo.
+\item DEF: O status de defesa, determina parcialmente o quanto de dano um demônio recebe de um golpe corpo a corpo.
+\item SP.ATK: O status de ataque especial, determina parcialmente o quanto de dano um demônio causa quando utiliza golpes a distância.
+\item SP.DEF: O status de defesa especial, determina parcialmente o quanto de dano um demônio recebe de um golpe a distância.
+\item SPEED:  O status de velocidade, determina o ordem em que os demônios executam uma ação em batalha
+\item TYPE: O tipo elemental do demônio, determina que habilidades pode aprender, e suas resistências e fraquezas contra habilidades de outros tipos elementais.
+\end{itemize}
+
+\begin{figure}[h!]
+ \centering
+  \includegraphics[width=0.5\linewidth]{statscreen.jpg}
+  \caption{Os stats de um demônio como representados em jogo.}
+  \label{fig:stats}
+\end{figure}
+
+\subsubsection{Types}
+
+Uma das mecânicas mais comuns em jogos RPGs é a mecânica de existir diferentes tipos de ataques e habilidades como atributos diferentes e cada personagem dentro do jogo ter fraquezas e resistências a diferentes tipos de ataques. Em \emph{Dark Souls} o jogador pode utilizar uma grande variedade de armas e magias para atacar as fraquezas dos inimigos e causar dano adicional, e podem utilizar diferentes tipos de armadura para resistir a diferentes tipos de dano que inimigos podem causar a ele. Em \emph{Fire Emblem} cada tipo de unidade que o jogador controla durante as batalhas possuem suas respectivas resistências e fraquezas, dando ao jogador uma camada a mais de estratégia a ser considerada para posicionar suas unidades a fim de derrotar inimigos sem que perca suas próprias unidades. Em \emph{SMT} e \emph{Etrian Odyssey} cada monstro encontrado tem diferentes resistencias e  a diferentes tipos de armas e diferentes tipos de magia, forçando o jogador a criar uma equipe equilibrada a fim de conseguir enfrentar todos os desafios enfrentados durante o jogo. E por fim em Pokémon as resistências, fraquezas e ataques que cada pokémon pode aprender são todas definidas pelo seu tipo, que pode ser um ou dois de um total de 18 tipos diferentes.
+
+Para este jogo foi utilizado um sistema de tipos semelhante ao encontrado em pokémon, pois torna a implementação da mecânica mais simples e fácil de ser desenvolvida, dado que ao invés de precisar determinar as resistências e fraquezas de cada demônio, é apenas necessário determina-las para cada tipo elemental.
+
+Para o jogo temos 13 tipos diferentes com cada resistência e fraqueza definidas de acordo com a tabela \ref{resistance}, onde as linhas representam o tipo do ataque, e as colunas o tipo do demônio defensor, e os valores representam o multiplicador aplicado ao dano.
+
+\begin{table}[!htp]\centering
+\caption{Tabela de resistências.}\label{resistance}
+\scriptsize
+\begin{tabular}{lrrrrrrrrrrrrr}\toprule
+ATK|DEF &NORMAL &FIRE &GRASS &WATER &AIR &DARK &LIGHT &ICE &ROCK &POISON &DRAGON &BUG \\\cmidrule{1-13}
+NORMAL &1 &1 &1 &1 &1 &1 &1 &1 &\cellcolor[HTML]{e06666}0.5 &1 &1 &1 \\\cmidrule{1-13}
+FIRE &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{00ff00}2 &\cellcolor[HTML]{e06666}0.5 &1 &1 &1 &\cellcolor[HTML]{00ff00}2 &\cellcolor[HTML]{e06666}0.5 &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{00ff00}2 \\\cmidrule{1-13}
+GRASS &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{00ff00}2 &1 &1 &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{00ff00}2 &\cellcolor[HTML]{e06666}0.5 &1 &\cellcolor[HTML]{e06666}0.5 \\\cmidrule{1-13}
+WATER &1 &\cellcolor[HTML]{00ff00}2 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{e06666}0.5 &1 &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{00ff00}2 &1 &\cellcolor[HTML]{e06666}0.5 &1 \\\cmidrule{1-13}
+AIR &1 &1 &\cellcolor[HTML]{00ff00}2 &1 &1 &1 &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{e06666}0.5 &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{00ff00}2 \\\cmidrule{1-13}
+DARK &\cellcolor[HTML]{00ff00}2 &1 &1 &1 &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{00ff00}2 &1 &1 &1 &\cellcolor[HTML]{00ff00}2 &\cellcolor[HTML]{e06666}0.5 \\\cmidrule{1-13}
+LIGHT &1 &1 &1 &1 &1 &\cellcolor[HTML]{00ff00}2 &\cellcolor[HTML]{e06666}0.5 &1 &1 &\cellcolor[HTML]{00ff00}2 &1 &\cellcolor[HTML]{00ff00}2 \\\cmidrule{1-13}
+ICE &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{00ff00}2 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{00ff00}2 &1 &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{e06666}0.5 &1 &\cellcolor[HTML]{00ff00}2 &1 \\\cmidrule{1-13}
+ROCK &1 &1 &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{00ff00}2 &1 &1 &\cellcolor[HTML]{00ff00}2 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{00ff00}2 &1 &\cellcolor[HTML]{00ff00}2 \\\cmidrule{1-13}
+POISON &\cellcolor[HTML]{00ff00}2 &1 &\cellcolor[HTML]{00ff00}2 &\cellcolor[HTML]{00ff00}2 &1 &1 &1 &1 &\cellcolor[HTML]{e06666}0.5 &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{e06666}0.5 \\\cmidrule{1-13}
+DRAGON &1 &1 &1 &1 &1 &1 &1 &1 &1 &1 &\cellcolor[HTML]{00ff00}2 &1 \\\cmidrule{1-13}
+BUG &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{00ff00}2 &1 &1 &\cellcolor[HTML]{00ff00}2 &1 &1 &\cellcolor[HTML]{e06666}0.5 &\cellcolor[HTML]{e06666}0.5 &1 &1 \\\midrule
+\bottomrule
 \end{tabular}
-\fonte{Autor.}
-\end{quadro}
+\end{table}
 
-Este parágrafo apresenta como referenciar o quadro no texto, requisito
-obrigatório da ABNT. 
-Primeira opção, utilizando \texttt{autoref}: Ver o \autoref{quadro_exemplo}. 
-Segunda opção, utilizando  \texttt{ref}: Ver o Quadro \ref{quadro_exemplo}.
+\subsubsection{Opções de combate}
 
-% ----------------------------------------------------------
-% PARTE
-% ----------------------------------------------------------
-\part{Referenciais teóricos}
-% ----------------------------------------------------------
+Durante a etapa de seleção de ações o jogador cinco diferentes opções de ação para selecionar cada um de seus aliados vivos, sendo elas \emph{Attack}, \emph{Guard}, \emph{Skill}, \emph{Bag}, e \emph{Escape}.
 
-% ---
-% Capitulo de revisão de literatura
-% ---
-\chapter{Lorem ipsum dolor sit amet}
-% ---
+\begin{itemize}
 
-% ---
-\section{Aliquam vestibulum fringilla lorem}
-% ---
+\item Attack: O aliado executa um fraco ataque corpo sem custo.
+\item Guard: O aliado assume uma postura defensiva recebendo menos dano durante o turno, apresenta prioridade alta para que a ação seja executada antes da maioria dos ataques inimigos.
+\item Skill: Abre um novo menu onde o jogador pode selecionar uma habilidade do aliado para ser utilizada.
+\item Bag: Abre o inventário de itens do jogador, dos quais pode se selecionar uma para utilizar ao invés de executar uma ação com o membro da equipe.
+\item Escape: Tenta fugir da batalha durante o turno do aliado.
 
-\lipsum[1]
+\end{itemize}
 
-\lipsum[2-3]
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\linewidth]{options.jpg}
+     \caption{Menu de opções de ação para o demônio atualmente selecionado.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\linewidth]{attack.jpg}
+    \caption{Demônio aliado executa um ataque ao demônio inimigo.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\linewidth]{guard.jpg}
+    \caption{Demônio aliado se defendendo.}
+  \end{subfigure}
+  \caption{Base do sistema de batalha.}
+  \label{fig:battle}
+\end{figure}
 
-% ----------------------------------------------------------
-% PARTE
-% ----------------------------------------------------------
-\part{Resultados}
-% ----------------------------------------------------------
+\subsubsection{Skills}
 
-% ---
-% primeiro capitulo de Resultados
-% ---
-\chapter{Lectus lobortis condimentum}
-% ---
+As skills são habilidades especiais que demônios podem utilizar durante as batalhas para causar mais dano, curar aliados, e aplicar efeitos especiais sobre aliados e inimigos, e assim podem ser divididas em diferentes categorias: Ataque, Cura, Suporte, Efeitos Especiais, Alvos únicos, Alvos Múltiplos, Corpo a Corpo e A distância.
 
-% ---
-\section{Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-posuere cubilia Curae}
-% ---
+Skills por serem ações de batalha mais impactantes requerem que o usuário “pague” um custo dependendo do impacto da skill para utilizá-las. Skills corpo a corpo custam HP e a distância custam MP, as habilidades e personagens são balanceados de forma que os personagens que podem aprender skills a distância poderosas possuem mais MP, mas são mais frágeis, e os personagens que possuem skills corpo a corpo fortes possuem mais HP e são mais robustas.
 
-\lipsum[21-22]
+Skills que causam dano também podem ter atributos \emph{Tipo} diferentes, sendo mais ou menos efetivas dependendo da resistência do alvo contra o \emph{Tipo} da skill.
 
-% ---
-% segundo capitulo de Resultados
-% ---
-\chapter{Nam sed tellus sit amet lectus urna ullamcorper tristique interdum
-elementum}
-% ---
 
-% ---
-\section{Pellentesque sit amet pede ac sem eleifend consectetuer}
-% ---
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.49\linewidth}
+    \includegraphics[width=\linewidth]{skillmenu.jpg}
+     \caption{Submenu de skills do demônio selecionado.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.49\linewidth}
+    \includegraphics[width=\linewidth]{aoe.jpg}
+    \caption{Demônio utilizando uma skill que causa dano em uma linha de inimigos.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.49\linewidth}
+    \includegraphics[width=\linewidth]{heal.jpg}
+    \caption{Demônio aliado utilizando skill de cura em um companheiro.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.49\linewidth}
+    \includegraphics[width=\linewidth]{support.jpg}
+    \caption{Demônio aliado utilizando skill de suporte a aliado.}
+  \end{subfigure}
+  \caption{Sistema de skills em funcionamento.}
+  \label{fig:battle2}
+\end{figure}
 
-\lipsum[24]
+\subsubsection{Itens}
 
-% ----------------------------------------------------------
-% Finaliza a parte no bookmark do PDF
-% para que se inicie o bookmark na raiz
-% e adiciona espaço de parte no Sumário
-% ----------------------------------------------------------
-\phantompart
+\begin{figure}[h!]
+ \centering
+  \includegraphics[width=0.5\linewidth]{itemmenu.jpg}
+  \caption{Submenu para uso dos itens.}
+  \label{fig:itens}
+\end{figure}
 
-% ---
-% Conclusão
-% ---
-\chapter{Conclusão}
-% ---
+\subsubsection{Status Conditions}
+\subsubsection{Posição dentro da equipe}
 
-\lipsum[31-33]
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\linewidth]{enemyformation.jpg}
+     \caption{Formação de batalha dos inimigos.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\linewidth]{partyformation.jpg}
+    \caption{Formação de batalha do equipe aliada.}
+  \end{subfigure}
+  \caption{Posição dos aliados e inimigos em uma batalha.}
+  \label{fig:battle3}
+\end{figure}
 
-% ----------------------------------------------------------
-% ELEMENTOS PÓS-TEXTUAIS
-% ----------------------------------------------------------
-\postextual
-% ----------------------------------------------------------
+\subsubsection{Captura de Demônios}
+\subsubsection{Progressão de personagens}
+
+%aqui falar sobre niveis e exp
+\begin{figure}[h!]
+ \centering
+  \includegraphics[width=0.5\linewidth]{endscreen.jpg}
+  \caption{A tela de final de batalha mostra a exp e itens ganhos.}
+  \label{fig:exp}
+\end{figure}
+
+%aprendizagem de habilidades
+\begin{figure}[h!]
+ \centering
+  \includegraphics[width=0.5\linewidth]{learn.jpg}
+  \caption{Ao aprender mais de 5 skills, o demônio deve esquecer uma.}
+  \label{fig:learn}
+\end{figure}
+
+%evolução
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.2\linewidth}
+    \includegraphics[width=\linewidth]{stage1.png}
+     \caption{Estágio 1.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{stage2.png}
+    \caption{Estágio 2.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{stage3.png}
+    \caption{Estágio 3.}
+  \end{subfigure}
+  \caption{Linha evolutiva de um dos demônios do jogo.}
+  \label{fig:evolution}
+\end{figure}
+
+\section{Interface}
+
+A interação com o jogo é feita em grande parte por menus pelos quais o jogador têm várias opções de ação apresentados a ele, como exemplo na imagem X.XX abaixo podemos ver o menu de ações de batalha, o menu de skills e o menu de itens, o qual é instanciado sempre vazio. Os menus estáticos têm sempre o mesmo número de opções, como é o caso dos menus de ação e o de skills, mas o menu que representa os itens por ter tamanho variável é feito como um menu que apresenta barra de rolagem.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.25\linewidth}
+    \includegraphics[width=\linewidth]{menutemplate.jpg}
+     \caption{Template dos menus de ação.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.35\linewidth}
+    \includegraphics[width=\linewidth]{skilltemplate.jpg}
+    \caption{Template dos menus de skills.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.35\linewidth}
+    \includegraphics[width=\linewidth]{bagtemplate.jpg}
+    \caption{Template do menu de itens.}
+  \end{subfigure}
+  \caption{Template dos menus utilizados durante o jogo.}
+  \label{fig:menus}
+\end{figure}
+
+Para apresentar as informações essenciais para o jogador durante o jogo, foram criados diversas telas com informações de fácil acesso e entendimento. Durante a batalha os status de cada demônio são apresentados por meio de caixas que mostram a condição do demônio aliado, ao final de uma batalha a tela de resultados mostra ao jogador o que ele ganhou ao final da batalha, e durante o jogo o jogador tem acesso a telas de informações sobre cada demônio obtido durante o jogo.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.55\linewidth}
+    \includegraphics[width=\linewidth]{resultstemplate.jpg}
+     \caption{Template da tela de resultados.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.55\linewidth}
+    \includegraphics[width=\linewidth]{statstemplate.jpg}
+    \caption{Template da tela de stats.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\linewidth}
+    \includegraphics[width=\linewidth]{hudtemplate.jpg}
+    \caption{Template da HUD.}
+  \end{subfigure}
+  \caption{Template de diversas interfaces criadas para o jogo.}
+  \label{fig:interfaces}
+\end{figure}
+
+\section{Level Design}
+\section{Cidades}
+
+\chapter{Desenvolvimento}
+
+Neste capítulo será detalhado o processo de desenvolvimento do jogo, que consiste na implementação das decisões de design feitas durante a etapa de design inicial e durante a revisão de \emph{feedback} recebidos durante a etapa de teste.
+
+\section{Ferramentas}
+
+A ferramenta mais utilizada durante o projeto foi o motor de jogos Unity, por ser um motor de jogos poderoso para criação de jogos 3D, o motor de jogos mais popular atualmente \cite{GameDev:2021}, gratuito, por ser possível exportar jogos para mais de 19 plataformas diferentes, e por conter a maior quantidade de recursos de aprendizagem disponíveis gratuitamente na internet.
+
+\begin{figure}[h!]
+ \centering
+  \includegraphics[width=0.65\linewidth]{unityeditor.jpg}
+  \caption{Editor do motor de jogos Unity.}
+  \label{fig:editor}
+\end{figure}
+
+Para a criação e edição de assets gráficos foi utilizado o editor de imagens GIMP (GNU Image Manipulation Program) por ser uma poderosa ferramenta para edição de imagens, open source, gratuita e fácil de utilizar.
+
+\begin{figure}[h!]
+ \centering
+  \includegraphics[width=0.65\linewidth]{gimp.jpg}
+  \caption{Workspace do GIMP.}
+  \label{fig:gimp}
+\end{figure}
+
+Outras ferramentas utilizadas para a criação do jogo foram: Visual Studio Code para escrita de código;
+Github Desktop para o versionamento do projeto; Google Docs, Google Meet, e e-mail para a
+comunicação com o orientador e manter o controle de horas trabalhadas e a plataforma Itch.io em conjunto com o Google Forms para os testes com jogadores.
+\pagebreak
+\section{Assets}
+
+Para concentrar o esforço de criação do jogo na implementação de sistemas e lógica de jogo a maior parte dos assets gráficos e todos os assets sonoros são \emph{Royalty-free} obtidos de diversas fontes encontradas online, sendo a maioria encontrada no Itch.io. %lembrar de como referenciar os assets utilizados em referencias
+
+
+\section{Arquitetura das Mecânicas de Exploração}
+
+
+\subsection{Movimentação do personagem}
+
+O jogador, como é representado durante a exploração do labirinto, é um objeto 3D com duas câmeras acopladas, a primeira é a câmera principal que dá o jogo a visão em primeira pessoa, já a segunda se encontra bem acima do jogador, a qual gera a imagem reproduzida pelo mini mapa do jogo.
+ 
+
+\begin{figure}[h!]
+ \centering
+  \includegraphics[width=0.65\linewidth]{playerobject.jpg}
+  \caption{O objeto \emph{OverworldPlayer} visto pelo editor Unity.}
+  \label{fig:playerobject}
+\end{figure}
+	
+
+
 
 % ----------------------------------------------------------
 % Referências bibliográficas
 % ----------------------------------------------------------
-\bibliography{abntex2-modelo-references}
+\bibliography{myBib}
 
 % ----------------------------------------------------------
 % Glossário
@@ -673,24 +1226,24 @@ elementum}
 % ---
 % Inicia os apêndices
 % ---
-\begin{apendicesenv}
+%\begin{apendicesenv}
 
 % Imprime uma página indicando o início dos apêndices
-\partapendices
+%\partapendices
 
 % ----------------------------------------------------------
-\chapter{Quisque libero justo}
+%\chapter{Quisque libero justo}
 % ----------------------------------------------------------
 
-\lipsum[50]
+%\lipsum[50]
 
 % ----------------------------------------------------------
-\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
-ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+%\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+%ac pretium ante justo a nulla curabitur tristique arcu eu metus}
 % ----------------------------------------------------------
-\lipsum[55-57]
+%\lipsum[55-57]
 
-\end{apendicesenv}
+%\end{apendicesenv}
 % ---
 
 
@@ -701,30 +1254,32 @@ ac pretium ante justo a nulla curabitur tristique arcu eu metus}
 % ---
 % Inicia os anexos
 % ---
-\begin{anexosenv}
+%\begin{anexosenv}
 
 % Imprime uma página indicando o início dos anexos
-\partanexos
+%\partanexos
 
 % ---
-\chapter{Morbi ultrices rutrum lorem.}
+%\chapter{Morbi ultrices rutrum lorem.}
 % ---
-\lipsum[30]
+%\lipsum[30]
 
 % ---
-\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
-parturient montes nascetur ridiculus mus}
+%\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
+%parturient montes nascetur ridiculus mus}
 % ---
 
-\lipsum[31]
+%\lipsum[31]
 
 % ---
-\chapter{Fusce facilisis lacinia dui}
+%\chapter{Fusce facilisis lacinia dui}
 % ---
 
-\lipsum[32]
+%\lipsum[32]
 
-\end{anexosenv}
+
+
+%\end{anexosenv}
 
 %---------------------------------------------------------------------
 % INDICE REMISSIVO
@@ -732,5 +1287,6 @@ parturient montes nascetur ridiculus mus}
 \phantompart
 \printindex
 %---------------------------------------------------------------------
+
 
 \end{document}

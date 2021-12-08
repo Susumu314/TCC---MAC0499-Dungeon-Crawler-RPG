@@ -55,28 +55,28 @@
             "zoneID": "PlayTest_0",
             "encounterList": [
                 {
-                    "min_level": 10,
-                    "max_level": 11,
+                    "min_level": 11,
+                    "max_level": 12,
                     "enemy_formation": ["Rabbit Bandit", "", "Rabbit Bandit",
+                                        "", "", ""]
+                },
+                {
+                    "min_level": 13,
+                    "max_level": 13,
+                    "enemy_formation": ["", "Carnivuno", "",
                                         "", "", ""]
                 },
                 {
                     "min_level": 11,
                     "max_level": 12,
-                    "enemy_formation": ["", "Carnivuno", "",
-                                        "", "", ""]
-                },
-                {
-                    "min_level": 10,
-                    "max_level": 11,
                     "enemy_formation": ["Carnivuno", "", "Carnivuno",
                                         "", "", ""]
                 },
                 {
-                    "min_level": 10,
+                    "min_level": 11,
                     "max_level": 12,
-                    "enemy_formation": ["", "Wind Bunny", "",
-                                        "Wind Bunny", "", "Wind Bunny"]
+                    "enemy_formation": ["", "Rabbit Bandit", "",
+                                        "", "Wind Bunny", ""]
                 }
             ]
         },
@@ -108,20 +108,20 @@
             "zoneID": "PlayTest_2",
             "encounterList": [
                 {
-                    "min_level": 15,
-                    "max_level": 16,
+                    "min_level": 13,
+                    "max_level": 18,
                     "enemy_formation": ["Piranos", "Piranos", "Piranos",
-                                        "", "Octi", ""]
+                                        "Wind Fairy", "", "Wind Fairy"]
                 },
                 {
                     "min_level": 14,
-                    "max_level": 16,
-                    "enemy_formation": ["Seagull", "", "Seagull",
+                    "max_level": 17,
+                    "enemy_formation": ["Seagull", "Piranos", "Seagull",
                                         "Octi", "", "Octi"]
                 },
                 {
-                    "min_level": 10,
-                    "max_level": 12,
+                    "min_level": 12,
+                    "max_level": 14,
                     "enemy_formation": ["Seagull", "Seagull", "Seagull",
                                         "Octi", "Octi", "Octi"]
                 }
@@ -131,28 +131,28 @@
             "zoneID": "PlayTest_3",
             "encounterList": [
                 {
-                    "min_level": 11,
-                    "max_level": 12,
-                    "enemy_formation": ["Rabbit Bandit", "", "Rabbit Bandit",
-                                        "", "", ""]
-                },
-                {
                     "min_level": 12,
                     "max_level": 13,
+                    "enemy_formation": ["Rabbit Bandit", "", "Rabbit Bandit",
+                                        "", "Wind Bunny", ""]
+                },
+                {
+                    "min_level": 14,
+                    "max_level": 14,
                     "enemy_formation": ["", "Fire Snake", "",
                                         "", "", ""]
                 },
                 {
                     "min_level": 11,
-                    "max_level": 12,
+                    "max_level": 13,
                     "enemy_formation": ["Fire Snake", "", "Fire Snake",
                                         "", "", ""]
                 },
                 {
-                    "min_level": 11,
-                    "max_level": 13,
-                    "enemy_formation": ["Wind Bunny", "Wind Bunny", "Wind Bunny",
-                                        "", "", ""]
+                    "min_level": 9,
+                    "max_level": 10,
+                    "enemy_formation": ["Rabbit Bandit", "Rabbit Bandit", "Rabbit Bandit",
+                                        "Wind Bunny", "Wind Bunny", "Wind Bunny"]
                 }
             ]
         },
@@ -161,33 +161,39 @@
             "encounterList": [
                 {
                     "min_level": 12,
-                    "max_level": 13,
+                    "max_level": 16,
                     "enemy_formation": ["Seagull", "", "Seagull",
-                                        "", "", ""]
-                },
-                {
-                    "min_level": 13,
-                    "max_level": 14,
-                    "enemy_formation": ["Carnivuno", "Carnivuno", "Carnivuno",
-                                        "", "", ""]
-                },
-                {
-                    "min_level": 12,
-                    "max_level": 13,
-                    "enemy_formation": ["Carnivuno", "", "Carnivuno",
-                                        "", "Carnivuno", ""]
-                },
-                {
-                    "min_level": 12,
-                    "max_level": 14,
-                    "enemy_formation": ["", "Seagull", "",
                                         "Wind Fairy", "", "Wind Fairy"]
                 },
                 {
+                    "min_level": 14,
+                    "max_level": 16,
+                    "enemy_formation": ["", "Carnivuno", "",
+                                        "Carnivuno", "", "Carnivuno"]
+                },
+                {
+                    "min_level": 13,
+                    "max_level": 15,
+                    "enemy_formation": ["Carnivuno", "Carnivuno", "Carnivuno",
+                                        "", "Wind Fairy", ""]
+                },
+                {
                     "min_level": 12,
-                    "max_level": 13,
+                    "max_level": 16,
+                    "enemy_formation": ["", "Seagull", "",
+                                        "Wind Fairy", "Seagull", "Wind Fairy"]
+                },
+                {
+                    "min_level": 13,
+                    "max_level": 16,
                     "enemy_formation": ["Carnivuno", "", "Carnivuno",
                                         "", "Wind Fairy", ""]
+                },
+                {
+                    "min_level": 16,
+                    "max_level": 17,
+                    "enemy_formation": ["", "Rabbit Bandit", "",
+                                        "", "Wind Bunny", ""]
                 }
             ]
         }

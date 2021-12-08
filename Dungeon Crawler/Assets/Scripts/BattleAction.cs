@@ -305,9 +305,7 @@ public class BattleAction : MonoBehaviour
                 break;
             }
         }
-        //yield return new WaitForSeconds(wait);//esse yield return que esta crashando tudo
-        yield return new WaitForSeconds(0.7f);
-        print("Oh baby" + unitRef.unitName + wait);
+        yield return new WaitForSeconds(wait);
     }        
     float MoveAnimation(string animation, Transform target_transform, Color color){
         GameObject Anim = Instantiate(Resources.Load("VFX/Skill_Animation"), target_transform.position, Quaternion.identity) as GameObject;

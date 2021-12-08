@@ -246,7 +246,7 @@ PrefabInstance:
     - target: {fileID: 2837699215926739944, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
       propertyPath: items.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2837699215926739944, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
@@ -287,6 +287,11 @@ PrefabInstance:
         type: 3}
       propertyPath: bag.Array.data[7].ID
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2837699215926739944, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
+      propertyPath: items.Array.data[0].ID
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2837699215926739944, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
@@ -366,7 +371,7 @@ PrefabInstance:
     - target: {fileID: 2837699215926739944, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
       propertyPath: items.Array.data[0].amount
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2837699215926739944, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
@@ -660,7 +665,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[9].clip
       value: 
-      objectReference: {fileID: 8300000, guid: c2f9c8c15cab68347a59c16fce1e6a33, type: 3}
+      objectReference: {fileID: 8300000, guid: ce47298e193b25d4a83343991c1aa7c2, type: 3}
     - target: {fileID: 4454327182156839948, guid: 2c43f5534b2fd8c4b93acaee77004fc2,
         type: 3}
       propertyPath: sounds.Array.data[9].loop
@@ -933,6 +938,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454327182156839948, guid: 2c43f5534b2fd8c4b93acaee77004fc2,
         type: 3}
+      propertyPath: sounds.Array.data[9].volume
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454327182156839948, guid: 2c43f5534b2fd8c4b93acaee77004fc2,
+        type: 3}
       propertyPath: sounds.Array.data[20].volume
       value: 0.25
       objectReference: {fileID: 0}
@@ -1014,7 +1024,7 @@ PrefabInstance:
     - target: {fileID: 4454327182156839951, guid: 2c43f5534b2fd8c4b93acaee77004fc2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4454327182156839951, guid: 2c43f5534b2fd8c4b93acaee77004fc2,
         type: 3}
@@ -1716,7 +1726,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1105588191
 GameObject:
@@ -1888,9 +1898,8 @@ RectTransform:
   m_Children:
   - {fileID: 1316787176}
   - {fileID: 954684989}
-  - {fileID: 1921193939}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2052,7 +2061,7 @@ Transform:
   m_Children:
   - {fileID: 1321618329}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1316787175
 GameObject:
@@ -2148,19 +2157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5828bf25712254a91d678e0e56af51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  demonomicon:
-  - species: Wind Harpy
-    totalExp: 10000
-    nickname: Sara
-    skills: 170000000c00000005000000
-  - species: Fire Snake
-    totalExp: 5000
-    nickname: Snape
-    skills: 0a0000000f000000
-  - species: Piranos
-    totalExp: 15000
-    nickname: Alex
-    skills: 14000000040000000700000010000000
+  demonomicon: []
 --- !u!4 &1321618329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1110350715848612867, guid: 10827e88c8f49fd43a287b893dbf69b6,
@@ -2471,7 +2468,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1921193938
 GameObject:
@@ -2498,11 +2495,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921193938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -563.5, y: -316, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1222170800}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1921193940
 SpriteRenderer:

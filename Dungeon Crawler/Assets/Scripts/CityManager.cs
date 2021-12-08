@@ -17,7 +17,7 @@ public class CityManager : MonoBehaviour
             HealAll();
         }
         GameManager.Instance.state = GameManager.State.City;
-        //AudioManager.instance.Play("City");
+        AudioManager.instance.Play("City");
     }
     void Update(){
         if(dialogueManager.dialogueFinished && canOpenMenu){

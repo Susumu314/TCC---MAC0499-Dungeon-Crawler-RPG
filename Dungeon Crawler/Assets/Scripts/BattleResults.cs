@@ -72,7 +72,6 @@ public class BattleResults : MonoBehaviour
                 i++;
             }
         }
-        print("Chegou ao final do Open Results");
         open = true;
     }
     public void TotalEXP(int xp){

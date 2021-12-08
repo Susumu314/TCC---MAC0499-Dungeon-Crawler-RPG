@@ -221,9 +221,10 @@ public class Unit : MonoBehaviour
         }
         else{
             BS.Allies_Deaths += 1;
+            statusCondition = STATUS_CONDITION.NULL;
+            HUD.SetStatusConditions();
         }
-        statusCondition = STATUS_CONDITION.NULL;
-        HUD.SetStatusConditions();
+        //BS.TestBattleEnd();
     }
 
     /**
@@ -506,13 +507,14 @@ public class Unit : MonoBehaviour
         int damage = maxHP - currentHP;
         currentHP = maxHP;
         currentMana = maxMana;
-        //por algum motivo nao tocando nem o SFX ou VFX da cura
-        GameObject Anim = Instantiate(Resources.Load("VFX/Skill_Animation"), HUD.transform.position, Quaternion.identity) as GameObject;
-        Animator animator = Anim.GetComponent<Animator>();
-        animator.Play("Heal");
-        StartCoroutine(HUD.SetHP(currentHP));
-        HUD.SetMP(currentMana);
-        HUD.SetStatusConditions();
+        if(HUD){
+            GameObject Anim = Instantiate(Resources.Load("VFX/Skill_Animation"), HUD.transform.position, Quaternion.identity) as GameObject;
+            Animator animator = Anim.GetComponent<Animator>();
+            animator.Play("Heal");
+            StartCoroutine(HUD.SetHP(currentHP));
+            HUD.SetMP(currentMana);
+            HUD.SetStatusConditions();
+        }
     }
 
     /**
