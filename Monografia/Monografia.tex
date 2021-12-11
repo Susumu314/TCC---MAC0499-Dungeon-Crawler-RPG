@@ -62,6 +62,66 @@
 \usepackage{soul}% for underlines
 \usepackage[table]{xcolor} % for cell colors
 \usepackage{changepage,threeparttable} % for wide tables
+\usepackage{listings}
+\usepackage{xcolor}
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\definecolor{bluekeywords}{rgb}{0,0,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.64,0.08,0.08}
+\definecolor{xmlcomments}{rgb}{0.5,0.5,0.5}
+\definecolor{types}{rgb}{0.17,0.57,0.68}
+
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
+\lstdefinestyle{sharpc}{language=[Sharp]C,
+captionpos=b,
+%numbers=left, %Nummerierung
+%numberstyle=\tiny, % kleine Zeilennummern
+frame=lines, % Oberhalb und unterhalb des Listings ist eine Linie
+showspaces=false,
+showtabs=false,
+breaklines=true,
+showstringspaces=false,
+breakatwhitespace=true,
+escapeinside={(*@}{@*)},
+commentstyle=\color{greencomments},
+morekeywords={partial, var, value, get, set},
+keywordstyle=\color{bluekeywords},
+stringstyle=\color{redstrings},
+basicstyle=\ttfamily\small,}
+
 % ---
 		
 % ---
@@ -443,11 +503,12 @@ contribuirão para a evolução do \abnTeX.
 % ---
 % inserir lista de tabelas
 % ---
-%\pdfbookmark[0]{\listtablename}{lot}
-%\listoftables*
-%\cleardoublepage
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
 % ---
-
+\lstlistoflistings
+\cleardoublepage
 % ---
 % inserir lista de abreviaturas e siglas
 % ---
@@ -547,7 +608,8 @@ o desenvolvimento de jogos digitais, e geralmente inclui livrarias e programas d
 
 \subsection{Scenes}
 
-Scenes é o local onde se trabalha com o conteúdo do jogo dentro do Unity. Eles são os assets que contém todo ou parte do jogo, sendo que um jogo pode ter quantas scenes forem necessárias com no mínimo uma.
+Scenes é o local onde se trabalha com o conteúdo do jogo dentro do Unity. Eles são os assets que contém todo ou parte do jogo, sendo que um jogo pode ter quantas scenes forem necessárias com no mínimo uma. A figura ~\ref{fig:scene1} ilustra como uma scene é vista dentro do editor Unity.
+
 \begin{figure}[h!]
   \includegraphics[width=\linewidth]{scene.jpg}
   \caption{Uma scene como apresentada no editor do Unity.}
@@ -929,7 +991,7 @@ Encontros aleatórios são uma mecânica que os videogames adotaram diretamente 
 
 \subsubsection{Inimigos}
 
-Os inimigos são encontrados aleatoriamente em grupos de 1 a 6 demônios, cada grupo de demônios é predefinido por uma tabela de encontros e são balanceados de acordo com as áreas em que são encontrados.
+Os inimigos são encontrados aleatoriamente em grupos de 1 a 6 demônios, cada grupo de demônios é predefinido por uma tabela de encontros e são balanceados de acordo com as zonas em que são encontrados.
 
 \subsubsection{Stats}
 
@@ -1211,7 +1273,194 @@ Os diferentes métodos de realizar encontros aleatórios estudados foram os enco
 
 Em \emph{Etrian Odyssey V}, ao entrar no labirinto ou após cada batalha, um número aleatório de 64 a 256 é setado como limite de um contador, e cada espaço do labirinto em que o jogador pode dar um passo têm a ele associado um valor de 0 a 20, o qual é adicionado ao contador cada vez que o jogador entra em um desses espaços. Quando o contador ultrapassa o limite definido uma encontro aleatório é iniciado de acordo com uma tabela que indica quais são os possíveis encontros que o jogador pode batalhar em cada espaço. Este método garante que o jogador possa dar um número minimo de passos antes que encontre outra batalha, e permite que os designers façam ajustes finos a taxa de encontros para que a experiencia do jogador não se torne frustrante durante o jogo. A desvantagem deste método é grande quantidade de recursos que se deve ser alocada a implementação da mecânica, dado que cada passo do labirinto deve ser ajustado e reajustado a cada modificação do design do labirinto.
 
-Em \emph{Pokémon}, a cada passo que o jogador executa dentro de àreas onde pode encontrar pokémons selvagens é gerado um valor aleatório entre 0 e 255, este valor então é comparado com a taxa de encontro da àrea em que se encontra, caso o valor gerado seja maior que a taxa de encontro o jogo inicia uma batalha. A espécie e nível do pokémon selvagem gerado para esse encontro é decidido aleatóriamente a partir de uma tabela de encontros. A vantagem deste método é de ser muito simples e facil de implementar no jogo, a desvantagem é que prejudica a exploração em àreas onde não se pode desviar de zonas em que encontros aleatórios ocorrem ou em àreas com taxa de encontro muito altas.
+Em \emph{Pokémon}, a cada passo que o jogador executa dentro de áreas onde pode encontrar pokémons selvagens é gerado um valor aleatório entre 0 e 255, este valor então é comparado com a taxa de encontro da àrea em que se encontra, caso o valor gerado seja maior que a taxa de encontro o jogo inicia uma batalha. A espécie e nível do pokémon selvagem gerado para esse encontro é decidido a partir de uma tabela de encontros. A vantagem deste método é de ser muito simples e facil de implementar no jogo, a desvantagem é que prejudica a exploração em áreas onde não se pode desviar de zonas em que encontros aleatórios ocorrem ou em áreas com taxa de encontro muito altas.
+
+Para o jogo desenvolvido para este trabalho, se optou por uma estratégia semelhante à utilizada em \emph{Etria Odyssey V} porém simplificada para ficar coerente com o escopo do trabalho. O labirinto foi dividido em diversas zonas com diferentes valores Xi, e tabelas de encontros associados a eles, e a cada passo que o jogador executa dentro dessas zonas se adiciona o valor Xi a um contador. Uma batalha é iniciada quando o contador Xi ultrapassa um certo valor Y definido como limite, e o grupo de demônios que é encontrado é decidido aleatoriamente a partir da tabela de encontros associada a área em que o jogador se encontra.
+\pagebreak
+\lstinputlisting[language=json, firstline=1, lastline=36, caption = {Trecho do arquivo JSON que contêm os encontros por zoneID}, label={lst:encounterTable}]{EncounterTable.json}
+
+No trecho de código apresentado em \ref{lst:encounterTable} podemos ver em detalhes como o jogo gera o grupo de inimigos que o jogador encontra em cada encontro aleatório, de acordo com a \emph{zoneID} de cada área explorável do mapa, o algoritmo escolhe aleatoriamente dentro da \emph{encounterList} um grupo de inimigos de nível entre \emph{min\textunderscore level} e \emph{max\textunderscore level} e com a formação \emph{enemy\textunderscore formation} contra qual o jogador deve batalhar.
+
+\subsection{Labirinto}
+
+	Todo labirinto antes de ser implementado dentro do jogo é criado utilizando um software gratuito chamado Dungeon Map Doodler, que permite a criação de mapas de RPGs de tabuleiro de maneira semelhante a lápis e papel. O uso deste método tornou mais rápido e eficaz o processo de criação de novos labirintos para o jogo.Na figura ~\ref{fig:dungeonLayout} temos um exemplo de um dos \emph{layout} criados para um labirinto do jogo.
+	
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{encounterZones.png}
+     \caption{Layout do labirinto com suas diferentes zonas.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{dungeonItens.png}
+    \caption{Layout do labirinto com a posição de todos itens.}
+  \end{subfigure}
+  \caption{Layout de um labirinto criado com Dungeon Map Doodler.}
+  \label{fig:dungeonLayout}
+\end{figure}
+
+	A estrutura básica dos labirintos se resume a paredes que são visíveis apenas pela câmera do minimapa, caixas de colisão que definem as diferentes zonas do labirinto e a objetos interativos espalhados com os quais o jogador pode interagir, como está ilustrado na figura ~\ref{fig:basicLab}.
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.75\linewidth}
+    \includegraphics[width=\linewidth]{basicLab.png}
+     \caption{Visão superior da estrutura básica de um labirinto.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.75\linewidth}
+    \includegraphics[width=\linewidth]{basicLab2.png}
+    \caption{Visão ortogonal da estrutura básica de um labirinto.}
+  \end{subfigure}
+  \caption{Estrutura básica de uma labirinto de duas pespectivas diferentes.}
+  \label{fig:basicLab}
+\end{figure}
+
+Para dar vida e tornar os labirintos visualmente interessantes foi utilizado o sistema de terrenos disponível pelo motor de jogos Unity em conjunto a \emph{assets} gratuitos para representação de árvores, arbustos, chão e água encontrados no Itch.io e na loja de \emph{assets} do Unity. O terreno foi desenhado estrategicamente para dar a ilusão ao jogador de que ele está colidindo com o terreno, quando na realidade todas colisões são com as paredes invisíveis. O resultado da adição do terreno pode ser observado na figura ~\ref{fig:terrain}
+
+\begin{figure}[h!]
+ \centering
+  \includegraphics[width=0.75\linewidth]{prettyLab.png}
+  \caption{Visão ortogonal de um labirinto com terreno adicionado.}
+  \label{fig:terrain}
+\end{figure}
+
+\subsection{Overworld GameManager}
+
+\subsection{Cidades}
+
+\subsubsection{NPCs (\emph{non-player character})}
+
+\section{Arquitetura das Mecânicas de Batalha}
+
+\subsection{Cena de Batalha}
+
+\subsection{Demônios}
+
+	Demônios são os objetos dentro do jogo com os quais o jogador deve utilizar para derrotar outros demônios encontrados dentro dos labirintos, cada demônio encontrado dentro do jogo é membro de uma espécie, que define seu \emph{sprite} (imagem bidimensional) que o representa, seus \emph{stats} e quais \emph{skills} pode aprender.
+	
+	As definições de \emph{stats} base de cada demônio está escrita no arquivo BaseStats.cs ~\ref{lst:basestats}, e os golpes que cada demônio pode aprender estão definidos no arquivo MovePool.cs ~\ref{lst:movepool}.
+	
+
+	
+\lstset{style=sharpc, caption={Exemplo da inserção de uma espécie de demônio dentro do jogo}, label={lst:basestats}}
+\begin{lstlisting}
+new DemonStats (/*name*/ "Carnidos",
+                             /*HP*/    60,
+                             /*MP*/    70, 
+                             /*ATK*/   62, 
+                             /*DEF*/   63, 
+                             /*SPATK*/ 80, 
+                             /*SPDEF*/ 80, 
+                             /*SPEED*/ 60,
+                             /*TYPE*/  TYPE.GRASS,
+                             /*CATCH*/ 45,
+                             /*EXP*/   141,
+                             /*GROWTH*/GROWTH_RATE.MEDIUM_SLOW,
+                             /*EVOID*/ "Carnivotres",
+                             /*EVOLVL*/30)
+\end{lstlisting}
+
+\lstset{style=sharpc, caption={Exemplo da definição de golpes aprendíveis por nível de um demônio}, label={lst:movepool}}
+\begin{lstlisting}
+new Demon_MovePool("Carnidos", 
+            new List<LevelUp_Move>(new[] {
+                new LevelUp_Move(/*Level*/1, /*skillID*/5),
+                new LevelUp_Move(/*Level*/3, /*skillID*/1),
+                new LevelUp_Move(/*Level*/5, /*skillID*/18),
+                new LevelUp_Move(/*Level*/6, /*skillID*/6),
+                new LevelUp_Move(/*Level*/9, /*skillID*/39),
+                new LevelUp_Move(/*Level*/13, /*skillID*/4),
+                new LevelUp_Move(/*Level*/16, /*skillID*/14),
+                new LevelUp_Move(/*Level*/18, /*skillID*/26)
+                }))
+\end{lstlisting}
+
+\subsection{Calculo de Stats}
+
+	O método de calculo dos \emph{stats} de cada demônio foi baseado no método utilizado nos jogos da franquia Pokémon, onde os \emph{stats} são calculados a partir de fórmulas que levam em conta os \emph{stats} base da espécie do pokémon, do nível, e de alguns atributos individuais. Este método foi escolhido pois outros métodos estudados, que envolviam a definição manual de como os \emph{stats} de cada personagem do jogo crescem por nível, ou o uso de "lançamento de dados" para definir o crescimento de cada personagem ao ganhar um nível, foram descartados por serem ineficientes para a grande quantidade de demônios presentes no jogo ou por serem mais difíceis de balancear por dependerem de números gerados aleatoriamente.
+	
+	As fórmulas ~\ref{eqn:HP}, ~\ref{eqn:MP} e ~\ref{eqn:Other} foram  utilizadas para o cálculo dos \emph{stats} de cada demônio a partir dos \emph{stats} base da espécie, nível Level do demônio, nível máximo MaxLevel e duas constantes X e Y definidas por meio de teste.
+	
+\begin{equation}
+\label{eqn:HP}
+HP = X*baseHP * Level/MaxLevel + Level + 2*Y
+\end{equation}
+
+\begin{equation}
+\label{eqn:MP}
+MP = X*baseMP * Level/MaxLevel + Level + 2*Y
+\end{equation}
+
+\begin{equation}
+\label{eqn:Other}
+OutrosStats = X*baseSTAT * Level/MaxLevel + Y
+\end{equation}
+
+	A fórmula ~\ref{eqn:TotalExp} define quantos de pontos de experiencia totais um demônio deve ter para alcançar um nível Level dado um fator de crescimento G dependente da taxa de crescimento da espécie e um valor constante E de experiencia base.
+	
+\begin{equation}
+\label{eqn:TotalExp}
+TotalEXP = E * Level^G
+\end{equation}
+
+	A fórmula ~\ref{eqn:Exp} define quantos pontos de experiencia cada demônio inimigo fornece ao ser derrotado com base na EXP base da espécie, do seu nível Level e constante Z determinada por meio de testes.
+	
+\begin{equation}
+\label{eqn:Exp}
+YieldEXP = EXP * Level/Z
+\end{equation}
+
+
+\subsection{Skills e Itens}
+
+skilldata
+
+animation
+
+movelist
+
+Skill e Itens utilizaveis durante a exploração
+
+\subsection{Calculos de Dano}
+
+Meelee damage
+
+Range damage
+
+Heal
+
+\subsection{Precisão e Esquiva}
+
+\subsection{Buffs e Debuffs}
+
+\subsection{Condições Especiais}
+
+\subsection{Captura de demônios}
+
+\subsection{Sistema de Batalhas}
+
+\subsubsection{Etapa de escolha de Ações}
+
+\subsubsection{Etapa de execução das Ações}
+
+\subsection{Ações das unidades inimigas}
+
+\section{Game Manager}
+
+\section{Teste com jogadores reais}
+
+\section{Melhorias feitas com base no \emph{feedback} dos jogadores}
+
+\chapter{Resultados}
+
+\chapter{Conclusão}
+
+
+
+
+
+
+
 
 
 % ----------------------------------------------------------
