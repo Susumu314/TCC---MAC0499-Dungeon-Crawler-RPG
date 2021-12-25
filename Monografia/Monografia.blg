@@ -22,67 +22,66 @@ Warning--entry type for "Wiki01" isn't style-file defined
 --line 9 of file myBib.bib
 Warning--entry type for "Wiki02" isn't style-file defined
 --line 17 of file myBib.bib
-I was expecting a `,' or a `}'---line 36 of file myBib.bib
- :  
- :  title     = {A Theory of Fun for Game Design},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Warning--entry type for "GD:2021" isn't style-file defined
+Warning--entry type for "SMT" isn't style-file defined
+--line 25 of file myBib.bib
+Warning--entry type for "Pkmn" isn't style-file defined
+--line 33 of file myBib.bib
+Warning--entry type for "EOW" isn't style-file defined
 --line 41 of file myBib.bib
+Warning--entry type for "GD:2021" isn't style-file defined
+--line 65 of file myBib.bib
 Warning--entry type for "Wiki03" isn't style-file defined
---line 49 of file myBib.bib
+--line 73 of file myBib.bib
 Warning--entry type for "GameDev:2021" isn't style-file defined
---line 57 of file myBib.bib
+--line 81 of file myBib.bib
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'glb_str_end' (item size: 4) to 20 items.
 Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
 Reallocating 'global_strs' (item size: 1) to 4000000 items.
-Warning--campo title vazio em TheFun
-Warning--campo year vazio ou faltando em TheFun
 +---------------------------------------------------------+
 | Estilo bibliográfico abntex2-alf.bst versão v-1.9.7           |
 | Em caso de dúvidas ou problemas com este estilo procure |
 | http://www.abntex.net.br/                               |
 +---------------------------------------------------------+
-You've used 9 entries,
+You've used 12 entries,
             6714 wiz_defined-function locations,
-            1236 strings with 10093 characters,
-and the built_in function-call counts, 11830 in all, are:
-= -- 1522
-> -- 120
-< -- 330
-+ -- 419
-- -- 40
-* -- 639
-:= -- 1530
-add.period$ -- 29
-call.type$ -- 9
-change.case$ -- 51
-chr.to.int$ -- 7
-cite$ -- 10
-duplicate$ -- 1209
-empty$ -- 497
-format.name$ -- 184
-if$ -- 2331
-int.to.chr$ -- 2
+            1252 strings with 10336 characters,
+and the built_in function-call counts, 15979 in all, are:
+= -- 2028
+> -- 165
+< -- 453
++ -- 559
+- -- 55
+* -- 876
+:= -- 2047
+add.period$ -- 42
+call.type$ -- 12
+change.case$ -- 69
+chr.to.int$ -- 9
+cite$ -- 11
+duplicate$ -- 1654
+empty$ -- 679
+format.name$ -- 253
+if$ -- 3143
+int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 143
-newline$ -- 46
-num.names$ -- 40
-pop$ -- 215
+missing$ -- 192
+newline$ -- 61
+num.names$ -- 55
+pop$ -- 276
 preamble$ -- 1
-purify$ -- 27
+purify$ -- 36
 quote$ -- 0
-skip$ -- 1330
+skip$ -- 1789
 stack$ -- 1
-substring$ -- 510
-swap$ -- 407
-text.length$ -- 6
+substring$ -- 700
+swap$ -- 562
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 55
+warning$ -- 0
+while$ -- 77
 width$ -- 0
-write$ -- 118
-(There was 1 error message)
+write$ -- 162
+(There were 9 warnings)

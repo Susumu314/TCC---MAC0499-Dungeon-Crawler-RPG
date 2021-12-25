@@ -1,35 +1,37 @@
 \babel@toc {brazil}{}\relax 
 \babel@toc {brazil}{}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces Uma scene como apresentada no editor do Unity.\relax }}{21}{figure.caption.10}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Objects representados no editor do Unity.\relax }}{21}{figure.caption.11}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Objeto e seu menu de componentes.\relax }}{22}{figure.caption.12}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Uma prefab.\relax }}{23}{figure.caption.13}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Evolução da visão do mundo em Pokémon durante os anos.\relax }}{26}{figure.caption.14}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Evolução das batalhas em Pokémon durante os anos.\relax }}{27}{figure.caption.15}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Exploração de mundo nos primeiros jogos da série Shin Megami Tensei.\relax }}{28}{figure.caption.16}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Batalhas nos primeiros jogos da série Shin Megami Tensei.\relax }}{29}{figure.caption.17}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Evolução da exploração de mundo em Etrian Odyssey.\relax }}{30}{figure.caption.18}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Evolução das batalhas em Etrian Odyssey.\relax }}{31}{figure.caption.19}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Etapa de exploração de labirintos.\relax }}{34}{figure.caption.20}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Main Menu aberto durante a exploração.\relax }}{35}{figure.caption.21}%
-\contentsline {figure}{\numberline {13}{\ignorespaces SubMenu Bag de ações contendo os itens adquiridos.\relax }}{35}{figure.caption.22}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Representação de itens espalhados dentro do labirinto.\relax }}{36}{figure.caption.23}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Interação com atalhos durante a exploração do labirinto.\relax }}{37}{figure.caption.24}%
-\contentsline {figure}{\numberline {16}{\ignorespaces O minimapa apresenta uma representação do labirinto visto de cima.\relax }}{37}{figure.caption.25}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Conjunto de Ícones presentes no minimapa.\relax }}{38}{figure.caption.26}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Os stats de um demônio como representados em jogo.\relax }}{39}{figure.caption.27}%
-\contentsline {figure}{\numberline {19}{\ignorespaces Base do sistema de batalha.\relax }}{41}{figure.caption.29}%
-\contentsline {figure}{\numberline {20}{\ignorespaces Sistema de skills em funcionamento.\relax }}{42}{figure.caption.30}%
-\contentsline {figure}{\numberline {21}{\ignorespaces Submenu para uso dos itens.\relax }}{43}{figure.caption.31}%
-\contentsline {figure}{\numberline {22}{\ignorespaces Posição dos aliados e inimigos em uma batalha.\relax }}{43}{figure.caption.32}%
-\contentsline {figure}{\numberline {23}{\ignorespaces A tela de final de batalha mostra a exp e itens ganhos.\relax }}{43}{figure.caption.33}%
-\contentsline {figure}{\numberline {24}{\ignorespaces Ao aprender mais de 5 skills, o demônio deve esquecer uma.\relax }}{44}{figure.caption.34}%
-\contentsline {figure}{\numberline {25}{\ignorespaces Linha evolutiva de um dos demônios do jogo.\relax }}{44}{figure.caption.35}%
-\contentsline {figure}{\numberline {26}{\ignorespaces Template dos menus utilizados durante o jogo.\relax }}{45}{figure.caption.36}%
-\contentsline {figure}{\numberline {27}{\ignorespaces Template de diversas interfaces criadas para o jogo.\relax }}{45}{figure.caption.37}%
-\contentsline {figure}{\numberline {28}{\ignorespaces Editor do motor de jogos Unity.\relax }}{47}{figure.caption.38}%
-\contentsline {figure}{\numberline {29}{\ignorespaces Workspace do GIMP.\relax }}{48}{figure.caption.39}%
-\contentsline {figure}{\numberline {30}{\ignorespaces O objeto \emph {OverworldPlayer} visto pelo editor Unity.\relax }}{48}{figure.caption.40}%
-\contentsline {figure}{\numberline {31}{\ignorespaces Layout de um labirinto criado com Dungeon Map Doodler.\relax }}{51}{figure.caption.41}%
-\contentsline {figure}{\numberline {32}{\ignorespaces Estrutura básica de uma labirinto de duas pespectivas diferentes.\relax }}{52}{figure.caption.42}%
-\contentsline {figure}{\numberline {33}{\ignorespaces Visão ortogonal de um labirinto com terreno adicionado.\relax }}{52}{figure.caption.43}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Uma scene como apresentada no editor do Unity.\relax }}{19}{figure.caption.10}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Objects representados no editor do Unity.\relax }}{19}{figure.caption.11}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Objeto e seu menu de componentes.\relax }}{20}{figure.caption.12}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Uma prefab.\relax }}{21}{figure.caption.13}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Evolução da visão do mundo em Pokémon durante os anos.\relax }}{24}{figure.caption.14}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Evolução das batalhas em Pokémon durante os anos.\relax }}{25}{figure.caption.15}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Exploração de mundo nos primeiros jogos da série Shin Megami Tensei.\relax }}{26}{figure.caption.16}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Batalhas nos primeiros jogos da série Shin Megami Tensei.\relax }}{27}{figure.caption.17}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Evolução da exploração de mundo em Etrian Odyssey.\relax }}{28}{figure.caption.18}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Evolução das batalhas em Etrian Odyssey.\relax }}{29}{figure.caption.19}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Etapa de exploração de labirintos.\relax }}{32}{figure.caption.20}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Main Menu aberto durante a exploração.\relax }}{33}{figure.caption.21}%
+\contentsline {figure}{\numberline {13}{\ignorespaces SubMenu Bag de ações contendo os itens adquiridos.\relax }}{33}{figure.caption.22}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Representação de itens espalhados dentro do labirinto.\relax }}{34}{figure.caption.23}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Interação com atalhos durante a exploração do labirinto.\relax }}{35}{figure.caption.24}%
+\contentsline {figure}{\numberline {16}{\ignorespaces O minimapa apresenta uma representação do labirinto visto de cima.\relax }}{35}{figure.caption.25}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Conjunto de Ícones presentes no minimapa.\relax }}{36}{figure.caption.26}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Os stats de um demônio como representados em jogo.\relax }}{37}{figure.caption.27}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Base do sistema de batalha.\relax }}{40}{figure.caption.29}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Sistema de skills em funcionamento.\relax }}{41}{figure.caption.30}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Submenu para uso dos itens.\relax }}{41}{figure.caption.31}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Posição dos aliados e inimigos em uma batalha.\relax }}{42}{figure.caption.32}%
+\contentsline {figure}{\numberline {23}{\ignorespaces A tela de final de batalha mostra a exp e itens ganhos.\relax }}{42}{figure.caption.33}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Ao aprender mais de 5 skills, o demônio deve esquecer uma.\relax }}{42}{figure.caption.34}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Linha evolutiva de um dos demônios do jogo.\relax }}{43}{figure.caption.35}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Template dos menus utilizados durante o jogo.\relax }}{43}{figure.caption.36}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Template de diversas interfaces criadas para o jogo.\relax }}{44}{figure.caption.37}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Editor do motor de jogos Unity.\relax }}{45}{figure.caption.38}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Workspace do GIMP.\relax }}{45}{figure.caption.39}%
+\contentsline {figure}{\numberline {30}{\ignorespaces O objeto \emph {OverworldPlayer} visto pelo editor Unity.\relax }}{46}{figure.caption.40}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Layout de um labirinto criado com Dungeon Map Doodler.\relax }}{49}{figure.caption.41}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Estrutura básica de uma labirinto de duas perspectivas diferentes.\relax }}{50}{figure.caption.42}%
+\contentsline {figure}{\numberline {33}{\ignorespaces Visão ortogonal de um labirinto com terreno adicionado.\relax }}{50}{figure.caption.43}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Visão da cena de Batalha como é vista pelo editor.\relax }}{51}{figure.caption.44}%
+\contentsline {figure}{\numberline {35}{\ignorespaces Respostas das perguntas de múltiplas escolhas.\relax }}{61}{figure.caption.46}%

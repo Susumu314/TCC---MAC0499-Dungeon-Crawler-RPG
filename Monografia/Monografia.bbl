@@ -5,6 +5,11 @@
 \providecommand{\abntbstabout}[1]{}
 \abntbstabout{v-1.9.7 }
 
+\bibitem[Company 2021]{Pkmn}
+\abntrefinfo{Company}{COMPANY}{2021}
+{COMPANY, P. \emph{Pokémon}. 2021.
+Dispon{\'\i}vel em: \url{https://www.pokemon.com/br/}.}
+
 \bibitem[Dobrilova 2021]{Techjury}
 \abntrefinfo{Dobrilova}{DOBRILOVA}{2021}
 {DOBRILOVA, T. \emph{How Much Is the Gaming Industry Worth in 2021? [+25
@@ -23,28 +28,40 @@ Dispon{\'\i}vel em:
 Dispon{\'\i}vel em:
   \url{https://www.gamedeveloper.com/business/game-engines-on-steam-the-definitive-breakdown}.}
 
-\bibitem[Koster]{TheFun}
-\abntrefinfo{Koster}{KOSTER}{}
-{KOSTER, R. [S.l.: s.n.].}
+\bibitem[Koster 2013]{TheFun}
+\abntrefinfo{Koster}{KOSTER}{2013}
+{KOSTER, R. \emph{A Theory of Fun for Game Design}. [S.l.]: OReillyMedia,
+  2013.}
 
 \bibitem[Schell 2014]{TheArt}
 \abntrefinfo{Schell}{SCHELL}{2014}
 {SCHELL, J. \emph{The Art of Game Design a Book of Lenses}. [S.l.]: AK Peters,
   2014.}
 
+\bibitem[Wiki 2021]{EOW}
+\abntrefinfo{Wiki}{WIKI}{2021}
+{WIKI, E.~O. \emph{Etrian Odyssey Wiki}. 2021.
+Dispon{\'\i}vel em:
+  \url{https://etrian.fandom.com/wiki/Etrian\_Odyssey\_Wiki}.}
+
 \bibitem[Wikipedia 2021]{Wiki03}
 \abntrefinfo{Wikipedia}{WIKIPEDIA}{2021a}
 {WIKIPEDIA. \emph{Game Engine}. 2021.
 Dispon{\'\i}vel em: \url{https://en.wikipedia.org/wiki/Game\_engine}.}
 
-\bibitem[Wikipedia 2021]{Wiki01}
+\bibitem[Wikipedia 2021]{SMT}
 \abntrefinfo{Wikipedia}{WIKIPEDIA}{2021b}
+{WIKIPEDIA. \emph{Megami Tensei}. 2021.
+Dispon{\'\i}vel em: \url{https://en.wikipedia.org/wiki/Megami\_Tensei}.}
+
+\bibitem[Wikipedia 2021]{Wiki01}
+\abntrefinfo{Wikipedia}{WIKIPEDIA}{2021c}
 {WIKIPEDIA. \emph{Role-playing video game}. 2021.
 Dispon{\'\i}vel em:
   \url{https://en.wikipedia.org/wiki/Role-playing\_video\_game}.}
 
 \bibitem[Wikipedia 2021]{Wiki02}
-\abntrefinfo{Wikipedia}{WIKIPEDIA}{2021c}
+\abntrefinfo{Wikipedia}{WIKIPEDIA}{2021d}
 {WIKIPEDIA. \emph{Video game}. 2021.
 Dispon{\'\i}vel em: \url{https://en.wikipedia.org/wiki/Video\_game}.}
 

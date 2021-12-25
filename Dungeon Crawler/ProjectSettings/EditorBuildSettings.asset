@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/OverWorldTest.unity
-    guid: 881f27ee7f5bd0d46aa6db7e0b5acae2
+  - enabled: 1
+    path: Assets/Scenes/City_Template.unity
+    guid: 65c76ef6853aa4c46aed970e132a1a85
+  - enabled: 1
+    path: Assets/Scenes/Guild.unity
+    guid: 88c874d716b801948b0094a5a884aa79
   - enabled: 1
     path: Assets/Scenes/Playtest.unity
     guid: 4ac2e206e518a5f4681f6f3d62065d63
@@ -23,12 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DemonologistShop.unity
     guid: 45bfc89d607be2f4cbf2671bc06f3069
-  - enabled: 1
-    path: Assets/Scenes/City_Template.unity
-    guid: 65c76ef6853aa4c46aed970e132a1a85
-  - enabled: 1
-    path: Assets/Scenes/Guild.unity
-    guid: 88c874d716b801948b0094a5a884aa79
   - enabled: 1
     path: Assets/Scenes/Solana Forest.unity
     guid: 97126950ec04fa546a8b884d9aaecabc
