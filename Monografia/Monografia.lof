@@ -16,22 +16,22 @@
 \contentsline {figure}{\numberline {14}{\ignorespaces Representação de itens espalhados dentro do labirinto.\relax }}{34}{figure.caption.23}%
 \contentsline {figure}{\numberline {15}{\ignorespaces Interação com atalhos durante a exploração do labirinto.\relax }}{35}{figure.caption.24}%
 \contentsline {figure}{\numberline {16}{\ignorespaces O minimapa apresenta uma representação do labirinto visto de cima.\relax }}{35}{figure.caption.25}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Conjunto de Ícones presentes no minimapa.\relax }}{36}{figure.caption.26}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Os stats de um demônio como representados em jogo.\relax }}{37}{figure.caption.27}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Conjunto de Ícones presentes no minimapa. Da esquerda para direita indicam um atalho que permite travessia por um dos lados; um atalho que permite travessia por ambos os lados; posição de um item; acesso para próximo labirinto; e a posição do jogador\relax }}{36}{figure.caption.26}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Os stats de um demônio como representados em jogo.\relax }}{38}{figure.caption.27}%
 \contentsline {figure}{\numberline {19}{\ignorespaces Base do sistema de batalha.\relax }}{40}{figure.caption.29}%
 \contentsline {figure}{\numberline {20}{\ignorespaces Sistema de skills em funcionamento.\relax }}{41}{figure.caption.30}%
 \contentsline {figure}{\numberline {21}{\ignorespaces Submenu para uso dos itens.\relax }}{41}{figure.caption.31}%
 \contentsline {figure}{\numberline {22}{\ignorespaces Posição dos aliados e inimigos em uma batalha.\relax }}{42}{figure.caption.32}%
 \contentsline {figure}{\numberline {23}{\ignorespaces A tela de final de batalha mostra a exp e itens ganhos.\relax }}{42}{figure.caption.33}%
-\contentsline {figure}{\numberline {24}{\ignorespaces Ao aprender mais de 5 skills, o demônio deve esquecer uma.\relax }}{42}{figure.caption.34}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Ao aprender mais de 5 skills, o demônio deve esquecer uma.\relax }}{43}{figure.caption.34}%
 \contentsline {figure}{\numberline {25}{\ignorespaces Linha evolutiva de um dos demônios do jogo.\relax }}{43}{figure.caption.35}%
-\contentsline {figure}{\numberline {26}{\ignorespaces Template dos menus utilizados durante o jogo.\relax }}{43}{figure.caption.36}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Template dos menus utilizados durante o jogo.\relax }}{44}{figure.caption.36}%
 \contentsline {figure}{\numberline {27}{\ignorespaces Template de diversas interfaces criadas para o jogo.\relax }}{44}{figure.caption.37}%
-\contentsline {figure}{\numberline {28}{\ignorespaces Editor do motor de jogos Unity.\relax }}{45}{figure.caption.38}%
-\contentsline {figure}{\numberline {29}{\ignorespaces Workspace do GIMP.\relax }}{45}{figure.caption.39}%
-\contentsline {figure}{\numberline {30}{\ignorespaces O objeto \emph {OverworldPlayer} visto pelo editor Unity.\relax }}{46}{figure.caption.40}%
-\contentsline {figure}{\numberline {31}{\ignorespaces Layout de um labirinto criado com Dungeon Map Doodler.\relax }}{49}{figure.caption.41}%
-\contentsline {figure}{\numberline {32}{\ignorespaces Estrutura básica de uma labirinto de duas perspectivas diferentes.\relax }}{50}{figure.caption.42}%
-\contentsline {figure}{\numberline {33}{\ignorespaces Visão ortogonal de um labirinto com terreno adicionado.\relax }}{50}{figure.caption.43}%
-\contentsline {figure}{\numberline {34}{\ignorespaces Visão da cena de Batalha como é vista pelo editor.\relax }}{51}{figure.caption.44}%
-\contentsline {figure}{\numberline {35}{\ignorespaces Respostas das perguntas de múltiplas escolhas.\relax }}{61}{figure.caption.46}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Editor do motor de jogos Unity.\relax }}{47}{figure.caption.38}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Workspace do GIMP.\relax }}{47}{figure.caption.39}%
+\contentsline {figure}{\numberline {30}{\ignorespaces O objeto \emph {OverworldPlayer} visto pelo editor Unity.\relax }}{48}{figure.caption.40}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Layout de um labirinto criado com Dungeon Map Doodler.\relax }}{51}{figure.caption.41}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Estrutura básica de um labirinto de duas perspectivas diferentes.\relax }}{52}{figure.caption.42}%
+\contentsline {figure}{\numberline {33}{\ignorespaces Visão ortogonal de um labirinto com terreno adicionado.\relax }}{52}{figure.caption.43}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Visão da cena de Batalha como é vista pelo editor.\relax }}{53}{figure.caption.44}%
+\contentsline {figure}{\numberline {35}{\ignorespaces Respostas das perguntas de múltiplas escolhas.\relax }}{63}{figure.caption.46}%

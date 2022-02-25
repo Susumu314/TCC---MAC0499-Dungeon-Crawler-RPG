@@ -6,6 +6,11 @@
 
 % Formatação de datas de acordo com a língua
 \usepackage[useregional]{datetime2}
+\DTMusemodule{brazilian}{portuges}
+\DTMnewdatestyle{month-year}{%
+  \renewcommand*{\DTMdisplaydate}[4]{##2,\space##1}%
+  \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+}
 
 \makeatletter
 
@@ -44,6 +49,10 @@
 
 %%%%%%%%%% PORTUGUÊS %%%%%%%%%%
 \expandafter\addto\csname captions\@IMEpt\endcsname{%
+  \DTMrenewdatestyle{month-year}{%
+    \renewcommand*{\DTMdisplaydate}[4]
+      {\DTMportugesmonthname{##2}\space de\space##1}%
+  }%
   \let\@title\@titlept
   \let\@subtitle\@subtitlept
   \let\@keywords\@keywordspt
@@ -156,6 +165,10 @@
 
 %%%%%%%%%% INGLÊS %%%%%%%%%%
 \expandafter\addto\csname captions\@IMEen\endcsname{%
+  \DTMrenewdatestyle{month-year}{%
+    \renewcommand*{\DTMdisplaydate}[4]
+      {\DTMenglishmonthname{##2},\space##1}%
+  }%
   \let\@title\@titleen
   \let\@subtitle\@subtitleen
   \let\@keywords\@keywordsen
@@ -540,7 +553,7 @@
   \if@openright\cleardoublepage\else\clearpage\fi
   \thispagestyle{empty}
 
-    \begin{Center}\Large\bfseries\abstractname\end{Center}
+    \begin{center}\Large\bfseries\abstractname\end{center}
 
   \vspace*{2em plus 1em minus 1em}
 
@@ -604,7 +617,7 @@
   \begin{hyphenrules}{nohyphenation}
       \iftoggle{@tcc}{\@institutionBlock}{}
       \@titleBlock
-      \vfill
+      \vspace*{\fill}
       \@detailsBlock
   \end{hyphenrules}
 }
@@ -774,7 +787,7 @@
       \ifcsvoid{@catalogingData} {} {
         \vspace*{3cm plus 3cm minus 1cm}
         \setlength{\fboxsep}{20pt}
-        \begin{Center}
+        \begin{center}
         \fbox{
           \begin{minipage}[t]{120mm}
             \setlength\parskip{1em}
@@ -783,7 +796,7 @@
 
           \end{minipage}
         }
-        \end{Center}
+        \end{center}
       }
   \end{list}
   \egroup
@@ -798,6 +811,8 @@
     % deve começar o quadro do título. Veja os comentários em
     % \@titleBlock para entender o mecanismo.
     \bgroup
+    \hfuzz=60pt % Não precisa avisar que estamos invadindo a margem direita aqui
+
     \setstretch {\setspace@singlespace}% \singlespacing adds \baselineskip
 
     \vspace*{\@topTitleBlockMargin}
@@ -820,7 +835,7 @@
       \begin{minipage}[t][20mm][s]{160mm}
         \vspace{0pt plus 20mm}
 
-        \Centering\large
+        \centering\large
 
         \textsc{\@institutionBlockText}
 
@@ -886,7 +901,7 @@
       \begin{minipage}[t][56mm][s]{96mm}
           \vspace*{2cm plus 1.5cm minus 1.8cm}
 
-          \Centering\large
+          \centering\large
 
           \textbf{\@title}
 
@@ -909,12 +924,13 @@
 \NewDocumentCommand{\@detailsBlock}{} {
 
   \bgroup
+  \hfuzz=60pt % Não precisa avisar que estamos invadindo a margem direita aqui
   \onehalfspacing
   \noindent
   \hspace*{\@coverLeftMargin}%
 %  \fbox{%
     \begin{minipage}[t][130mm][s]{160mm}
-      \begin{Center}
+      \begin{center}
         \Large
 
         \vspace*{0.3cm plus 0.5cm minus 0.3cm}
@@ -935,9 +951,11 @@
 
         \@defenselocation
 
-        \DTMusedate{@defensedate}
+        \iftoggle{@tcc}
+          {\DTMfetchyear{@defensedate}}
+          {\DTMsetdatestyle{month-year}\DTMusedate{@defensedate}}
 
-      \end{Center}
+      \end{center}
     \end{minipage}%
 %  }% fbox
   \par
@@ -995,6 +1013,7 @@
             \@provisionalFrontmatterText%
           }%
         \end{FlushRight}
+        \vspace*{0pt plus 50mm}
       \end{minipage}
       \par
     %} % fbox

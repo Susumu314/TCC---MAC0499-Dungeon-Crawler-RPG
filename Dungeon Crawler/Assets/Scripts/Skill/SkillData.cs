@@ -115,7 +115,7 @@ public class Skill {
                            /*power*/        60, 
                            /*accuracy*/     100, 
                            /*cost*/         6,
-                           /*effect*/       new EFFECT[] {EFFECT.LOWBURN}, 
+                           /*effect*/       new EFFECT[] {EFFECT.LOWBURN}, //Trocar para lowburn depois da gravação
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
                            /*ID*/           2,
@@ -521,7 +521,7 @@ public class Skill {
                            /*ID*/           27,
                            /*VFX*/          "Burst",
                            /*VFX_COLOR*/    Color.white,
-                           /*DESC*/         "A weak fire attack that may inflict a burn.",
+                           /*DESC*/         "A water wave that deals damage to the target",
                            /*OWuse*/        false),
 
             new SkillData (/*name*/        "Snowball", 
@@ -531,7 +531,7 @@ public class Skill {
                            /*power*/        70, 
                            /*accuracy*/     95, 
                            /*cost*/         6,
-                           /*effect*/       new EFFECT[] {EFFECT.LOWFREEZE}, 
+                           /*effect*/       new EFFECT[] {EFFECT.LOWFREEZE}, //trocar para lowfreeze
                            /*isSpecial*/    true, 
                            /*isRanged*/     true,
                            /*ID*/           28,

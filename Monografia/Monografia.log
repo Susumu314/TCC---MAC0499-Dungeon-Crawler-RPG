@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.12)  24 DEC 2021 21:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.9.12)  5 FEB 2022 12:08
 entering extended mode
 **./Monografia.tex
 (Monografia.tex
@@ -983,7 +983,7 @@ Package caption Info: threeparttable package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count373
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 2
-70.
+69.
 
 (C:\Users\hugos\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -998,74 +998,74 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 ]
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
-79.
+78.
 
 (C:\Users\hugos\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
-79.
+78.
 
 (C:\Users\hugos\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-279.
+278.
 
 (C:\Users\hugos\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-279.
+278.
 
 (C:\Users\hugos\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 279.
+(Font)              <12> on input line 278.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 279.
+(Font)              <8> on input line 278.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 279.
+(Font)              <6> on input line 278.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.279 
+l.278 
        [1
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 326--326
+Underfull \hbox (badness 10000) in paragraph at lines 325--325
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--326
+Underfull \hbox (badness 10000) in paragraph at lines 325--325
 
  []
 
 
-Overfull \hbox (16.6597pt too wide) in paragraph at lines 326--326
+Overfull \hbox (16.6597pt too wide) in paragraph at lines 325--325
 []  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--326
+Underfull \hbox (badness 10000) in paragraph at lines 325--325
 
  []
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 326.
+(Font)              <10> on input line 325.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 326.
+(Font)              <7> on input line 325.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 326.
+(Font)              <5> on input line 325.
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.418 \end{dedicatoria}
+l.417 \end{dedicatoria}
                         [2] [3
 
 
@@ -1073,10 +1073,10 @@ l.418 \end{dedicatoria}
 
 ] [5] [6
 
-] (Monografia.lof) [7] [8
+] (Monografia.lof [7]) [8]
+(Monografia.lot) [9
 
-]
-(Monografia.lot) [9] [10
+] [10
 
 ] (Monografia.lol
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <12> not available
@@ -1098,36 +1098,36 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 [16]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4872) has occurred while \output is active []
 
  [17
 
 ]
-<scene.jpg, id=350, 848.16875pt x 365.365pt>
+<scene.jpg, id=353, 848.16875pt x 365.365pt>
 File: scene.jpg Graphic file (type jpg)
 <use scene.jpg>
-Package pdftex.def Info: scene.jpg  used on input line 610.
+Package pdftex.def Info: scene.jpg  used on input line 609.
 (pdftex.def)             Requested size: 455.0pt x 196.00075pt.
 
 [18]
-<object.jpg, id=359, 513.92pt x 123.46124pt>
+<object.jpg, id=362, 513.92pt x 123.46124pt>
 File: object.jpg Graphic file (type jpg)
 <use object.jpg>
-Package pdftex.def Info: object.jpg  used on input line 619.
+Package pdftex.def Info: object.jpg  used on input line 618.
 (pdftex.def)             Requested size: 455.0pt x 109.30745pt.
-<objprop.jpg, id=361, 513.92pt x 346.29375pt>
+<objprop.jpg, id=364, 513.92pt x 346.29375pt>
 File: objprop.jpg Graphic file (type jpg)
 <use objprop.jpg>
-Package pdftex.def Info: objprop.jpg  used on input line 626.
+Package pdftex.def Info: objprop.jpg  used on input line 625.
 (pdftex.def)             Requested size: 102.78217pt x 69.2575pt.
 
 Underfull \vbox (badness 6236) has occurred while \output is active []
 
  [19 <./scene.jpg> <./object.jpg>]
-<prefab.jpg, id=368, 853.1875pt x 326.21875pt>
+<prefab.jpg, id=371, 853.1875pt x 326.21875pt>
 File: prefab.jpg Graphic file (type jpg)
 <use prefab.jpg>
-Package pdftex.def Info: prefab.jpg  used on input line 641.
+Package pdftex.def Info: prefab.jpg  used on input line 640.
 (pdftex.def)             Requested size: 455.0pt x 173.97527pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1135,112 +1135,112 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [20 <./objprop.jpg>] [21 <./prefab.jpg>] [22
 
 ] [23]
-<red.jpg, id=389, 671.50874pt x 451.6875pt>
+<red.jpg, id=392, 671.50874pt x 451.6875pt>
 File: red.jpg Graphic file (type jpg)
 <use red.jpg>
-Package pdftex.def Info: red.jpg  used on input line 682.
+Package pdftex.def Info: red.jpg  used on input line 681.
 (pdftex.def)             Requested size: 222.9525pt x 149.9671pt.
-<firered.jpg, id=390, 1284.8pt x 856.19875pt>
+<firered.jpg, id=393, 1284.8pt x 856.19875pt>
 File: firered.jpg Graphic file (type jpg)
 <use firered.jpg>
-Package pdftex.def Info: firered.jpg  used on input line 686.
+Package pdftex.def Info: firered.jpg  used on input line 685.
 (pdftex.def)             Requested size: 222.9525pt x 148.56976pt.
-<bw.jpg, id=391, 256.96pt x 192.72pt>
+<bw.jpg, id=394, 256.96pt x 192.72pt>
 File: bw.jpg Graphic file (type jpg)
 <use bw.jpg>
-Package pdftex.def Info: bw.jpg  used on input line 690.
+Package pdftex.def Info: bw.jpg  used on input line 689.
 (pdftex.def)             Requested size: 222.9525pt x 167.21805pt.
-<lgpikachu.jpg, id=392, 1204.5pt x 677.53125pt>
+<lgpikachu.jpg, id=395, 1204.5pt x 677.53125pt>
 File: lgpikachu.jpg Graphic file (type jpg)
 <use lgpikachu.jpg>
-Package pdftex.def Info: lgpikachu.jpg  used on input line 694.
+Package pdftex.def Info: lgpikachu.jpg  used on input line 693.
 (pdftex.def)             Requested size: 222.9525pt x 125.40334pt.
  [24 <./red.jpg> <./firered.jpg> <./bw.jpg> <./lgpikachu.jpg>]
-<redb.jpg, id=399, 160.6pt x 144.54pt>
+<redb.jpg, id=402, 160.6pt x 144.54pt>
 File: redb.jpg Graphic file (type jpg)
 <use redb.jpg>
-Package pdftex.def Info: redb.jpg  used on input line 710.
+Package pdftex.def Info: redb.jpg  used on input line 709.
 (pdftex.def)             Requested size: 136.50139pt x 122.85515pt.
-<fireredb.jpg, id=400, 516.93124pt x 345.29pt>
+<fireredb.jpg, id=403, 516.93124pt x 345.29pt>
 File: fireredb.jpg Graphic file (type jpg)
 <use fireredb.jpg>
-Package pdftex.def Info: fireredb.jpg  used on input line 714.
+Package pdftex.def Info: fireredb.jpg  used on input line 713.
 (pdftex.def)             Requested size: 181.99722pt x 121.56458pt.
-<xyb.jpg, id=401, 401.5pt x 240.9pt>
+<xyb.jpg, id=404, 401.5pt x 240.9pt>
 File: xyb.jpg Graphic file (type jpg)
 <use xyb.jpg>
-Package pdftex.def Info: xyb.jpg  used on input line 718.
+Package pdftex.def Info: xyb.jpg  used on input line 717.
 (pdftex.def)             Requested size: 273.00278pt x 163.81349pt.
-<swsh.jpg, id=402, 1606.0pt x 903.375pt>
+<swsh.jpg, id=405, 1606.0pt x 903.375pt>
 File: swsh.jpg Graphic file (type jpg)
 <use swsh.jpg>
-Package pdftex.def Info: swsh.jpg  used on input line 722.
+Package pdftex.def Info: swsh.jpg  used on input line 721.
 (pdftex.def)             Requested size: 273.00278pt x 153.55794pt.
  [25 <./redb.jpg> <./fireredb.jpg> <./xyb.jpg> <./swsh.jpg>]
-<mt.jpg, id=410, 256.96pt x 240.9pt>
+<mt.jpg, id=413, 256.96pt x 240.9pt>
 File: mt.jpg Graphic file (type jpg)
 <use mt.jpg>
-Package pdftex.def Info: mt.jpg  used on input line 740.
+Package pdftex.def Info: mt.jpg  used on input line 739.
 (pdftex.def)             Requested size: 181.99722pt x 170.62482pt.
-<smt1.jpg, id=411, 256.96pt x 224.84pt>
+<smt1.jpg, id=414, 256.96pt x 224.84pt>
 File: smt1.jpg Graphic file (type jpg)
 <use smt1.jpg>
-Package pdftex.def Info: smt1.jpg  used on input line 744.
+Package pdftex.def Info: smt1.jpg  used on input line 743.
 (pdftex.def)             Requested size: 181.99722pt x 159.24983pt.
-<smt2.jpg, id=412, 475.7775pt x 415.5525pt>
+<smt2.jpg, id=415, 475.7775pt x 415.5525pt>
 File: smt2.jpg Graphic file (type jpg)
 <use smt2.jpg>
-Package pdftex.def Info: smt2.jpg  used on input line 748.
+Package pdftex.def Info: smt2.jpg  used on input line 747.
 (pdftex.def)             Requested size: 181.99722pt x 158.95782pt.
-<smtif.jpg, id=413, 642.4pt x 481.8pt>
+<smtif.jpg, id=416, 642.4pt x 481.8pt>
 File: smtif.jpg Graphic file (type jpg)
 <use smtif.jpg>
-Package pdftex.def Info: smtif.jpg  used on input line 752.
+Package pdftex.def Info: smtif.jpg  used on input line 751.
 (pdftex.def)             Requested size: 181.99722pt x 136.49838pt.
  [26 <./mt.jpg> <./smt1.jpg> <./smt2.jpg> <./smtif.jpg>]
-<mtb.jpg, id=420, 256.96pt x 224.84pt>
+<mtb.jpg, id=423, 256.96pt x 224.84pt>
 File: mtb.jpg Graphic file (type jpg)
 <use mtb.jpg>
-Package pdftex.def Info: mtb.jpg  used on input line 767.
+Package pdftex.def Info: mtb.jpg  used on input line 766.
 (pdftex.def)             Requested size: 181.99722pt x 159.24983pt.
-<smt1b.jpg, id=421, 803.0pt x 702.625pt>
+<smt1b.jpg, id=424, 803.0pt x 702.625pt>
 File: smt1b.jpg Graphic file (type jpg)
 <use smt1b.jpg>
-Package pdftex.def Info: smt1b.jpg  used on input line 771.
+Package pdftex.def Info: smt1b.jpg  used on input line 770.
 (pdftex.def)             Requested size: 181.99722pt x 159.24168pt.
-<smt2b.jpg, id=422, 256.96pt x 224.84pt>
+<smt2b.jpg, id=425, 256.96pt x 224.84pt>
 File: smt2b.jpg Graphic file (type jpg)
 <use smt2b.jpg>
-Package pdftex.def Info: smt2b.jpg  used on input line 775.
+Package pdftex.def Info: smt2b.jpg  used on input line 774.
 (pdftex.def)             Requested size: 181.99722pt x 159.24983pt.
-<smtifb.jpg, id=423, 642.4pt x 481.8pt>
+<smtifb.jpg, id=426, 642.4pt x 481.8pt>
 File: smtifb.jpg Graphic file (type jpg)
 <use smtifb.jpg>
-Package pdftex.def Info: smtifb.jpg  used on input line 779.
+Package pdftex.def Info: smtifb.jpg  used on input line 778.
 (pdftex.def)             Requested size: 181.99722pt x 136.49838pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [27 <./mtb.jpg> <./smt1b.jpg> <./smt2b.jpg> <./smtifb.jpg>]
-<eo.jpg, id=431, 256.96pt x 385.44pt>
+<eo.jpg, id=434, 256.96pt x 385.44pt>
 File: eo.jpg Graphic file (type jpg)
 <use eo.jpg>
-Package pdftex.def Info: eo.jpg  used on input line 797.
+Package pdftex.def Info: eo.jpg  used on input line 796.
 (pdftex.def)             Requested size: 163.80028pt x 245.70445pt.
-<eonexus.jpg, id=432, 401.5pt x 481.8pt>
+<eonexus.jpg, id=435, 401.5pt x 481.8pt>
 File: eonexus.jpg Graphic file (type jpg)
 <use eonexus.jpg>
-Package pdftex.def Info: eonexus.jpg  used on input line 801.
+Package pdftex.def Info: eonexus.jpg  used on input line 800.
 (pdftex.def)             Requested size: 200.20111pt x 240.2451pt.
-<eob.jpg, id=434, 513.92pt x 385.44pt>
+<eob.jpg, id=437, 513.92pt x 385.44pt>
 File: eob.jpg Graphic file (type jpg)
 <use eob.jpg>
-Package pdftex.def Info: eob.jpg  used on input line 813.
+Package pdftex.def Info: eob.jpg  used on input line 812.
 (pdftex.def)             Requested size: 163.80028pt x 122.84929pt.
-<eonexusb.jpg, id=435, 401.5pt x 240.9pt>
+<eonexusb.jpg, id=438, 401.5pt x 240.9pt>
 File: eonexusb.jpg Graphic file (type jpg)
 <use eonexusb.jpg>
-Package pdftex.def Info: eonexusb.jpg  used on input line 817.
+Package pdftex.def Info: eonexusb.jpg  used on input line 816.
 (pdftex.def)             Requested size: 200.20111pt x 120.12254pt.
 
 
@@ -1252,92 +1252,88 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Underfull \vbox (badness 4872) has occurred while \output is active []
 
  [31]
-<lab1.jpg, id=455, 1167.36125pt x 656.4525pt>
+<lab1.jpg, id=458, 1167.36125pt x 656.4525pt>
 File: lab1.jpg Graphic file (type jpg)
 <use lab1.jpg>
-Package pdftex.def Info: lab1.jpg  used on input line 849.
+Package pdftex.def Info: lab1.jpg  used on input line 848.
 (pdftex.def)             Requested size: 181.99722pt x 102.34006pt.
-<lab2.jpg, id=456, 1169.36874pt x 656.4525pt>
+<lab2.jpg, id=459, 1169.36874pt x 656.4525pt>
 File: lab2.jpg Graphic file (type jpg)
 <use lab2.jpg>
-Package pdftex.def Info: lab2.jpg  used on input line 852.
+Package pdftex.def Info: lab2.jpg  used on input line 851.
 (pdftex.def)             Requested size: 181.99722pt x 102.15976pt.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 8
-60.
+59.
 
 (C:\Users\hugos\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-<mainmenu.jpg, id=458, 1165.35374pt x 655.44875pt>
+<mainmenu.jpg, id=461, 1165.35374pt x 655.44875pt>
 File: mainmenu.jpg Graphic file (type jpg)
 <use mainmenu.jpg>
-Package pdftex.def Info: mainmenu.jpg  used on input line 868.
+Package pdftex.def Info: mainmenu.jpg  used on input line 867.
 (pdftex.def)             Requested size: 455.0pt x 255.91402pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<status.jpg, id=460, 1165.35374pt x 653.44125pt>
+<status.jpg, id=463, 1165.35374pt x 653.44125pt>
 File: status.jpg Graphic file (type jpg)
 <use status.jpg>
-Package pdftex.def Info: status.jpg  used on input line 880.
+Package pdftex.def Info: status.jpg  used on input line 879.
 (pdftex.def)             Requested size: 204.74861pt x 114.80261pt.
-<nickname.jpg, id=461, 1165.35374pt x 657.45625pt>
+<nickname.jpg, id=464, 1165.35374pt x 657.45625pt>
 File: nickname.jpg Graphic file (type jpg)
 <use nickname.jpg>
-Package pdftex.def Info: nickname.jpg  used on input line 884.
+Package pdftex.def Info: nickname.jpg  used on input line 883.
 (pdftex.def)             Requested size: 204.74861pt x 115.508pt.
-<skills.jpg, id=462, 1162.3425pt x 654.445pt>
+<skills.jpg, id=465, 1162.3425pt x 654.445pt>
 File: skills.jpg Graphic file (type jpg)
 <use skills.jpg>
-Package pdftex.def Info: skills.jpg  used on input line 888.
+Package pdftex.def Info: skills.jpg  used on input line 887.
 (pdftex.def)             Requested size: 204.74861pt x 115.27853pt.
-<bag.jpg, id=463, 1166.3575pt x 655.44875pt>
+<bag.jpg, id=466, 1166.3575pt x 655.44875pt>
 File: bag.jpg Graphic file (type jpg)
 <use bag.jpg>
-Package pdftex.def Info: bag.jpg  used on input line 892.
+Package pdftex.def Info: bag.jpg  used on input line 891.
 (pdftex.def)             Requested size: 204.74861pt x 115.05528pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 6332) has occurred while \output is active []
 
- [32 <./lab1.jpg> <./lab2.jpg>]
-
-LaTeX Warning: Reference `{fig:item1}' on page 33 undefined on input line 903.
-
-[33 <./mainmenu.jpg> <./status.jpg> <./nickname.jpg> <./skills.jpg> <./bag.jpg>
-]
-<itemspot.jpg, id=473, 1164.35pt x 656.4525pt>
+ [32 <./lab1.jpg> <./lab2.jpg>] [33 <./mainmenu.jpg> <./status.jpg> <./nickname
+.jpg> <./skills.jpg> <./bag.jpg>]
+<itemspot.jpg, id=477, 1164.35pt x 656.4525pt>
 File: itemspot.jpg Graphic file (type jpg)
 <use itemspot.jpg>
-Package pdftex.def Info: itemspot.jpg  used on input line 908.
+Package pdftex.def Info: itemspot.jpg  used on input line 907.
 (pdftex.def)             Requested size: 181.99722pt x 102.6005pt.
-<itemprompt.jpg, id=474, 1165.35374pt x 658.46pt>
+<itemprompt.jpg, id=478, 1165.35374pt x 658.46pt>
 File: itemprompt.jpg Graphic file (type jpg)
 <use itemprompt.jpg>
-Package pdftex.def Info: itemprompt.jpg  used on input line 912.
+Package pdftex.def Info: itemprompt.jpg  used on input line 911.
 (pdftex.def)             Requested size: 181.99722pt x 102.83388pt.
-<cogumelos.jpg, id=476, 1164.35pt x 656.4525pt>
+<cogumelos.jpg, id=480, 1164.35pt x 656.4525pt>
 File: cogumelos.jpg Graphic file (type jpg)
 <use cogumelos.jpg>
-Package pdftex.def Info: cogumelos.jpg  used on input line 926.
+Package pdftex.def Info: cogumelos.jpg  used on input line 925.
 (pdftex.def)             Requested size: 213.85056pt x 120.56033pt.
-<prompt.jpg, id=477, 1164.35pt x 658.46pt>
+<prompt.jpg, id=481, 1164.35pt x 658.46pt>
 File: prompt.jpg Graphic file (type jpg)
 <use prompt.jpg>
-Package pdftex.def Info: prompt.jpg  used on input line 930.
+Package pdftex.def Info: prompt.jpg  used on input line 929.
 (pdftex.def)             Requested size: 213.85056pt x 120.92903pt.
-<warning.jpg, id=478, 1165.35374pt x 656.4525pt>
+<warning.jpg, id=482, 1165.35374pt x 656.4525pt>
 File: warning.jpg Graphic file (type jpg)
 <use warning.jpg>
-Package pdftex.def Info: warning.jpg  used on input line 934.
+Package pdftex.def Info: warning.jpg  used on input line 933.
 (pdftex.def)             Requested size: 213.85056pt x 120.46017pt.
-<exit.jpg, id=479, 271.9761pt x 152.4897pt>
+<exit.jpg, id=483, 271.9761pt x 152.4897pt>
 File: exit.jpg Graphic file (type jpg)
 <use exit.jpg>
-Package pdftex.def Info: exit.jpg  used on input line 938.
+Package pdftex.def Info: exit.jpg  used on input line 937.
 (pdftex.def)             Requested size: 213.85056pt x 119.90245pt.
 
 
@@ -1347,220 +1343,231 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [34 <./itemspot.jpg> <./itemprompt.jpg>]
-<minimap.jpg, id=486, 42.8802pt x 42.8802pt>
+<minimap.jpg, id=490, 42.8802pt x 42.8802pt>
 File: minimap.jpg Graphic file (type jpg)
 <use minimap.jpg>
-Package pdftex.def Info: minimap.jpg  used on input line 951.
+Package pdftex.def Info: minimap.jpg  used on input line 950.
 (pdftex.def)             Requested size: 181.99722pt x 182.01852pt.
-<icon1.jpg, id=487, 11.19676pt x 14.25043pt>
+<icon1.jpg, id=491, 11.19676pt x 14.25043pt>
 File: icon1.jpg Graphic file (type jpg)
 <use icon1.jpg>
-Package pdftex.def Info: icon1.jpg  used on input line 959.
+Package pdftex.def Info: icon1.jpg  used on input line 958.
 (pdftex.def)             Requested size: 45.50278pt x 57.91978pt.
-<icon2.jpg, id=488, 11.19676pt x 18.32198pt>
+<icon2.jpg, id=492, 11.19676pt x 18.32198pt>
 File: icon2.jpg Graphic file (type jpg)
 <use icon2.jpg>
-Package pdftex.def Info: icon2.jpg  used on input line 962.
+Package pdftex.def Info: icon2.jpg  used on input line 961.
 (pdftex.def)             Requested size: 45.50278pt x 74.46828pt.
-<icon3.jpg, id=489, 18.32198pt x 16.2862pt>
+<icon3.jpg, id=493, 18.32198pt x 16.2862pt>
 File: icon3.jpg Graphic file (type jpg)
 <use icon3.jpg>
-Package pdftex.def Info: icon3.jpg  used on input line 965.
+Package pdftex.def Info: icon3.jpg  used on input line 964.
 (pdftex.def)             Requested size: 45.50278pt x 40.45016pt.
-<icon4.jpg, id=490, 18.32198pt x 18.32198pt>
+<icon4.jpg, id=494, 18.32198pt x 18.32198pt>
 File: icon4.jpg Graphic file (type jpg)
 <use icon4.jpg>
-Package pdftex.def Info: icon4.jpg  used on input line 968.
+Package pdftex.def Info: icon4.jpg  used on input line 967.
 (pdftex.def)             Requested size: 45.50278pt x 45.50648pt.
-<playericon.png, id=491, 48.18pt x 48.18pt>
+<playericon.png, id=495, 48.18pt x 48.18pt>
 File: playericon.png Graphic file (type png)
 <use playericon.png>
-Package pdftex.def Info: playericon.png  used on input line 971.
+Package pdftex.def Info: playericon.png  used on input line 970.
 (pdftex.def)             Requested size: 45.50278pt x 45.50237pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [35 <./cogumelos.jpg> <./prompt.jpg> <./warning.jpg> <./exit.jpg> <./minimap.jp
-g>] [36 <./icon1.jpg> <./icon2.jpg> <./icon3.jpg> <./icon4.jpg> <./playericon.p
-ng>]
-<statscreen.jpg, id=503, 473.77pt x 312.16624pt>
+g>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [36 <./icon1.jpg> <./icon2.jpg> <./icon3.jpg> <./icon4.jpg> <./playericon.png>
+]
+<statscreen.jpg, id=507, 473.77pt x 312.16624pt>
 File: statscreen.jpg Graphic file (type jpg)
 <use statscreen.jpg>
-Package pdftex.def Info: statscreen.jpg  used on input line 1011.
+Package pdftex.def Info: statscreen.jpg  used on input line 1010.
 (pdftex.def)             Requested size: 227.5pt x 149.90001pt.
- [37 <./statscreen.jpg>]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 1027.
 
-Overfull \hbox (90.99036pt too wide) in paragraph at lines 1027--1043
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[37]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 1026.
+
+Overfull \hbox (90.99036pt too wide) in paragraph at lines 1026--1042
  [][] 
  []
 
-
-Underfull \vbox (badness 2213) has occurred while \output is active []
-
- [38]
-<options.jpg, id=515, 1166.3575pt x 656.4525pt>
+[38 <./statscreen.jpg>]
+<options.jpg, id=518, 1166.3575pt x 656.4525pt>
 File: options.jpg Graphic file (type jpg)
 <use options.jpg>
-Package pdftex.def Info: options.jpg  used on input line 1062.
+Package pdftex.def Info: options.jpg  used on input line 1061.
 (pdftex.def)             Requested size: 227.5pt x 128.04277pt.
-<attack.jpg, id=516, 1164.35pt x 655.44875pt>
+<attack.jpg, id=519, 1164.35pt x 655.44875pt>
 File: attack.jpg Graphic file (type jpg)
 <use attack.jpg>
-Package pdftex.def Info: attack.jpg  used on input line 1066.
+Package pdftex.def Info: attack.jpg  used on input line 1065.
 (pdftex.def)             Requested size: 227.5pt x 128.06702pt.
-<guard.jpg, id=517, 1168.365pt x 657.45625pt>
+<guard.jpg, id=520, 1168.365pt x 657.45625pt>
 File: guard.jpg Graphic file (type jpg)
 <use guard.jpg>
-Package pdftex.def Info: guard.jpg  used on input line 1070.
+Package pdftex.def Info: guard.jpg  used on input line 1069.
 (pdftex.def)             Requested size: 227.5pt x 128.01785pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<skillmenu.jpg, id=519, 1169.36874pt x 661.47125pt>
+<skillmenu.jpg, id=522, 1169.36874pt x 661.47125pt>
 File: skillmenu.jpg Graphic file (type jpg)
 <use skillmenu.jpg>
-Package pdftex.def Info: skillmenu.jpg  used on input line 1089.
+Package pdftex.def Info: skillmenu.jpg  used on input line 1088.
 (pdftex.def)             Requested size: 222.9525pt x 126.11485pt.
-<aoe.jpg, id=520, 1163.34625pt x 657.45625pt>
+<aoe.jpg, id=523, 1163.34625pt x 657.45625pt>
 File: aoe.jpg Graphic file (type jpg)
 <use aoe.jpg>
-Package pdftex.def Info: aoe.jpg  used on input line 1093.
+Package pdftex.def Info: aoe.jpg  used on input line 1092.
 (pdftex.def)             Requested size: 222.9525pt x 126.00143pt.
-<heal.jpg, id=521, 1170.3725pt x 656.4525pt>
+<heal.jpg, id=524, 1170.3725pt x 656.4525pt>
 File: heal.jpg Graphic file (type jpg)
 <use heal.jpg>
-Package pdftex.def Info: heal.jpg  used on input line 1097.
+Package pdftex.def Info: heal.jpg  used on input line 1096.
 (pdftex.def)             Requested size: 222.9525pt x 125.0478pt.
-<support.jpg, id=522, 1166.3575pt x 655.44875pt>
+<support.jpg, id=525, 1166.3575pt x 655.44875pt>
 File: support.jpg Graphic file (type jpg)
 <use support.jpg>
-Package pdftex.def Info: support.jpg  used on input line 1101.
+Package pdftex.def Info: support.jpg  used on input line 1100.
 (pdftex.def)             Requested size: 222.9525pt x 125.28665pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<itemmenu.jpg, id=524, 1166.3575pt x 658.46pt>
+<itemmenu.jpg, id=527, 1166.3575pt x 658.46pt>
 File: itemmenu.jpg Graphic file (type jpg)
 <use itemmenu.jpg>
-Package pdftex.def Info: itemmenu.jpg  used on input line 1112.
+Package pdftex.def Info: itemmenu.jpg  used on input line 1111.
 (pdftex.def)             Requested size: 227.5pt x 128.43434pt.
+[39]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[39]
-<enemyformation.jpg, id=530, 688.5725pt x 280.04625pt>
+
+Underfull \vbox (badness 3158) has occurred while \output is active []
+
+ [40 <./options.jpg> <./attack.jpg> <./guard.jpg>]
+<enemyformation.jpg, id=538, 688.5725pt x 280.04625pt>
 File: enemyformation.jpg Graphic file (type jpg)
 <use enemyformation.jpg>
-Package pdftex.def Info: enemyformation.jpg  used on input line 1131.
+Package pdftex.def Info: enemyformation.jpg  used on input line 1130.
 (pdftex.def)             Requested size: 227.5pt x 92.52237pt.
-<partyformation.jpg, id=531, 904.37875pt x 168.63pt>
+<partyformation.jpg, id=539, 904.37875pt x 168.63pt>
 File: partyformation.jpg Graphic file (type jpg)
 <use partyformation.jpg>
-Package pdftex.def Info: partyformation.jpg  used on input line 1135.
+Package pdftex.def Info: partyformation.jpg  used on input line 1134.
 (pdftex.def)             Requested size: 227.5pt x 42.41727pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-Underfull \vbox (badness 5726) has occurred while \output is active []
-
- [40 <./options.jpg> <./attack.jpg> <./guard.jpg>] [41 <./skillmenu.jpg> <./aoe
-.jpg> <./heal.jpg> <./support.jpg> <./itemmenu.jpg>]
-<endscreen.jpg, id=542, 1143.27126pt x 618.31pt>
+[41 <./skillmenu.jpg> <./aoe.jpg> <./heal.jpg> <./support.jpg> <./itemmenu.jpg>
+]
+<endscreen.jpg, id=546, 1143.27126pt x 618.31pt>
 File: endscreen.jpg Graphic file (type jpg)
 <use endscreen.jpg>
-Package pdftex.def Info: endscreen.jpg  used on input line 1153.
+Package pdftex.def Info: endscreen.jpg  used on input line 1151.
 (pdftex.def)             Requested size: 227.5pt x 123.03711pt.
-<learn.jpg, id=544, 1167.36125pt x 658.46pt>
+<learn.jpg, id=548, 1167.36125pt x 658.46pt>
 File: learn.jpg Graphic file (type jpg)
 <use learn.jpg>
-Package pdftex.def Info: learn.jpg  used on input line 1162.
+Package pdftex.def Info: learn.jpg  used on input line 1160.
 (pdftex.def)             Requested size: 227.5pt x 128.32382pt.
-<stage1.png, id=546, 12.7677pt x 9.57578pt>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[42 <./enemyformation.jpg> <./partyformation.jpg> <./endscreen.jpg>]
+<stage1.png, id=554, 12.7677pt x 9.57578pt>
 File: stage1.png Graphic file (type png)
 <use stage1.png>
-Package pdftex.def Info: stage1.png  used on input line 1172.
+Package pdftex.def Info: stage1.png  used on input line 1170.
 (pdftex.def)             Requested size: 90.99861pt x 68.25964pt.
-<stage2.png, id=547, 17.28458pt x 13.7313pt>
+<stage2.png, id=555, 17.28458pt x 13.7313pt>
 File: stage2.png Graphic file (type png)
 <use stage2.png>
-Package pdftex.def Info: stage2.png  used on input line 1176.
+Package pdftex.def Info: stage2.png  used on input line 1174.
 (pdftex.def)             Requested size: 136.50139pt x 108.4603pt.
-<stage3.png, id=548, 29.75114pt x 26.80013pt>
+<stage3.png, id=556, 29.75114pt x 26.80013pt>
 File: stage3.png Graphic file (type png)
 <use stage3.png>
-Package pdftex.def Info: stage3.png  used on input line 1180.
+Package pdftex.def Info: stage3.png  used on input line 1178.
 (pdftex.def)             Requested size: 204.74861pt x 184.4457pt.
- [42 <./enemyformation.jpg> <./partyformation.jpg> <./endscreen.jpg> <./learn.j
-pg>]
-<menutemplate.jpg, id=554, 247.92625pt x 240.9pt>
+<menutemplate.jpg, id=558, 247.92625pt x 240.9pt>
 File: menutemplate.jpg Graphic file (type jpg)
 <use menutemplate.jpg>
-Package pdftex.def Info: menutemplate.jpg  used on input line 1194.
+Package pdftex.def Info: menutemplate.jpg  used on input line 1192.
 (pdftex.def)             Requested size: 113.75pt x 110.52495pt.
-<skilltemplate.jpg, id=555, 311.1625pt x 171.64125pt>
+<skilltemplate.jpg, id=559, 311.1625pt x 171.64125pt>
 File: skilltemplate.jpg Graphic file (type jpg)
 <use skilltemplate.jpg>
-Package pdftex.def Info: skilltemplate.jpg  used on input line 1198.
+Package pdftex.def Info: skilltemplate.jpg  used on input line 1196.
 (pdftex.def)             Requested size: 159.25278pt x 87.84491pt.
-<bagtemplate.jpg, id=556, 324.21124pt x 239.89626pt>
+<bagtemplate.jpg, id=560, 324.21124pt x 239.89626pt>
 File: bagtemplate.jpg Graphic file (type jpg)
 <use bagtemplate.jpg>
-Package pdftex.def Info: bagtemplate.jpg  used on input line 1202.
+Package pdftex.def Info: bagtemplate.jpg  used on input line 1200.
 (pdftex.def)             Requested size: 159.25278pt x 117.83937pt.
- [43 <./stage1.png> <./stage2.png> <./stage3.png> <./menutemplate.jpg> <./skill
-template.jpg> <./bagtemplate.jpg>]
-<resultstemplate.jpg, id=565, 610.28pt x 343.2825pt>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[43 <./learn.jpg> <./stage1.png> <./stage2.png> <./stage3.png>]
+<resultstemplate.jpg, id=569, 610.28pt x 343.2825pt>
 File: resultstemplate.jpg Graphic file (type jpg)
 <use resultstemplate.jpg>
-Package pdftex.def Info: resultstemplate.jpg  used on input line 1214.
+Package pdftex.def Info: resultstemplate.jpg  used on input line 1212.
 (pdftex.def)             Requested size: 250.25139pt x 140.76767pt.
-<statstemplate.jpg, id=566, 708.6475pt x 361.35pt>
+<statstemplate.jpg, id=570, 708.6475pt x 361.35pt>
 File: statstemplate.jpg Graphic file (type jpg)
 <use statstemplate.jpg>
-Package pdftex.def Info: statstemplate.jpg  used on input line 1218.
+Package pdftex.def Info: statstemplate.jpg  used on input line 1216.
 (pdftex.def)             Requested size: 250.25139pt x 127.6047pt.
-<hudtemplate.jpg, id=567, 302.12875pt x 92.345pt>
+<hudtemplate.jpg, id=571, 302.12875pt x 92.345pt>
 File: hudtemplate.jpg Graphic file (type jpg)
 <use hudtemplate.jpg>
-Package pdftex.def Info: hudtemplate.jpg  used on input line 1222.
+Package pdftex.def Info: hudtemplate.jpg  used on input line 1220.
 (pdftex.def)             Requested size: 136.50139pt x 41.72112pt.
+ [44 <./menutemplate.jpg> <./skilltemplate.jpg> <./bagtemplate.jpg> <./resultst
+emplate.jpg> <./statstemplate.jpg> <./hudtemplate.jpg>] [45] [46
 
-[44 <./resultstemplate.jpg> <./statstemplate.jpg> <./hudtemplate.jpg>]
-<unityeditor.jpg, id=574, 1606.0pt x 903.375pt>
+]
+<unityeditor.jpg, id=586, 1606.0pt x 903.375pt>
 File: unityeditor.jpg Graphic file (type jpg)
 <use unityeditor.jpg>
-Package pdftex.def Info: unityeditor.jpg  used on input line 1247.
+Package pdftex.def Info: unityeditor.jpg  used on input line 1245.
 (pdftex.def)             Requested size: 318.49861pt x 179.15552pt.
-<gimp.jpg, id=575, 1954.34366pt x 1099.31831pt>
+<gimp.jpg, id=587, 1954.34366pt x 1099.31831pt>
 File: gimp.jpg Graphic file (type jpg)
 <use gimp.jpg>
-Package pdftex.def Info: gimp.jpg  used on input line 1254.
+Package pdftex.def Info: gimp.jpg  used on input line 1252.
 (pdftex.def)             Requested size: 318.49861pt x 179.14873pt.
- [45
-
- <./unityeditor.jpg> <./gimp.jpg>]
-<playerobject.jpg, id=581, 462.528pt x 260.172pt>
+ [47 <./unityeditor.jpg> <./gimp.jpg>]
+<playerobject.jpg, id=594, 462.528pt x 260.172pt>
 File: playerobject.jpg Graphic file (type jpg)
 <use playerobject.jpg>
-Package pdftex.def Info: playerobject.jpg  used on input line 1278.
+Package pdftex.def Info: playerobject.jpg  used on input line 1276.
 (pdftex.def)             Requested size: 295.74722pt x 166.36658pt.
 
 Underfull \vbox (badness 2828) has occurred while \output is active []
 
- [46 <./playerobject.jpg>]
+ [48 <./playerobject.jpg>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [47]
+ [49]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 1295.
+nput line 1293.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-295.
+293.
 
 (C:\Users\hugos\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1573,145 +1580,137 @@ Package microtype Info: Loading generic protrusion settings for font family
 (EncounterTable.json)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [48]
-<encounterZones.png, id=634, 1405.25pt x 2107.875pt>
+ [50]
+<encounterZones.png, id=646, 1405.25pt x 2107.875pt>
 File: encounterZones.png Graphic file (type png)
 <use encounterZones.png>
-Package pdftex.def Info: encounterZones.png  used on input line 1306.
+Package pdftex.def Info: encounterZones.png  used on input line 1304.
 (pdftex.def)             Requested size: 204.74861pt x 307.09749pt.
-<dungeonItens.png, id=635, 1405.25pt x 2107.875pt>
+<dungeonItens.png, id=647, 1405.25pt x 2107.875pt>
 File: dungeonItens.png Graphic file (type png)
 <use dungeonItens.png>
-Package pdftex.def Info: dungeonItens.png  used on input line 1310.
+Package pdftex.def Info: dungeonItens.png  used on input line 1308.
 (pdftex.def)             Requested size: 204.74861pt x 307.09749pt.
-<basicLab.png, id=637, 396.5214pt x 171.039pt>
+<basicLab.png, id=649, 396.5214pt x 171.039pt>
 File: basicLab.png Graphic file (type png)
 <use basicLab.png>
-Package pdftex.def Info: basicLab.png  used on input line 1322.
+Package pdftex.def Info: basicLab.png  used on input line 1320.
 (pdftex.def)             Requested size: 341.25pt x 147.20288pt.
-<basicLab2.png, id=638, 396.0396pt x 169.5936pt>
+<basicLab2.png, id=650, 396.0396pt x 169.5936pt>
 File: basicLab2.png Graphic file (type png)
 <use basicLab2.png>
-Package pdftex.def Info: basicLab2.png  used on input line 1326.
+Package pdftex.def Info: basicLab2.png  used on input line 1324.
 (pdftex.def)             Requested size: 341.25pt x 146.1323pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[49 <./encounterZones.png> <./dungeonItens.png>]
-<prettyLab.png, id=646, 396.0396pt x 169.5936pt>
+[51 <./encounterZones.png> <./dungeonItens.png>]
+<prettyLab.png, id=658, 396.0396pt x 169.5936pt>
 File: prettyLab.png Graphic file (type png)
 <use prettyLab.png>
-Package pdftex.def Info: prettyLab.png  used on input line 1337.
+Package pdftex.def Info: prettyLab.png  used on input line 1335.
 (pdftex.def)             Requested size: 341.25pt x 146.1323pt.
 
 Underfull \vbox (badness 5578) has occurred while \output is active []
 
- [50 <./basicLab.png> <./basicLab2.png> <./prettyLab.png>]
-<arena.png, id=656, 346.6551pt x 152.9715pt>
+ [52 <./basicLab.png> <./basicLab2.png> <./prettyLab.png>]
+<arena.png, id=668, 346.6551pt x 152.9715pt>
 File: arena.png Graphic file (type png)
 <use arena.png>
-Package pdftex.def Info: arena.png  used on input line 1357.
+Package pdftex.def Info: arena.png  used on input line 1355.
 (pdftex.def)             Requested size: 341.25pt x 150.59726pt.
-<background.png, id=657, 346.6551pt x 152.9715pt>
+<background.png, id=669, 346.6551pt x 152.9715pt>
 File: background.png Graphic file (type png)
 <use background.png>
-Package pdftex.def Info: background.png  used on input line 1361.
+Package pdftex.def Info: background.png  used on input line 1359.
 (pdftex.def)             Requested size: 341.25pt x 150.59726pt.
- [51 <./arena.png> <./background.png>]
+ [53 <./arena.png> <./background.png>]
 (C:\Users\hugos\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 Underfull \vbox (badness 5133) has occurred while \output is active []
 
- [52]
-[53] [54]
-Overfull \hbox (42.03578pt too wide) detected at line 1518
-[][]\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 X \OMS/lmsy/m/n/12  [] \OT1/lmr/m/n/12 +
- \OML/lmm/m/it/12 Z\OT1/lmr/m/n/12 ) \OMS/lmsy/m/n/12  []  []  \OML/lmm/m/it
-/12 DEFLANE \OMS/lmsy/m/n/12  \OML/lmm/m/it/12 ATKLANE \OMS/lmsy/m/n/12  \OML
-/lmm/m/it/12 RES \OMS/lmsy/m/n/12  \OML/lmm/m/it/12 COND[]
- []
-
-[55] [56] [57] [58] [59]
+ [54]
+[55] [56] [57] [58] [59] [60]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [60]
-<forms1.png, id=801, 1606.0pt x 763.85374pt>
+ [61]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [62]
+<forms1.png, id=813, 1606.0pt x 763.85374pt>
 File: forms1.png Graphic file (type png)
 <use forms1.png>
-Package pdftex.def Info: forms1.png  used on input line 1647.
+Package pdftex.def Info: forms1.png  used on input line 1645.
 (pdftex.def)             Requested size: 222.9525pt x 106.04132pt.
-<forms2.png, id=802, 1606.0pt x 763.85374pt>
+<forms2.png, id=814, 1606.0pt x 763.85374pt>
 File: forms2.png Graphic file (type png)
 <use forms2.png>
-Package pdftex.def Info: forms2.png  used on input line 1650.
+Package pdftex.def Info: forms2.png  used on input line 1648.
 (pdftex.def)             Requested size: 222.9525pt x 106.04132pt.
-<forms3.png, id=803, 1606.0pt x 763.85374pt>
+<forms3.png, id=815, 1606.0pt x 763.85374pt>
 File: forms3.png Graphic file (type png)
 <use forms3.png>
-Package pdftex.def Info: forms3.png  used on input line 1653.
+Package pdftex.def Info: forms3.png  used on input line 1651.
 (pdftex.def)             Requested size: 222.9525pt x 106.04132pt.
-<forms4.png, id=804, 1606.0pt x 763.85374pt>
+<forms4.png, id=816, 1606.0pt x 763.85374pt>
 File: forms4.png Graphic file (type png)
 <use forms4.png>
-Package pdftex.def Info: forms4.png  used on input line 1656.
+Package pdftex.def Info: forms4.png  used on input line 1654.
 (pdftex.def)             Requested size: 222.9525pt x 106.04132pt.
-<forms5.png, id=805, 1606.0pt x 763.85374pt>
+<forms5.png, id=817, 1606.0pt x 763.85374pt>
 File: forms5.png Graphic file (type png)
 <use forms5.png>
-Package pdftex.def Info: forms5.png  used on input line 1659.
+Package pdftex.def Info: forms5.png  used on input line 1657.
 (pdftex.def)             Requested size: 222.9525pt x 106.04132pt.
-<forms6.png, id=806, 1606.0pt x 763.85374pt>
+<forms6.png, id=818, 1606.0pt x 763.85374pt>
 File: forms6.png Graphic file (type png)
 <use forms6.png>
-Package pdftex.def Info: forms6.png  used on input line 1662.
+Package pdftex.def Info: forms6.png  used on input line 1660.
 (pdftex.def)             Requested size: 222.9525pt x 106.04132pt.
-<forms7.png, id=807, 1606.0pt x 763.85374pt>
+<forms7.png, id=819, 1606.0pt x 763.85374pt>
 File: forms7.png Graphic file (type png)
 <use forms7.png>
-Package pdftex.def Info: forms7.png  used on input line 1665.
+Package pdftex.def Info: forms7.png  used on input line 1663.
 (pdftex.def)             Requested size: 222.9525pt x 106.04132pt.
-<forms8.png, id=808, 1606.0pt x 763.85374pt>
+<forms8.png, id=820, 1606.0pt x 763.85374pt>
 File: forms8.png Graphic file (type png)
 <use forms8.png>
-Package pdftex.def Info: forms8.png  used on input line 1668.
+Package pdftex.def Info: forms8.png  used on input line 1666.
 (pdftex.def)             Requested size: 222.9525pt x 106.04132pt.
-<forms9.png, id=809, 1606.0pt x 763.85374pt>
+<forms9.png, id=821, 1606.0pt x 763.85374pt>
 File: forms9.png Graphic file (type png)
 <use forms9.png>
-Package pdftex.def Info: forms9.png  used on input line 1671.
+Package pdftex.def Info: forms9.png  used on input line 1669.
 (pdftex.def)             Requested size: 222.9525pt x 106.04132pt.
-<forms10.png, id=810, 1606.0pt x 763.85374pt>
+<forms10.png, id=822, 1606.0pt x 763.85374pt>
 File: forms10.png Graphic file (type png)
 <use forms10.png>
-Package pdftex.def Info: forms10.png  used on input line 1674.
+Package pdftex.def Info: forms10.png  used on input line 1672.
 (pdftex.def)             Requested size: 222.9525pt x 106.04132pt.
 
 Underfull \vbox (badness 1033) has occurred while \output is active []
 
- [61 <./forms1.png> <./forms2.png> <./forms3.png> <./forms4.png> <./forms5.png>
+ [63 <./forms1.png> <./forms2.png> <./forms3.png> <./forms4.png> <./forms5.png>
  <./forms6.png> <./forms7.png> <./forms8.png> <./forms9.png> <./forms10.png>]
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <17.28> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 1695.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 1693.
 
- [62]
+ [64] [65
 
-LaTeX Warning: Reference `feedback' on page 63 undefined on input line 1709.
+]
+[66
 
-[63
-
-] [64] (Monografia.bbl (Monografia.brf)
+] (Monografia.bbl (Monografia.brf)
 \tf@brf=\write5
 \openout5 = `Monografia.brf'.
 
- [65
-
-] [66
+ [67] [68
 
 ]
 bibitemlist
-) (Monografia.ind) [67]
+) (Monografia.ind) [69]
 \tf@lof=\write6
 \openout6 = `Monografia.lof'.
 
@@ -1726,19 +1725,19 @@ bibitemlist
 
  (Monografia.aux)
 
-LaTeX Warning: There were undefined references.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `Monografia.brf' has not changed.
 (rerunfilecheck)             Checksum: F957EC3E67C5A837A5C705D64C3CF0E0;573.
  ) 
 Here is how much of TeX's memory you used:
- 22715 strings out of 478927
- 353426 string characters out of 2852535
- 1119869 words of memory out of 3000000
- 39574 multiletter control sequences out of 15000+600000
- 511184 words of font info for 208 fonts, out of 8000000 for 9000
+ 22717 strings out of 478927
+ 353439 string characters out of 2852535
+ 1120526 words of memory out of 3000000
+ 39572 multiletter control sequences out of 15000+600000
+ 511313 words of font info for 209 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,13n,81p,1308b,1888s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 75i,13n,81p,1309b,1888s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/hugos/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C
 :/Users/hugos/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C
 :/Users/hugos/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C
@@ -1762,9 +1761,9 @@ hugos/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso12.pfb><C:/Users
 s/hugos/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/User
 s/hugos/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/User
 s/hugos/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on Monografia.pdf (69 pages, 38179345 bytes).
+Output written on Monografia.pdf (71 pages, 38180162 bytes).
 PDF statistics:
- 1247 PDF objects out of 1440 (max. 8388607)
- 307 named destinations out of 1000 (max. 500000)
+ 1253 PDF objects out of 1440 (max. 8388607)
+ 309 named destinations out of 1000 (max. 500000)
  63474 words of extra memory for PDF output out of 74296 (max. 10000000)
 

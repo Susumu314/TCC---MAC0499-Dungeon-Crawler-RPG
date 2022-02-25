@@ -5359,23 +5359,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1471090752837188099, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
+      propertyPath: species
+      value: Fire Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471090752837188099, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
+      propertyPath: unitName
+      value: Fire Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471090752837188099, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
+      propertyPath: unitLevel
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471090752837188099, guid: 10827e88c8f49fd43a287b893dbf69b6,
+        type: 3}
       propertyPath: isPlayerUnit
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2226254526971190764, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
       propertyPath: species
-      value: 
+      value: Sea Crab
       objectReference: {fileID: 0}
     - target: {fileID: 2226254526971190764, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
       propertyPath: unitName
-      value: 
+      value: Sea Crab
       objectReference: {fileID: 0}
     - target: {fileID: 2226254526971190764, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
       propertyPath: unitLevel
-      value: 5
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2226254526971190764, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
@@ -5575,17 +5590,17 @@ PrefabInstance:
     - target: {fileID: 8536613912333044621, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
       propertyPath: species
-      value: Rabbit Bandit
+      value: Carnivuno
       objectReference: {fileID: 0}
     - target: {fileID: 8536613912333044621, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
       propertyPath: unitName
-      value: Rabbit Bandit
+      value: Carnivuno
       objectReference: {fileID: 0}
     - target: {fileID: 8536613912333044621, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
       propertyPath: unitLevel
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8536613912333044621, guid: 10827e88c8f49fd43a287b893dbf69b6,
         type: 3}
@@ -18190,7 +18205,7 @@ PrefabInstance:
     - target: {fileID: 7443690404285107436, guid: 19b70345f272a954795aab8764e899fc,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7467954902822547889, guid: 19b70345f272a954795aab8764e899fc,
         type: 3}
@@ -25555,7 +25570,7 @@ PrefabInstance:
     - target: {fileID: 7443690404285107436, guid: 19b70345f272a954795aab8764e899fc,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7467954902822547889, guid: 19b70345f272a954795aab8764e899fc,
         type: 3}
@@ -37952,7 +37967,7 @@ PrefabInstance:
     - target: {fileID: 7443690404285107436, guid: 19b70345f272a954795aab8764e899fc,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7467954902822547889, guid: 19b70345f272a954795aab8764e899fc,
         type: 3}

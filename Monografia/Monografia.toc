@@ -24,7 +24,7 @@
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {3}\MakeTextUppercase {Estudo de Jogos Relevantes}}{23}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Mecânicas Relevantes}{23}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Séries de Jogos Estudas}{23}{section.3.2}%
+\contentsline {section}{\numberline {3.2}Séries de Jogos Estudadas}{23}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Pokémon}{24}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Shin Megami Tensei}{26}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}Etrian Odyssey}{28}{subsection.3.2.3}%
@@ -39,45 +39,45 @@
 \contentsline {subsubsection}{\numberline {4.2.1.4}Mini-mapa}{35}{subsubsection.4.2.1.4}%
 \contentsline {subsection}{\numberline {4.2.2}Batalhas}{36}{subsection.4.2.2}%
 \contentsline {subsubsection}{\numberline {4.2.2.1}Inimigos}{36}{subsubsection.4.2.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2.2}Stats}{36}{subsubsection.4.2.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.3}Types}{38}{subsubsection.4.2.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.2.4}Opções de combate}{39}{subsubsection.4.2.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}Stats}{37}{subsubsection.4.2.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}Types}{37}{subsubsection.4.2.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.2.4}Opções de combate}{38}{subsubsection.4.2.2.4}%
 \contentsline {subsubsection}{\numberline {4.2.2.5}Skills e Itens}{39}{subsubsection.4.2.2.5}%
-\contentsline {subsubsection}{\numberline {4.2.2.6}Status Effects}{39}{subsubsection.4.2.2.6}%
-\contentsline {subsubsection}{\numberline {4.2.2.7}Posição dentro da equipe}{40}{subsubsection.4.2.2.7}%
+\contentsline {subsubsection}{\numberline {4.2.2.6}Status Effects}{40}{subsubsection.4.2.2.6}%
+\contentsline {subsubsection}{\numberline {4.2.2.7}Posição dentro da equipe}{41}{subsubsection.4.2.2.7}%
 \contentsline {subsubsection}{\numberline {4.2.2.8}Captura de Demônios}{41}{subsubsection.4.2.2.8}%
-\contentsline {subsubsection}{\numberline {4.2.2.9}Progressão de personagens}{41}{subsubsection.4.2.2.9}%
+\contentsline {subsubsection}{\numberline {4.2.2.9}Progressão de personagens}{42}{subsubsection.4.2.2.9}%
 \contentsline {section}{\numberline {4.3}Interface}{43}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Cidades}{44}{section.4.4}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase {Desenvolvimento}}{45}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Ferramentas}{45}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Assets}{46}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Arquitetura das Mecânicas de Exploração}{46}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Representação do jogador}{46}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Random Encounters}{47}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Labirinto}{49}{subsection.5.3.3}%
-\contentsline {subsection}{\numberline {5.3.4}Overworld Menu System}{51}{subsection.5.3.4}%
-\contentsline {section}{\numberline {5.4}Arquitetura das Mecânicas de Batalha}{51}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Arena de Batalha}{51}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Demônios}{52}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Calculo de Stats}{53}{subsection.5.4.3}%
-\contentsline {subsection}{\numberline {5.4.4}Skills e Itens}{53}{subsection.5.4.4}%
-\contentsline {subsection}{\numberline {5.4.5}Calculos de Dano}{55}{subsection.5.4.5}%
-\contentsline {subsection}{\numberline {5.4.6}Precisão e Esquiva}{56}{subsection.5.4.6}%
-\contentsline {subsection}{\numberline {5.4.7}Buffs e Debuffs}{56}{subsection.5.4.7}%
-\contentsline {subsection}{\numberline {5.4.8}Condições Especiais}{57}{subsection.5.4.8}%
-\contentsline {subsection}{\numberline {5.4.9}Captura de demônios}{58}{subsection.5.4.9}%
-\contentsline {subsection}{\numberline {5.4.10}Sistema de Batalhas}{58}{subsection.5.4.10}%
-\contentsline {section}{\numberline {5.5}Game Manager}{59}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Teste com jogadores reais}{60}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Melhorias feitas com base no \emph {feedback} dos jogadores}{62}{section.5.7}%
+\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase {Desenvolvimento}}{47}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Ferramentas}{47}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Assets}{48}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Arquitetura das Mecânicas de Exploração}{48}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Representação do jogador}{48}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Random Encounters}{49}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Labirinto}{51}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Overworld Menu System}{53}{subsection.5.3.4}%
+\contentsline {section}{\numberline {5.4}Arquitetura das Mecânicas de Batalha}{53}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Arena de Batalha}{53}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Demônios}{54}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Cálculo de Stats}{55}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Skills e Itens}{55}{subsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.4.5}Cálculos de Dano}{57}{subsection.5.4.5}%
+\contentsline {subsection}{\numberline {5.4.6}Precisão e Esquiva}{58}{subsection.5.4.6}%
+\contentsline {subsection}{\numberline {5.4.7}Buffs e Debuffs}{58}{subsection.5.4.7}%
+\contentsline {subsection}{\numberline {5.4.8}Condições Especiais}{59}{subsection.5.4.8}%
+\contentsline {subsection}{\numberline {5.4.9}Captura de demônios}{60}{subsection.5.4.9}%
+\contentsline {subsection}{\numberline {5.4.10}Sistema de Batalhas}{60}{subsection.5.4.10}%
+\contentsline {section}{\numberline {5.5}Game Manager}{61}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Teste com jogadores reais}{62}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Melhorias feitas com base no \emph {feedback} dos jogadores}{64}{section.5.7}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase {Considerações Finais}}{63}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Escopo}{63}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Trabalhos Futuros}{63}{section.6.2}%
+\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase {Considerações Finais}}{65}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Escopo}{65}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Trabalhos Futuros}{65}{section.6.2}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase {Conclusão}}{65}{chapter.7}%
+\contentsline {chapter}{\chapternumberline {7}\MakeTextUppercase {Conclusão}}{67}{chapter.7}%
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{\MakeTextUppercase {Refer\^encias}}{67}{section*.48}%
+\contentsline {chapter}{\MakeTextUppercase {Refer\^encias}}{69}{section*.48}%
 \vspace {\cftbeforechapterskip }

@@ -162,7 +162,7 @@ public class Item {
                            /*type*/         BaseStats.TYPE.NORMAL, 
                            /*target_type*/  Skill.TARGET_TYPE.SINGLE, 
                            /*priority*/     PRIORITY.NORMAL, 
-                           /*power*/        10, //nesse caso o poder representa o bonus na chance de captura vezes 10
+                           /*power*/        100, //trocar para 10 nesse caso o poder representa o bonus na chance de captura vezes 10
                            /*accuracy*/     100, 
                            /*cost*/         0,
                            /*status_effect*/new Skill.EFFECT[] {Skill.EFFECT.CAPTURE}, 
